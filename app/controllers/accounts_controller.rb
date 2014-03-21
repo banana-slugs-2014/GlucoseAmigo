@@ -23,4 +23,14 @@ class AccountsController < ActionController::Base
     end
   end
 
+  def edit
+    @account = Account.find(params[:id])
+    render :partial => 'shared/edit_account',
+    :locals => {
+      account: @account
+    }
+  end
+
+
+
 end
