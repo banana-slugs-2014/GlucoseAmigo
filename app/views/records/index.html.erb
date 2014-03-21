@@ -1,0 +1,13 @@
+<p><%= Welcome, @diabetic.name %></p>
+<h3> Here are your most recent records </h3>
+<%= @records.each_with_index do |record, index| %>
+  <%= index %>
+  <span>
+    <%= record.taken_at %>
+
+
+    <%= record.weight if record.weight.present? %>
+
+    <%= record.glucose if record.glucose.present? %>
+  </span>
+<% end  %>
