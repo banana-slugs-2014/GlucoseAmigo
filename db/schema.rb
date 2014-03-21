@@ -19,6 +19,15 @@ ActiveRecord::Schema.define(:version => 20140320225309) do
     t.string "email"
   end
 
+  create_table "diabetics", :force => true do |t|
+    t.string  "name"
+    t.string  "age"
+    t.string  "email"
+    t.boolean "confirmed"
+    t.integer "doctor_id"
+    t.integer "account_id"
+  end
+
   create_table "doctors", :force => true do |t|
     t.string "name"
     t.string "fax"
@@ -28,24 +37,17 @@ ActiveRecord::Schema.define(:version => 20140320225309) do
 
   create_table "preferences", :force => true do |t|
     t.boolean "reminders"
-    t.integer "user_id_id"
+    t.integer "frequency"
+    t.integer "diabetic_id"
   end
 
   create_table "records", :force => true do |t|
-    t.integer  "user_id_id"
+    t.integer  "diabetic_id"
     t.string   "weight"
     t.string   "glucose"
-    t.datetime "take_at"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "users", :force => true do |t|
-    t.string  "name"
-    t.string  "age"
-    t.string  "phone"
-    t.integer "doctor_id_id"
-    t.integer "account_id_id"
+    t.datetime "taken_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
 end
