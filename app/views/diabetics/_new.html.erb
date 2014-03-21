@@ -1,6 +1,6 @@
 <%= form_for ([account,diabetic]) do |f| %>
   <%= f.text_field :name, :placeholder => "e.g. John Smith" %>
-  <%= f.text_field :age, :placeholder => "e.g. 25" %>
+  <%= f.date_select :birth_date %>
   <%= f.text_field :email, :placeholder => "e.g. john@smith.com" %>
   <%= f.submit %>
 <% end %>
