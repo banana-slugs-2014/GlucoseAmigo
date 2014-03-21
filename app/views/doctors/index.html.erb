@@ -1,2 +1,4 @@
 <h1>Hi, this is the Doctor test page</h1>
-<%= render "doctor_form" %>
+<%= form_tag({ :method => :put }) do -%>
+	<%= render "doctor_form" %>
+<% end -%>
