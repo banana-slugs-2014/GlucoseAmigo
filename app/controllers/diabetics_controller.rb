@@ -8,8 +8,9 @@ class DiabeticsController < ApplicationController
   end
 
   def create
-    diabetic = Account.last.diabetics.new(params[:diabetic])
-    #diabetic = current_user.diabetics.new(params[:diabetic])
+    diabetic = Diabetic.new(params[:diabetic])
+    #diabetic.account = current_user
+    diabetic.birth_date = params[:birth_date]
     if diabetic.valid?
       diabetic.save
       redirect_to new_account_diabetic_path(account_id: Account.last.id)
@@ -18,5 +19,9 @@ class DiabeticsController < ApplicationController
       # change here too
       redirect_to new_account_diabetic_path(account_id: Account.last.id)
     end
+  end
+
+  def build_date(birth_date)
+    Date.parse(birth_date.values.join('-'))
   end
 end

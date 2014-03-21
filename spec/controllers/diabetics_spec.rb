@@ -6,11 +6,19 @@ describe DiabeticsController do
   end
 
   let(:valid_params) { attributes_for :diabetic }
-  
+  let(:birth_date) do
+    {
+      year: Date.today.year - rand(5),
+      month: Date.today.month,
+      day: Date.today.day
+    }
+  end
+
   context 'with valid params' do
     it 'should add a diabetic when adding on the correct path' do
-      params = { diabetic: valid_params }
-      params[:account_id] = @account.id
+      params = { diabetic: valid_params,
+                 birth_date: birth_date,
+                 account_id: @account.id }
 
       expect{
         get :create, params
@@ -22,18 +30,17 @@ describe DiabeticsController do
   context 'with invalid params' do
     it 'should not add a diabetic when adding on the correct path' do
       params = {
-        diabetic: {
-          age: 12,
-          email: "test"
-        }
+              diabetic: {},
+              birth_date: birth_date,
+              account_id: @account.id
       }
-      params[:account_id] = @account.id
 
-      p params
       expect{
         get :create, params
+
+        p Diabetic.all
         expect(response).to be_redirect
-      }.to_not change {Diabetic.count}
+      }.to_not change(Diabetic, :count)
     end
   end
 end
