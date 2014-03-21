@@ -22,9 +22,6 @@ class DoctorsController < ApplicationController
 	def update
 		@doctor = Doctor.find(params[:id])
 		@doctor.update_attributes(params[:doctor])
-		puts "========update, put=========="
-		p params
-
 		redirect_to doctor_path(@doctor.id)
 	end
 
@@ -33,15 +30,3 @@ class DoctorsController < ApplicationController
 
 
 end
-
-
-# class CreateDoctors < ActiveRecord::Migration
-#   def change
-#     create_table :doctors do |t|
-#       t.string :name
-#       t.string :fax
-#       t.text :comments
-#       t.string :email
-#     end
-#   end
-# end
