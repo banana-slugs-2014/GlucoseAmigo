@@ -14,7 +14,7 @@ class DoctorsController < ApplicationController
 	end
 
 	def new
-		#redirect_to index
+		#redirect_to index_path
 	end
 
 	def create
@@ -31,10 +31,12 @@ class DoctorsController < ApplicationController
 	end
 
 	def update
+		@doctor = Doctor.find(params[:id])
+		@doctor
 		puts "========update, put=========="
 		p params
 
-		redirect_to doctors_path
+		redirect_to doctor_path(@doctor.id)
 		#put
 	end
 

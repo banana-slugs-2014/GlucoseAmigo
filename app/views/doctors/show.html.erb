@@ -1,2 +1,12 @@
-<h1>Hi, this is the show Doctor test page</h1>
-<%= render "doctor_form" %>
+<h2>Hi, this is the show Doctor test page</h2>
+
+  <h3>Name</h3>
+  <%= @doctor.name %><br>
+  <h3>Fax</h3>
+  <%= @doctor.fax %><br>
+  <h3>Email</h3>
+  <%= @doctor.email %><br>
+  <h3>Comments</h3>
+  <%= @doctor.comments %><br>
+
+ <span><%= link_to 'Edit', edit_doctor_path(@doctor.id) %></span>
