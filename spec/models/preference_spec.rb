@@ -9,4 +9,3 @@ describe Preference do
   end
 
 end
-
