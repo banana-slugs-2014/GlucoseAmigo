@@ -6,6 +6,7 @@ class Record < ActiveRecord::Base
   validate :inclusion_of_weight_and_or_glucose
   validate :taken_date_cannot_be_in_the_future
   validate :numericality_of_weight_and_glucose
+  validates_presence_of :taken_at
 
 
   def inclusion_of_weight_and_or_glucose
