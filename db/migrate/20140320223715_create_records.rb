@@ -1,11 +1,12 @@
 class CreateRecords < ActiveRecord::Migration
   def change
     create_table :records do |t|
-      t.references :user_id
+      t.belongs_to :diabetic
       t.string :weight
       t.string :glucose
-      t.datetime :take_at
+      t.datetime :taken_at
       t.timestamps
     end
+    #add herer index mon
   end
 end
