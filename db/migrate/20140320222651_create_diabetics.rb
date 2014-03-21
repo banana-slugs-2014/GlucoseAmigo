@@ -3,7 +3,7 @@ class CreateDiabetics < ActiveRecord::Migration
     create_table :diabetics do |t|
       t.string :name
       t.string :age
-      t.string :phone
+      t.string :email
       t.boolean :confirmed
       t.belongs_to :doctor
       t.belongs_to :account
