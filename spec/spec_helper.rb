@@ -23,4 +23,13 @@ RSpec.configure do |config|
   config.infer_base_class_for_anonymous_controllers = false
 
   config.order = "random"
+
+  def returns_valid_response
+    expect(response).to be_ok
+  end
+
+  def returns_valid_redirect
+    expect(response).to be_redirect
+  end
+
 end
