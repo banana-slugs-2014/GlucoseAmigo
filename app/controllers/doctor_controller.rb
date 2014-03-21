@@ -1,6 +1,14 @@
 class DoctorsController < ApplicationController
 
+	def index
+		#for testing
+		@doctor = Doctor.all.last
+	end
+
 	def show
+		@doctor = Doctor.all.last
+
+		#render 
 		#get
 		#may not need this one; might always be edit
 	end
