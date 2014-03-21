@@ -10,7 +10,7 @@ class Account < ActiveRecord::Base
   validates_length_of :password, :within => 5..40
 
   def authorized?(params)
-    self.authenticate(params[:users][:password])
+    !!self.authenticate(params[:users][:password])
   end
 
 end
