@@ -7,4 +7,6 @@ describe Diabetic do
   it { should_not allow_value("qlskr.com","teae",12).for :email}
   it { should allow_value("12").for :age }
   it { should_not allow_value(12,"test").for :age }
+  it { should belong_to :doctor }
+  it { should belong_to :account }
 end
