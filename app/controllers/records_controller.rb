@@ -1,7 +1,8 @@
 class RecordsController < ApplicationController
 
   def index
-    @records = Record.all
+    @diabetic = params[:diabetic_id]
+    @records = @diabetic.records #take 10 at a time?
   end
 
   def show
@@ -14,8 +15,9 @@ class RecordsController < ApplicationController
 
   def create
     @record = Record.create(params[:record])
+    @diabetic = Diabetic.find(params[:diabetic_id])
     if @record.save
-      current_user.records << @record
+      @diabetic.records << @record
       #render partial: 'shared/record' locals {record: @record}
     else
       #render partial :edit
