@@ -1,0 +1,11 @@
+<%= form_for @doctor do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name, :required => true %>
+  <%= f.label :fax %>
+  <%= f.text_field :fax, :required => true %>
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+  <%= f.label :comment %>
+  <%= f.text_area :comment %>
+  <%= f.submit %>
+<% end %>
