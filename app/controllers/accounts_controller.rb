@@ -1,7 +1,7 @@
 class AccountsController < ActionController::Base
 
   def index
-    @account = Account.find(1)
+    @account = Account.all
     render 'accounts/testing'
   end
 
@@ -17,6 +17,5 @@ class AccountsController < ActionController::Base
     puts account.errors.any?
     redirect_to accounts_path
   end
-
 
 end
