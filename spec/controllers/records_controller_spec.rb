@@ -4,7 +4,10 @@ describe RecordsController do
 
   context '#index' do
     it "is ok" do
-      get :index, user_id: 1
+      chris = Diabetic.create({name:'chris', email:'chris@dbc.com', age:'27'}, :without_protection => true)
+      record1 = Record.create(glucose: '100', weight: '175')
+      chris.records << record1
+      get :index, diabetic_id: 1
       expect(response).to be_success
     end
   end
