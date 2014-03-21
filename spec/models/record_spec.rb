@@ -6,8 +6,10 @@ describe Record do
     it {should belong_to :diabetic}
   end
 
-
   context "validations" do
-    xit {should validate_presence_of :body }
+
+    it { should_not allow_value('derp').for :weight }
+    it { should_not allow_value('derp').for :glucose }
+
   end
 end
