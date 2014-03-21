@@ -1,0 +1,20 @@
+development:
+  adapter: postgresql
+  host: localhost
+  username:
+  password:
+  database: glucose_amigo_dev
+  pool: 5
+  timeout: 5000
+
+
+test:
+  adapter: postgresql
+  host: localhost
+  database: glucose_amigo_test
+
+
+production:
+  adapter: postgresql
+  host: localhost
+  database: glucose_amigo_rails
