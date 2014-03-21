@@ -46,6 +46,7 @@ GEM
       ffi (~> 1.0, >= 1.0.11)
     coderay (1.1.0)
     columnize (0.3.6)
+    cool_faker (0.0.3)
     d3-rails (3.3.7)
       railties (>= 3.1)
     database_cleaner (1.2.0)
@@ -167,6 +168,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   capybara
+  cool_faker
   d3-rails
   database_cleaner
   debugger
