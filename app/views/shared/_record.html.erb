@@ -1,0 +1,9 @@
+<p><%= @diabetic.name %></p>
+  <span>
+    <%= record.taken_at %>
+
+    <%= record.weight if record.weight.present? %>
+
+    <%= record.glucose if record.glucose.present? %>
+
+  </span>
