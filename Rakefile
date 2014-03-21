@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-DiabeticBud::Application.load_tasks
+GlucoseAmigo::Application.load_tasks
