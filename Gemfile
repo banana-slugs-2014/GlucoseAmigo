@@ -13,6 +13,7 @@ end
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'cool_faker'
 end
 
 group :development do

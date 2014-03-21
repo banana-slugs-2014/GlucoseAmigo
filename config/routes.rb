@@ -3,10 +3,10 @@ GlucoseAmigo::Application.routes.draw do
   # first created -> highest priority
 
   resources :accounts do
-    resources :users
+    resources :diabetics
   end
 
-  resources :users, only: [] do
+  resources :diabetics, only: [] do
     resources :records, :preferences, except: [:delete]
   end
   resources :doctors, except: [:edit, :delete]
