@@ -1,10 +1,7 @@
 require 'spec_helper'
 
 describe AccountsController do
-  let!(:account) { Account.create(username: 'test',
-                                  email: 'test@test.com',
-                                  password: 'testing',
-                                  password_confirmation: 'testing')}
+  let!(:account) { create :account }
   context "#index" do
     it "is sucessful" do
       get :index
@@ -27,7 +24,7 @@ describe AccountsController do
       expect {
         post :create, :account => {}
       }.to_not change { Account.count }.by(1)
-      response.should redirect_to new_account_path
+      response.should redirect_to new_account_path ### will redirect to diabetic dashboard
 
     end
 
