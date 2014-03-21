@@ -1,2 +1,0 @@
-dummy_file_spec.rb
-dummy_file_spec.rb
