@@ -42,12 +42,15 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'debugger'
 group :test do
-  gem 'debugger'
   gem 'capybara'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'selenium-webdriver'
   gem 'shoulda-matchers'
+end
+
+group :test, :development do
+  gem 'debugger'
   gem 'faker'
   gem 'cool_faker'
 end
