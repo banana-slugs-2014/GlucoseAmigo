@@ -3,7 +3,7 @@ class DiabeticsController < ApplicationController
     # to change to current_user
     user = Account.last
     # user = current_user
-    render :partial => "new", :locals => {  :diabetic => user.diabetics.new,
+    render :partial => "shared/new", :locals => {  :diabetic => user.diabetics.new,
                                             :account => user }
   end
 
