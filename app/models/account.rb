@@ -9,7 +9,6 @@ class Account < ActiveRecord::Base
 
   validates_uniqueness_of :email
   validates_presence_of :username, :email
-  validates_confirmation_of :password, :on => :create,  :message => :"password.blank"
   validates_length_of :password, :within => 5..40
 
   validates_presence_of :password,
