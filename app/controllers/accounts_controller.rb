@@ -6,16 +6,21 @@ class AccountsController < ActionController::Base
   end
 
   def new
+    @account = Account.new
     render  :partial => 'shared/sign_up',
     :locals => {
-      account: Account.new
+      account: @account
     }
   end
 
   def create
     account = Account.create(params['account'])
-    puts account.errors.any?
-    redirect_to accounts_path
+    if account.errors.any?
+      flash[:error] = account.errors.full_messages
+       redirect_to new_account_path
+     else
+      redirect_to accounts_path
+    end
   end
 
 end
