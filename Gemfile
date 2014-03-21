@@ -7,7 +7,6 @@ gem 'rails', '3.2.16'
 
 gem 'pg'
 
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -42,3 +41,13 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+group :test do
+  gem 'debugger'
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'factory_girl_rails'
+  gem 'selenium-webdriver'
+  gem 'shoulda-matchers'
+  gem 'faker'
+  gem 'cool_faker'
+end
