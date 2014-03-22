@@ -17,7 +17,7 @@ class DoctorsController < ApplicationController
 			@doctor.diabetics << @diabetic
 			redirect_to diabetic_doctor_path(diabetic_id: @diabetic.id, id: @doctor.id)
 		else
-			redirect
+			redirect_to diabetic_doctors_path(diabetic_id: @diabetic.id)
 		end
 	end
 
