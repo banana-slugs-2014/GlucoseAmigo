@@ -1,5 +1,6 @@
 class Diabetic < ActiveRecord::Base
-  #attr_accessible :name, :email, :birth_date
+
+  attr_accessible :name, :email, :birth_date
   belongs_to :account
   belongs_to :doctor
   validates_presence_of :name, :email, :age

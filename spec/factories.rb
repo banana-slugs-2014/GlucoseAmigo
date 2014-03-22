@@ -24,4 +24,9 @@ FactoryGirl.define do
     comments Faker::Lorem.sentence
   end
 
+  factory :preference do
+    reminders [true, false].sample
+    frequency [1,2,3].sample
+  end
+
 end

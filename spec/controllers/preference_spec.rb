@@ -1,14 +1,11 @@
 require 'spec_helper'
 
 describe PreferencesController do
+  let(:preference) { create :preference }
+  let!(:pre_created_pref) { create :preference }
+  let(:pref_attr) { attributes_for :preference }
 
 end
-
-
-  # let(:doctor) { create :doctor }
-  # let(:doc_attr) { attributes_for :doctor }
-  # let!(:pre_created_doctor) { create :doctor }
-  # let!(:pre_created_doc_attr) { attributes_for :doctor }
 
   # before(:each) do
   #   @account = create :account
@@ -24,12 +21,7 @@ end
   #   request.session[:user_id] = @account.id
   # end
 
-  # context "#index" do
-  #   it "should successfully render a page" do
-  #     get :index, diabetic_id: @diabetic.id
-  #     expect(response).to be_success
-  #   end
-  # end
+
 
   # context "#show" do
   #   it "should successfully render a page" do
