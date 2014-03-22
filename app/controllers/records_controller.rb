@@ -38,11 +38,12 @@ class RecordsController < ApplicationController
 
   def update
     @record = Record.find(params[:id])
+    @diabetic = Diabetic.find(params[:diabetic_id])
     if @record.update_attributes(params[:record])
       @record.save
-      redirect_to diabetic_record_path(@record)
+      redirect_to diabetic_record_path(@diabetic, @record)
     else
-      redirect_to edit_diabetic_record_path(@record)
+      redirect_to edit_diabetic_record_path(@diabetic, @record)
     end #sad path
 
   end
