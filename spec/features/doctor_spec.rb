@@ -70,7 +70,6 @@ describe "doctors" do
     context "with valid parameters" do
       it "by clicking on edit" do
         visit edit_doctor_path(pre_created_doctor)
-        p pre_created_doctor
         fill_in "doctor[name]", with: doc_attr[:name]
         fill_in "doctor[fax]", with: doc_attr[:fax]
         fill_in "doctor[email]", with: doc_attr[:email]
