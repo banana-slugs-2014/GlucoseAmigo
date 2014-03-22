@@ -34,7 +34,20 @@ describe PreferencesController do
     end
   end
 
-
+  context "#create" do
+    it "should increase preference count if preference for this diabetic don't already exist" do
+      expect{
+        post :create, preference: pref_attr, diabetic_id: diabetic.id
+      }.to change{Preference.count}.by(1)
+    end
+    it "should not increase preference count if preference for this diabetic already exists" do
+      diabetic.preference = preference
+      diabetic.save
+      expect{
+        post :create, preference: pref_attr, diabetic_id: diabetic.id
+      }.to change{Preference.count}.by(0)
+    end
+  end
 
 end
 

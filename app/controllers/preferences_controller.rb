@@ -15,7 +15,8 @@ class PreferencesController < ApplicationController
     if @diabetic.preference
       @diabetic.preference.update_attributes(params[:preference])
     else
-      @diabetic.preference.create(params[:preference])
+      preference = Preference.create(params[:preference])
+      @diabetic.preference = preference
     end
     redirect_to diabetic_preference_path(@diabetic, @diabetic.preference)
   end
