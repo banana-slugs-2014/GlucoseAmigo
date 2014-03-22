@@ -1,9 +1,5 @@
 class PreferencesController < ApplicationController
 
-  def index
-    #prly wont need
-  end
-
   def new
     @diabetic = Diabetic.find(params[:diabetic_id])
     (redirect_to edit_diabetic_preference_path(@diabetic.id, @diabetic.preference)) if @diabetic.preference
