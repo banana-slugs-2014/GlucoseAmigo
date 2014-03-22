@@ -39,10 +39,8 @@ class DiabeticsController < ApplicationController
     redirect_to edit_account_diabetic_path(account_id: current_account.id, id: diabetic.id)
   end
 
-
-  def delete
-  end
-
   def destroy
+    Diabetic.find(params[:id]).destroy
+    redirect_to new_account_diabetic_path(account_id: current_account.id)
   end
 end

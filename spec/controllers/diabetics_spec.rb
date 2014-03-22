@@ -97,4 +97,16 @@ describe '#update' do
       end
     end
   end
+
+  describe '#destroy' do
+    it 'should delete a Diabetic' do
+      expect {
+        delete :destroy, {
+          account_id: @account.id,
+          id: @diabetic.id
+        }
+        expect(response).to be_redirect
+      }.to change { Diabetic.count }.by(-1)
+    end
+  end
 end
