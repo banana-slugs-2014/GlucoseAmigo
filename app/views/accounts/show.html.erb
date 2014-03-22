@@ -1,0 +1,7 @@
+Welcome, <%= @account.username %>
+
+<% if @diabetics %>
+  <% @diabetics.each do |diabetic| %>
+    <%= link_to "#{diabetic.name}", diabetic_records_path(diabetic)  %>
+  <% end %>
+<% end %>
