@@ -1,6 +1,6 @@
 class Record < ActiveRecord::Base
 
-  attr_accessible :weight, :glucose, :taken_at
+  attr_accessible :weight, :glucose, :taken_at, :comment
   belongs_to :diabetic
 
   validate :inclusion_of_weight_and_or_glucose

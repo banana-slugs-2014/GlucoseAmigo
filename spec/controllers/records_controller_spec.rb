@@ -23,7 +23,7 @@ describe RecordsController do
   end
 
   context '#edit' do
-    it 'shows a page' do
+    it 'shows an edit page' do
       get :edit, diabetic_id: @chris.id, id: @record1.id
       expect(response).to be_success
     end
@@ -37,7 +37,12 @@ describe RecordsController do
   end
 
   context '#update' do
-    xit { returns_valid_response }
+    it 'updates a single record' do
+      p @record1
+      put :update, diabetic_id: @chris.id, id: @record1.id, record: {glucose: '120', weight: '176', taken_at: Time.now-500, comment: "I just got updated!"}
+      expect(response).to be_redirect
+      p @record1
+    end
   end
   context '#create' do
     xit { returns_valid_response }
