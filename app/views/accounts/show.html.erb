@@ -1,5 +1,6 @@
 Welcome, <%= @account.username %>
 
+
 <br><br>
 
 <form action = "menu", method ="get" >
@@ -9,4 +10,13 @@ Welcome, <%= @account.username %>
 
    <%= submit_tag("Render Partial") %>
 </form>
+
+<% if @diabetics %>
+  <% @diabetics.each do |diabetic| %>
+    <%= link_to "#{diabetic.name}", diabetic_records_path(diabetic)  %>
+  <% end %>
+<% end %>
+
+<%= link_to 'edit', edit_account_path(@account.id) %>
+
 

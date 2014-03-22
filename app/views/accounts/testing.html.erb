@@ -8,3 +8,21 @@
 
 <br>
   Enter your birthday
+
+<%= form_for @account do |account_form| %>
+  First name: <%= per_form.text_field :first_name %>
+  Last name : <%= person_form.text_field :last_name %>
+
+  <%= fields_for :permission, @person.permission do |permission_fields| %>
+    Admin?  : <%= permission_fields.check_box :admin %>
+  <% end %>
+
+  <%= f.submit %>
+<% end %>
+
+t.string :name
+      t.string :age
+      t.string :email
+      t.boolean :confirmed
+      t.belongs_to :doctor
+      t.belongs_to :account

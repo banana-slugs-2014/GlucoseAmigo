@@ -1,4 +1,6 @@
-class AccountsController < ActionController::Base
+class AccountsController < ApplicationController
+    before_filter :redirect_if_logged_in,  :only => [:new]
+    before_filter :redirect_if_logged_out,  :except => [:new]
 
   def show
     @account = Account.find(params[:id])
@@ -76,7 +78,5 @@ class AccountsController < ActionController::Base
       redirect_to edit_account_path(account.id)
     end
   end
-
-
 
 end
