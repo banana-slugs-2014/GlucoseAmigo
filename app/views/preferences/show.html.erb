@@ -1,11 +1,10 @@
-<h1>Hi, this is the show Preference page</h1>
-<%= form_for @preference do |f| %>
-  <%= f.label :reminders %><br>
-  <%= f.label :reminders, "Yes", :value => "true" %>
-  <%= f.radio_button :reminders, true %><br><br>
-  <%= f.label :reminders, "No", :value => "false" %><br>
-  <%= f.radio_button :reminders, false, :checked => true %>
-  <%= f.label :email %><br>
-  <%= f.text_field :email %><br><br>
-  <%= submit_tag("Save Preferences") %>
-<% end %>
+<h2>Hi, this is the show Preference page</h2>
+
+  <h3>Name</h3>
+  <%= @diabetic.name %><br>
+  <h3>Reminder</h3>
+  <%= @preference.reminders ? "Yes" : "No" %><br>
+  <h3>Frequency</h3>
+  <%= @preference.frequency %><br>
+
+ <span><%= link_to 'Edit', edit_diabetic_preference_path(@preference) %></span>
