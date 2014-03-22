@@ -1,11 +1,12 @@
 Welcome, <%= @account.username %>
 
 <br><br>
-<%= select_tag "Diabetics", options_from_collection_for_select(@diabetics, "id", "name")
- %>
 
+<form action = "menu", method ="get" >
+  <%= select_tag "menu_choice", options_for_select(@menu_options)
+   %>
+   <input type="hidden" name="account_id" value=<%= @account.id  %>>
 
-<br><br>
-<%= select_tag "Your Diabetic Users", options_for_select(@menu_options)
- %>
+   <%= submit_tag("Render Partial") %>
+</form>
 
