@@ -19,9 +19,9 @@ FactoryGirl.define do
 
   factory :doctor do
     sequence(:name) { |n| Faker::Name.name + n.to_s }
-  	sequence(:fax) { |n| Faker::PhoneNumber.phone_number + n.to_s }
+    sequence(:fax) { |n| Faker::PhoneNumber.phone_number + n.to_s }
     email Faker::Internet.email
-  	comments Faker::Lorem.sentence
-	end
+    comments Faker::Lorem.sentence
+  end
 
 end
