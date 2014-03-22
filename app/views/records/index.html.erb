@@ -1,7 +1,12 @@
 <p>Welcome, <%=  @diabetic.name %></p>
 <h3> Here are your most recent records </h3>
 <% @records.each_with_index do |record, index| %>
-  <%= index %>
-  <%= render partial: 'shared/record', locals: {record: record} %><br>
+  <%= link_to "#{index+1}", edit_diabetic_record_path(@diabetic, record) %> --
+  <%= render partial: 'shared/record', locals: {record: record} %>
+  <br>
   </span>
+  <br>
 <% end  %>
+<div class = 'add-new-record'>
+  <%= render partial: 'shared/new_record', locals: {diabetic: @diabetic, record: Record.new} %>
+</div>
