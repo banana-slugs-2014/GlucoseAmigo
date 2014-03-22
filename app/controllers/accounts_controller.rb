@@ -3,7 +3,13 @@ class AccountsController < ActionController::Base
   def show
     @account = Account.find(params[:id])
     @diabetics = @account.diabetics
-    @menu_options = ((@diabetics.map {|diabetic| diabetic.name}) << @account.username)
+    @menu_options = ((@diabetics.map {|diabetic| "Diabetic: #{diabetic.name}"}) << "Account: #{@account.username}")
+  end
+
+  def menu
+    #
+    #figure out class type
+    #render partial based on class type
   end
 
   def index
