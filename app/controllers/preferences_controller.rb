@@ -6,13 +6,8 @@ class PreferencesController < ApplicationController
 
   def new
     @diabetic = Diabetic.find(params[:diabetic_id])
+    (redirect_to edit_diabetic_preference_path(@diabetic.id, @diabetic.preference)) if @diabetic.preference
     @preference = Preference.new
-    puts "============================"
-    p @diabetic
-    p @preference
-    #@diabetic.preference = @preference unless @diabetic.preference
-     #create(reminders: true, frequency: 1)
-
   end
 
   def create
