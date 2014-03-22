@@ -2,7 +2,9 @@ require 'spec_helper'
 
 describe DoctorsController do
 	let(:doctor) { create :doctor }
+	let!(:pre_created_doctor) { create :doctor }
 	let(:doc_attr) { attributes_for :doctor }
+	let!(:pre_created_doc_attr) { attributes_for :doctor }
 
   context "#index" do
     it "should successfully render a page" do
@@ -36,116 +38,40 @@ describe DoctorsController do
       }.to change{Doctor.count}.by(1)
     end
     it "should not increase doctor count if doctor name and fax already exists" do
+        new_doctor = Doctor.create(doc_attr)
       expect{
-      	puts "===========doctor is=================="
-      	p doctor
-      	p doctor.name
-      	p doctor.fax
-
-        post :create, doctor: { name: doctor.name, fax: doctor.fax } #doctor: doc_attr#, id: question.id
+        post :create, doctor: { name: new_doctor.name, fax: new_doctor.fax }
       }.to change{Doctor.count}.by(0)
     end
   end
-#     context "with valid attributes" do
-#       it "should redirect" do
-#         post :create, question: attribs, id: question.id
-#         expect(response).to be_redirect
-#       end
 
-#       it "should increase Question count" do
-#         expect{
-#           post :create, question: attribs, id: question.id
-#         }.to change{Question.count}.by(1)
-#       end
-#     end
+  context "#edit" do
+  	it "should render edit page with the right doctor" do
+  		get :edit, id: doctor.id
+  		expect(response).to be_success
+  		expect(assigns(:doctor)).to eq(doctor)
+  	end
+  end
 
+  context "#update" do
+  	it "should update target doctor info and redirect to show that doctor" do
+  		new_email = doctor.email
+  		new_comments = doctor.comments
+  		post :update, doctor: {email: new_email, comments: new_comments}, id: pre_created_doctor.id
+  		expect(pre_created_doctor.email).to eq(new_email)
+  		expect(pre_created_doctor.comments).to eq(new_comments)
+  	end
+
+  	it "should not update target doctor info into an existing name-fax pair" do
+  		existing_name = pre_created_doctor.name
+  		existing_fax = pre_created_doctor.fax
+  		curr_name = doctor.name
+  		curr_fax = doctor.fax
+  		post :update, doctor: {name: existing_name, fax: existing_fax}, id: doctor.id
+  		expect(doctor.name).to_not eq(existing_name)
+  		expect(doctor.fax).to_not eq(existing_fax)
+  		expect(doctor.name).to eq(curr_name)
+  		expect(doctor.fax).to eq(curr_fax)
+  	end
+  end
 end
-
-
-
-
-
-#   context "#create" do
-#     context "with valid attributes" do
-#       it "should redirect" do
-#         post :create, question: attribs, id: question.id
-#         expect(response).to be_redirect
-#       end
-
-#       it "should increase Question count" do
-#         expect{
-#           post :create, question: attribs, id: question.id
-#         }.to change{Question.count}.by(1)
-#       end
-#     end
-
-#     context "with invalid attributes" do
-#       it "should display error"
-#       it "should not increase Question count" do
-#         expect{
-#           post :create, question: { title: '' }, id: question.id
-#         }.to_not change{Question.count}.by(1)
-#       end
-#     end
-#   end
-
-#   context "#edit" do
-#     it "should be ok" do
-#       get :edit, id: question.id
-#       expect(response).to be_ok
-#     end
-
-#     it "should assign question to @question" do
-#       get :edit, id: question.id
-#       expect(assigns(:question)).to eq(question)
-#     end
-#   end
-
-#   context "#update" do
-#     context "with valid attributes" do
-#       it "should redirect" do
-#         post :update, question: { title: "My title" }, id: question.id
-#         expect(response).to be_redirect
-#       end
-#     end
-
-#     context "with invalid attributes" do
-#       it "should display an error"
-#     end
-#   end
-
-#   context "#destroy" do
-#     it "should redirect" do
-#       delete :destroy, id: question.id
-#       expect(response).to be_redirect
-#     end
-
-#     it "should change Question count by -1" do
-#       expect{
-#         delete :destroy, id: question.id
-#       }.to change{Question.count}.by(-1)
-#     end
-#   end
-
-#   context "create#vote" do
-
-#     context "with positive values (upvote)" do
-#       it "should increase vote count if it's the first time the user votes on the question" do
-#         expect{
-#         post :create_vote, :id => my_question, value: 1
-#         }.to change{Vote.count}.by(1)
-#       end
-#     end
-
-#     context "with positive values (upvote)" do
-#       it "should not increase vote count if the user has already voted on the question" do
-#         post :create_vote, :id => my_question, value: 1
-#         expect{
-#         post :create_vote, :id => my_question, value: 1
-#         }.to change{Vote.count}.by(0)
-#       end
-#     end
-
-#   end
-
-# end
