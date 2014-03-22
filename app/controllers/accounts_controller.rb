@@ -32,7 +32,6 @@ class AccountsController < ActionController::Base
   end
 
   def change_password
-
     account = Account.find(params['account']['id'])
     if account.authorized?(params) && account.confirmed?(params)
       account.password = params['account']['new_password']
