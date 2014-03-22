@@ -1,36 +1,61 @@
 require 'spec_helper'
 
 describe RecordsController do
+  before :each do
+      @chris = Diabetic.create({name:'chris', email:'chris@dbc.com', age:'27'}, :without_protection => true)
+      @record1 = Record.create(glucose: '100', weight: '175', taken_at: (Time.now-500))
+      @chris.records << @record1
+  end
+
 
   context '#index' do
-    it "is ok" do
-      chris = Diabetic.create({name:'chris', email:'chris@dbc.com', age:'27'}, :without_protection => true)
-      record1 = Record.create(glucose: '100', weight: '175')
-      chris.records << record1
-      get :index, diabetic_id: 1
+    it "gets a users records" do
+      get :index, diabetic_id: @chris.id
       expect(response).to be_success
     end
   end
 
   context '#show' do
-    xit { returns_valid_response }
+    it 'shows a single record' do
+      get :show, diabetic_id: @chris.id, id: @record1.id
+      expect(response).to be_success
+    end
   end
+
   context '#edit' do
-    xit { returns_valid_response }
+    it 'shows an edit page' do
+      get :edit, diabetic_id: @chris.id, id: @record1.id
+      expect(response).to be_success
+    end
   end
+
   context '#new' do
-    xit { returns_valid_response }
+    it "shows a form for a new record" do
+      get :new, diabetic_id: @chris.id
+      expect(response).to be_success
+    end
   end
+
   context '#update' do
-    xit { returns_valid_response }
+    it 'updates a single record' do
+      put :update, diabetic_id: @chris.id, id: @record1.id, record: {glucose: '120', weight: '176', taken_at: Time.now-500, comment: "I just got updated!"}
+      expect(response).to be_redirect
+    end
   end
+
+
   context '#create' do
-    xit { returns_valid_response }
+    it "creates a new record given valid params" do
+      post :create, diabetic_id: @chris.id, record: {glucose: '115', weight: '174', taken_at: (Time.now-500), comment: "I just got created!"}
+      expect(response).to be_redirect
+    end
   end
+
+
   context '#delete' do
-    xit { returns_valid_response }
+    it 'should let a user delete a record' do
+      delete :destroy, diabetic_id: @chris.id, id: @record1.id
+      expect(response).to be_redirect
+    end
   end
-
-
-
 end
