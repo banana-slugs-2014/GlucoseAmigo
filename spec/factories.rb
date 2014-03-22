@@ -8,6 +8,7 @@ FactoryGirl.define do
   factory :diabetic do
     name CoolFaker::Character.name
     email Faker::Internet.email
+    age "56"
   end
 
   factory :account do

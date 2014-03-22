@@ -1,9 +1,40 @@
 require 'spec_helper'
 
 describe PreferencesController do
+  let(:diabetic) {create :diabetic }
+  let!(:pre_created_diabetic) { create :diabetic }
   let(:preference) { create :preference }
   let!(:pre_created_pref) { create :preference }
   let(:pref_attr) { attributes_for :preference }
+
+  context "#new" do
+    it "should successfully render a page for a diabetic" do
+      get :new, diabetic_id: diabetic.id
+      expect(response).to be_success
+      expect(assigns(:diabetic)).to eq(diabetic)
+      # puts "=========================="
+      # p current_path
+      # p current_url
+    end
+  end
+
+  context "#show" do
+    it "should successfully render a page" do
+      diabetic.preference = preference
+      diabetic.save
+      get :show, id: diabetic.preference.id, diabetic_id: diabetic.id
+      expect(response).to be_success
+    end
+    it "should display this specific doctor" do
+      diabetic.preference = preference
+      diabetic.save
+      get :show, id: diabetic.preference.id, diabetic_id: diabetic.id
+      expect(assigns(:diabetic)).to eq(diabetic)
+      expect(assigns(:preference)).to eq(preference)
+    end
+  end
+
+
 
 end
 
@@ -23,23 +54,9 @@ end
 
 
 
-  # context "#show" do
-  #   it "should successfully render a page" do
-  #     get :show, id: doctor.id, diabetic_id: @diabetic.id
-  #     expect(response).to be_success
-  #   end
-  #   it "should display this specific doctor" do
-  #     get :show, id: doctor.id, diabetic_id: @diabetic.id
-  #     expect(assigns(:doctor)).to eq(doctor)
-  #   end
-  # end
 
-  # context "#new" do
-  #   it "should successfully render a page" do
-  #     get :new, diabetic_id: @diabetic.id
-  #     expect(response).to be_success
-  #   end
-  # end
+
+
 
   # context "#create" do
   #   it "should increase doctor count if doctor name and fax don't already exist" do
