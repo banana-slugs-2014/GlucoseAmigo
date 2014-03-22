@@ -1,0 +1,6 @@
+<%= form_for ([account,diabetic]) do |f| %>
+  <%= f.text_field :name, :placeholder => "e.g. John Smith" %>
+  <%= select_date Date.today, prefix: :birth_date %>
+  <%= f.text_field :email, :placeholder => "e.g. john@smith.com" %>
+  <%= f.submit %>
+<% end %>

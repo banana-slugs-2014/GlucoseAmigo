@@ -1,27 +1,46 @@
 class DiabeticsController < ApplicationController
   def new
-    # to change to current_user
-    user = Account.last
-    # user = current_user
-    render :partial => "shared/new", :locals => {  :diabetic => user.diabetics.new,
-                                            :account => user }
+    account = current_account
+    render :partial => "shared/diabetic", :locals => {
+                                            :diabetic => account.diabetics.new,
+                                            :account => account }
   end
 
   def create
     diabetic = Diabetic.new(params[:diabetic])
-    #diabetic.account = current_user
+    diabetic.account = current_account
     diabetic.birth_date = params[:birth_date]
+
     if diabetic.valid?
       diabetic.save
-      redirect_to new_account_diabetic_path(account_id: Account.last.id)
+      redirect_to new_account_diabetic_path(account_id: current_account.id)
       #redirect_to account_path(account_id: diabetic.account.id)
     else
       # change here too
-      redirect_to new_account_diabetic_path(account_id: Account.last.id)
+      redirect_to new_account_diabetic_path(account_id: current_account.id)
     end
   end
 
-  def build_date(birth_date)
-    Date.parse(birth_date.values.join('-'))
+
+  def edit
+    diabetic = Diabetic.find(params[:id])
+    render :partial => "shared/diabetic", :locals => {
+                                                        diabetic: diabetic,
+                                                        account: diabetic.account
+                                                      }
+  end
+
+  def update
+    diabetic = Diabetic.find(params[:id])
+    diabetic.update_attributes(params[:diabetic])
+    if diabetic.valid?
+      diabetic.save
+    end
+    redirect_to edit_account_diabetic_path(account_id: current_account.id, id: diabetic.id)
+  end
+
+  def destroy
+    Diabetic.find(params[:id]).destroy
+    redirect_to new_account_diabetic_path(account_id: current_account.id)
   end
 end
