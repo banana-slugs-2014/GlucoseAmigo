@@ -1,0 +1,11 @@
+<h1>Hi, this is the edit Preference page</h1>
+<%= form_for @preference do |f| %>
+  <%= f.label :reminders %><br>
+  <%= f.label :reminders, "Yes", :value => "true" %>
+  <%= f.radio_button :reminders, true %><br><br>
+  <%= f.label :reminders, "No", :value => "false" %><br>
+  <%= f.radio_button :reminders, false, :checked => true %>
+  <%= f.label :email %><br>
+  <%= f.text_field :email %><br><br>
+  <%= submit_tag("Save Preferences") %>
+<% end %>
