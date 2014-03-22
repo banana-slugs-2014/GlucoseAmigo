@@ -1,9 +1,8 @@
 <p>Welcome, <%=  @diabetic.name %></p>
 <h3> Here are your most recent records </h3>
 <% @records.each_with_index do |record, index| %>
-  <%= index+1 %>.
+  <%= link_to "#{index+1}", edit_diabetic_record_path(@diabetic, record) %> --
   <%= render partial: 'shared/record', locals: {record: record} %>
-  -- <%= link_to "Edit", edit_diabetic_record_path(@diabetic, record) %>
   <br>
   </span>
   <br>
