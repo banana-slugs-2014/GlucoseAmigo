@@ -17,8 +17,8 @@ class AccountsController < ActionController::Base
     account = Account.create(params['account'])
     if account.errors.any?
       flash[:error] = account.errors.full_messages
-       redirect_to new_account_path
-     else
+      redirect_to new_account_path
+    else
       redirect_to accounts_path
     end
   end
@@ -29,6 +29,35 @@ class AccountsController < ActionController::Base
     :locals => {
       account: @account
     }
+  end
+
+  def change_password
+
+    account = Account.find(params['account']['id'])
+    if account.authorized?(params)
+      account.password = params['account']['new_password']
+      if account.save
+        redirect_to accounts_path
+      else
+        flash[:error] = account.errors.full_messages
+        redirect_to edit_account_path(account.id)
+      end
+    else
+      flash[:error] = 'Invalid Password'
+      redirect_to edit_account_path(account.id)
+    end
+  end
+
+  def update
+    account = Account.find(params['id'])
+    if  account.authorized?(params)
+      account.update_attributes(params[:account])
+      account.save
+      redirect_to accounts_path
+    else
+      flash[:message] = 'Invalid Password'
+      redirect_to edit_account_path(account.id)
+    end
   end
 
 

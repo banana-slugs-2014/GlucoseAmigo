@@ -1,8 +1,10 @@
 <% @account.each do |account| %>
   <%= account.username %>
   <%= account.email %>
-  <% end %>
 
-  Enter your birthday
-<br>
   <%= link_to 'edit', edit_account_path(account.id) %>
+  <br>
+<% end %>
+
+<br>
+  Enter your birthday
