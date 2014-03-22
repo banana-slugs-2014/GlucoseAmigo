@@ -17,11 +17,11 @@ class Account < ActiveRecord::Base
                         }
 
   def authorized?(params)
-    !!self.authenticate(params['account']['password'])
+    !!self.authenticate(params[:account][:password])
   end
 
   def confirmed?(params)
-    params['account']['password_confirmation'] == params['account']['new_password']
+    params[:account][:password_confirmation] == params[:account][:new_password]
   end
 
 end

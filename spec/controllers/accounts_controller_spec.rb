@@ -37,7 +37,8 @@ describe AccountsController do
 
     it 'sets :account to new instance of Account' do
       get :new
-      expect(assigns(:account)).to be_a_new Account
+      expect(response).to render_template(:partial => 'shared/sign_up',
+                                          :locals => {:account => Account.new})
     end
   end
 

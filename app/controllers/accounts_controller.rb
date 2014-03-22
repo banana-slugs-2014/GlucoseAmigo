@@ -6,10 +6,10 @@ class AccountsController < ActionController::Base
   end
 
   def new
-    @account = Account.new
+     # @account = Account.new
     render  :partial => 'shared/sign_up',
     :locals => {
-      account: @account
+      account: Account.new
     }
   end
 
@@ -52,7 +52,6 @@ class AccountsController < ActionController::Base
     account = Account.find(params['id'])
     if  account.authorized?(params)
       account.update_attributes(params[:account])
-      account.save
       redirect_to accounts_path
     else
       flash[:error] = ['Invalid Password']
