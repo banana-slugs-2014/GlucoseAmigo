@@ -13,6 +13,8 @@ class RecordsController < ApplicationController
 
   def new
     @record = Record.new
+    #@diabetic = current_user #helper, to be written later
+    render partial: 'shared/new_record', locals: {record: @record, diabetic: @diabetic}
   end
 
   def create
@@ -28,6 +30,8 @@ class RecordsController < ApplicationController
 
   def edit
     @record = Record.find(params[:id])
+    @diabetic = Diabetic.find(params[:diabetic_id])
+    render partial: 'shared/edit_record', locals: {record: @record, diabetic: @diabetic}
   end
 
   def update

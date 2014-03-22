@@ -24,14 +24,18 @@ describe RecordsController do
 
   context '#edit' do
     it 'shows a page' do
-      puts Record.all
-      # get :edit, diabetic_id: @chris.id, id: 4
-      # expect(response).to be_success
+      get :edit, diabetic_id: @chris.id, id: @record1.id
+      expect(response).to be_success
     end
   end
+
   context '#new' do
-    xit { returns_valid_response }
+    it "shows a form for a new record" do
+      get :new, diabetic_id: @chris.id
+      expect(response).to be_success
+    end
   end
+
   context '#update' do
     xit { returns_valid_response }
   end
