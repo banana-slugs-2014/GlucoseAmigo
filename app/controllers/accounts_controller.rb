@@ -1,5 +1,10 @@
 class AccountsController < ActionController::Base
 
+  def show
+    @account = Account.find(params[:id])
+    @diabetics = @account.diabetics
+  end
+
   def index
     @account = Account.all
     render 'accounts/testing'
