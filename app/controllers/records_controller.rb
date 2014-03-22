@@ -46,10 +46,10 @@ class RecordsController < ApplicationController
 
   end
 
-  def delete
+  def destroy
     record = Record.find(params[:id])
     record.destroy
-    redirect_to root_path
+    redirect_to diabetic_record_path(params[:diabetic_id])
   end
 
 end
