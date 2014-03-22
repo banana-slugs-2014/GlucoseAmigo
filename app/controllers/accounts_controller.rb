@@ -12,7 +12,7 @@ class AccountsController < ActionController::Base
     case choices[0]
     when 'Diabetic'
       @diabetic = Diabetic.find(choices[1].split('--')[1])
-      render partial: 'shared/diabetic', locals: {account: @account, diabetic: @diabetic}
+      render partial: 'shared/diabetic', locals: {account: @account, diabetic: @diabetic}  #one day this will go somewhere real.
     when 'Account'
       render partial: 'shared/edit_account', locals: {account: @account}  #works, but is stupid.
     end
