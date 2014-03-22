@@ -10,6 +10,7 @@ class Account < ActiveRecord::Base
   validates_uniqueness_of :email
   validates_presence_of :username, :email
   validates_length_of :password, :within => 5..40
+  validates_format_of :email, :with => /^\w+[\.\w\-]*@\w+\.\w{2,5}$/
 
   validates_presence_of :password,
                         :message => Proc.new { |error, attributes|

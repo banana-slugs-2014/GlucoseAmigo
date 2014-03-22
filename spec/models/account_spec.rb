@@ -13,6 +13,8 @@ describe Account do
   it { should allow_mass_assignment_of(:email) }
   it { should allow_mass_assignment_of(:password) }
   it { should allow_mass_assignment_of(:password_confirmation) }
+  it { should allow_value("test@test.com").for :email}
+  it { should_not allow_value("qlskr.com","teae",12).for :email}
 
   context 'associations' do
     it { should have_many(:diabetics) }
