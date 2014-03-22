@@ -8,6 +8,7 @@ class RecordsController < ApplicationController
   def show
     @diabetic = Diabetic.find(params[:diabetic_id])
     @record = Record.find(params[:id])
+    render partial: "shared/record", locals: {record: @record, diabetic: @diabetic}
   end
 
   def new
