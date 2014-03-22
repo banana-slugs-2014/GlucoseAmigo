@@ -1,9 +1,8 @@
 class CreateDiabetics < ActiveRecord::Migration
   def change
     create_table :diabetics do |t|
-      t.string :name
-      t.string :age
-      t.string :email
+      t.string :name, :email, :null => false
+      t.date :birthday
       t.boolean :confirmed
       t.belongs_to :doctor
       t.belongs_to :account

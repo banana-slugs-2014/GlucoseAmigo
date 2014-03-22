@@ -20,9 +20,9 @@ ActiveRecord::Schema.define(:version => 20140321171828) do
   end
 
   create_table "diabetics", :force => true do |t|
-    t.string  "name"
-    t.string  "age"
-    t.string  "email"
+    t.string  "name",       :null => false
+    t.string  "email",      :null => false
+    t.date    "birthday"
     t.boolean "confirmed"
     t.integer "doctor_id"
     t.integer "account_id"
