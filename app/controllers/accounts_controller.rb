@@ -6,7 +6,6 @@ class AccountsController < ActionController::Base
   end
 
   def new
-     # @account = Account.new
     render  :partial => 'shared/sign_up',
     :locals => {
       account: Account.new
