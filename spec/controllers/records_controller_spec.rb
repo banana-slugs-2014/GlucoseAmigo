@@ -38,15 +38,20 @@ describe RecordsController do
 
   context '#update' do
     it 'updates a single record' do
-      p @record1
       put :update, diabetic_id: @chris.id, id: @record1.id, record: {glucose: '120', weight: '176', taken_at: Time.now-500, comment: "I just got updated!"}
       expect(response).to be_redirect
-      p @record1
     end
   end
+
+
   context '#create' do
-    xit { returns_valid_response }
+    it "creates a new record given valid params" do
+    post :create, diabetic_id: 1, record: {glucose: '115', weight: '174', taken_at: (Time.now-500), comment: "I just got created!"}
+    expect(response).to be_redirect
+    end
   end
+
+
   context '#delete' do
     xit { returns_valid_response }
   end
