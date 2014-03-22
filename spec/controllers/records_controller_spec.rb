@@ -46,16 +46,16 @@ describe RecordsController do
 
   context '#create' do
     it "creates a new record given valid params" do
-    post :create, diabetic_id: 1, record: {glucose: '115', weight: '174', taken_at: (Time.now-500), comment: "I just got created!"}
-    expect(response).to be_redirect
+      post :create, diabetic_id: @chris.id, record: {glucose: '115', weight: '174', taken_at: (Time.now-500), comment: "I just got created!"}
+      expect(response).to be_redirect
     end
   end
 
 
   context '#delete' do
-    xit { returns_valid_response }
+    it 'should let a user delete a record' do
+      delete :destroy, diabetic_id: @chris.id, id: @record1.id
+      expect(response).to be_redirect
+    end
   end
-
-
-
 end
