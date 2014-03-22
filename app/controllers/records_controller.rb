@@ -13,6 +13,7 @@ class RecordsController < ApplicationController
 
   def new
     @record = Record.new
+    @diabetic = Diabetic.find(params[:diabetic_id])
     #@diabetic = current_user #helper, to be written later
     render partial: 'shared/new_record', locals: {record: @record, diabetic: @diabetic}
   end
@@ -22,9 +23,9 @@ class RecordsController < ApplicationController
     @diabetic = Diabetic.find(params[:diabetic_id])
     if @record.save
       @diabetic.records << @record
-      #render partial: 'shared/record' locals {record: @record}
+      redirect_to diabetic_record_path(@diabetic, @record)
     else
-      #render partial :edit
+
     end
   end
 
@@ -36,9 +37,13 @@ class RecordsController < ApplicationController
 
   def update
     @record = Record.find(params[:id])
-    redirect_to record_path(@record) and return if @record.update_attributes(params[:record])
-    redirect_to edit_record_path(@record) #sad path
-    #render partial: 'shared/record' locals {record: @record}
+    if @record.update_attributes(params[:record])
+      @record.save
+      redirect_to diabetic_record_path(@record)
+    else
+      redirect_to edit_diabetic_record_path(@record)
+    end #sad path
+
   end
 
   def delete
