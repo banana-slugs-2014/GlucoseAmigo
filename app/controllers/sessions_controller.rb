@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 
-  before_filter :redirect_if_logged_in,  :only => [:new]
-  before_filter :redirect_if_logged_out,  :only => [:destroy]
+  # before_filter :redirect_if_logged_in,  :only => [:new]
+  # before_filter :redirect_if_logged_out,  :only => [:destroy]
 
   def new
     @account = Account.new

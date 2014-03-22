@@ -1,6 +1,6 @@
 class RecordsController < ApplicationController
 
-  before_filter :redirect_if_logged_out
+  # before_filter :redirect_if_logged_out
 
 
   before_filter do

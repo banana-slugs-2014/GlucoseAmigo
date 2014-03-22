@@ -1,6 +1,6 @@
 class AccountsController < ApplicationController
     before_filter :redirect_if_logged_in,  :only => [:new]
-    before_filter :redirect_if_logged_out,  :except => [:new]
+    before_filter :redirect_if_logged_out,  :except => [:new, :create]
 
   def show
     @account = Account.find(params[:id])
@@ -51,7 +51,7 @@ class AccountsController < ApplicationController
     if account.authorized?(params) && account.confirmed?(params)
       account.password = params['account']['new_password']
       if account.save
-        redirect_to accounts_path
+        redirect_to account_path(account.id)
       else
         flash[:error] = account.errors.full_messages
         redirect_to edit_account_path(account.id)
