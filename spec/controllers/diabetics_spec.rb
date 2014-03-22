@@ -21,7 +21,7 @@ describe DiabeticsController do
                  account_id: @account.id }
 
       expect{
-        get :create, params
+        post :create, params
         expect(response).to be_redirect
       }.to change {Diabetic.count}.by 1
     end
@@ -36,9 +36,8 @@ describe DiabeticsController do
       }
 
       expect{
-        get :create, params
+        post :create, params
 
-        p Diabetic.all
         expect(response).to be_redirect
       }.to_not change(Diabetic, :count)
     end
