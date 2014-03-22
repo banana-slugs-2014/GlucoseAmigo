@@ -34,7 +34,7 @@ class AccountsController < ActionController::Base
   def change_password
 
     account = Account.find(params['account']['id'])
-    if account.authorized?(params)
+    if account.authorized?(params) && account.confirmed?(params)
       account.password = params['account']['new_password']
       if account.save
         redirect_to accounts_path
@@ -43,7 +43,8 @@ class AccountsController < ActionController::Base
         redirect_to edit_account_path(account.id)
       end
     else
-      flash[:error] = 'Invalid Password'
+      account.confirmed?(params) ? (flash[:error] = ['Invalid Password']) :
+                                   (flash[:error] = ["Password must doesn't match confirm"])
       redirect_to edit_account_path(account.id)
     end
   end
@@ -55,7 +56,7 @@ class AccountsController < ActionController::Base
       account.save
       redirect_to accounts_path
     else
-      flash[:message] = 'Invalid Password'
+      flash[:error] = ['Invalid Password']
       redirect_to edit_account_path(account.id)
     end
   end

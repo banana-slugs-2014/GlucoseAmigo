@@ -21,7 +21,7 @@ class Account < ActiveRecord::Base
   end
 
   def confirmed?(params)
-    params['account']['password'] == params['account']['new_password']
+    params['account']['password_confirmation'] == params['account']['new_password']
   end
 
 end
