@@ -1,4 +1,12 @@
 <h1>Hi, this is the new Doctor page</h1>
-<%= form_tag("/doctors" , method: "post") do %>
-	<%= render "doctor_form" %>
+<%= form_for @doctor do |f| %>
+  <%= f.label :name %><br>
+  <%= f.text_field :name, :required => true %><br><br>
+  <%= f.label :fax %><br>
+  <%= f.text_field :fax, :required => true %><br><br>
+  <%= f.label :email %><br>
+  <%= f.text_field :email %><br><br>
+  <%= f.label :comments %><br>
+  <%= f.text_area :comments %><br><br>
+  <%= submit_tag("Save Doctor") %>
 <% end %>

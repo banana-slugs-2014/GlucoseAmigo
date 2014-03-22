@@ -8,11 +8,16 @@ class DoctorsController < ApplicationController
 	end
 
 	def new
+		@doctor = Doctor.new
 	end
 
 	def create
 		@doctor = Doctor.find_or_create_by_name_and_fax(params[:doctor])
-		redirect_to doctor_path(@doctor.id) #"/doctors/#{@doctor.id}"
+		if @doctor.id
+			redirect_to doctor_path(@doctor.id) 
+		else
+			redirect_to doctors_path
+		end
 	end
 
 	def edit
