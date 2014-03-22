@@ -1,0 +1,4 @@
+<h1>Hi, this is the edit Doctor page</h1>
+<%= form_tag("/doctors/#{@doctor.id}" ,method: "put") do %>
+	<%= render "doctor_form" %>
+<% end %>
