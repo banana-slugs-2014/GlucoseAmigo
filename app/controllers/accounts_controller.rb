@@ -36,7 +36,8 @@ class AccountsController < ActionController::Base
       flash[:error] = account.errors.full_messages
       redirect_to new_account_path
     else
-      redirect_to accounts_path
+      session[:user_id] = account.id
+      redirect_to new_account_diabetic_path(account.id)
     end
   end
 
