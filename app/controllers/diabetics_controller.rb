@@ -13,8 +13,7 @@ class DiabeticsController < ApplicationController
 
     if diabetic.valid?
       diabetic.save
-      redirect_to new_account_diabetic_path(account_id: current_account.id)
-      #redirect_to account_path(account_id: diabetic.account.id)
+      redirect_to new_diabetic_doctor_path(diabetic_id: diabetic.id)
     else
       # change here too
       redirect_to new_account_diabetic_path(account_id: current_account.id)

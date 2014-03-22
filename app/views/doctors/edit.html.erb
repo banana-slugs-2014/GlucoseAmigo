@@ -1,5 +1,5 @@
 <h1>Hi, this is the edit Doctor page</h1>
-<%= form_for @doctor do |f| %>
+<%= form_for [@diabetic,@doctor] do |f| %>
   <%= f.label :name %><br>
   <%= f.text_field :name, :required => true %><br><br>
   <%= f.label :fax %><br>

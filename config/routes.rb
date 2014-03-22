@@ -11,10 +11,7 @@ GlucoseAmigo::Application.routes.draw do
   end
 
   resources :diabetics, only: [] do
-    resources :records, :preferences, except: [:delete]
+    resources :records, :preferences, :doctors, except: [:delete]
   end
-
-  resources :doctors, except: [:delete]
-
 
 end
