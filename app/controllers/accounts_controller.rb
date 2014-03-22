@@ -3,6 +3,7 @@ class AccountsController < ActionController::Base
   def show
     @account = Account.find(params[:id])
     @diabetics = @account.diabetics
+    @menu_options = ((@diabetics.map {|diabetic| diabetic.name}) << @account.username)
   end
 
   def index

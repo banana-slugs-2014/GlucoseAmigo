@@ -5,3 +5,12 @@ Welcome, <%= @account.username %>
     <%= link_to "#{diabetic.name}", diabetic_records_path(diabetic)  %>
   <% end %>
 <% end %>
+
+<%= select_tag "Diabetics", options_from_collection_for_select(@diabetics, "id", "name")
+ %>
+
+
+<br>
+<%= select_tag "Your Users", options_for_select(@menu_options)
+ %>
+
