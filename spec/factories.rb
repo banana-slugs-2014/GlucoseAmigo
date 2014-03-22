@@ -5,7 +5,6 @@ FactoryGirl.define do
     weight "100"
   end
 
-
   factory :diabetic do
     name CoolFaker::Character.name
     email Faker::Internet.email
@@ -18,5 +17,11 @@ FactoryGirl.define do
     password_confirmation 'testing'
   end
 
+  factory :doctor do
+    sequence(:name) { |n| Faker::Name.name + n.to_s }
+    sequence(:fax) { |n| Faker::PhoneNumber.phone_number + n.to_s }
+    email Faker::Internet.email
+    comments Faker::Lorem.sentence
+  end
 
 end
