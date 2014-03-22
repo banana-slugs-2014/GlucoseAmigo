@@ -1,4 +1,7 @@
 class DiabeticsController < ApplicationController
+
+  before_filter :redirect_if_logged_out
+
   def new
     account = current_account
     render :partial => "shared/diabetic", :locals => {

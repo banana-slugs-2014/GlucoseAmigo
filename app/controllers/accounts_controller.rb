@@ -20,11 +20,6 @@ class AccountsController < ApplicationController
     end
   end
 
-  def index
-    @account = Account.all
-    render 'accounts/testing'
-  end
-
   def new
     render  :partial => 'shared/sign_up',
     :locals => {
