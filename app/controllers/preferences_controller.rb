@@ -20,7 +20,6 @@ class PreferencesController < ApplicationController
     redirect_to diabetic_preference_path(@diabetic, @diabetic.preference)
   end
 
-
   def edit
     @diabetic = Diabetic.find(params[:diabetic_id])
     @preference = Preference.find(params[:id])
