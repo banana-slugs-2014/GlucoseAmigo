@@ -7,7 +7,7 @@ GlucoseAmigo::Application.routes.draw do
 
   put 'accounts/changepassword', :to => 'accounts#change_password'
   resources :accounts do
-    resources :diabetics
+    resources :diabetics, except: [ :show, :index, :delete ]
   end
 
   resources :diabetics, only: [] do
