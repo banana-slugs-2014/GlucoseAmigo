@@ -52,8 +52,7 @@ describe RecordsController do
 
     it "renders the new record partial if a user inputs invalid params" do
       post :create, diabetic_id: @chris.id, record: {glucose:nil, weight: nil, taken_at: (Time.now() + (60*60*24))}
-      p response.body
-      expect(response).to_not be_redirect
+      expect(response).to_not be_redirect #this is a bad test
     end
 
   end
