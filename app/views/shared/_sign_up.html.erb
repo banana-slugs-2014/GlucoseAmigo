@@ -1,0 +1,19 @@
+<% if flash[:error] %>
+  <% flash[:error].each do |error| %>
+    <%= error %><br>
+    <% end %>
+  <% end %>
+
+<div class="sign_up">
+  <%= form_for account do |f| %>
+  <%= f.label :username %>
+  <%= f.text_field :username %>
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+  <%= f.label :password_confirmation , 'Password Confirmation'%>
+  <%= f.password_field :password_confirmation %>
+    <%= f.submit 'Signup' %>
+<% end %>
+</div>
