@@ -5,7 +5,7 @@ describe Diabetic do
     it { should validate_presence_of :email }
     it { should allow_value("test@test.com").for :email}
     it { should_not allow_value("qlskr.com","teae",12).for :email}
-    it { should allow_value(Date.today - rand(15)).for :birthday }
+    it { should allow_value(Date.today - (rand(15)+1) ).for :birthday }
   end
 
   describe "associations" do
