@@ -11,6 +11,7 @@ gem 'rufus-scheduler'
 
 group :assets do
   gem 'uglifier', '>= 1.0.3'
+  gem 'handlebars_assets'
 end
 
 group :development, :test do
