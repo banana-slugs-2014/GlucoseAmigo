@@ -28,6 +28,8 @@ class Diabetic < ActiveRecord::Base
   end
 
   def convert_birthday
-    self.birthday = Date.parse(self.birthday.values.join('-'))
+    if self.birthday.is_a? Hash
+      self.birthday = Date.parse( self.birthday.values.join('-') )
+    end
   end
 end
