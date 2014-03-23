@@ -3,6 +3,19 @@ class AccountsController < ActionController::Base
   def show
     @account = Account.find(params[:id])
     @diabetics = @account.diabetics
+    @menu_options = ((@diabetics.map {|diabetic| "Diabetic: #{diabetic.name}--#{diabetic.id} "}) << "Account: #{@account.username}")
+  end
+
+  def menu
+    choices = params[:menu_choice].split(':')
+    @account = Account.find(params[:account_id])
+    case choices[0]
+    when 'Diabetic'
+      @diabetic = Diabetic.find(choices[1].split('--')[1])
+      render partial: 'shared/diabetic', locals: {account: @account, diabetic: @diabetic}  #one day this will go somewhere real.
+    when 'Account'
+      render partial: 'shared/edit_account', locals: {account: @account}  #works, but is stupid.
+    end
   end
 
   def index

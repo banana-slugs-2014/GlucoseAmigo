@@ -1,7 +1,12 @@
 Welcome, <%= @account.username %>
 
-<% if @diabetics %>
-  <% @diabetics.each do |diabetic| %>
-    <%= link_to "#{diabetic.name}", diabetic_records_path(diabetic)  %>
-  <% end %>
-<% end %>
+<br><br>
+
+<form action = "menu", method ="get" >
+  <%= select_tag "menu_choice", options_for_select(@menu_options)
+   %>
+   <input type="hidden" name="account_id" value=<%= @account.id  %>>
+
+   <%= submit_tag("Render Partial") %>
+</form>
+

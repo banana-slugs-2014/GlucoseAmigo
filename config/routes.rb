@@ -4,7 +4,7 @@ GlucoseAmigo::Application.routes.draw do
   # first created -> highest priority
   resources :sessions, only: [ :new, :create, :destroy ]
 
-
+  get 'accounts/menu',  :to => 'accounts#menu'
   put 'accounts/changepassword', :to => 'accounts#change_password'
   resources :accounts do
     resources :diabetics, except: [ :show, :index, :delete ]
