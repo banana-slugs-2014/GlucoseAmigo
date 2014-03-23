@@ -2,7 +2,9 @@ GlucoseAmigo::Application.routes.draw do
 
   # The priority is based upon order of creation:
   # first created -> highest priority
+
   resources :sessions, only: [ :new, :create, :destroy ]
+  root to: 'accounts#index'
 
   get 'accounts/menu',  :to => 'accounts#menu'
   put 'accounts/changepassword', :to => 'accounts#change_password'

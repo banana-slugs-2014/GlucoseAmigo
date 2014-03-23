@@ -1,6 +1,10 @@
 class AccountsController < ApplicationController
     before_filter :redirect_if_logged_in,  :only => [:new]
-    before_filter :redirect_if_logged_out,  :except => [:new, :create]
+    before_filter :redirect_if_logged_out,  :except => [:new, :create, :index]
+
+  def index
+
+  end
 
   def show
     @account = Account.find(params[:id])
