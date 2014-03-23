@@ -14,6 +14,9 @@ class DiabeticsController < ApplicationController
     diabetic.account = current_account
     if diabetic.valid?
       diabetic.save
+
+      DiabeticMailer.welcome_email(diabetic).deliver
+ 
       redirect_to new_diabetic_doctor_path(diabetic_id: diabetic.id)
     else
       # change here too
