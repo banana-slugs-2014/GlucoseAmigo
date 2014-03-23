@@ -1,7 +1,8 @@
 var View = function(){
   this.selectors = {
     navbarSelector: '#navbar',
-    titleSelector: 'h1#title'
+    titleSelector: 'h1#title',
+    ccontentSelector: '#content'
   };
   this.templates = HandlebarsTemplates;
 }
@@ -21,5 +22,8 @@ View.prototype = {
   },
   changeTitle: function(title){
     $(this.selectors.titleSelector).text(title);
+  },
+  changeContent: function(html){
+    $(this.selectors.ccontentSelector).html(html);
   }
 }
