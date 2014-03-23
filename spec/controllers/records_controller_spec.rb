@@ -3,10 +3,10 @@ require 'spec_helper'
 describe RecordsController do
   let!(:account) {create :account}
   before :each do
-    @chris = Diabetic.create({name:'chris', email:'chris@dbc.com', age:'27'}, :without_protection => true)
-    @record1 = Record.create(glucose: '100', weight: '175', taken_at: (Time.now-500))
-    @chris.records << @record1
-    request.session[:user_id] = account.id
+      @chris = Diabetic.create({name:'chris', email:'chris@dbc.com', birthday: Date.today-20000 }, :without_protection => true)
+      @record1 = Record.create(glucose: '100', weight: '175', taken_at: (Time.now-500))
+      @chris.records << @record1
+      request.session[:user_id] = account.id
   end
 
 

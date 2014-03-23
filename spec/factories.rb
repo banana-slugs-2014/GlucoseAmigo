@@ -8,6 +8,7 @@ FactoryGirl.define do
   factory :diabetic do
     name CoolFaker::Character.name
     email Faker::Internet.email
+    birthday { Date.today - rand(2000) }
   end
 
   factory :account do

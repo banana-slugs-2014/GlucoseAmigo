@@ -1,18 +1,35 @@
 class Diabetic < ActiveRecord::Base
+  attr_accessible :name, :email, :birthday
 
-  attr_accessible :name, :email, :birth_date
+  # Validations
+  validates_presence_of :name, :email, :birthday
+  validates_format_of :email, :with => /^\w+[\.\w\-]*@\w+\.\w{2,5}$/
+  validate :birthday_cant_be_in_the_future
+
+  # Associations
   belongs_to :account
   belongs_to :doctor
-  validates_presence_of :name, :email, :age
-  validates_format_of :email, :with => /^\w+[\.\w\-]*@\w+\.\w{2,5}$/
-  validates_format_of :age, :with => /^\d+$/ # We validate the format and that it is not an integer at the same time
   has_many :records
   has_one :preference
 
-  def birth_date=(date)
-    bd = Date.parse(date.values.join('-'))
-    age = Date.today.year - bd.year
-    age -= 1 if Date.today < bd + age.years
-    self.age = age.to_s
+  after_initialize :convert_birthday
+
+  def age
+    age = Date.today.year - self.birthday.year
+    age -= 1 if Date.today < self.birthday.year + age.years
+  end
+
+  private
+
+  def birthday_cant_be_in_the_future
+    if birthday.present? && birthday >= Date.today
+      errors.add(:birthday, "must be before today")
+    end
+  end
+
+  def convert_birthday
+    if self.birthday.is_a? Hash
+      self.birthday = Date.parse( self.birthday.values.join('-') )
+    end
   end
 end
