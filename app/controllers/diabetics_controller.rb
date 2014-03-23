@@ -16,7 +16,7 @@ class DiabeticsController < ApplicationController
       diabetic.save
 
       DiabeticMailer.welcome_email(diabetic).deliver
- 
+
       redirect_to new_diabetic_doctor_path(diabetic_id: diabetic.id)
     else
       # change here too
@@ -46,4 +46,12 @@ class DiabeticsController < ApplicationController
     Diabetic.find(params[:id]).destroy
     redirect_to new_account_diabetic_path(account_id: current_account.id)
   end
+
+  def get_graph_data
+    diabetic = Diabetic.find(params[:id])
+    diabetic.get_graph_data
+  end
+
+
+
 end
