@@ -24,11 +24,11 @@ describe DiabeticsController do
   end
 
   let(:birth_date) do
-  {
+    {
       year: (Date.today.year - 10 - rand(5)),
       month: Date.today.month,
       day: Date.today.day
-  }
+    }
 
   end
   describe '#create' do
@@ -49,33 +49,41 @@ describe DiabeticsController do
         }.to_not change(Diabetic, :count)
       end
     end
+
   end
 
 
-describe '#edit' do
-  it 'should have an edit page' do
-    get :edit, id: @diabetic.id, account_id: @account.id
-    expect(response).to be_ok
-  end
-end
+  describe '#edit' do
+    it 'should have an edit page' do
+      get :edit, id: @diabetic.id, account_id: @account.id
+      expect(response).to be_ok
+    end
 
-describe '#update' do
+    it 'redirects if logged_out' do
+      request.env["HTTP_REFERER"] = new_session_path
+      request.session.delete(:user_id)
+      get :edit, id: @diabetic.id, account_id: @account.id
+      expect(response).to be_redirect
+    end
+  end
+
+  describe '#update' do
 
     let(:valid_edit_params) do
       {
-      diabetic: attributes_for(:diabetic),
-      birth_date: birth_date,
-      id: @diabetic.id,
-      account_id: @account.id
+        diabetic: attributes_for(:diabetic),
+        birth_date: birth_date,
+        id: @diabetic.id,
+        account_id: @account.id
       }
     end
 
     let(:invalid_edit_params) do
       {
-      diabetic: {},
-      birth_date: birth_date,
-      id: @diabetic.id,
-      account_id: @account.id
+        diabetic: {},
+        birth_date: birth_date,
+        id: @diabetic.id,
+        account_id: @account.id
       }
     end
 
@@ -85,6 +93,13 @@ describe '#update' do
           put :update, valid_edit_params
           expect(response).to be_redirect
         }.to change { Diabetic.find(@diabetic.id).name }
+      end
+
+      it 'redirects if logged_out' do
+        request.env["HTTP_REFERER"] = new_session_path
+        request.session.delete(:user_id)
+        get :update, valid_edit_params
+        expect(response).to be_redirect
       end
     end
 
@@ -96,6 +111,8 @@ describe '#update' do
         }.to_not change { Diabetic.find(@diabetic.id).name }
       end
     end
+
+
   end
 
   describe '#destroy' do

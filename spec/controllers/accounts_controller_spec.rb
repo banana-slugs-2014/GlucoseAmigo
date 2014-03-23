@@ -22,7 +22,6 @@ describe AccountsController do
         post :create, :account => {}
       }.to_not change { Account.count }.by(1)
       response.should redirect_to new_account_path ### will redirect to diabetic dashboard
-
     end
 
   end
