@@ -1,8 +1,5 @@
 class DoctorsController < ApplicationController
 
-  before_filter :redirect_if_logged_out
-
-
 	before_filter :load_diabetic
 	before_filter :load_doctor, :except => [:index, :new, :create,]
   before_filter :redirect_if_logged_out

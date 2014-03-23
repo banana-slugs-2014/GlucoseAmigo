@@ -3,10 +3,10 @@ require 'spec_helper'
 describe SessionsController do
   let(:account_params) do
     {
-    username: CoolFaker::Character.name,
-    email: Faker::Internet.email,
-    password: 'captainarmando',
-    password_confirmation: 'captainarmando'
+      username: CoolFaker::Character.name,
+      email: Faker::Internet.email,
+      password: 'captainarmando',
+      password_confirmation: 'captainarmando'
     }
   end
 
@@ -20,15 +20,22 @@ describe SessionsController do
         get :new
         expect(response).to be_ok
       end
+
+      it 'redirects if logged_in' do
+        request.env["HTTP_REFERER"] = new_session_path
+        session[:user_id] = account.id
+        get :new
+        expect(response).to be_redirect
+      end
     end
 
     context 'with the right password' do
       it 'should log me in if I have correct info' do
         expect {
           post :create, {
-                        username: account.username,
-                        password: account.password
-                        }
+            username: account.username,
+            password: account.password
+          }
         }.to change {request.session[:user_id]}.to account.id
       end
     end
@@ -36,9 +43,9 @@ describe SessionsController do
       it 'should log me in if I have correct info' do
         expect {
           post :create, {
-                        username: account.username,
-                        password: 'not the password'
-                        }
+            username: account.username,
+            password: 'not the password'
+          }
         }.to_not change {request.session[:user_id]}
       end
     end

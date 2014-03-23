@@ -95,12 +95,6 @@ describe DiabeticsController do
         }.to change { Diabetic.find(@diabetic.id).name }
       end
 
-      it 'redirects if logged_out' do
-        request.env["HTTP_REFERER"] = new_session_path
-        request.session.delete(:user_id)
-        get :update, valid_edit_params
-        expect(response).to be_redirect
-      end
     end
 
     context 'with invalid parameters' do

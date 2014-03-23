@@ -1,10 +1,12 @@
 require 'spec_helper'
 
 describe RecordsController do
+  let!(:account) {create :account}
   before :each do
-      @chris = Diabetic.create({name:'chris', email:'chris@dbc.com', age:'27'}, :without_protection => true)
-      @record1 = Record.create(glucose: '100', weight: '175', taken_at: (Time.now-500))
-      @chris.records << @record1
+    @chris = Diabetic.create({name:'chris', email:'chris@dbc.com', age:'27'}, :without_protection => true)
+    @record1 = Record.create(glucose: '100', weight: '175', taken_at: (Time.now-500))
+    @chris.records << @record1
+    request.session[:user_id] = account.id
   end
 
 
@@ -13,12 +15,26 @@ describe RecordsController do
       get :index, diabetic_id: @chris.id
       expect(response).to be_success
     end
+
+    it 'redirects if logged_out' do
+      request.env["HTTP_REFERER"] = new_session_path
+      request.session.delete(:user_id)
+      get :index, diabetic_id: @chris.id
+      expect(response).to be_redirect
+    end
   end
 
   context '#show' do
     it 'shows a single record' do
       get :show, diabetic_id: @chris.id, id: @record1.id
       expect(response).to be_success
+    end
+
+    it 'redirects if logged_out' do
+      request.env["HTTP_REFERER"] = new_session_path
+      request.session.delete(:user_id)
+      get :show, diabetic_id: @chris.id, id: @record1.id
+      expect(response).to be_redirect
     end
   end
 
@@ -27,12 +43,26 @@ describe RecordsController do
       get :edit, diabetic_id: @chris.id, id: @record1.id
       expect(response).to be_success
     end
+
+    it 'redirects if logged_out' do
+      request.env["HTTP_REFERER"] = new_session_path
+      request.session.delete(:user_id)
+      get :edit, diabetic_id: @chris.id, id: @record1.id
+      expect(response).to be_redirect
+    end
   end
 
   context '#new' do
     it "shows a form for a new record" do
       get :new, diabetic_id: @chris.id
       expect(response).to be_success
+    end
+
+    it 'redirects if logged_out' do
+      request.env["HTTP_REFERER"] = new_session_path
+      request.session.delete(:user_id)
+      get :new, diabetic_id: @chris.id
+      expect(response).to be_redirect
     end
   end
 
