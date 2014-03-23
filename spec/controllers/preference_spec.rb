@@ -90,8 +90,6 @@ describe PreferencesController do
       expect(@diabetic.preference.frequency).to eq(pref_attr[:frequency])
     end
   end
-
-
 end
 
 
