@@ -7,6 +7,9 @@ gem 'pg'
 gem 'bcrypt-ruby', '~> 3.0.0 '
 gem 'simplecov', :require => false, :group => :test
 
+#gem 'crontab'
+gem 'rufus-scheduler'
+
 group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
