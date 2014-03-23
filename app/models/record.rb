@@ -6,8 +6,7 @@ class Record < ActiveRecord::Base
   validate :inclusion_of_weight_and_or_glucose, message: "Either glucose or weight is required."
   validate :taken_date_cannot_be_in_the_future, message: "Date taken cannot be in the future."
   validates_presence_of :taken_at, message: "Date taken must be present."
-  validates :glucose, :inclusion => { :in => 1..500, :message => "Glucose must be between 1 and 500" }
-  validates :weight, :inclusion => { :in => 1..1000, :message => "Weight must be between 1 and 1000" }
+
 
 
   def inclusion_of_weight_and_or_glucose

@@ -19,6 +19,20 @@ class Diabetic < ActiveRecord::Base
     age -= 1 if Date.today < self.birthday.year + age.years
   end
 
+  def get_data_for_graph() #could take an argument for a range of data
+    glucose_graph_data = {}
+    weight_graph_data = {}
+    self.records.each do |record|
+      glucose_graph_data[record.taken_at] = record.glucose.to_i if record.glucose.to_i
+      weight_graph_data[record.taken_at] = record.weight.to_i if record.weight.to_i
+    end
+    [glucose_graph_data, weight_graph_data]
+  end
+
+  def get_data_for_doctor
+    get_data_for_graph.to_pdf!
+  end
+
   private
 
   def birthday_cant_be_in_the_future
@@ -33,15 +47,6 @@ class Diabetic < ActiveRecord::Base
     end
   end
 
-  def get_data_for_graph() #could take an argument for a range of data
-    glucose_graph_data = {}
-    weight_graph_data = {}
-    self.records.each do |record|
-      glucose_graph_data[record.taken_at] = record.glucose.to_i if record.glucose.to_i
-      weight_graph_data[record.taken_at] = record.weight.to_i if record.weight.to_i
-    end
-    [glucose_graph_data, weight_graph_data]
-  end
 
 
 end
