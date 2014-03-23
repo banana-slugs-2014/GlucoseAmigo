@@ -2,7 +2,7 @@ var View = function(){
   this.selectors = {
     navbarSelector: '#navbar',
     titleSelector: 'h1#title',
-    ccontentSelector: '#content'
+    contentSelector: '#content'
   };
   this.templates = HandlebarsTemplates;
 }
@@ -24,6 +24,11 @@ View.prototype = {
     $(this.selectors.titleSelector).text(title);
   },
   changeContent: function(html){
-    $(this.selectors.ccontentSelector).html(html);
+    $(this.selectors.contentSelector).html(html);
+  },
+  printPage: function(data,html){
+    this.addNavBar(data.leftButton, data.rightButton);
+    this.changeTitle(data.title);
+    this.changeContent(html);
   }
 }
