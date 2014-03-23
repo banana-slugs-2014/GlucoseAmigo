@@ -1,6 +1,7 @@
 var View = function(){
   this.selectors = {
-    navbarSelector: '#navbar'
+    navbarSelector: '#navbar',
+    titleSelector: 'h1#title'
   };
   this.templates = HandlebarsTemplates;
 }
@@ -17,6 +18,8 @@ View.prototype = {
                     'right-button': right
                   }
     $(this.selectors.navbarSelector).append(template(context));
+  },
+  changeTitle: function(title){
+    $(this.selectors.titleSelector).text(title);
   }
-
 }
