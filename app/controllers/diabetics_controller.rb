@@ -9,8 +9,6 @@ class DiabeticsController < ApplicationController
   def create
     diabetic = Diabetic.new(params[:diabetic])
     diabetic.account = current_account
-    diabetic.birth_date = params[:birth_date]
-
     if diabetic.valid?
       diabetic.save
       redirect_to new_diabetic_doctor_path(diabetic_id: diabetic.id)
