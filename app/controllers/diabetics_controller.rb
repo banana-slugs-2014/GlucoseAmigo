@@ -15,13 +15,8 @@ class DiabeticsController < ApplicationController
     if diabetic.valid?
       diabetic.save
 
-      # Tell the UserMailer to send a welcome Email after save
-      puts "==============zomg email===================="
-      p DiabeticMailer.welcome_email(diabetic).deliver
+      DiabeticMailer.welcome_email(diabetic).deliver
  
-      #format.html { redirect_to(diabetic, notice: 'User was successfully created.') }
-      #format.json { render json: diabetic, status: :created, location: diabetic }
-
       redirect_to new_diabetic_doctor_path(diabetic_id: diabetic.id)
     else
       # change here too

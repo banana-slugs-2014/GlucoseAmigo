@@ -1,5 +1,5 @@
 class DiabeticMailer < ActionMailer::Base
-  default from: "no-reply@glucoseAmigo.com"
+  default from: "glucoseamigo@gmail.com"
 
   def welcome_email(diabetic)
     @diabetic = diabetic
@@ -11,9 +11,3 @@ class DiabeticMailer < ActionMailer::Base
   end
 
 end
-
-# def welcome_email(user)
-#   @user = user
-#   email_with_name = "#{@user.name} <#{@user.email}>"
-#   mail(to: email_with_name, subject: 'Welcome to My Awesome Site')
-# end
