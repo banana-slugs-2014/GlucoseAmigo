@@ -1,4 +1,6 @@
-class AccountsController < ActionController::Base
+class AccountsController < ApplicationController
+    before_filter :redirect_if_logged_in,  :only => [:new]
+    before_filter :redirect_if_logged_out,  :except => [:new, :create]
 
   def show
     @account = Account.find(params[:id])
@@ -18,11 +20,6 @@ class AccountsController < ActionController::Base
     end
   end
 
-  def index
-    @account = Account.all
-    render 'accounts/testing'
-  end
-
   def new
     render  :partial => 'shared/sign_up',
     :locals => {
@@ -36,7 +33,8 @@ class AccountsController < ActionController::Base
       flash[:error] = account.errors.full_messages
       redirect_to new_account_path
     else
-      redirect_to accounts_path
+      session[:user_id] = account.id
+      redirect_to new_account_diabetic_path(account.id)
     end
   end
 
@@ -53,7 +51,7 @@ class AccountsController < ActionController::Base
     if account.authorized?(params) && account.confirmed?(params)
       account.password = params['account']['new_password']
       if account.save
-        redirect_to accounts_path
+        redirect_to account_path(account.id)
       else
         flash[:error] = account.errors.full_messages
         redirect_to edit_account_path(account.id)
@@ -75,7 +73,5 @@ class AccountsController < ActionController::Base
       redirect_to edit_account_path(account.id)
     end
   end
-
-
 
 end

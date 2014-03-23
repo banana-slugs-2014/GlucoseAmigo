@@ -1,5 +1,8 @@
 class SessionsController < ApplicationController
 
+  before_filter :redirect_if_logged_in,  :only => [:new]
+  before_filter :redirect_if_logged_out,  :only => [:destroy]
+
   def new
     @account = Account.new
     render :partial => 'shared/login', :locals => { :account => @account }
@@ -9,7 +12,7 @@ class SessionsController < ApplicationController
     account = Account.find_by_username(params[:username]).try(:authenticate, params[:password])
     if account
       session[:user_id] = account.id
-      redirect_to new_session_path# diabetic dashboard
+      redirect_to new_account_diabetic_path(account_id: current_account.id)
     else
       flash[:error] = 'Invalid Login information'
       redirect_to new_session_path

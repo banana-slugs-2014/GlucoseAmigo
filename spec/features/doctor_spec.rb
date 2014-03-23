@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe "doctors" do
+
 	let(:doctor) { create :doctor }
 	let!(:pre_created_doctor) { create :doctor }
 	let(:doc_attr) { attributes_for :doctor }
@@ -17,6 +18,10 @@ describe "doctors" do
 															day: Date.today.day
 														}
 		@diabetic.save
+    visit new_session_path
+    fill_in "Username", with: 'test'
+    fill_in "Password", with: 'testing'
+    click_on "Log in"
 	end
 
 
@@ -88,7 +93,6 @@ describe "doctors" do
         fill_in "doctor[comments]", with: doc_attr[:comments]
 
         click_on "Save Doctor"
-
         expect(current_path).to eq diabetic_doctor_path(@diabetic, pre_created_doctor)
         expect(page).to have_content doc_attr[:name]
         expect(page).to have_content doc_attr[:fax]
