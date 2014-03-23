@@ -37,8 +37,5 @@ class PreferencesController < ApplicationController
     redirect_to diabetic_preference_path(@diabetic, @diabetic.preference)
   end
 
-  def destroy
-  end
-
 end
 
