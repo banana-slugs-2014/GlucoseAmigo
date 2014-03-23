@@ -14,6 +14,7 @@ end
 group :development, :test do
   gem 'rspec-rails'
   gem 'cool_faker'
+  # gem "rack_session_access"
 end
 
 group :development do
