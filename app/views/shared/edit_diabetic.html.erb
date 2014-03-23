@@ -1,0 +1,5 @@
+<h1>Hello <%= @diabetic.name %></h1>
+
+<%= link_to 'Edit Preferences', edit_diabetic_preference_path(@diabetic.id, @diabetic.preferences.first.id) %>
+<%= link_to 'Edit User Info',  edit_account_diabetic_path(@account.id, @diabetic.id) %>
+<%= link_to 'Edit Doctor Info', edit_diabetic_doctor_path(@diabetic.id, @diabetic.first.doctor.id) %>
