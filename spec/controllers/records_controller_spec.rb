@@ -77,13 +77,12 @@ describe RecordsController do
 
   context '#create' do
     it "creates a new record given valid params" do
-      post :create, diabetic_id: @chris.id, record: {glucose: '115', weight: '174', taken_at: (Time.now-500), comment: "I just got created!"}
-      expect(response).to be_redirect
+
+      expect {post :create, diabetic_id: @chris.id, record: {glucose: '115', weight: '174', taken_at: (Time.now-500), comment: "I just got created!"}}.to change {Record.all.count }.by(1)
     end
 
-    it "renders the new record partial if a user inputs invalid params" do
-      post :create, diabetic_id: @chris.id, record: {glucose:nil, weight: nil, taken_at: (Time.now() + (60*60*24))}
-      expect(response).to_not be_redirect #this is a bad test
+    it "does not create a new Record with invalid params" do
+      expect {post :create, diabetic_id: @chris.id, record: {glucose:nil, weight: nil, taken_at: (Time.now() + (60*60*24))} }.to_not change { Record.all.count }
     end
 
   end
@@ -91,12 +90,12 @@ describe RecordsController do
 
   context '#delete' do
     it 'should let a user delete a record' do
-      delete :destroy, diabetic_id: @chris.id, id: @record1.id
-      expect(response).to be_redirect
+
+      expect{ delete :destroy, diabetic_id: @chris.id, id: @record1.id }.to change { Record.all.count }.by(-1)
     end
   end
 
-  context '#index' do
+  context '#index.pdf' do
     it "downloads a pdf with the user's records" do
       request.env["SERVER_PROTOCOL"] = "http"
       get :index, diabetic_id: @chris.id, "format" => "pdf"
