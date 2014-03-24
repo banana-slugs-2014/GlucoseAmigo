@@ -30,5 +30,8 @@ View.prototype = {
     this.changeContent(html);
     this.addNavBar(leftButton, rightButton);
     this.changeTitle(title);
+  },
+  addAlert: function(alert){
+    console.log(alert);
   }
 }

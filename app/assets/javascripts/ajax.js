@@ -2,9 +2,7 @@ var Ajax = (function(){
   var _request = function(data,reaction){
     $.ajax(data)
     .done(function(response) {
-      console.log(response);
       reaction(response);
-      console.log("success");
     });
 
   }
@@ -16,6 +14,9 @@ var Ajax = (function(){
         url: '/test',
       }
       _request(data,response);
+    },
+    get: function(url, response){
+      _request({ url: url }, response)
     }
   }
 }());
