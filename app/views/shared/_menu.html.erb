@@ -1,2 +1,8 @@
-<%= button_tag 'Edit the account', data: { type: 'dashboard-button', url: edit_account_path(account.id) }, remote: true unless diabetic %>
-<%= button_tag "Add a record for: #{diabetic.name}", data: { type: 'dashboard-button', url: new_diabetic_record_path(diabetic) }, remote: true  if diabetic %>
+<% if diabetic %>
+  <%= button_tag "Add a record for: #{diabetic.name}", data: { type: 'dashboard-button', url: new_diabetic_record_path(diabetic) }, remote: true %><br>
+  <%= button_tag "View records for #{diabetic.name}", data: { type: 'dashboard-button', url: diabetic_records_path(diabetic) }, remote: true %><br>
+  <%= button_tag "Edit #{diabetic.name}'s info", data: { type: 'dashboard-button', url: edit_account_diabetic_path(account, diabetic) }, remote: true %><br>
+<% else %>
+  <%= button_tag 'Edit the account', data: { type: 'dashboard-button', url: edit_account_path(account.id) }, remote: true %><br>
+<% end %>
+<%= button_tag 'Add a Diabetic', data: { type: 'dashboard-button', url: new_account_diabetic_path(account.id) }, remote: true %><br>

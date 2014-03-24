@@ -13,7 +13,7 @@ class RecordsController < ApplicationController
     @data = @diabetic.get_data_for_graph
     respond_to do |format|
       format.html do
-        return @data
+        render :partial => 'shared/records', locals: { records: @records, diabetic: @diabetic }
       end
       format.pdf do
         pdf = RecordDataPdf.new(@data, @diabetic)

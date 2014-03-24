@@ -16,6 +16,9 @@ var Binder = (function(Ajax){
       case 'dashboard-button':
         controller.loadNextPageFromData( $(this).data() );
         break;
+      case 'add-record':
+        controller.loadAddRecord();
+        break
       }
     })
   }
