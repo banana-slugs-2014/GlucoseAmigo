@@ -37,7 +37,7 @@ class AccountsController < ApplicationController
       @diabetic = Diabetic.find(choices[1].split('--')[1])
       path = edit_account_diabetic_path(current_account, @diabetic)
     when 'Account'
-      path = edit_account(current_account)
+      path = edit_account_path(current_account)
     end
     render :json => {
                       ok: true,
