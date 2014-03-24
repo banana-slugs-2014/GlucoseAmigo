@@ -35,9 +35,9 @@ class AccountsController < ApplicationController
     case choices[0]
     when 'Diabetic'
       @diabetic = Diabetic.find(choices[1].split('--')[1])
-      render partial: 'shared/edit_diabetic', locals: {account: @account, diabetic: @diabetic}  #one day this will go somewhere real.
+      render partial: 'shared/edit_diabetic', locals: {account: @account, diabetic: @diabetic}
     when 'Account'
-      render partial: 'shared/edit_account', locals: {account: @account}  #works, but is stupid.
+      render partial: 'shared/edit_account', locals: {account: @account}
     end
   end
 
