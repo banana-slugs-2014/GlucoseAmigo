@@ -12,12 +12,7 @@ class SessionsController < ApplicationController
     account = Account.find_by_username(params[:username]).try(:authenticate, params[:password])
     if account
       session[:user_id] = account.id
-      render :json => {
-                        ok: true,
-                        target: account_path(account),
-                        alert: ''
-                        #target: new_account_diabetic_path(current_account)
-                      }
+      redirect_to account_path(account)
     else
       render :json => {
                         ok: false,
@@ -28,11 +23,11 @@ class SessionsController < ApplicationController
 
   def destroy
     reset_session
-    flash[:message] = 'You are logged out.'
-    render :json => {
-                      ok: true,
-                      alert: 'Invalid Login information',
-                      target: '/'
-                    }
+    redirect_to root_path
+    # render :json => {
+    #                   ok: true,
+    #                   alert: 'You are logged out.',
+    #                   target: '/'
+    #                 }
   end
 end

@@ -1,7 +1,7 @@
 <%= link_to "Sign up !", new_account_path, :remote => true %>
 <br><br>
 Or Login!
-<%= form_tag sessions_path, remote: true, id: 'account-login' do %>
+<%= form_tag sessions_path, id: 'account-login' do %>
     <%= text_field_tag :username, '', :placeholder => "Username" %>
     <%= password_field_tag :password,'', :placeholder => "Password" %>
 <% end %>

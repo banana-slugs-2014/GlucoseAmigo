@@ -1,6 +1,6 @@
 class AccountsController < ApplicationController
     before_filter :redirect_if_logged_in,  :only => [:new]
-    before_filter :redirect_if_logged_out,  :except => [:new, :create, :index]
+    before_filter :redirect_if_logged_out,  :except => [:new, :create, :index, :show]
 
   def index
     redirect_to account_path(current_account) if logged_in?
@@ -14,16 +14,19 @@ class AccountsController < ApplicationController
   end
 
   def show
-    redirect_to :back unless current_account.id == params[:id].to_i
-    @account = Account.find(params[:id])
-    @diabetics = @account.diabetics
-    @menu_options = ((@diabetics.map {|diabetic| "Diabetic: #{diabetic.name}--#{diabetic.id} "}) << "Account: #{@account.username}")
-    render  'shared/dashboard',
-            :locals => {
-              account: @account,
-              diabetics: @diabetics,
-              menu_options: @menu_options
-            }
+    if logged_in? && current_account.id == params[:id].to_i
+      @account = Account.find(params[:id])
+      @diabetics = @account.diabetics
+      @menu_options = ((@diabetics.map {|diabetic| "Diabetic: #{diabetic.name}--#{diabetic.id} "}) << "Account: #{@account.username}")
+      render  'shared/dashboard',
+              :locals => {
+                account: @account,
+                diabetics: @diabetics,
+                menu_options: @menu_options
+              }
+    else
+      redirect_to root_path
+    end
   end
 
   def menu

@@ -1,5 +1,6 @@
-var Controller = function(view){
-  this.view = view
+var Controller = function(data){
+  this.view = data.view;
+  this.user = data.user;
 }
 
 Controller.prototype = {
@@ -8,5 +9,11 @@ Controller.prototype = {
   },
   addAlert: function(alert){
     this.view.addAlert(alert);
+  },
+  logout: function(){
+    Ajax.logout(this.user.uId, this.loadNextPage.bind(this))
+  },
+  loadNextPage: function(response){
+    Ajax.get(response.target, this.view.newPage.bind(this.view))
   }
 }

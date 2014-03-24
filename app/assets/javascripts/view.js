@@ -26,6 +26,9 @@ View.prototype = {
   changeContent: function(html){
     $(this.selectors.contentSelector).html(html);
   },
+  newPage: function(html){
+    $('body').html(html);
+  },
   reloadPage: function(html){
     this.changeContent(html);
     this.addNavBar(leftButton, rightButton);

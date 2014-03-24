@@ -1,5 +1,5 @@
 var User = function(uId){
-  this.uId = uId;
+  this.uId = uId || null;
 };
 
 User.prototype = {
