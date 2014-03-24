@@ -9,10 +9,10 @@ class DoctorMailer < ActionMailer::Base
          template_name: 'welcome')
   end
 
-  def attachment_email(doctor, diabetic, pdf)
-    @doctor = doctor
+  def attachment_email(diabetic, pdf)
     @diabetic = diabetic
-    attachments['report'] = pdf
+    @doctor = @diabetic.doctor
+    attachments['report'] = {mime_type: 'application/pdf', content: pdf.render()}
     mail(to: @doctor.email, 
          subject: "#{diabetic.name}'s Report from GlucoseAmigo",
          template_path: 'doctor_mailer',
