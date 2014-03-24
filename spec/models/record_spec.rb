@@ -17,6 +17,7 @@ describe Record do
     it { should_not allow_value('One Seventy Five').for :weight }
     it { should_not allow_value(Time.now()+(60*60*24)).for :taken_at }  #one day from now
     it { should allow_value(Time.now()-(60*60)).for :taken_at }  #one hour *ago*
-
   end
+
 end
+
