@@ -9,8 +9,8 @@ class RecordsController < ApplicationController
 
 
   def index
-    @records = @diabetic.records #take 10 at a time?
-    @data = @diabetic.get_data_for_graph(2)
+    @records = @diabetic.records
+    @data = @diabetic.get_data_for_graph()#can pass
     respond_to do |format|
       format.html do
         return @data
