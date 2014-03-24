@@ -2,7 +2,6 @@ var Ajax = (function(){
   var _request = function(data,reaction){
     $.ajax(data)
     .done(function(response) {
-      console.log(response)
       reaction(response);
     });
   }

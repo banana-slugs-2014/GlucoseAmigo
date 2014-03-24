@@ -12,6 +12,7 @@ class DoctorsController < ApplicationController
 
 	def new
 		@doctor = Doctor.new
+		@title = "Create a doctor"
 		render :partial => 'shared/doctor', locals: {
 																									diabetic: @diabetic,
 																									doctor: @doctor,
@@ -31,7 +32,7 @@ class DoctorsController < ApplicationController
 		render :json => {
 											ok: !!ok, # Saving kstrks
 											target: path,
-											alert: doctor.errors.full_messages
+											alert: @doctor.errors.full_messages
 										}
 	end
 
@@ -57,7 +58,7 @@ class DoctorsController < ApplicationController
 		render :json => {
 											ok: !!ok, # Saving kstrks
 											target: :back,
-											alert: doctor.errors.full_messages
+											alert: @doctor.errors.full_messages
 										}
 	end
 

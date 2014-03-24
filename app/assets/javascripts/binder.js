@@ -1,10 +1,22 @@
 var Binder = (function(Ajax){
   var _bindButtons = function(controller){
-    $('body').on('click', 'button', function(e){
+    $('body')
+    .off('click','button')
+    .on('click', 'button', function(e){
       if (_isSubmit(this)) {
         $('form').submit();
       } else if (_isLogout(this)) {
         controller.logout();
+      }
+    })
+  }
+
+  var _bindLinks = function(controller){
+    $('body')
+    .off('click', 'a')
+    .on('click', 'a', function(e){
+      if(_isSignUp(this)) {
+        controller.loadSignUp(e);
       }
     })
   }
@@ -16,27 +28,31 @@ var Binder = (function(Ajax){
     return($(el).data('type') === 'logout')
   }
 
+  var _isSignUp = function(el){
+    return($(el).data('type') === 'signup')
+  }
 
-  var _ajaxFormBind = function(controller){
-    $('body').on('ajax:success', 'form', function(event, response){
+
+  var _bindAjaxForms = function(controller){
+    $('body')
+    .off('ajax:success', 'form')
+    .on('ajax:success', 'form', function(event, response){
       if(response.ok){
-        Ajax.get(response.target, controller.nextPageEvent.bind(controller))
+        console.log(response)
+        Ajax.get(response.path, controller.nextPageEvent.bind(controller))
+        console.log("worked?")
       } else {
         controller.addAlert(response.alert)
       };
     })
   }
 
-  var _logoutAjaxBind = function(controller){
-    $('body').on('ajax:success', 'form', function(event, response){
-      Ajax.get(response.target, controller.nextPageEvent.bind(controller))
-    })
-  }
 
   return {
     bind: function(controller){
       _bindButtons(controller);
-      _ajaxFormBind(controller);
+      _bindAjaxForms(controller);
+      _bindLinks(controller);
     }
   }
 
