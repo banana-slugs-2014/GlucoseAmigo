@@ -1,27 +1,22 @@
-<<<<<<< HEAD
-<%= link_to "Sign up !", new_account_path, :data => { type: 'signup' }, :remote => true %>
-<br><br>
-Or Login!
-<%= form_tag sessions_path, id: 'account-login' do %>
-    <%= text_field_tag :username, '', :placeholder => "Username" %>
-    <%= password_field_tag :password,'', :placeholder => "Password" %>
-=======
 <div id="logo">
   <%= image_tag("amigo2.png") %>
 </div>
 <br><br>
 
-<%= form_tag sessions_path do %>
+<%= form_tag sessions_path, id: 'account-login' do %>
     <%= text_field_tag :username, '', :placeholder => "Username" %>
     <%= password_field_tag :password,'', :placeholder => "Password" %>
-    <%= submit_tag "Log in", :class => 'submit'%>
->>>>>>> adds styling to home page
+    <%= submit_tag "Log In" , :class => "submit", data: {type: 'submit'} %>
 <% end %>
-
-<br><br>
 <div class="signup">
-  <%= link_to "Sign up", new_account_path %>
+<%= link_to "Sign up !", new_account_path, :data => { type: 'signup' }, :remote => true %>
 </div>
+<br><br>
+
+
+
+
+
 
 <script>
 var title = 'Welcome to Glucose Amigo!'
@@ -29,7 +24,7 @@ var leftButton = {
   type: 'none'
 }
 var rightButton = {
-  type: 'submit',
-  text: 'Log In'
+
+  type: 'none'
 }
 </script>
