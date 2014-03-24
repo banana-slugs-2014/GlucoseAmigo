@@ -14,7 +14,9 @@ class SessionsController < ApplicationController
       session[:user_id] = account.id
       render :json => {
                         ok: true,
-                        target: new_account_diabetic_path(current_account)
+                        target: account_path(account),
+                        alert: ''
+                        #target: new_account_diabetic_path(current_account)
                       }
     else
       render :json => {

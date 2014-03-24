@@ -1,4 +1,4 @@
-<%= link_to "Sign up !", new_account_path %>
+<%= link_to "Sign up !", new_account_path, :remote => true %>
 <br><br>
 Or Login!
 <%= form_tag sessions_path, remote: true, id: 'account-login' do %>
