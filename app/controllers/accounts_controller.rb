@@ -3,7 +3,6 @@ class AccountsController < ApplicationController
     before_filter :redirect_if_logged_out,  :except => [:new, :create, :index]
 
   def index
-
   end
 
   def test
@@ -14,6 +13,7 @@ class AccountsController < ApplicationController
   end
 
   def show
+    redirect_to :back if current_user.id != params[:id]
     @account = Account.find(params[:id])
     @diabetics = @account.diabetics
     @menu_options = ((@diabetics.map {|diabetic| "Diabetic: #{diabetic.name}--#{diabetic.id} "}) << "Account: #{@account.username}")

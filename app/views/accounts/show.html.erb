@@ -1,8 +1,5 @@
-<div class="container">
-
-
-  Welcome, <%= @account.username %>
-  <br><br>
+Welcome, <%= @account.username %>
+<br><br>
 
   <form action = "menu", method ="get" >
     <%= select_tag "menu_choice", options_for_select(@menu_options) %>
@@ -15,12 +12,7 @@
 <% end %>
 
 <%= link_to 'edit', edit_account_path(@account.id) %>
-
      <%= submit_tag("Render Partial") %>
   </form>
-
-  <div class="left-button logout">
-
-  </div>
 
 </div>
