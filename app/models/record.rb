@@ -6,6 +6,7 @@ class Record < ActiveRecord::Base
   validate :inclusion_of_weight_and_or_glucose
   validate :taken_date_cannot_be_in_the_future
   validates_presence_of :taken_at
+  validates_numericality_of :glucose, :weight
 
 
 
@@ -21,16 +22,5 @@ class Record < ActiveRecord::Base
       errors.add(:taken_at, "Time data was taken must be before now")
     end
   end
-
-  def numericality_of_weight_and_glucose
-    if (self.weight.to_i == 0 && self.glucose.to_i == 0)
-      errors.add(:weight, "Weight must be an integer")
-      errors.add(:glucose, "Glucose level must be an integer")
-    end
-
-  end
-
-
-
 
 end
