@@ -17,6 +17,7 @@ end
 group :development, :test do
   gem 'rspec-rails'
   gem 'cool_faker'
+  gem 'faker'
   # gem "rack_session_access"
 end
 
@@ -29,7 +30,6 @@ end
 group :test do
   gem 'shoulda-matchers'
   gem 'factory_girl_rails'
-  gem 'faker'
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'database_cleaner'

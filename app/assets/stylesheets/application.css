@@ -38,6 +38,29 @@
   clear: both;
 }
 
+<<<<<<< HEAD
 #none-button{
   visibility: hidden;
 }
+=======
+.sign_up {
+  width: 320px;
+  background: orange;
+}
+
+
+
+/* CREATE ACCOUNT */
+
+.account-title {
+  text-align: center;
+}
+
+#account_username {
+  width: 300px;
+  height: 40px;
+  font-size: 24px;
+  margin-bottom: 10px;
+  float: center;
+}
+>>>>>>> test minor css change
