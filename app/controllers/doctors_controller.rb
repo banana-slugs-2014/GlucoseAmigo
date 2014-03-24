@@ -25,13 +25,11 @@ class DoctorsController < ApplicationController
 		if @doctor.valid?
 			ok = true
 			@doctor.diabetics << @diabetic
-			path = diabetic_doctor_path(diabetic_id: @diabetic.id, id: @doctor.id)
-		else
-			path = diabetic_doctors_path(diabetic_id: @diabetic.id)
+			path = new_diabetic_preference_path(diabetic_id: @diabetic.id)
 		end
 		render :json => {
 											ok: !!ok, # Saving kstrks
-											target: path,
+											path: path,
 											alert: @doctor.errors.full_messages
 										}
 	end
