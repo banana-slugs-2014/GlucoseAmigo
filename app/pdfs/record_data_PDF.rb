@@ -8,6 +8,7 @@ class RecordDataPdf
     rainbow
     logo
     @pdf.text "Data for #{@diabetic.name}"
+    text '                     '
     weight_graph
     glucose_graph
   end
@@ -24,6 +25,7 @@ class RecordDataPdf
     @weight_data.each do |date, reading|
       @pdf.text "#{date}: #{reading}"
     end
+    @pdf.text '                      '
   end
 
   def glucose_graph
@@ -32,13 +34,18 @@ class RecordDataPdf
     @glucose_data.each do |date, reading|
       @pdf.text "#{date}: #{reading}"
     end
+    @pdf.text '                     '
   end
 
 
   def logo
     @pdf.stroke_horizontal_rule
     @pdf.pad(20) { @pdf.text "Tracking Data brought to you by GlucoseAmigo", color: 'ff0000' }
+    filename = "#{Rails.root}/small_logo.png"
+    @pdf.image filename
   end
+
+
 
   def rainbow
     @pdf.save_graphics_state do
