@@ -13,11 +13,16 @@
  */
 
 
+body {
+  padding: 0 1%;
+  background: white;
+}
+
 .container {
-  width: 320px;
+  width: 100%;
   margin: 0 auto;
-  border: 2px solid black;
-  background-color: #f3efc3;
+  border: 2px solid red;
+  background-color: blue;
 }
 
 .topmenu {
@@ -45,17 +50,49 @@
 =======
 .sign_up {
   width: 320px;
+  margin: 0 auto;
   background: orange;
 }
 
-
-
-/* CREATE ACCOUNT */
-
-.account-title {
-  text-align: center;
+#account_username,
+#account_email,
+#account_password,
+#account_password_confirmation {
+  width: 300px;
+  height: 40px;
+  font-size: 22px;
+  margin: 8px auto;
 }
 
+
+
+@media only screen and (max-width: 480px) {
+
+  /* CREATE ACCOUNT */
+
+  .container {
+    width: 100%;
+    margin: 0 auto;
+    border: 2px solid red;
+    background-color: blue;
+  }
+
+  .account-title {
+    text-align: center;
+  }
+
+  #account_username,
+  #account_email,
+  #account_password,
+  #account_password_confirmation {
+    width: 300px;
+    height: 40px;
+    font-size: 22px;
+    margin: 8px auto;
+  }
+
+
+<<<<<<< HEAD
 #account_username {
   width: 300px;
   height: 40px;
@@ -64,3 +101,6 @@
   float: center;
 }
 >>>>>>> test minor css change
+=======
+}
+>>>>>>> Add early media queries and work on layout

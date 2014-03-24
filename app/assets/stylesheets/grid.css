@@ -1,5 +1,5 @@
 /*  GRID OF EIGHT   ============================================================================= */
-
+@media only screen and (max-width: 800px) {
 
 .span_8_of_8 {
   width: 100%;
@@ -33,6 +33,7 @@
   width: 11.1%;
 }
 
+}
 
 /*  GO FULL WIDTH AT LESS THAN 480 PIXELS */
 
