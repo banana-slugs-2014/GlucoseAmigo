@@ -14,6 +14,7 @@ class RecordDataPdf
 
   def weight_graph
     @pdf.text "Weight data:"
+    @weight_data = Hash[@weight_data.sort]
     @weight_data.each do |date, reading|
       @pdf.text "#{date}: #{reading}"
     end
@@ -21,6 +22,7 @@ class RecordDataPdf
 
   def glucose_graph
     @pdf.text "Glucose data:"
+    @glucose_data = Hash[@glucose_data.sort]
     @glucose_data.each do |date, reading|
       @pdf.text "#{date}: #{reading}"
     end
