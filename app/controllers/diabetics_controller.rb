@@ -27,6 +27,13 @@ class DiabeticsController < ApplicationController
                     }
   end
 
+  def edit_menu
+    @diabetic = Diabetic.find(params[:id])
+    render :partial => "shared/diabetic_edit_page", :locals => {
+                                                        diabetic: @diabetic,
+                                                        account: current_account
+                                                      }
+  end
 
   def edit
     diabetic = Diabetic.find(params[:id])
