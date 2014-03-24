@@ -37,3 +37,7 @@
   width: 95%;
   clear: both;
 }
+
+#none-button{
+  visibility: hidden;
+}
