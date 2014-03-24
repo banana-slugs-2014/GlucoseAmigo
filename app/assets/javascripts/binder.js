@@ -7,6 +7,8 @@ var Binder = (function(Ajax){
         $('form').submit();
       } else if (_isLogout(this)) {
         controller.logout();
+      } else if (_isCancel(this)) {
+        controller.goBack(e);
       }
     })
   }
@@ -26,6 +28,9 @@ var Binder = (function(Ajax){
   }
   var _isLogout = function(el){
     return($(el).data('type') === 'logout')
+  }
+  var _isCancel = function(el){
+    return($(el).data('type') === 'cancel')
   }
 
   var _isSignUp = function(el){

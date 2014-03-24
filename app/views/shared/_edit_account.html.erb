@@ -5,7 +5,6 @@
   <% end %>
 <% end %>
 
-
 <div class="edit_account">
   <%= form_for account do |f| %>
   <%= f.label :username %>
@@ -17,7 +16,6 @@
     <%= f.submit 'Edit Account' %>
 <% end %>
 </div>
-
 
 <div class="edit_password">
   <%= form_for account, url: accounts_changepassword_path do |f| %>
@@ -31,3 +29,15 @@
   <%= f.submit 'change password' %>
 <% end %>
 </div>
+
+<script>
+var title = 'Add a diabetic'
+var leftButton = {
+  type: 'cancel',
+  text: 'Cancel'
+}
+var rightButton = {
+  type: 'submit',
+  text: 'Save'
+}
+</script>

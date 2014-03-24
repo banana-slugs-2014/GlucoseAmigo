@@ -18,5 +18,8 @@ Controller.prototype = {
   },
   loadSignUp: function(event){
     Ajax.get(event.target.href, this.nextPageEvent.bind(this));
+  },
+  goBack: function(event){
+    Ajax.get(event.target.baseURI, this.view.newPage.bind(this.view))
   }
 }
