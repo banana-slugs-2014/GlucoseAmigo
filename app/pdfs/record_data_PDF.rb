@@ -3,8 +3,8 @@ class RecordDataPdf
   def initialize (data, diabetic)
     @pdf = Prawn::Document.new
 
-    @weight_data = data[0]
-    @glucose_data = data[1]
+    @weight_data = data[1]
+    @glucose_data = data[0]
     @diabetic = diabetic
     rainbow
     logo
@@ -33,7 +33,7 @@ class RecordDataPdf
 
   def logo
     @pdf.stroke_horizontal_rule
-    @pdf.pad(20) { @pdf.text "Tracking Data brought to you by GlucoseAmigo" }
+    @pdf.pad(20) { @pdf.text "Tracking Data brought to you by GlucoseAmigo", color: 'ff0000' }
   end
 
   def rainbow
