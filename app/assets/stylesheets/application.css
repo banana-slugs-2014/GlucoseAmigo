@@ -64,84 +64,94 @@
   margin: 8px auto;
 }*/
 
-
+body {
+    background-size: 100%;
+    background: #99D6FF url("blurry-blue-glass.jpg");
+  }
 
 @media only screen and (max-width: 480px) {
 
   /* CREATE ACCOUNT */
 
   body {
-    background-size: 500%;
-    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJ7uUleynE4omOTeOcTKnQVfLlefDTvC7djkOswMImh-8RQoQitw")
+    background-size: auto;
+    background: #99D6FF url("blurry-blue-glass-small.jpg");
   }
 
   .content {
-    width: 100%;
+    width: 99%;
     height: 100%;
     /*width: 320px;
     height: 568px;*/
     /*margin: 0 auto;*/
     /*border: 2px solid red;*/
-
   }
 
   #logo {
-    width: 93.75%;
+
+    width: 75%;
     height: 26.4%;
     /*width: 300px;
     height: 150px;*/
-    border: 2px black solid;
     margin: auto;
     margin-top: 10px;
   }
 
-  .signup {
-    /*border-radius: 5px;*/
-    border: 2px grey solid;
+  #logo img {
     width: 100%;
-    height: 7%;
-    /*width: 300px;
-    height: 40px;*/
-    margin: auto;
-    /*margin-top: 10px;*/
-    text-align: center;
-    padding-top: 7px;
-    padding-bottom: 10px;
-    /*background-color: black;*/
-
-
+    margin: 0 auto;
+    /*padding-left: 10%;*/
   }
 
 
+/*  .submit {
+    font-family: inherit;
+    color: white;
+    background-color: #FFB84D;
+    border-radius: 5px;
+    width: 80%;
+    padding-top: 7px;
+    padding-bottom: 10px;
+    font-size: 170%;
+    margin: 30px auto 8px auto;
+    padding-left: 20%;
+  }*/
 
   .submit {
-    color: white;
-    /*border-radius: 5px;*/
-    /*border-bottom: 2px black solid;*/
-    width: 100%;
-    height: 30.5%;
-    background: none;
-    /*width: 300px;
-    height: 60px;*/
-
+    border: none;
+    border-radius: 5px;
+    background-color: #5959FF;
+    display: block;
+    width: 80%;
+    height: 7%;
+    margin: auto;
+    margin-top: 15%;
     text-align: center;
     padding-top: 7px;
     padding-bottom: 10px;
-    /*background-color: white;*/
-    font-family: inherit;
-    /*font-family:'Sigmar One', cursive;*/
-    /*font-size: 25px;*/
     font-size: 170%;
-
-    margin-top: 30px;
+    color: white;
   }
 
-  .signup a{
-    color: white;
-    /*font-size 25px;*/
-    font-size: 170%;
+
+  .signup {
+
+    border-radius: 5px;
+    background-color: #F56060;
+    width: 80%;
+    height: 7%;
     font-family: inherit;
-    /*font-family:'Sigmar One', cursive;*/
+    margin: auto;
+    margin-top: 2%;
+    text-align: center;
+    padding-top: 7px;
+    padding-bottom: 10px;
+  }
+
+  .signup a {
+    font-family: inherit;
+    color: white;
+    font-size: 170%;
     text-decoration: none;
   }
 
@@ -152,7 +162,7 @@
     font-size: 170%;
     margin-top: 10px;
     margin-left: 8px;
-
+    border-radius: 5px;
   }
 
 
