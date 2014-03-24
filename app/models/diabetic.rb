@@ -23,8 +23,8 @@ class Diabetic < ActiveRecord::Base
     glucose_graph_data = {}
     weight_graph_data = {}
     self.records.each do |record|
-      glucose_graph_data[record.taken_at] = record.glucose.to_i if record.glucose.to_i
-      weight_graph_data[record.taken_at] = record.weight.to_i if record.weight.to_i
+      glucose_graph_data[record.taken_at.to_s] = record.glucose.to_i if record.glucose.to_i
+      weight_graph_data[record.taken_at.to_s] = record.weight.to_i if record.weight.to_i
     end
     [glucose_graph_data, weight_graph_data]
   end
