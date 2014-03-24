@@ -29,9 +29,6 @@ class Diabetic < ActiveRecord::Base
     [glucose_graph_data, weight_graph_data]
   end
 
-  def get_data_for_doctor
-    get_data_for_graph.to_pdf!
-  end
 
   private
 

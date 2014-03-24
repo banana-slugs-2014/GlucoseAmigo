@@ -48,10 +48,10 @@ class DiabeticsController < ApplicationController
   end
 
   def get_graph_data
-    diabetic = Diabetic.find(params[:id])
-    diabetic.get_graph_data
-  end
+    @diabetic = Diabetic.find(params[:id])
+    @data = diabetic.get_graph_data
 
+  end
 
 
 end
