@@ -8,7 +8,7 @@ describe Record do
 
   context "validations" do
 
-    xit { should validate_presence_of(:taken_at) }
+    it { should validate_presence_of(:taken_at) }
     xit { should_not allow_value('derp').for :weight }
     xit { should_not allow_value('derp').for :glucose }
     it { should allow_value('100').for :glucose }

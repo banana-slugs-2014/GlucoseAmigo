@@ -21,10 +21,13 @@ require 'faker'
   Diabetic.last.preference = Preference.create(reminders: true,
                                    frequency: (i + 1))
   3.times do
+    st1 = Time.now
     7.times do |j|
+      st2 = Time.now
+      st_dif = st2 - st1
       Diabetic.last.records.create(weight: "20#{i}",
                                    glucose: rand(75..100).to_s,
-                                   taken_at: Date.today - (j) )
+                                   taken_at: DateTime.now - (j) - st_dif )
     end
   end
 end

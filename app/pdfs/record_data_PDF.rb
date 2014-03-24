@@ -2,7 +2,8 @@ class RecordDataPdf
 
   def initialize (data, diabetic)
     @pdf = Prawn::Document.new
-
+puts "================="
+p data
     @weight_data = data[1]
     @glucose_data = data[0]
     @diabetic = diabetic

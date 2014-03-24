@@ -19,7 +19,11 @@ class Diabetic < ActiveRecord::Base
     age -= 1 if Date.today < self.birthday.year + age.years
   end
 
-  def get_data_for_graph() #could take an argument for a range of data
+
+
+  def get_data_for_graph
+   #could take an argument for a range of data
+    p self.records.length
     glucose_graph_data = {}
     weight_graph_data = {}
     self.records.each do |record|
