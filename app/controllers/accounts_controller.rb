@@ -6,6 +6,13 @@ class AccountsController < ApplicationController
 
   end
 
+  def test
+    render  :partial => 'shared/sign_up',
+            :locals => {
+              account: Account.new
+            }
+  end
+
   def show
     @account = Account.find(params[:id])
     @diabetics = @account.diabetics

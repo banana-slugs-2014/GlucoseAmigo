@@ -26,9 +26,9 @@ View.prototype = {
   changeContent: function(html){
     $(this.selectors.contentSelector).html(html);
   },
-  printPage: function(data,html){
-    this.addNavBar(data.leftButton, data.rightButton);
-    this.changeTitle(data.title);
+  reloadPage: function(html){
     this.changeContent(html);
+    this.addNavBar(leftButton, rightButton);
+    this.changeTitle(title);
   }
 }
