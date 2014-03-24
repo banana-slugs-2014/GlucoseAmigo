@@ -25,9 +25,10 @@ require 'faker'
     7.times do |j|
       st2 = Time.now
       st_dif = st2 - st1
-      Diabetic.last.records.create(weight: "20#{i}",
+      Diabetic.last.records.create(weight: "#{rand(180...200)}",
                                    glucose: rand(75..100).to_s,
                                    taken_at: DateTime.now - (j) - st_dif )
     end
   end
 end
+
