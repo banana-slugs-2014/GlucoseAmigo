@@ -1,6 +1,6 @@
 class RecordDataPdf
 
-  def initialize (data, diabetic)
+  def initialize(data, diabetic)
     @pdf = Prawn::Document.new
     @weight_data = data[1]
     @glucose_data = data[0]
@@ -11,6 +11,12 @@ class RecordDataPdf
     weight_graph
     glucose_graph
   end
+
+  def render
+    @pdf.render
+  end
+
+  private
 
   def weight_graph
     @pdf.text "Weight data:"
@@ -28,9 +34,6 @@ class RecordDataPdf
     end
   end
 
-  def render
-    @pdf.render
-  end
 
   def logo
     @pdf.stroke_horizontal_rule

@@ -57,8 +57,8 @@ class DiabeticsController < ApplicationController
 
   def get_graph_data
     @diabetic = Diabetic.find(params[:id])
-    @data = diabetic.get_graph_data
-
+    @data = diabetic.get_data_for_graph()
+    @data.to_json
   end
 
 
