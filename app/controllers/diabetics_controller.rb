@@ -49,6 +49,7 @@ class DiabeticsController < ApplicationController
     @data.to_json
   end
 
+
   private
   def load_diabetic
     @diabetic = Diabetic.find(params[:id])
