@@ -15,7 +15,7 @@ class DiabeticsController < ApplicationController
     if diabetic.valid?
       ok = true
       diabetic.save
-      DiabeticMailer.welcome_email(diabetic).deliver
+      #DiabeticMailer.welcome_email(diabetic).deliver
       path = new_diabetic_doctor_path(diabetic_id: diabetic.id)
     else
       path = new_account_diabetic_path(account_id: current_account.id)

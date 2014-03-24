@@ -1,4 +1,4 @@
-class DiabeticMailer < ActionMailer::Base
+class #DiabeticMailer < ActionMailer::Base
   default from: "glucoseamigo@gmail.com"
 
   def welcome_email(diabetic)
