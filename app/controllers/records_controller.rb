@@ -37,11 +37,10 @@ class RecordsController < ApplicationController
     @record = Record.create(params[:record])
     if @record.save
       @diabetic.records << @record
-      redirect_to diabetic_records_path(@diabetic)
     else
       flash[:notice] = "Please try again"
-      render partial: 'shared/new_record', locals: {record: @record, diabetic: @diabetic}
     end
+    redirect_to :back
   end
 
   def edit
