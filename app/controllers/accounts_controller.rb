@@ -35,10 +35,15 @@ class AccountsController < ApplicationController
     case choices[0]
     when 'Diabetic'
       @diabetic = Diabetic.find(choices[1].split('--')[1])
-      render partial: 'shared/edit_diabetic', locals: {account: @account, diabetic: @diabetic}
+      path = edit_account_diabetic_path(current_account, @diabetic)
     when 'Account'
-      render partial: 'shared/edit_account', locals: {account: @account}
+      path = edit_account(current_account)
     end
+    render :json => {
+                      ok: true,
+                      path: path,
+                      alert: ''
+                    }
   end
 
   def new
@@ -99,16 +104,11 @@ class AccountsController < ApplicationController
     if  account.authorized?(params)
       ok = true
       account.update_attributes(params[:account])
-      path = accounts_path
+      redirect_to accounts_path
     else
       flash[:error] = ['Invalid Password']
-      path = edit_account_path(account.id)
+      redirect_to edit_account_path(account.id)
     end
-    render :json => {
-                      ok: !!ok,
-                      path: path,
-                      alert: account.errors.full_messages
-                    }
   end
 
 end

@@ -4,7 +4,7 @@ class DiabeticsController < ApplicationController
 
   def new
     account = current_account
-    render :partial => "shared/diabetic", :locals => {
+    render :partial => "shared/new_diabetic", :locals => {
                                             :diabetic => account.diabetics.new,
                                             :account => account }
   end
@@ -30,7 +30,7 @@ class DiabeticsController < ApplicationController
 
   def edit
     diabetic = Diabetic.find(params[:id])
-    render :partial => "shared/diabetic", :locals => {
+    render :partial => "shared/edit_diabetic", :locals => {
                                                         diabetic: diabetic,
                                                         account: diabetic.account
                                                       }
@@ -43,11 +43,7 @@ class DiabeticsController < ApplicationController
       ok = true
       diabetic.save
     end
-    render :json => {
-                      ok: !!ok, # Saving kstrks
-                      path: edit_account_diabetic_path(current_account, diabetic),
-                      alert: diabetic.errors.full_messages
-                    }
+    redirect_to :back
   end
 
   def destroy

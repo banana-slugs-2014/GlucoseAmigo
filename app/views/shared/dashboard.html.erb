@@ -1,9 +1,7 @@
-<form action = "menu", method ="get" >
-  <%= select_tag "menu_choice", options_for_select(menu_options)
-   %>
-   <input type="hidden" name="account_id" value=<%= account.id  %>>
-
-   <%= button_tag "Render Partial", data: { type: 'submit' }, remote: true %>
+<form action = "menu", method ="get", data-remote='true' >
+  <%= select_tag "menu_choice", options_for_select(menu_options) %>
+   <input type="hidden" name="account_id" value='<%= account.id  %>' >
+   <%= button_tag "Render Partial", data: { type: 'submit' } %>
 </form>
 
 <% if diabetics %>
