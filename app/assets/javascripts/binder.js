@@ -13,7 +13,7 @@ var Binder = (function(Ajax){
 
 
   var _ajaxBind = function(controller){
-    $('body').on('ajax:success', '#account-login', function(event, response){
+    $('body').on('ajax:success', 'form', function(event, response){
       if(response.ok){
         Ajax.get(response.target, controller.nextPageEvent.bind(controller))
       } else {
