@@ -1,2 +1,2 @@
-<%= button_to 'Edit the account', edit_account_path(account.id), remote: true unless diabetic %>
-<%= button_to "Add a record for: #{diabetic.name}", diabetic_records_path(diabetic), remote: true  if diabetic %>
+<%= button_tag 'Edit the account', data: { type: 'dashboard-button', url: edit_account_path(account.id) }, remote: true unless diabetic %>
+<%= button_tag "Add a record for: #{diabetic.name}", data: { type: 'dashboard-button', url: diabetic_records_path(diabetic) }, remote: true  if diabetic %>

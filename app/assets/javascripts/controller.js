@@ -16,6 +16,9 @@ Controller.prototype = {
   loadNextPage: function(response){
     Ajax.get(response.target, this.view.newPage.bind(this.view));
   },
+  loadNextPageFromData: function(data){
+    Ajax.get(data.url, this.nextPageEvent.bind(this));
+  },
   loadSignUp: function(event){
     Ajax.get(event.target.href, this.nextPageEvent.bind(this));
   },
@@ -24,5 +27,6 @@ Controller.prototype = {
   },
   getSubmenu: function(element){
     Ajax.getSubmenu(element, this.view.addSubmenu.bind(this.view))
-  }
+  },
+
 }

@@ -3,14 +3,24 @@ var Binder = (function(Ajax){
     $('body')
     .off('click','button')
     .on('click', 'button', function(e){
-      if (_isSubmit(this)) {
+      switch(_dataTypeOf(this)){
+      case 'submit':
         $('form').submit();
-      } else if (_isLogout(this)) {
+        break;
+      case 'logout':
         controller.logout();
-      } else if (_isCancel(this)) {
+        break;
+      case 'cancel':
         controller.goBack(e);
+        break;
+      case 'dashboard-button':
+        controller.loadNextPageFromData( $(this).data() );
+        break;
       }
     })
+  }
+  var _dataTypeOf = function(element){
+    return $(element).data('type')
   }
 
   var _bindLinks = function(controller){
@@ -29,15 +39,6 @@ var Binder = (function(Ajax){
      });
   }
 
-  var _isSubmit = function(el){
-    return($(el).data('type') === 'submit')
-  }
-  var _isLogout = function(el){
-    return($(el).data('type') === 'logout')
-  }
-  var _isCancel = function(el){
-    return($(el).data('type') === 'cancel')
-  }
   var _isGetSubmenu = function(el){
     return($(el).data('type') === 'get-submenu')
   }

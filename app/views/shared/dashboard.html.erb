@@ -1,18 +1,8 @@
 <form action = "menu", method ="get", data-remote='true' >
   <%= select_tag "menu_choice", options_for_select(menu_options) %>
    <input type="hidden" name="account_id" value='<%= account.id  %>' >
-   <%= button_tag "Render Partial", data: { type: 'get-submenu' } %>
 </form>
 <div id='submenu'></div>
-<% if diabetics %>
-  <% diabetics.each do |diabetic| %>
-    <% button_to "Add a record for: #{diabetic.name}", diabetic_records_path(diabetic), remote: true  %>
-  <% end %>
-<% end %>
-
-<br>
-<%= button_to 'Edit the account', edit_account_path(account.id), remote: true %>
-
 <script>
 var title = "<%= account.username.capitalize %>'s Dashboard"
 var leftButton = {
