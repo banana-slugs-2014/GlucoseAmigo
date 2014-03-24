@@ -1,15 +1,12 @@
-Welcome, <%= @account.username %>
+<div class="container">
 
 
-<br><br>
+  Welcome, <%= @account.username %>
+  <br><br>
 
-<form action = "menu", method ="get" >
-  <%= select_tag "menu_choice", options_for_select(@menu_options)
-   %>
-   <input type="hidden" name="account_id" value=<%= @account.id  %>>
-
-   <%= submit_tag("Render Partial") %>
-</form>
+  <form action = "menu", method ="get" >
+    <%= select_tag "menu_choice", options_for_select(@menu_options) %>
+     <input type="hidden" name="account_id" value=<%= @account.id  %>>
 
 <% if @diabetics %>
   <% @diabetics.each do |diabetic| %>
@@ -19,4 +16,11 @@ Welcome, <%= @account.username %>
 
 <%= link_to 'edit', edit_account_path(@account.id) %>
 
+     <%= submit_tag("Render Partial") %>
+  </form>
 
+  <div class="left-button logout">
+
+  </div>
+
+</div>
