@@ -13,15 +13,20 @@ class DiabeticsController < ApplicationController
     diabetic = Diabetic.new(params[:diabetic])
     diabetic.account = current_account
     if diabetic.valid?
+      p "true man"
+      ok = true
       diabetic.save
-
       DiabeticMailer.welcome_email(diabetic).deliver
-
-      redirect_to new_diabetic_doctor_path(diabetic_id: diabetic.id)
+      path = new_diabetic_doctor_path(diabetic_id: diabetic.id)
     else
-      # change here too
-      redirect_to new_account_diabetic_path(account_id: current_account.id)
+      p "false"
+      path = new_account_diabetic_path(account_id: current_account.id)
     end
+    render :json => {
+                      ok: !!ok, # Saving kstrks
+                      target: path,
+                      alert: diabetic.errors.full_messages
+                    }
   end
 
 
@@ -37,9 +42,15 @@ class DiabeticsController < ApplicationController
     diabetic = Diabetic.find(params[:id])
     diabetic.update_attributes(params[:diabetic])
     if diabetic.valid?
+      ok = true
       diabetic.save
     end
-    redirect_to edit_account_diabetic_path(account_id: current_account.id, id: diabetic.id)
+    #redirect_to edit_account_diabetic_path(account_id: current_account.id, id: diabetic.id)
+    render :json => {
+                      ok: !!ok, # Saving kstrks
+                      target: edit_account_diabetic_path(current_account, diabetic),
+                      alert: diabetic.errors.full_messages
+                    }
   end
 
   def destroy
