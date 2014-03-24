@@ -23,6 +23,12 @@ var Binder = (function(Ajax){
     })
   }
 
+  var _bindDashboardMenu = function(controller){
+    $('body').on('change', '#menu_choice', function(event){
+       controller.getSubmenu($(this).find(':selected').val() )
+     });
+  }
+
   var _isSubmit = function(el){
     return($(el).data('type') === 'submit')
   }
@@ -31,6 +37,9 @@ var Binder = (function(Ajax){
   }
   var _isCancel = function(el){
     return($(el).data('type') === 'cancel')
+  }
+  var _isGetSubmenu = function(el){
+    return($(el).data('type') === 'get-submenu')
   }
 
   var _isSignUp = function(el){
@@ -58,6 +67,7 @@ var Binder = (function(Ajax){
       _bindButtons(controller);
       _bindAjaxForms(controller);
       _bindLinks(controller);
+      _bindDashboardMenu(controller);
     }
   }
 

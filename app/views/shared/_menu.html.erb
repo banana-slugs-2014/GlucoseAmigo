@@ -1,0 +1,2 @@
+<%= button_to 'Edit the account', edit_account_path(account.id), remote: true unless diabetic %>
+<%= button_to "Add a record for: #{diabetic.name}", diabetic_records_path(diabetic), remote: true  if diabetic %>

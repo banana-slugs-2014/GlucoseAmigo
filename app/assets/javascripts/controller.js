@@ -21,5 +21,8 @@ Controller.prototype = {
   },
   goBack: function(event){
     Ajax.get(event.target.baseURI, this.view.newPage.bind(this.view))
+  },
+  getSubmenu: function(element){
+    Ajax.getSubmenu(element, this.view.addSubmenu.bind(this.view))
   }
 }

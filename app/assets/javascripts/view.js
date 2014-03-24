@@ -2,7 +2,8 @@ var View = function(){
   this.selectors = {
     navbarSelector: '#navbar',
     titleSelector: 'h1#title',
-    contentSelector: '#content'
+    contentSelector: '#content',
+    submenuSelector: '#submenu'
   };
   this.templates = HandlebarsTemplates;
 }
@@ -36,5 +37,8 @@ View.prototype = {
   },
   addAlert: function(alert){
     console.log(alert);
+  },
+  addSubmenu: function(menu){
+    $(this.selectors.submenuSelector).html(menu);
   }
 }

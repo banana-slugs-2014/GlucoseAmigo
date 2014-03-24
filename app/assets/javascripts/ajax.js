@@ -8,11 +8,12 @@ var Ajax = (function(){
 
 
   return {
-    testGet: function(reaction){
+    getSubmenu: function(submenu, reaction){
       var data = {
-        url: '/test',
+        url: '/accounts/submenu',
+        data: { 'menu_choice': submenu }
       }
-      _request(data,reaction);
+      _request(data, reaction)
     },
     get: function(url, reaction){
       _request({ url: url }, reaction)

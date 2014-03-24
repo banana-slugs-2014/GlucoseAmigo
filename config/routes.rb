@@ -8,6 +8,7 @@ GlucoseAmigo::Application.routes.draw do
   root to: 'accounts#index'
 
   get 'accounts/menu',  :to => 'accounts#menu'
+  get 'accounts/submenu', :to => 'accounts#getSubmenu', :as => 'get_submenu'
   put 'accounts/changepassword', :to => 'accounts#change_password'
   resources :accounts do
     resources :diabetics, except: [ :show, :index, :delete ]
