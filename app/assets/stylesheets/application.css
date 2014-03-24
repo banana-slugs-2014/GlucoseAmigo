@@ -13,12 +13,12 @@
  */
 
 
-body {
+/*body {
   padding: 0 1%;
   background: white;
-}
+}*/
 
-.container {
+/*.container {
   width: 100%;
   margin: 0 auto;
   border: 2px solid red;
@@ -62,7 +62,7 @@ body {
   height: 40px;
   font-size: 22px;
   margin: 8px auto;
-}
+}*/
 
 
 
@@ -70,12 +70,84 @@ body {
 
   /* CREATE ACCOUNT */
 
+
   .container {
     width: 100%;
-    margin: 0 auto;
-    border: 2px solid red;
-    background-color: blue;
+    height: 100%;
+    /*width: 320px;
+    height: 568px;*/
+    /*margin: 0 auto;*/
+    /*border: 2px solid red;*/
+
   }
+
+  #logo {
+    width: 93.75%;
+    height: 26.4%;
+    /*width: 300px;
+    height: 150px;*/
+    border: 2px black solid;
+    margin: auto;
+    margin-top: 10px;
+  }
+
+  .signup {
+    border-radius: 5px;
+    border: 2px black solid;
+    width: 93.75%;
+    height: 7%;
+    /*width: 300px;
+    height: 40px;*/
+    margin: auto;
+    margin-top: -10px;
+    text-align: center;
+    padding-top: 7px;
+    padding-bottom: 10px;
+    background-color: red;
+
+
+  }
+
+
+
+  .submit {
+    color: white;
+    border-radius: 5px;
+    border: 2px black solid;
+    width: 93.75%;
+    height: 10.5%;
+    /*width: 300px;
+    height: 60px;*/
+    margin: auto;
+    text-align: center;
+    padding-top: 7px;
+    padding-bottom: 10px;
+    background-color: blue;
+    font-family:'Sigmar One', cursive;
+    /*font-size: 25px;*/
+    font-size: 170%;
+    margin: 10px;
+    margin-top: 30px;
+  }
+
+  .signup a{
+    color: white;
+    /*font-size: 25px;*/
+    font-size: 170%;
+    font-family:'Sigmar One', cursive;
+    text-decoration: none;
+  }
+
+  #username, #password {
+    /*width: 300px;*/
+    height: 40px;
+    width: 93.75%;
+    font-size: 170%;
+    margin-top: 10px;
+    margin-left: 8px;
+
+  }
+
 
   .account-title {
     text-align: center;
@@ -87,20 +159,8 @@ body {
   #account_password_confirmation {
     width: 300px;
     height: 40px;
-    font-size: 22px;
+    font-size: 170%;
     margin: 8px auto;
   }
 
 
-<<<<<<< HEAD
-#account_username {
-  width: 300px;
-  height: 40px;
-  font-size: 24px;
-  margin-bottom: 10px;
-  float: center;
-}
->>>>>>> test minor css change
-=======
-}
->>>>>>> Add early media queries and work on layout
