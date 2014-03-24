@@ -1,4 +1,4 @@
-
+require 'faker'
 
 10.times do |i|
 

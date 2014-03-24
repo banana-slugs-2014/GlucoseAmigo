@@ -10,6 +10,16 @@ class RecordsController < ApplicationController
 
   def index
     @records = @diabetic.records #take 10 at a time?
+    @data = @diabetic.get_data_for_graph
+    respond_to do |format|
+      format.html do
+        return @data
+      end
+      format.pdf do
+        pdf = RecordDataPdf.new(@data, @diabetic)
+        send_data pdf.render, filename: "#{@diabetic.name}_#{Time.now.strftime("%Y-%m-%d")}", type: "application/pdf"
+      end
+    end
   end
 
   def show

@@ -3,10 +3,10 @@ class Record < ActiveRecord::Base
   attr_accessible :weight, :glucose, :taken_at, :comment
   belongs_to :diabetic
 
-  validate :inclusion_of_weight_and_or_glucose
-  validate :taken_date_cannot_be_in_the_future
-  validate :numericality_of_weight_and_glucose
-  validates_presence_of :taken_at
+  validate :inclusion_of_weight_and_or_glucose, message: "Either glucose or weight is required."
+  validate :taken_date_cannot_be_in_the_future, message: "Date taken cannot be in the future."
+  validates_presence_of :taken_at, message: "Date taken must be present."
+
 
 
   def inclusion_of_weight_and_or_glucose
@@ -29,5 +29,8 @@ class Record < ActiveRecord::Base
     end
 
   end
+
+
+
 
 end
