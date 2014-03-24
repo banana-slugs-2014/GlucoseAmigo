@@ -1,5 +1,4 @@
 GlucoseAmigo::Application.routes.draw do
-  root to: 'accounts#index'
   get '/test', :to => 'accounts#test'
 
   # The priority is based upon order of creation:
