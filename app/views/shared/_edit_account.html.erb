@@ -6,32 +6,18 @@
 <% end %>
 
 <div class="edit_account">
-  <%= form_for account do |f| %>
+<%= form_for account do |f| %>
   <%= f.label :username %>
   <%= f.text_field :username %>
   <%= f.label :email %>
   <%= f.text_field :email %>
   <%= f.label :password %>
   <%= f.password_field :password %>
-    <%= f.submit 'Edit Account' %>
-<% end %>
-</div>
-
-<div class="edit_password">
-  <%= form_for account, url: accounts_changepassword_path do |f| %>
-  <%= hidden_field(:account, :id) %>
-  <%= f.label :new_password, "New Password" %>
-  <%= f.password_field :new_password %>
-  <%= f.label :password_confirmation , 'Password Confirmation'%>
-  <%= f.password_field :password_confirmation %>
-  <%= f.label :password, "Current Password" %>
-  <%= f.password_field :password %>
-  <%= f.submit 'change password' %>
 <% end %>
 </div>
 
 <script>
-var title = 'Add a diabetic'
+var title = 'Edit my account'
 var leftButton = {
   type: 'cancel',
   text: 'Cancel'
