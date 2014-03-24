@@ -3,6 +3,7 @@ class AccountsController < ApplicationController
     before_filter :redirect_if_logged_out,  :except => [:new, :create, :index]
 
   def index
+    redirect_to account_path(current_account) if logged_in?
   end
 
   def test
@@ -17,7 +18,7 @@ class AccountsController < ApplicationController
     @account = Account.find(params[:id])
     @diabetics = @account.diabetics
     @menu_options = ((@diabetics.map {|diabetic| "Diabetic: #{diabetic.name}--#{diabetic.id} "}) << "Account: #{@account.username}")
-    render  :partial => 'shared/dashboard',
+    render  'shared/dashboard',
             :locals => {
               account: @account,
               diabetics: @diabetics,
