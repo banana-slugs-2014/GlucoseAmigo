@@ -32,3 +32,20 @@ require 'faker'
   end
 end
 
+
+Account.create(
+                username: 'test',
+                email: 'test@test.com',
+                password: 'testtest',
+                password_confirmation: 'testtest'
+                )
+
+Account.last.diabetics.create(
+                              name: 'quentin',
+                              email: 'test@test.com',
+                              birthday: Date.parse('1986-10-15')
+                              )
+
+puts "Result : "
+puts "#{Account.count} accounts - Last : #{Account.last.username} - #{Account.last.email}"
+puts "#{Diabetic.count} diabetics - Last : #{Diabetic.last.name} - #{Diabetic.last.email} - born on #{Diabetic.last.birthday}"

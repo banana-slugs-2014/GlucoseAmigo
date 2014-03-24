@@ -1,4 +1,5 @@
 GlucoseAmigo::Application.routes.draw do
+  get '/test', :to => 'accounts#test'
 
   # The priority is based upon order of creation:
   # first created -> highest priority

@@ -2,6 +2,7 @@
 *.sassc
 .sass-cache
 capybara-*.html
+/public/assets/*
 .rspec
 .rvmrc
 /.bundle

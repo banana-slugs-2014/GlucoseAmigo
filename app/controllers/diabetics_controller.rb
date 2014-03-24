@@ -1,6 +1,6 @@
 class DiabeticsController < ApplicationController
 
-  before_filter :redirect_if_logged_out
+  before_filter :redirect_if_logged_out, except: [:new]
 
   def new
     account = current_account
@@ -13,15 +13,18 @@ class DiabeticsController < ApplicationController
     diabetic = Diabetic.new(params[:diabetic])
     diabetic.account = current_account
     if diabetic.valid?
+      ok = true
       diabetic.save
-
-      DiabeticMailer.welcome_email(diabetic).deliver
-
-      redirect_to new_diabetic_doctor_path(diabetic_id: diabetic.id)
+      #DiabeticMailer.welcome_email(diabetic).deliver
+      path = new_diabetic_doctor_path(diabetic_id: diabetic.id)
     else
-      # change here too
-      redirect_to new_account_diabetic_path(account_id: current_account.id)
+      path = new_account_diabetic_path(account_id: current_account.id)
     end
+    render :json => {
+                      ok: !!ok, # Saving kstrks
+                      path: path,
+                      alert: diabetic.errors.full_messages
+                    }
   end
 
 
@@ -37,9 +40,14 @@ class DiabeticsController < ApplicationController
     diabetic = Diabetic.find(params[:id])
     diabetic.update_attributes(params[:diabetic])
     if diabetic.valid?
+      ok = true
       diabetic.save
     end
-    redirect_to edit_account_diabetic_path(account_id: current_account.id, id: diabetic.id)
+    render :json => {
+                      ok: !!ok, # Saving kstrks
+                      path: edit_account_diabetic_path(current_account, diabetic),
+                      alert: diabetic.errors.full_messages
+                    }
   end
 
   def destroy

@@ -12,16 +12,17 @@ class SessionsController < ApplicationController
     account = Account.find_by_username(params[:username]).try(:authenticate, params[:password])
     if account
       session[:user_id] = account.id
-      redirect_to new_account_diabetic_path(account_id: current_account.id)
+      redirect_to account_path(account)
     else
-      flash[:error] = 'Invalid Login information'
-      redirect_to new_session_path
+      render :json => {
+                        ok: false,
+                        alert: 'Invalid Login information'
+                      }
     end
   end
 
   def destroy
     reset_session
-    flash[:message] = 'You are logged out.'
-    redirect_to new_session_path# home page
+    redirect_to root_path
   end
 end
