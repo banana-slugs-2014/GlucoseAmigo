@@ -32,6 +32,5 @@ class SessionsController < ApplicationController
                       alert: 'Invalid Login information',
                       target: '/'
                     }
-    #redirect_to new_session_path# home page
   end
 end
