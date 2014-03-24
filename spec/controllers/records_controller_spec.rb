@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'date'
 
 describe RecordsController do
   let!(:account) {create :account}
@@ -94,4 +95,16 @@ describe RecordsController do
       expect(response).to be_redirect
     end
   end
+
+  context '#index' do
+    it "downloads a pdf with the user's records" do
+      request.env["SERVER_PROTOCOL"] = "http"
+      get :index, diabetic_id: @chris.id, "format" => "pdf"
+      response.header.should have_content("#{@chris.name}_#{Date.today.to_s}")
+      response.header.should have_content("application/pdf")
+    end
+  end
+
+
+
 end
