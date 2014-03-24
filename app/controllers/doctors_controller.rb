@@ -46,9 +46,9 @@ class DoctorsController < ApplicationController
 		@doctor.update_attributes(params[:doctor])
 		path = diabetic_doctor_path(diabetic_id: @diabetic.id, id: @doctor.id) # to change to user path
 		render :json => {
-											ok: !!ok, # Saving kstrks
+											ok: true, # Saving kstrks
 											target: path,
-											alert: doctor.errors.full_messages
+											alert: @doctor.errors.full_messages
 										}
 	end
 

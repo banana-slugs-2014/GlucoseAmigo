@@ -29,7 +29,6 @@ describe DiabeticsController do
       it 'should add a diabetic when adding on the correct path' do
         expect{
           post :create, valid_params
-          expect(response).to be_redirect
         }.to change {Diabetic.count}.by 1
       end
     end
@@ -38,7 +37,6 @@ describe DiabeticsController do
       it 'should not add a diabetic when adding on the correct path' do
         expect{
           post :create, invalid_params
-          expect(response).to be_redirect
         }.to_not change(Diabetic, :count)
       end
     end
@@ -86,7 +84,6 @@ describe DiabeticsController do
       it 'should edit a Diabetic' do
         expect {
           put :update, valid_edit_params
-          expect(response).to be_redirect
         }.to change { Diabetic.find(diabetic.id).name }
       end
 
@@ -96,7 +93,6 @@ describe DiabeticsController do
       it 'should not edit a Diabetic' do
         expect {
           put :update, invalid_edit_params
-          expect(response).to be_redirect
         }.to_not change { Diabetic.find(diabetic.id).name }
       end
     end
@@ -111,7 +107,6 @@ describe DiabeticsController do
           account_id: @account.id,
           id: diabetic.id
         }
-        expect(response).to be_redirect
       }.to change { Diabetic.count }.by(-1)
     end
   end

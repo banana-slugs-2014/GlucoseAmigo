@@ -13,7 +13,6 @@ describe AccountsController do
                                    password: 'testing1',
                                    password_confirmation: 'testing1'}
       }.to change { Account.count }.by(1)
-      response.should redirect_to new_account_diabetic_path(Account.last)
     end
 
     it "doesn't create if attributes are invalid" do
@@ -21,7 +20,6 @@ describe AccountsController do
       expect {
         post :create, :account => {}
       }.to_not change { Account.count }.by(1)
-      response.should redirect_to new_account_path ### will redirect to diabetic dashboard
     end
 
   end
@@ -85,7 +83,6 @@ describe AccountsController do
                                                  'password_confirmation' => 'testing'}
       expect{
       account.reload.email}.to change{account.email}.to "test@test1.com"
-      response.should redirect_to accounts_path
     end
 
     it "doesn't update email if password is correct" do
@@ -96,7 +93,6 @@ describe AccountsController do
                                                  'password_confirmation' => 'testing1'}
       expect{
       account.reload.email}.to_not change{account.email}.to "test@test1.com"
-      response.should redirect_to edit_account_path(account.id)
     end
 
     it 'redirects if logged out' do
@@ -117,7 +113,6 @@ describe AccountsController do
           'password_confirmation' => 'newpassword',
         'password' => 'testing'}
       }.to change{ Account.find(account.id).authenticate('testing') }.to false
-      response.should redirect_to account_path(account.id)
     end
 
     it 'redirects if logged out' do
@@ -135,7 +130,6 @@ describe AccountsController do
           'password_confirmation' => 'newpassword',
         'password' => 'testing1'}
       }.to_not change{ Account.find(account.id).authenticate('testing') }.to false
-      response.should redirect_to edit_account_path(account.id)
     end
   end
 
