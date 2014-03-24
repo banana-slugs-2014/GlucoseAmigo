@@ -21,12 +21,11 @@ class Diabetic < ActiveRecord::Base
 
 
 
-  def get_data_for_graph
+  def get_data_for_graph(number_of_days=7)
    #could take an argument for a range of data
-    p self.records.length
     glucose_graph_data = {}
     weight_graph_data = {}
-    self.records.each do |record|
+    self.records.where(taken_at: (Time.now.midnight - number_of_days.day)..Time.now.midnight) do |record|
       glucose_graph_data[record.taken_at.to_s] = record.glucose.to_i if record.glucose.to_i
       weight_graph_data[record.taken_at.to_s] = record.weight.to_i if record.weight.to_i
     end
