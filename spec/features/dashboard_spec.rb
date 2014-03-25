@@ -68,6 +68,15 @@ describe "dashboard", js: true  do
 			#expect{click_on "Create"}.to change{@account.diabetics.count}.by(1)
 			expect(@account.diabetics.last.name).to eq(diabetic_attr[:name])
 		end
+
+		it "user can cancel the add a diabetic" do
+			find("option[value='Account: #{@account.username}']").click
+			click_on "Add a Diabetic"
+			click_on "Cancel"
+			expect(page.body).to have_content("Dashboard")
+		end
 	end
+
+
 
 end
