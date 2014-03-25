@@ -8,12 +8,11 @@ class AccountsController < ApplicationController
 
   def show
     @diabetics = current_account.diabetics
-    @menu_options = ((@diabetics.map {|diabetic| "Diabetic: #{diabetic.name}--#{diabetic.id} "}) << "Account: #{current_account.username}")
     render  'accounts/show',
             :locals => {
               account: current_account,
               diabetics: @diabetics,
-              menu_options: @menu_options
+              menu_options: format_menu(@diabetics, current_account)
             }
   end
 
