@@ -23,6 +23,10 @@ class SessionsController < ApplicationController
 
   def destroy
     reset_session
-    redirect_to root_path
+    render :json => {
+                      ok: true,
+                      path: root_path,
+                      alert: 'You have been logged out'
+                     }
   end
 end
