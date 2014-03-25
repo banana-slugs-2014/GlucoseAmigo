@@ -1,14 +1,4 @@
-<%= form_for [diabetic, preference] do |f| %>
-  <%= f.label :reminders %><br>
-  <%= f.label :reminders, "Yes", :value => "true" %>
-  <%= f.radio_button :reminders, true, :checked => true %>
-  <%= f.label :reminders, "No", :value => "false" %>
-  <%= f.radio_button :reminders, false %><br><br>
-  <%= f.label :frequency %><br>
-  <%= f.select :frequency, (1..3) %><br><br>
-  <%= submit_tag("Save Preferences") %>
-<% end %>
-
+<%= render :partial => 'preferences/form', :locals => { diabetic: diabetic, preference: preference } %>
 <script>
 var title = "Edit <%= diabetic.name %>'s preferences"
 var leftButton = {
@@ -17,6 +7,6 @@ var leftButton = {
 }
 var rightButton = {
   type: 'submit',
-  text: 'Create'
+  text: 'Save'
 }
 </script>
