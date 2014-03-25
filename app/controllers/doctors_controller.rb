@@ -22,7 +22,7 @@ class DoctorsController < ApplicationController
 
 	def create
 		@doctor = Doctor.find_or_initialize_by_name_and_fax(params[:doctor])
-		@doctor.diabetic = @diabetic
+		@diabetic.doctor = @doctor
 		if @doctor.save
 			ok = true
 			path = new_diabetic_preference_path(diabetic_id: @diabetic.id)
