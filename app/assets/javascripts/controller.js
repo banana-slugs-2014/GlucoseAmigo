@@ -14,7 +14,7 @@ Controller.prototype = {
         Ajax.logout(this.user.uId, this.loadNextPage.bind(this));
     },
     addGraph: function(data) {
-        Ajax.get(data.url, console.log(graph))
+        Ajax.get(data.url, graph)
     },
     loadNextPage: function(response) {
         Ajax.get(response.target, this.view.newPage.bind(this.view));

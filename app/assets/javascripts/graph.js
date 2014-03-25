@@ -42,6 +42,7 @@ function graph(response) {
                 }
 
             }],
+
         }, { // Secondary yAxis
             title: {
                 text: 'Weight',
