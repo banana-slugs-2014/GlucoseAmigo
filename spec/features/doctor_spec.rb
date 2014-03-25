@@ -10,7 +10,7 @@ describe "doctors" do
 	let!(:diabetic) { create :diabetic }
 
 	before(:each) do
-		@account = create :account
+		@account = create :account # use let
     visit new_session_path
     fill_in "Username", with: 'test'
     fill_in "Password", with: 'testing'
@@ -21,7 +21,7 @@ describe "doctors" do
   describe "User can see base page" do
     xit "by visting the doctors page" do
       visit diabetic_doctors_path(diabetic_id: diabetic.id)
-      expect(page.status_code).to eq(200)
+      expect(page.status_code).to eq(200) # you should test this from the user's prespective
     end
   end
 

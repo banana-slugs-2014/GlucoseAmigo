@@ -16,11 +16,11 @@ class Diabetic < ActiveRecord::Base
 
   def age
     age = Date.today.year - self.birthday.year
+    # this needs a comment to explain the logic
     age -= 1 if Date.today < self.birthday.year + age.years
   end
 
-
-
+  # this is a very lengthy method. I think we can move this to it's own library/model or a presenter. This is not tested
   def get_data_for_graph(number_of_days=7)
    #could take an argument for a range of data
     glucose_graph_data = {}
@@ -31,7 +31,6 @@ class Diabetic < ActiveRecord::Base
     end
     [glucose_graph_data, weight_graph_data]
   end
-
 
   private
 

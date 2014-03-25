@@ -13,6 +13,7 @@ class DoctorsController < ApplicationController
 	def new
 		@doctor = Doctor.new
 		@title = "Create a doctor"
+		# shared is becoming a junk drawer
 		render :partial => 'shared/doctor', locals: {
 																									diabetic: @diabetic,
 																									doctor: @doctor,
@@ -21,11 +22,11 @@ class DoctorsController < ApplicationController
 	end
 
 	def create
-		@doctor = Doctor.find_or_create_by_name_and_fax(params[:doctor])
-		if @doctor.valid?
+		@doctor = Doctor.find_or_initialize_by_name_and_fax(params[:doctor])
+		@doctor.diabetic = @diabetic
+		if @doctor.save
 			ok = true
-			@doctor.diabetics << @diabetic
-			path = new_diabetic_preference_path(diabetic_id: @diabetic.id)
+			path = new_diabetic_preference_path(@diabetic)
 		end
 		render :json => {
 											ok: !!ok, # Saving kstrks

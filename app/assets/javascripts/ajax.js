@@ -10,7 +10,7 @@ var Ajax = (function(){
   return {
     testGet: function(reaction){
       var data = {
-        url: '/test',
+        url: '/test', //don't commit test/debugging code to master
       }
       _request(data,reaction);
     },

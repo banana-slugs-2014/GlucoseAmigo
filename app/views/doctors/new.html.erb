@@ -3,7 +3,7 @@
   <div class="heading">
     <h1>Enter your Doctor's info</h1>
   </div>
-
+  <!-- move this form into a partial and use it in new and edit -->
   <%= form_for [@diabetic, @doctor] do |f| %>
     <%= f.label :name %><br>
     <%= f.text_field :name, :required => true %><br><br>

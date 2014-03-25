@@ -11,9 +11,10 @@ class SessionsController < ApplicationController
   def create
     account = Account.find_by_username(params[:username]).try(:authenticate, params[:password])
     if account
-      session[:user_id] = account.id
+      login account
       redirect_to account_path(account)
     else
+      # why not use an error status to force it into the fail callback?
       render :json => {
                         ok: false,
                         alert: 'Invalid Login information'

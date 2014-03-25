@@ -1,20 +1,11 @@
 class RecordsController < ApplicationController
-
-  before_filter :redirect_if_logged_out
-
-
-  before_filter do
-    @diabetic = Diabetic.find(params[:diabetic_id])
-  end
-
+  before_filter :redirect_if_logged_out, :load_diabetic
 
   def index
     @records = @diabetic.records
     @data = @diabetic.get_data_for_graph
     respond_to do |format|
-      format.html do
-        return @data
-      end
+      format.html
       format.pdf do
         pdf = RecordDataPdf.new(@data, @diabetic)
         send_data pdf.render, filename: "#{@diabetic.name}_#{Time.now.strftime("%Y-%m-%d")}", type: "application/pdf"
@@ -24,6 +15,7 @@ class RecordsController < ApplicationController
 
   def show
     @record = Record.find(params[:id])
+    # why is record and new_record in shared folder? and why are they called that?
     render partial: "shared/record", locals: {record: @record, diabetic: @diabetic}
   end
 
@@ -34,12 +26,10 @@ class RecordsController < ApplicationController
   end
 
   def create
-    @record = Record.create(params[:record])
+    @record  = @diabetic.records.build params[:record]
     if @record.save
-      @diabetic.records << @record
       redirect_to diabetic_records_path(@diabetic)
     else
-      flash[:notice] = "Please try again"
       render partial: 'shared/new_record', locals: {record: @record, diabetic: @diabetic}
     end
   end
@@ -52,19 +42,22 @@ class RecordsController < ApplicationController
   def update
     @record = Record.find(params[:id])
     if @record.update_attributes(params[:record])
-      @record.save
       redirect_to diabetic_records_path(@diabetic)
-
     else
       redirect_to edit_diabetic_record_path(@diabetic, @record)
-    end #sad path
+    end
 
   end
 
   def destroy
+    # this is repeated code, move it to a filter
     record = Record.find(params[:id])
     record.destroy
     redirect_to diabetic_record_path(params[:diabetic_id])
   end
 
+  private
+  def load_diabetic
+    @diabetic = Diabetic.find(params[:diabetic_id])
+  end
 end

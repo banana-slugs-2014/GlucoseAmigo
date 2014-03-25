@@ -1,6 +1,7 @@
 class PreferencesController < ApplicationController
 
   def new
+    # move this to a before_filter
     @diabetic = Diabetic.find(params[:diabetic_id])
     #(redirect_to edit_diabetic_preference_path(@diabetic.id, @diabetic.preference)) if @diabetic.preference
     @preference = Preference.new

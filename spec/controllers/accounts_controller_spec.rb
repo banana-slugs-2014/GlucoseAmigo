@@ -6,7 +6,7 @@ describe AccountsController do
 
   context '#create' do
     it "creates with valid attributes" do
-      request.env["HTTP_REFERER"] = new_session_path
+      request.env["HTTP_REFERER"] = new_session_path # you're doing this so redirect_to :back works, we don't need it anymore, just redirect to root_path
       expect {
         post :create, :account => {username: 'test1',
                                    email: 'test@test1.com',

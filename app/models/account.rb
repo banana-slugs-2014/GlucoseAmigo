@@ -5,6 +5,7 @@ class Account < ActiveRecord::Base
   has_secure_password
   attr_accessible :username, :email, :password, :password_confirmation
 
+  # there is a way around this.
   after_validation { self.errors.messages.delete(:password_digest) }
 
   validates_uniqueness_of :email
@@ -17,10 +18,13 @@ class Account < ActiveRecord::Base
                           "#{attributes[:value]} can't be blank."
                         }
 
+
+  # this is authenticate not authorize, this method is unnecessary. use authenticate in the controller
   def authorized?(params)
     !!self.authenticate(params[:account][:password])
   end
 
+  # we need to turn this into a model/active record validation, I can help you with that.
   def confirmed?(params)
     params[:account][:password_confirmation] == params[:account][:new_password]
   end

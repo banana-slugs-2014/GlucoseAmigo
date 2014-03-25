@@ -29,6 +29,7 @@ class AccountsController < ApplicationController
     end
   end
 
+  # this smells bad
   def menu
     choices = params[:menu_choice].split(':')
     @account = Account.find(params[:account_id])
@@ -49,10 +50,10 @@ class AccountsController < ApplicationController
   end
 
   def create
-    account = Account.create(params['account'])
-    if account.valid?
+    account = Account.new(params[:account])
+    if account.save
       ok = true
-      session[:user_id] = account.id
+      login account
       path = new_account_diabetic_path(account.id)
     else
       path = new_account_path

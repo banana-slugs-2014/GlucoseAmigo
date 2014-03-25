@@ -4,6 +4,7 @@ require 'date'
 describe RecordsController do
   let!(:account) {create :account}
   before :each do
+      # use let, it's preferred
       @chris = Diabetic.create({name:'chris', email:'chris@dbc.com', birthday: Date.today-20000 }, :without_protection => true)
       @record1 = Record.create(glucose: '100', weight: '175', taken_at: (Time.now-500))
       @chris.records << @record1
