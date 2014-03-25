@@ -53,10 +53,13 @@
     color: white;
   }
 
-
   .signup {
+    display: block;
+    border: none;
     border-radius: 5px;
     background-color: #F56060;
+    color: white;
+    font-size: 170%;
     width: 25%;
     height: 7%;
     font-family: inherit;
@@ -65,13 +68,6 @@
     text-align: center;
     padding-top: 7px;
     padding-bottom: 10px;
-  }
-
-  .signup a {
-    font-family: inherit;
-    color: white;
-    font-size: 170%;
-    text-decoration: none;
   }
 
   #username, #password {
@@ -92,6 +88,35 @@
 
   #none-button {
     visibility: hidden;
+  }
+
+  /* NAV BAR */
+
+  #navbar {
+    position: fixed;
+    bottom: 0;
+    height: 12%;
+    width: 100%;
+  }
+
+  #navbar button {
+    border: none;
+    height: 90%;
+    width: 45%;
+    color: white;
+    border-radius: 5px;
+    font-size: 145%;
+    margin: 0 2.5%;
+    margin-bottom: 10%;
+  }
+
+  #logout-button, #cancel-button {
+    background-color: #F56060;
+  }
+
+
+  #help-button, #submit-button {
+    background: #4DB84D;
   }
 
 
@@ -141,10 +166,13 @@
     color: white;
   }
 
-
   .signup {
+    display: block;
+    border: none;
     border-radius: 5px;
     background-color: #F56060;
+    color: white;
+    font-size: 170%;
     width: 25%;
     height: 7%;
     font-family: inherit;
@@ -153,13 +181,6 @@
     text-align: center;
     padding-top: 7px;
     padding-bottom: 10px;
-  }
-
-  .signup a {
-    font-family: inherit;
-    color: white;
-    font-size: 170%;
-    text-decoration: none;
   }
 
   #username, #password {
@@ -173,9 +194,36 @@
     margin: 8px auto;
   }
 
-
   .account-title {
     text-align: center;
+  }
+
+  /* NAV BAR */
+
+  #navbar {
+    position: fixed;
+    bottom: 0;
+    height: 12%;
+    width: 100%;
+  }
+
+  #navbar button {
+    border: none;
+    height: 90%;
+    width: 45%;
+    color: white;
+    border-radius: 5px;
+    font-size: 145%;
+    margin: 0 2.5%;
+    margin-bottom: 10%;
+  }
+
+  #logout-button, #cancel-button {
+    background-color: #F56060;
+  }
+
+  #help-button, #submit-button {
+    background: #4DB84D;
   }
 
 
@@ -229,10 +277,13 @@
     color: white;
   }
 
-
   .signup {
+    display: block;
+    border: none;
     border-radius: 5px;
     background-color: #F56060;
+    color: white;
+    font-size: 170%;
     width: 35%;
     height: 7%;
     font-family: inherit;
@@ -241,13 +292,6 @@
     text-align: center;
     padding-top: 7px;
     padding-bottom: 10px;
-  }
-
-  .signup a {
-    font-family: inherit;
-    color: white;
-    font-size: 170%;
-    text-decoration: none;
   }
 
   #username, #password {
@@ -264,6 +308,35 @@
 
   .account-title {
     text-align: center;
+  }
+
+  /* NAVBAR */
+
+  #navbar {
+    position: fixed;
+    bottom: 0;
+    height: 12%;
+    width: 100%;
+  }
+
+  #navbar button {
+    border: none;
+    height: 90%;
+    width: 45%;
+    color: white;
+    border-radius: 5px;
+    font-size: 145%;
+    margin: 0 2.5%;
+    margin-bottom: 10%;
+  }
+
+  #logout-button, #cancel-button {
+    background-color: #F56060;
+  }
+
+
+  #help-button, #submit-button {
+    background: #4DB84D;
   }
 
 
@@ -308,7 +381,7 @@
     background-color: #5959FF;
     display: block;
     width: 80%;
-    height: 7%;
+    height: 10%;
     margin: auto;
     margin-top: 15%;
     padding-top: 7px;
@@ -319,8 +392,12 @@
 
 
   .signup {
+    display: block;
+    border: none;
     border-radius: 5px;
     background-color: #F56060;
+    color: white;
+    font-size: 170%;
     width: 80%;
     height: 7%;
     font-family: inherit;
@@ -331,12 +408,6 @@
     padding-bottom: 10px;
   }
 
-  .signup a {
-    font-family: inherit;
-    color: white;
-    font-size: 170%;
-    text-decoration: none;
-  }
 
   #username, #password {
     height: 40px;
@@ -370,6 +441,9 @@
     position: relative;
   }
 
+
+  /* NAVBAR */
+
   #navbar {
     position: fixed;
     bottom: 0;
@@ -388,12 +462,14 @@
     margin-bottom: 10%;
   }
 
-  #logout-button {
+  #logout-button, #cancel-button {
     background-color: #F56060;
   }
 
 
-  #help-button {
+  #help-button, #submit-button {
     background: #4DB84D;
   }
+
+
 }
