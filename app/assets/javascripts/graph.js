@@ -1,6 +1,6 @@
 function graph(response) {
 
-    $('#container').highcharts({
+    $('#graph').highcharts({
         chart: {
             zoomType: 'xy'
         },
