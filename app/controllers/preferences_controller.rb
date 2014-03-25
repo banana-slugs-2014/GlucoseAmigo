@@ -1,8 +1,8 @@
 class PreferencesController < ApplicationController
+  before_filter :load_diabetic
+  before_filter :load_preference, :except => [ :new , :create ]
 
   def new
-    @diabetic = Diabetic.find(params[:diabetic_id])
-    #(redirect_to edit_diabetic_preference_path(@diabetic.id, @diabetic.preference)) if @diabetic.preference
     @preference = Preference.new
     render :partial => 'shared/new_preference', locals: {
                                                           title: "Create a doctor",
@@ -12,23 +12,15 @@ class PreferencesController < ApplicationController
   end
 
   def create
-    @diabetic = Diabetic.find(params[:diabetic_id])
     if @diabetic.preference
       @diabetic.preference.update_attributes(params[:preference])
     else
-      preference = Preference.create(params[:preference])
-      @diabetic.preference = preference
+      @diabetic.preference = Preference.create(params[:preference])
     end
     redirect_to account_path(current_account)
-    # render :json => {
-    #     ok: true,
-    #     path: diabetic_preference_path(@diabetic),
-    #     alert: @diabetic.preference.errors.full_message
-    #   }
   end
 
   def show
-    @diabetic = Diabetic.find(params[:diabetic_id])
     @preference = Preference.find(params[:id])
     render :partial => 'shared/show_preference', locals: {
                           diabetic: @diabetic,
@@ -37,8 +29,6 @@ class PreferencesController < ApplicationController
   end
 
   def edit
-    @diabetic = Diabetic.find(params[:diabetic_id])
-    @preference = Preference.find(params[:id])
     render :partial => 'shared/new_preference', locals: {
                                                           title: "Modify a doctor",
                                                           diabetic: @diabetic,
@@ -47,7 +37,6 @@ class PreferencesController < ApplicationController
   end
 
   def update
-    @diabetic = Diabetic.find(params[:diabetic_id])
     if @diabetic.preference
       @diabetic.preference.update_attributes(params[:preference])
     else
@@ -58,6 +47,16 @@ class PreferencesController < ApplicationController
         path: diabetic_preference_path(@diabetic, @diabetic.preference),
         alert: @diabetic.preference.errors.full_message
       }
+  end
+
+  private
+  
+  def load_diabetic
+    @diabetic = Diabetic.find(params[:diabetic_id])
+  end
+
+  def load_preference
+    @preference = @diabetic.preference
   end
 
 end
