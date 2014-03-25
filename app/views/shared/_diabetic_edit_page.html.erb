@@ -1,6 +1,6 @@
-<%= link_to 'Edit Preferences', edit_diabetic_preference_path(diabetic, diabetic.preference) %>
-<%= link_to 'Edit User Info',  edit_account_diabetic_path(account, diabetic) %>
-<%= link_to 'Edit Doctor Info', edit_diabetic_doctor_path(diabetic, diabetic.doctor) %>
+<%= button_tag 'Edit Preferences', data: { type:'edit-diabetic-button', url: edit_diabetic_preference_path(diabetic, diabetic.preference) }, remote: true %>
+<%= button_tag 'Edit User Info', data: { type:'edit-diabetic-button', url: edit_account_diabetic_path(account, diabetic) }, remote: true %>
+<%= button_tag 'Edit Doctor Info', data: { type:'edit-diabetic-button', url: edit_diabetic_doctor_path(diabetic, diabetic.doctor) }, remote: true %>
 <script>
 var title = "Edit <%= diabetic.name %>'s info"
 var leftButton = {

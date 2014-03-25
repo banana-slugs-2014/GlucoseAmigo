@@ -18,7 +18,10 @@ var Binder = (function(Ajax){
         break;
       case 'add-record':
         controller.loadAddRecord();
-        break
+        break;
+      case 'edit-diabetic-button':
+        controller.loadNextPageFromData( $(this).data() );
+        break;
       }
     })
   }
