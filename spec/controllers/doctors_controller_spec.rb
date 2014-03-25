@@ -15,12 +15,12 @@ describe DoctorsController do
 	end
 
   context "#index" do
-    it "should successfully render a page" do
+    xit "should successfully render a page" do
       get :index, diabetic_id: diabetic.id
       expect(response).to be_success
     end
 
-    it 'redirects if logged_out' do
+    xit 'redirects if logged_out' do
       request.env["HTTP_REFERER"] = new_session_path
       request.session.delete(:account_id)
       get :index, diabetic_id: diabetic.id
