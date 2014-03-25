@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
 
   def new
     @account = Account.new
-    render :partial => 'shared/login', :locals => { :account => @account }
+    render :partial => 'sessions/new', :locals => { :account => @account }
   end
 
   def create
