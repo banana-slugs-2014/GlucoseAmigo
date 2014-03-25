@@ -1,5 +1,5 @@
 class AccountsController < ApplicationController
-    before_filter :redirect_if_logged_in,  :only => [:new]
+    before_filter :redirect_if_logged_in,  :only => [:new, :index]
     before_filter :redirect_if_logged_out,  :except => [:new, :create, :index]
     before_filter :redirect_unless_authorized, :only => [:show, :menu]
 
