@@ -55,7 +55,6 @@ class AccountsController < ApplicationController
         path = account_path(current_account)
       end
     end
-
     render :json => {
                       ok: !!ok,
                       path: path,
@@ -75,9 +74,6 @@ class AccountsController < ApplicationController
   end
 
   private
-  def redirect_unless_authenticated
-
-  end
 
   def redirect_unless_authorized
     redirect_to root_path unless current_account.id == params[:id].to_i
