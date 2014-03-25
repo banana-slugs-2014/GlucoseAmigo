@@ -44,26 +44,9 @@ class DiabeticsController < ApplicationController
     redirect_to new_account_diabetic_path(current_account)
   end
 
-  def get_graph_data
-    @data = @diabetic.get_data_for_graph
-    @data.to_json
-  end
 
-  def show
-    # diabetic = Diabetic.find(params[:id])
-    diabetic = Diabetic.find(1)
-    glucose_data = diabetic.get_data_for_graph.first
-    weight_data = diabetic.get_data_for_graph.last
-    glucose = glucose_data.values
-    days = glucose_data.keys
-    weight = weight_data.values
-    render :json => {
-      diabetic: diabetic,
-      days: days,
-      glucose: glucose,
-      weight: weight
-    }
-  end
+
+
 
   private
   def load_diabetic
