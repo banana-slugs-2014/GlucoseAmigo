@@ -1,8 +1,25 @@
 <% if diabetic %>
   <%= button_tag "Add a record for: #{diabetic.name}", data: { type: 'dashboard-button', url: new_diabetic_record_path(diabetic) }, remote: true %><br>
   <%= button_tag "View records for #{diabetic.name}", data: { type: 'dashboard-button', url: diabetic_records_path(diabetic) }, remote: true %><br>
+  <%= button_tag "View Graph for #{diabetic.name}", data: { type: 'graph-button', url: show_graph_path(account,diabetic) }, remote: true %><br>
   <%= button_tag "Edit #{diabetic.name}'s info", data: { type: 'dashboard-button', url: diabetic_dashboard_path(diabetic.id) }, remote: true %><br>
 <% else %>
   <%= button_tag 'Edit the account', data: { type: 'dashboard-button', url: edit_account_path(account) }, remote: true %><br>
 <% end %>
 <%= button_tag 'Add a Diabetic', data: { type: 'dashboard-button', url: new_account_diabetic_path(account) }, remote: true %><br>
+
+
+
+<!-- <div id="graph-container" style="width:310px; height:400px; background: blue">
+<div id="graph" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+</div> -->
+<div id="graph-container" style="width:250px; height:500px">
+<div id="graph" style="width: 100%; height: 100%; margin: 0 auto;-webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);"></div>
+</div>
+<!-- <div id="graph-container" style="width:310px; height:400px; background: blue">
+<div id="graph" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+</div> -->
