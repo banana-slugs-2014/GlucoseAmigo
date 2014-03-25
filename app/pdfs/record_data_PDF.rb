@@ -5,9 +5,11 @@ class RecordDataPdf
     @weight_data = data[1]
     @glucose_data = data[0]
     @diabetic = diabetic
-    rainbow
+    #rainbow
     logo
+    @pdf.text '                     '
     @pdf.text "Data for #{@diabetic.name}"
+    @pdf.text '                     '
     weight_graph
     glucose_graph
   end
@@ -18,27 +20,47 @@ class RecordDataPdf
 
   private
 
+  def background
+    @pdf.fill_color "FFFF99"
+    @pdf.fill_rectangle([-50,850], 1150, 900)
+    @pdf.fill_color "000000"
+  end
+
   def weight_graph
-    @pdf.text "Weight data:"
+    @pdf.fill_color "000000"
     @weight_data = Hash[@weight_data.sort]
+    x = 1
     @weight_data.each do |date, reading|
-      @pdf.text "#{date}: #{reading}"
+      @pdf.table([["WEIGHT"],["Time of reading", "Reading"]]) if x == 1
+      @pdf.table([["#{date}", "#{reading}"]])
+      x += 1
     end
+    @pdf.text '                      '
   end
 
   def glucose_graph
-    @pdf.text "Glucose data:"
+    @pdf.fill_color "000000"
     @glucose_data = Hash[@glucose_data.sort]
+    x = 1
     @glucose_data.each do |date, reading|
-      @pdf.text "#{date}: #{reading}"
+      @pdf.table([["GLUCOSE"],["Time of reading", "Reading"]]) if x == 1
+      @pdf.table([["#{date}:", "#{reading}"]])
+      x += 1
     end
+    @pdf.text '                     '
   end
 
 
   def logo
     @pdf.stroke_horizontal_rule
     @pdf.pad(20) { @pdf.text "Tracking Data brought to you by GlucoseAmigo", color: 'ff0000' }
+    @pdf.stroke_horizontal_rule
+
+    #filename = "#{Rails.root}/small_logo.png"
+    #@pdf.image filename
   end
+
+
 
   def rainbow
     @pdf.save_graphics_state do
