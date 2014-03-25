@@ -5,14 +5,13 @@ class DiabeticsController < ApplicationController
 
   def new
     account = current_account
-    render :partial => "shared/new_diabetic", :locals => {
+    render :partial => "diabetics/new", :locals => {
                                             :diabetic => account.diabetics.new,
                                             :account => account }
   end
 
   def create
-    diabetic = Diabetic.new(params[:diabetic])
-    diabetic.account = current_account
+    diabetic = current_account.diabetics.build(params[:diabetic])
     if diabetic.save
       ok = true
       #DiabeticMailer.welcome_email(diabetic).deliver
@@ -28,14 +27,14 @@ class DiabeticsController < ApplicationController
   end
 
   def edit_menu
-    render :partial => "shared/diabetic_edit_page", :locals => {
+    render :partial => "dashboard/diabetic", :locals => {
                                                         diabetic: @diabetic,
                                                         account: current_account
                                                       }
   end
 
   def edit
-    render :partial => "shared/edit_diabetic", :locals => {
+    render :partial => "diabetics/edit", :locals => {
                                                         diabetic: @diabetic,
                                                         account: @diabetic.account
                                                       }
@@ -49,11 +48,11 @@ class DiabeticsController < ApplicationController
 
   def destroy
     @diabetic.destroy
-    redirect_to new_account_diabetic_path(account_id: current_account.id)
+    redirect_to new_account_diabetic_path(current_account)
   end
 
   def get_graph_data
-    @data = @diabetic.get_data_for_graph()
+    @data = @diabetic.get_data_for_graph
     @data.to_json
   end
 
