@@ -2,7 +2,7 @@
 <br><br>
 Or Login!
 <%= form_tag sessions_path, id: 'account-login' do %>
-    <%= text_field_tag :username, '', :placeholder => "Username" %>
+    <%= text_field_tag :email, '', :placeholder => "Email" %>
     <%= password_field_tag :password,'', :placeholder => "Password" %>
 <% end %>
 
@@ -17,3 +17,4 @@ var rightButton = {
   text: 'Log In'
 }
 </script>
+
