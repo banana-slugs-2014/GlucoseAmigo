@@ -63,8 +63,8 @@ class AccountsController < ApplicationController
   end
 
   def create
-    account = Account.create(params['account'])
-    if account.valid?
+    account = Account.new(params['account'])
+    if account.save
       ok = true
       login account
       path = new_account_diabetic_path(account.id)
