@@ -521,6 +521,7 @@
 
   #menu_choice {
     position: relative;
+    margin-bottom: 25%;
   }
 
   #submenu {
@@ -529,7 +530,21 @@
     margin: 0 auto;
   }
 
-
+  button {
+    display: block;
+    border: none;
+    border-radius: 5px;
+    background-color: #F56060;
+    color: white;
+    font-size: 170%;
+    width: 100%;
+    height: 10%;
+    margin: 0 auto;
+    margin-top: 2%;
+    text-align: center;
+    padding-top: 7px;
+    padding-bottom: 10px;
+  }
 
 
   /* NAVBAR */
