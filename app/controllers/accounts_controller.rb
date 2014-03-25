@@ -6,17 +6,10 @@ class AccountsController < ApplicationController
   def index
   end
 
-  def test
-    render  :partial => 'shared/sign_up',
-            :locals => {
-              account: Account.new
-            }
-  end
-
   def show
     @diabetics = current_account.diabetics
     @menu_options = ((@diabetics.map {|diabetic| "Diabetic: #{diabetic.name}--#{diabetic.id} "}) << "Account: #{current_account.username}")
-    render  'shared/dashboard',
+    render  'accounts/show',
             :locals => {
               account: current_account,
               diabetics: @diabetics,
