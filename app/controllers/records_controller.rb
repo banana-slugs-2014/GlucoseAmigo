@@ -9,7 +9,7 @@ class RecordsController < ApplicationController
         render :partial => 'records/index', locals: { records: @diabetic.records, diabetic: @diabetic }
       end
       format.pdf do
-        @data = @diabetic.get_data_for_graph
+        @data = @diabetic.get_data_for_pdf
         pdf = RecordDataPdf.new(@data, @diabetic)
         send_data pdf.render, filename: "#{@diabetic.name}_#{Time.now.strftime("%Y-%m-%d")}", type: "application/pdf"
       end
