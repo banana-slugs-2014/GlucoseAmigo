@@ -23,7 +23,7 @@ describe SessionsController do
 
       it 'redirects if logged_in' do
         request.env["HTTP_REFERER"] = new_session_path
-        session[:user_id] = account.id
+        session[:account_id] = account.id
         get :new
         expect(response).to be_redirect
       end
@@ -36,7 +36,7 @@ describe SessionsController do
             username: account.username,
             password: account.password
           }
-        }.to change {request.session[:user_id]}.to account.id
+        }.to change {request.session[:account_id]}.to account.id
       end
     end
     context 'with the wrong password' do
@@ -46,17 +46,17 @@ describe SessionsController do
             username: account.username,
             password: 'not the password'
           }
-        }.to_not change {request.session[:user_id]}
+        }.to_not change {request.session[:account_id]}
       end
     end
   end
 
   describe 'logging out' do
     it 'should log out when getting on the destroy route' do
-      request.session[:user_id] = account.id
+      request.session[:account_id] = account.id
       expect {
         delete :destroy, { id: account.id }
-      }.to change {request.session[:user_id]}
+      }.to change {request.session[:account_id]}
     end
   end
 end
