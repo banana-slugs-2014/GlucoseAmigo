@@ -40,7 +40,7 @@ class PreferencesController < ApplicationController
     render :json => {
         ok: true,
         path: diabetic_preference_path(@diabetic, @diabetic.preference),
-        alert: @diabetic.preference.errors.full_message
+        alert: @diabetic.preference.errors.full_messages
       }
   end
 
