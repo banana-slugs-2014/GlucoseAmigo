@@ -3,6 +3,8 @@ rvm:
   - "1.9.3"
 install: bundle install --without development --deployment
 before_script:
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
   - echo "GlucoseAmigo::Application.config.secret_token = '$(bundle exec rake secret)'" >> config/initializers/secret_token.rb
   - cp config/database.travis.yml config/database.yml
   - psql -c 'create database helpme_test' -U postgres
