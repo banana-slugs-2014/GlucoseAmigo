@@ -1,6 +1,6 @@
 class PreferencesController < ApplicationController
   before_filter :load_diabetic
-  before_filter :load_preference, :except => [ :new , :create ]
+  before_filter :load_preference, :except => [ :new ]
 
   def new
     @preference = Preference.new
@@ -12,16 +12,15 @@ class PreferencesController < ApplicationController
   end
 
   def create
-    if @diabetic.preference
-      @diabetic.preference.update_attributes(params[:preference])
+    if @preference
+      @preference.update_attributes(params[:preference])
     else
-      @diabetic.preference = Preference.create(params[:preference])
+      @diabetic.preference = Preference.create(params[:preference]) # Default values and select boxes prevent from being bad.
     end
     redirect_to account_path(current_account)
   end
 
   def show
-    @preference = Preference.find(params[:id])
     render :partial => 'shared/show_preference', locals: {
                           diabetic: @diabetic,
                           preference: @preference
@@ -37,11 +36,7 @@ class PreferencesController < ApplicationController
   end
 
   def update
-    if @diabetic.preference
-      @diabetic.preference.update_attributes(params[:preference])
-    else
-      @diabetic.preference.create(params[:preference])
-    end
+    @preference.update_attributes(params[:preference])
     render :json => {
         ok: true,
         path: diabetic_preference_path(@diabetic, @diabetic.preference),
@@ -50,7 +45,7 @@ class PreferencesController < ApplicationController
   end
 
   private
-  
+
   def load_diabetic
     @diabetic = Diabetic.find(params[:diabetic_id])
   end
