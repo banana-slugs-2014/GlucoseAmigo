@@ -1,3 +1,8 @@
+#content, .container {
+  max-width: 900px;
+  margin: auto;
+}
+
 /*  GRID OF EIGHT   ============================================================================= */
 @media only screen and (max-width: 800px) {
 

@@ -13,70 +13,17 @@
  */
 
 
-/*body {
-  padding: 0 1%;
-  background: white;
-}*/
-
-/*.container {
-  width: 100%;
-  margin: 0 auto;
-  border: 2px solid red;
-  background-color: blue;
-}
-
-.topmenu {
-  width: 95%;
-}
-
-.bottommenu {
-  width: 90%
-}
-
-.content {
-  width: 90%;
-}
-
-
-.footer {
-  width: 95%;
-  clear: both;
-}
-
-<<<<<<< HEAD
-#none-button{
-  visibility: hidden;
-}
-=======
-.sign_up {
-  width: 320px;
-  margin: 0 auto;
-  background: orange;
-}
-
-#account_username,
-#account_email,
-#account_password,
-#account_password_confirmation {
-  width: 300px;
-  height: 40px;
-  font-size: 22px;
-  margin: 8px auto;
-}*/
-
-
-
   /* CREATE ACCOUNT */
 
   body {
     background-size: 100%;
+    /*background: #99D6FF url("blurry-colors.jpg");*/
     background: #99D6FF url("blurry-blue-glass.jpg");
   }
 
-  .content {
+  #content {
     width: 75%;
-    max-width: 800px;
-    height: 80%;
+    max-width: 1000px;
   }
 
   #logo {
@@ -114,7 +61,7 @@
     height: 7%;
     font-family: inherit;
     margin: auto;
-    margin-top: 2%;
+    margin-top: 1%;
     text-align: center;
     padding-top: 7px;
     padding-bottom: 10px;
@@ -143,6 +90,9 @@
     text-align: center;
   }
 
+  #none-button {
+    visibility: hidden;
+  }
 
 
 /************************************************
@@ -155,10 +105,11 @@
 
   body {
     background-size: auto;
+    /*background: #99D6FF url("blurry-colors-medium.jpg");*/
     background: #99D6FF url("blurry-blue-glass-medium.jpg");
   }
 
-  .content {
+  #content {
     width: 99%;
     height: 100%;
   }
@@ -231,6 +182,93 @@
 }
 
 
+/************************************************
+                        PHABLET
+*************************************************/
+
+
+@media only screen and (max-width: 675px) {
+
+/* CREATE ACCOUNT */
+
+  body {
+    background-size: auto;
+    /*background: #99D6FF url("blurry-colors-medium.jpg");*/
+    background: #99D6FF url("blurry-blue-glass-medium.jpg");
+  }
+
+  #content {
+    width: 99%;
+    height: 100%;
+  }
+
+  #logo {
+    width: 30%;
+    height: 26.4%;
+    margin: auto;
+    margin-top: 10%;
+  }
+
+  #logo img {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .submit {
+    border: none;
+    border-radius: 5px;
+    background-color: #5959FF;
+    display: block;
+    width: 35%;
+    height: 7%;
+    margin: 0 auto;
+    margin-top: 8%;
+    padding-top: 7px;
+    padding-bottom: 10px;
+    font-size: 170%;
+    color: white;
+  }
+
+
+  .signup {
+    border-radius: 5px;
+    background-color: #F56060;
+    width: 35%;
+    height: 7%;
+    font-family: inherit;
+    margin: auto;
+    margin-top: 1%;
+    text-align: center;
+    padding-top: 7px;
+    padding-bottom: 10px;
+  }
+
+  .signup a {
+    font-family: inherit;
+    color: white;
+    font-size: 170%;
+    text-decoration: none;
+  }
+
+  #username, #password {
+    display: block;
+    text-align: center;
+    height: 40px;
+    width: 40%;
+    font-size: 170%;
+    margin-top: 2%;
+    border-radius: 5px;
+    margin: 8px auto;
+  }
+
+
+  .account-title {
+    text-align: center;
+  }
+
+
+}
+
 
 /************************************************
                         MOBILE
@@ -242,16 +280,16 @@
 
   body {
     background-size: auto;
+    /*background: #99D6FF url("blurry-colors-small.jpg");*/
     background: #99D6FF url("blurry-blue-glass-small.jpg");
   }
 
-  .content {
-    width: 99%;
+  #content {
+    width: 98%;
     height: 100%;
   }
 
   #logo {
-
     width: 75%;
     height: 26.4%;
     margin: auto;
@@ -318,5 +356,17 @@
 
   .account-title {
     text-align: center;
+  }
+
+
+  /* ACCOUNT DASHBOARD */
+
+  #title {
+    text-align: center;
+    color: #5959FF;
+  }
+
+  #menu_choice {
+    position: relative;
   }
 }

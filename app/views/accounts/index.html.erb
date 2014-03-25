@@ -1,9 +1,9 @@
 <div id="logo">
-  <%= image_tag("small_logo.png") %>
+  <%= image_tag("large_logo.png") %>
 </div>
 <br><br>
 
-<%= form_tag sessions_path, id: 'account-login' do %>
+<%= form_tag sessions_path, id: 'account-login', remote: true do %>
     <%= text_field_tag :username, '', :placeholder => "Username" %>
     <%= password_field_tag :password,'', :placeholder => "Password" %>
     <%= submit_tag "Log In" , :class => "submit", data: {type: 'submit'} %>
@@ -19,7 +19,7 @@
 
 
 <script>
-var title = 'Welcome to Glucose Amigo!'
+var title = ''
 var leftButton = {
   type: 'none'
 }
