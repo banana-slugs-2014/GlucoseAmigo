@@ -4,7 +4,7 @@ class PreferencesController < ApplicationController
 
   def new
     @preference = Preference.new
-    render :partial => 'shared/new_preference', locals: {
+    render :partial => 'preferences/new', locals: {
                                                           title: "Create a doctor",
                                                           diabetic: @diabetic,
                                                           preference: @preference
@@ -21,14 +21,14 @@ class PreferencesController < ApplicationController
   end
 
   def show
-    render :partial => 'shared/show_preference', locals: {
+    render :partial => 'preferences/show', locals: {
                           diabetic: @diabetic,
                           preference: @preference
                         }
   end
 
   def edit
-    render :partial => 'shared/new_preference', locals: {
+    render :partial => 'preferences/edit', locals: {
                                                           title: "Modify a doctor",
                                                           diabetic: @diabetic,
                                                           preference: @preference
