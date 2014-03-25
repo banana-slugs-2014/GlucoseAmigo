@@ -5,10 +5,10 @@ class ApplicationController < ActionController::Base
   protected
 
   def redirect_if_logged_out
-    redirect_to :back unless logged_in?
+    redirect_to root_path unless logged_in?
   end
 
   def redirect_if_logged_in
-    redirect_to :back if logged_in?
+    redirect_to root_path if logged_in?
   end
 end
