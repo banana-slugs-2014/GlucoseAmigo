@@ -6,7 +6,7 @@ class RecordsController < ApplicationController
   def index
     respond_to do |format|
       format.html do
-        render :partial => 'shared/records', locals: { records: @diabetic.records, diabetic: @diabetic }
+        render :partial => 'records/index', locals: { records: @diabetic.records, diabetic: @diabetic }
       end
       format.pdf do
         @data = @diabetic.get_data_for_graph
@@ -17,12 +17,12 @@ class RecordsController < ApplicationController
   end
 
   def show
-    render partial: "shared/record", locals: {record: @record, diabetic: @diabetic}
+    render partial: "records/show", locals: {record: @record, diabetic: @diabetic}
   end
 
   def new
     @record = Record.new
-    render partial: 'shared/new_record', locals: {record: @record, diabetic: @diabetic}
+    render partial: 'records/new', locals: {record: @record, diabetic: @diabetic}
   end
 
   def create
@@ -34,7 +34,7 @@ class RecordsController < ApplicationController
   end
 
   def edit
-    render partial: 'shared/edit_record', locals: {record: @record, diabetic: @diabetic}
+    render partial: 'records/edit', locals: {record: @record, diabetic: @diabetic}
   end
 
   def update # Unused
