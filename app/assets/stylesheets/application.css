@@ -26,6 +26,19 @@
     max-width: 1000px;
   }
 
+  #title {
+    text-align: center;
+    color: #5959FF;
+  }
+
+  .account-title {
+    text-align: center;
+  }
+
+  #none-button {
+    visibility: hidden;
+  }
+
   #logo {
     width: 25%;
     height: 26.4%;
@@ -81,14 +94,29 @@
     margin: 8px auto;
   }
 
+  /* SIGN UP && CREATE ACCOUNT */
 
-  .account-title {
-    text-align: center;
+  label {
+    margin-left: 30%;
+    color: #5959FF;
+    font-weight: bolder;
   }
 
-  #none-button {
-    visibility: hidden;
+  #account_username,
+  #account_email,
+  #account_password,
+  #account_password_confirmation {
+    max-width: 40%;
+    width: 40%;
+    margin: 2% 30%;
+    height: 40px;
+    font-size: 170%;
+    margin-top: 0%;
+    margin-bottom: 4%;
+    border-radius: 5px;
   }
+
+
 
   /* NAV BAR */
 
@@ -198,6 +226,23 @@
     text-align: center;
   }
 
+  /* SIGN UP && CREATE ACCOUNT */
+
+  label {
+    margin-left: 25%;
+  }
+
+  #account_username,
+  #account_email,
+  #account_password,
+  #account_password_confirmation {
+    max-width: 50%;
+    width: 50%;
+    margin: 2% 25%;
+    margin-top: 0%;
+    margin-bottom: 4%;
+  }
+
   /* NAV BAR */
 
   #navbar {
@@ -243,6 +288,11 @@
     background-size: auto;
     /*background: #99D6FF url("blurry-colors-medium.jpg");*/
     background: #99D6FF url("blurry-blue-glass-medium.jpg");
+  }
+
+  #title {
+    text-align: center;
+    color: #5959FF;
   }
 
   #content {
@@ -306,6 +356,23 @@
   }
 
 
+  /* SIGN UP && CREATE ACCOUNT */
+
+  label {
+    margin-left: 10%;
+  }
+
+  #account_username,
+  #account_email,
+  #account_password,
+  #account_password_confirmation {
+    max-width: 80%;
+    width: 80%;
+    margin: 2% 10%;
+    margin-top: 0%;
+    margin-bottom: 4%;
+  }
+
   .account-title {
     text-align: center;
   }
@@ -338,7 +405,6 @@
   #help-button, #submit-button {
     background: #4DB84D;
   }
-
 
 }
 
@@ -383,7 +449,7 @@
     width: 80%;
     height: 10%;
     margin: auto;
-    margin-top: 15%;
+    margin-top: 10%;
     padding-top: 7px;
     padding-bottom: 10px;
     font-size: 170%;
@@ -401,7 +467,7 @@
     width: 80%;
     height: 7%;
     font-family: inherit;
-    margin: auto;
+    margin: 0 auto;
     margin-top: 2%;
     text-align: center;
     padding-top: 7px;
@@ -418,11 +484,27 @@
     border-radius: 5px;
   }
 
+  /* SIGN UP && CREATE ACCOUNT */
+
+  label {
+    margin-left: 3.5%;
+    color: #5959FF;
+    font-weight: bolder;
+  }
+
   #account_username,
   #account_email,
   #account_password,
   #account_password_confirmation {
-    margin: 8px auto;
+    max-width: 92%;
+    width: 92%;
+    margin: 2% 3.5%;
+    height: 40px;
+    font-size: 170%;
+    margin-top: 0%;
+    margin-bottom: 4%;
+    border-radius: 5px;
+
   }
 
   .account-title {
@@ -440,6 +522,8 @@
   #menu_choice {
     position: relative;
   }
+
+
 
 
   /* NAVBAR */
