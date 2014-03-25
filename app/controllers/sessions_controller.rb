@@ -14,10 +14,8 @@ class SessionsController < ApplicationController
       login account
       redirect_to account_path(account)
     else
-      render :json => {
-                        ok: false,
-                        alert: 'Invalid Login information'
-                      }
+      flash[:notice] = 'invalid login information'
+      redirect_to root_path
     end
   end
 
