@@ -6,8 +6,7 @@ class GraphsController < ApplicationController
   end
 
   def show
-    # diabetic = Diabetic.find(params[:id])
-    diabetic = Diabetic.find(1)
+    diabetic = Diabetic.find(params[:id])
     glucose_data = diabetic.get_data_for_graph.first.sort_by{|a,b| a }
     weight_data = diabetic.get_data_for_graph.last.sort_by{|a,b| a }
     glucose_data = Hash[*glucose_data.flatten]
