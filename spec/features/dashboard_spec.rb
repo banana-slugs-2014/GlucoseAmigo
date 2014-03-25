@@ -77,6 +77,29 @@ describe "dashboard", js: true  do
 		end
 	end
 
+	context "with diabetics" do
+		it "can add a record for diabetic" do
+			find("option[value='Diabetic: #{@account.diabetics.first.name}--#{@account.diabetics.first.id}']").click
+			click_on "Add a record for: #{@account.diabetics.first.name}"
+			expect{
+					weight = rand(175..230)
+					glucose = rand(200..600)
+					fill_in "record[weight]", with: weight
+					fill_in "record[glucose]", with: glucose
+					fill_in "record[comment]", with: "test_comment"
+					click_on "Add"
+				}.to change{Record.count}.by(1)
+				expect(@account.diabetics.first.records.last.weight).to eq(weight)
+				expect(@account.diabetics.first.records.last.glucose).to eq(glucose)
+				expect(@account.diabetics.first.records.last.comment).to eq("test_comment")
+		end
 
+		it "can view a record for diabetic" do
+		end
+
+		it "can edit the diabetic's info" do
+		end
+
+	end
 
 end
