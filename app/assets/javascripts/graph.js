@@ -1,18 +1,3 @@
-// $(document).on('ready', function() {
-//     $('.graph').on('click', function(event) {
-//         event.preventDefault();
-//         $.ajax({
-//             type: 'get',
-//             url: '/accounts/1/diabetics/2',
-//             success: function(response) {
-//                 console.log(response)
-//                 graph(response);
-
-//             }
-
-//         })
-//     })
-// })
 function graph(response) {
 
     $('#container').highcharts({
@@ -32,13 +17,13 @@ function graph(response) {
             labels: {
                 format: '{value}mg/dL',
                 style: {
-                    color: '#89A54E'
+                    color: 'red'
                 }
             },
             title: {
                 text: 'Glucose',
                 style: {
-                    color: '#89A54E'
+                    color: 'red'
                 }
             },
             min: 0,
@@ -48,7 +33,8 @@ function graph(response) {
             plotBands: [{
                 from: 70.0,
                 to: 130.0,
-                color: 'rgba(68,170,213,0.1)',
+                // color: 'rgba(68,170,213,0.1)',
+                color: 'lightblue',
                 label: {
                     text: 'Normal Glucose Levels',
                     style: {
@@ -99,7 +85,7 @@ function graph(response) {
 
         }, {
             name: 'Glucose',
-            color: '#89A54E',
+            color: 'red',
             type: 'spline',
             data: response.glucose,
             tooltip: {
