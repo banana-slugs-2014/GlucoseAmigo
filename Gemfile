@@ -24,6 +24,7 @@ group :development do
   gem "better_errors"
 end
 
+gem 'simplecov', :require => false, :group => :test
 
 
 group :test do

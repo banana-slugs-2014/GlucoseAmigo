@@ -5,7 +5,8 @@ class RecordDataPdf
     @weight_data = data[1]
     @glucose_data = data[0]
     @diabetic = diabetic
-    #rainbow
+    background
+    rainbow
     logo
     @pdf.text '                     '
     @pdf.text "Data for #{@diabetic.name}"
