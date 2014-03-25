@@ -16,11 +16,11 @@ class GraphsController < ApplicationController
     days = glucose_data.keys
     weight = weight_data.values
     render :json => {
-      diabetic: diabetic,
-      days: days,
-      glucose: glucose,
-      weight: weight
-    }
+                      diabetic: diabetic,
+                      days: days,
+                      glucose: glucose,
+                      weight: weight
+                    }
   end
 
 end
