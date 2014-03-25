@@ -11,17 +11,12 @@
  *= require_self
  *= require_tree .
  */
-  /* VIEW RECORDS */
-  #records-summary {
-    /*visibility:hidden;*/
-    display: none;
-  }
+
 
   /* CREATE ACCOUNT */
 
   body {
     background-size: 100%;
-    /*background: #99D6FF url("blurry-colors.jpg");*/
     background: #99D6FF url("blurry-blue-glass.jpg");
   }
 
@@ -120,7 +115,54 @@
     border-radius: 5px;
   }
 
+  /* ACCOUNT DASHBOARD */
 
+  select {
+    background-color: gray;
+    display: block;
+    height: 10%;
+  }
+
+  [data-type="dashboard-button"], [data-type="graph-button"]{
+    display: block;
+    border: none;
+    border-radius: 5px;
+    background-color: #F56060;
+    color: white;
+    font-size: 150%;
+    text-align: justify;
+    width: 40%;
+    height: 10%;
+    margin: 0 auto;
+    margin-top: 1%;
+    text-align: center;
+    padding-top: 7px;
+    padding-bottom: 10px;
+  }
+
+  [data-style="add-record"]{
+    background-color: #5959FF;
+  }
+
+  [data-style="view-record"]{
+    background-color: #5959FF;
+  }
+
+  [data-style="view-graph"]{
+    background-color: #5959FF;
+  }
+
+  [data-style="edit-diabetic"]{
+    background-color: #9E9E9E;
+  }
+
+  [data-style="add-diabetic"]{
+    background-color: #5959FF;
+  }
+
+  [data-style="edit-account"]{
+    background-color: #9E9E9E;
+  }
 
   /* NAV BAR */
 
@@ -162,7 +204,6 @@
 
   body {
     background-size: auto;
-    /*background: #99D6FF url("blurry-colors-medium.jpg");*/
     background: #99D6FF url("blurry-blue-glass-medium.jpg");
   }
 
@@ -247,6 +288,55 @@
     margin-bottom: 4%;
   }
 
+  /* ACCOUNT DASHBOARD */
+
+  select {
+    background-color: gray;
+    display: block;
+    height: 10%;
+  }
+
+  [data-type="dashboard-button"], [data-type="graph-button"]{
+    display: block;
+    border: none;
+    border-radius: 5px;
+    background-color: #F56060;
+    color: white;
+    font-size: 150%;
+    text-align: justify;
+    width: 50%;
+    height: 10%;
+    margin: 0 auto;
+    margin-top: 1%;
+    text-align: center;
+    padding-top: 7px;
+    padding-bottom: 10px;
+  }
+
+  [data-style="add-record"]{
+    background-color: #5959FF;
+  }
+
+  [data-style="view-record"]{
+    background-color: #5959FF;
+  }
+
+  [data-style="view-graph"]{
+    background-color: #5959FF;
+  }
+
+  [data-style="edit-diabetic"]{
+    background-color: #9E9E9E;
+  }
+
+  [data-style="add-diabetic"]{
+    background-color: #5959FF;
+  }
+
+  [data-style="edit-account"]{
+    background-color: #9E9E9E;
+  }
+
   /* NAV BAR */
 
   #navbar {
@@ -290,7 +380,6 @@
 
   body {
     background-size: auto;
-    /*background: #99D6FF url("blurry-colors-medium.jpg");*/
     background: #99D6FF url("blurry-blue-glass-medium.jpg");
   }
 
@@ -381,6 +470,55 @@
     text-align: center;
   }
 
+  /* ACCOUNT DASHBOARD */
+
+  select {
+    background-color: gray;
+    display: block;
+    height: 10%;
+  }
+
+  [data-type="dashboard-button"], [data-type="graph-button"]{
+    display: block;
+    border: none;
+    border-radius: 5px;
+    background-color: #F56060;
+    color: white;
+    font-size: 150%;
+    text-align: justify;
+    width: 65%;
+    height: 10%;
+    margin: 0 auto;
+    margin-top: 1%;
+    text-align: center;
+    padding-top: 7px;
+    padding-bottom: 10px;
+  }
+
+  [data-style="add-record"]{
+    background-color: #5959FF;
+  }
+
+  [data-style="view-record"]{
+    background-color: #5959FF;
+  }
+
+  [data-style="view-graph"]{
+    background-color: #5959FF;
+  }
+
+  [data-style="edit-diabetic"]{
+    background-color: #9E9E9E;
+  }
+
+  [data-style="add-diabetic"]{
+    background-color: #5959FF;
+  }
+
+  [data-style="edit-account"]{
+    background-color: #9E9E9E;
+  }
+
   /* NAVBAR */
 
   #navbar {
@@ -424,7 +562,6 @@
 
   body {
     background-size: auto;
-    /*background: #99D6FF url("blurry-colors-small.jpg");*/
     background: #99D6FF url("blurry-blue-glass-small.jpg");
   }
 
@@ -571,15 +708,15 @@
   }
 
   [data-style="view-record"]{
-    background-color: purple;
+    background-color: #5959FF;
   }
 
   [data-style="view-graph"]{
-    background-color: #A959FF;
+    background-color: #5959FF;
   }
 
   [data-style="edit-diabetic"]{
-    background-color: cyan;
+    background-color: #9E9E9E;
   }
 
   [data-style="add-diabetic"]{
@@ -587,11 +724,16 @@
   }
 
   [data-style="edit-account"]{
-    background-color: cyan;
+    background-color: #9E9E9E;
   }
 
 
+  /* VIEW RECORDS */
 
+  #records-summary {
+    /*visibility:hidden;*/
+    display: none;
+  }
 
 
   /* NAVBAR */
