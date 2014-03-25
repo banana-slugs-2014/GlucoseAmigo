@@ -521,8 +521,16 @@
   }
 
   #menu_choice {
-    position: relative;
-    margin-bottom: 25%;
+    margin-bottom: 5%;
+    color: white;
+    width: 90%;
+    padding: 2%;
+    font-size: 140%;
+    line-height: 1;
+    border: 0;
+    border-radius: 0;
+    height: 30%;
+    display: block;
   }
 
   #submenu {
@@ -531,21 +539,50 @@
     margin: 0 auto;
   }
 
-  button {
+  select {
+    background-color: gray;
+    display: block;
+    height: 10%;
+  }
+
+  [data-type="dashboard-button"]{
     display: block;
     border: none;
     border-radius: 5px;
     background-color: #F56060;
     color: white;
-    font-size: 170%;
+    font-size: 150%;
+    text-align: justify;
     width: 100%;
     height: 10%;
     margin: 0 auto;
-    margin-top: 2%;
+    margin-top: 1%;
     text-align: center;
     padding-top: 7px;
     padding-bottom: 10px;
   }
+
+  [data-style="add-record"]{
+    background-color: #5959FF;
+  }
+
+  [data-style="view-record"]{
+    background-color: purple;
+  }
+
+  [data-style="edit-diabetic"]{
+    background-color: orange;
+  }
+
+  [data-style="edit-account"]{
+    background-color: orange;
+  }
+
+  [data-style="add-diabetic"]{
+    background-color: #A959FF;
+  }
+
+
 
 
   /* NAVBAR */
