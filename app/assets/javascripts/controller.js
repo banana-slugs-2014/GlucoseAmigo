@@ -11,7 +11,10 @@ Controller.prototype = {
     this.view.addAlert(alert);
   },
   logout: function(){
-    Ajax.logout(this.user.uId, this.loadNextPage.bind(this));
+    Ajax.logout(this.user.uId, this.redirectTo.bind(this));
+  },
+  redirectTo: function(data){
+    window.location.replace(data.path);
   },
   loadNextPage: function(response){
     Ajax.get(response.target, this.view.newPage.bind(this.view));
