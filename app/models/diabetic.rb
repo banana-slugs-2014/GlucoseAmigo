@@ -29,7 +29,7 @@ class Diabetic < ActiveRecord::Base
 
   def get_data_for_pdf(number_of_days=14)
     collection = load_records(number_of_days)
-    get_data(collection, '%m/%d/%y')
+    get_data(collection, '%m/%d/%y -- %I:%M %p')
   end
 
   private
@@ -43,8 +43,8 @@ class Diabetic < ActiveRecord::Base
      glucose_graph_data = {}
      weight_graph_data = {}
      collection.each do |record|
-       glucose_graph_data[record.taken_at.localtime.strftime('#{format}').to_s] = record.glucose.to_i if record.glucose.to_i
-       weight_graph_data[record.taken_at.localtime.strftime('#{format}').to_s] = record.weight.to_i if record.weight.to_i
+       glucose_graph_data[record.taken_at.localtime.strftime(format).to_s] = record.glucose.to_i if record.glucose.to_i
+       weight_graph_data[record.taken_at.localtime.strftime(format).to_s] = record.weight.to_i if record.weight.to_i
      end
      [glucose_graph_data, weight_graph_data]
   end
