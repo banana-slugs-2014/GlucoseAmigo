@@ -574,21 +574,23 @@
     background-color: purple;
   }
 
-  [data-style="edit-diabetic"]{
-    background-color: orange;
-  }
-
-  [data-style="edit-account"]{
-    background-color: orange;
-  }
-
-  [data-style="add-diabetic"]{
-    background-color: #A959FF;
-  }
-
   [data-style="view-graph"]{
     background-color: #A959FF;
   }
+
+  [data-style="edit-diabetic"]{
+    background-color: cyan;
+  }
+
+  [data-style="add-diabetic"]{
+    background-color: #5959FF;
+  }
+
+  [data-style="edit-account"]{
+    background-color: cyan;
+  }
+
+
 
 
 
@@ -616,10 +618,7 @@
     background-color: #F56060;
   }
 
-
   #help-button, #submit-button {
     background: #4DB84D;
   }
-
-
 }
