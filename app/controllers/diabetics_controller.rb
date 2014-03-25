@@ -6,8 +6,8 @@ class DiabeticsController < ApplicationController
   def new
     account = current_account
     render :partial => "diabetics/new", :locals => {
-                                            :diabetic => account.diabetics.new,
-                                            :account => account }
+      :diabetic => account.diabetics.new,
+    :account => account }
   end
 
   def create
@@ -20,17 +20,17 @@ class DiabeticsController < ApplicationController
       path = new_account_diabetic_path(account_id: current_account.id)
     end
     render :json => {
-                      ok: !!ok, # Saving kstrks
-                      path: path,
-                      alert: diabetic.errors.full_messages
-                    }
+      ok: !!ok, # Saving kstrks
+      path: path,
+      alert: diabetic.errors.full_messages
+    }
   end
 
   def edit
     render :partial => "diabetics/edit", :locals => {
-                                                        diabetic: @diabetic,
-                                                        account: @diabetic.account
-                                                      }
+      diabetic: @diabetic,
+      account: @diabetic.account
+    }
   end
 
   def update
@@ -49,6 +49,20 @@ class DiabeticsController < ApplicationController
     @data.to_json
   end
 
+  def show
+    diabetic = Diabetic.find(params[:id])
+    glucose_data = diabetic.get_data_for_graph.first
+    weight_data = diabetic.get_data_for_graph.last
+    glucose = glucose_data.values
+    days = glucose_data.keys
+    weight = weight_data.values
+    render :json => {
+      diabetic: diabetic,
+      days: days,
+      glucose: glucose,
+      weight: weight
+    }
+  end
 
   private
   def load_diabetic
