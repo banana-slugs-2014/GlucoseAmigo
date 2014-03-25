@@ -59,9 +59,7 @@ var Binder = (function(Ajax){
     .off('ajax:success', 'form')
     .on('ajax:success', 'form', function(event, response){
       if(response.ok){
-        console.log(response)
         Ajax.get(response.path, controller.nextPageEvent.bind(controller))
-        console.log("worked?")
       } else {
         controller.addAlert(response.alert)
       };
