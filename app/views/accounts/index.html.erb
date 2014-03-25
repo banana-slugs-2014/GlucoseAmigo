@@ -4,7 +4,7 @@
 <br><br>
 
 <%= form_tag sessions_path, id: 'account-login' do %>
-    <%= text_field_tag :email, '', :placeholder => "Email" %>
+    <%= text_field_tag :username, '', :placeholder => "Username" %>
     <%= password_field_tag :password,'', :placeholder => "Password" %>
     <%= button_tag "Log In" , :class => "submit", data: {type: 'submit'} %>
 <% end %>
