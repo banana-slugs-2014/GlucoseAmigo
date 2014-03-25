@@ -14,6 +14,7 @@
 //     })
 // })
 function graph(response) {
+
     $('#container').highcharts({
         chart: {
             zoomType: 'xy'
@@ -39,14 +40,6 @@ function graph(response) {
                 style: {
                     color: '#89A54E'
                 }
-            }
-
-        }, { // Secondary yAxis
-            title: {
-                text: 'Weight',
-                style: {
-                    color: '#4572A7'
-                }
             },
             min: 0,
             minorGridLineWidth: 0,
@@ -64,6 +57,15 @@ function graph(response) {
                 }
 
             }],
+
+
+        }, { // Secondary yAxis
+            title: {
+                text: 'Weight',
+                style: {
+                    color: '#4572A7'
+                }
+            },
             labels: {
                 format: '{value} lbs',
                 style: {

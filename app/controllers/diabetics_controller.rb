@@ -50,7 +50,8 @@ class DiabeticsController < ApplicationController
   end
 
   def show
-    diabetic = Diabetic.find(params[:id])
+    # diabetic = Diabetic.find(params[:id])
+    diabetic = Diabetic.find(1)
     glucose_data = diabetic.get_data_for_graph.first
     weight_data = diabetic.get_data_for_graph.last
     glucose = glucose_data.values
