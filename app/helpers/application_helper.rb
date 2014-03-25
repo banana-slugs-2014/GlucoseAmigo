@@ -1,11 +1,13 @@
 module ApplicationHelper
   def current_account
-    Account.find(session[:user_id])
+    Account.find(session[:account_id])
   end
 
   def logged_in?
-    !!session[:user_id]
+    !!session[:account_id]
   end
 
-
+  def login account
+    session[:account_id] = account.id
+  end
 end

@@ -73,7 +73,7 @@ class AccountsController < ApplicationController
     account = Account.create(params['account'])
     if account.valid?
       ok = true
-      session[:user_id] = account.id
+      login account
       path = new_account_diabetic_path(account.id)
     else
       path = new_account_path
