@@ -46,7 +46,6 @@ describe "dashboard", js: true  do
 			fill_in "account[username]", with: "tester_username_that_should_be_new"
 			fill_in "account[email]", with: "tester_email@should_be_new.com"
 			fill_in "account[password]", with: "testing"
-			fill_in "account[password_confirmation]", with: "testing"
 			click_on "Save"
 			wait_for_ajax
 			expect(@account.reload.username).to eq("tester_username_that_should_be_new")
@@ -95,7 +94,7 @@ describe "dashboard", js: true  do
 			#adds preference to diabetic
 			choose "preference_reminders_false"
 			find("option[value='2']").click
-			click_on "Save Preferences"
+			click_on "Save"
 			wait_for_ajax
 			expect(@account.diabetics.last.preference.reminders).to eq(false)
 			expect(@account.diabetics.last.preference.frequency).to eq(2)
@@ -159,7 +158,7 @@ describe "dashboard", js: true  do
 				wait_for_ajax
 				choose "preference_reminders_false"
 				find("option[value='2']").click
-				click_on "Save Preferences"
+				click_on "Save"
 				wait_for_ajax
 				expect(@diabetic.preference.reminders).to eq(false)
 				expect(@diabetic.preference.frequency).to eq(2)
