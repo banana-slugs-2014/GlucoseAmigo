@@ -30,7 +30,7 @@ describe "dashboard", js: true  do
   end
 
   describe "User can log out from the dashboard" do
-    xit "by clicking on 'Logout'" do
+    it "by clicking on 'Logout'" do
     	click_on "Logout"
     	wait_for_ajax
     	expect(page.current_path).to eq root_path
@@ -39,7 +39,7 @@ describe "dashboard", js: true  do
 
 
 	context "with account" do
-		xit "user can edit the account information" do
+		it "user can edit the account information" do
 			find("option[value='Account: #{@account.username}']").click
 			click_on "Edit the account"
 			wait_for_ajax
@@ -134,7 +134,7 @@ describe "dashboard", js: true  do
 			expect(@account.diabetics.first.records.last.comment).to eq("test_comment")
 		end
 
-		xit "can view a record for diabetic" do
+		it "can view a record for diabetic" do
 			diabetic_name = @account.diabetics.first.name
 			diabetic_id = @account.diabetics.first.id
 			find("option[value='Diabetic: #{diabetic_name} -- #{diabetic_id} ']").click
