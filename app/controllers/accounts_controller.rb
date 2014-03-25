@@ -17,7 +17,7 @@ class AccountsController < ApplicationController
   end
 
   def new
-    render  :partial => 'shared/sign_up',
+    render  :partial => 'accounts/new',
             :locals => {
               account: Account.new
             }
@@ -40,7 +40,7 @@ class AccountsController < ApplicationController
   end
 
   def edit
-    render  :partial => 'shared/edit_account',
+    render  :partial => 'accounts/new',
             :locals => {
               account: current_account
             }
