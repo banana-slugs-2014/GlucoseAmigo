@@ -2,15 +2,22 @@ require 'spec_helper'
 describe "Accounts", :js => true do
   let!(:account) {create :account}
 
-  context "signin form" do
-    xit 'displays sign in form' do
-      visit new_account_path
+  context "Sign in" do
+    it "displays the sign in page" do
+      visit root_path
+      click_on "Sign up !"
+      expect(page).to have_content "Username"
+    end
+
+    it 'brings you to add a diabetic page' do
+      visit root_path
+      click_on "Sign up !"
       fill_in "Username", with: 'business'
       fill_in "Email", with: 'business@business.com'
       fill_in "Password", with: 'business'
       fill_in "Password Confirmation", with: 'business'
-      click_on "Signup"
-      expect(page).to have_content 'Enter your birthday'
+      click_on "Sign up"
+      expect(page).to have_content 'Add a diabetic'
     end
 
     xit "displays 'Username can't be blank' for blank Username field" do
@@ -63,7 +70,14 @@ describe "Accounts", :js => true do
       expect(page).to have_content "Password doesn't match confirmation"
     end
 
+    context "cancel button" do
+      it "brings you back to home page" do
+        visit root_path
+        click_on "Sign up"
+        click_on "Cancel"
+        expect(page).to have_content "Welcome to Glucose Amigo!"
+      end
+    end
+
   end
-
 end
-
