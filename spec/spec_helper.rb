@@ -15,6 +15,10 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
 
+  config.include CapybaraHelper
+  config.include ResponseHelper
+  config.include AuthenticationHelper
+
   config.use_transactional_fixtures = false
   config.before(:suite) do
     DatabaseCleaner.strategy = :truncation
@@ -30,23 +34,6 @@ RSpec.configure do |config|
 
   config.order = "random"
 
-  def returns_valid_response
-    expect(response).to be_ok
-  end
-
-  def returns_valid_redirect
-    expect(response).to be_redirect
-  end
-
 end
 
 
-def wait_for_ajax
-  Timeout.timeout(Capybara.default_wait_time) do
-    loop until finished_all_ajax_requests?
-  end
-end
-
-def finished_all_ajax_requests?
-  page.evaluate_script('jQuery.active').zero?
-end
