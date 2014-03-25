@@ -26,13 +26,6 @@ class DiabeticsController < ApplicationController
                     }
   end
 
-  def edit_menu
-    render :partial => "dashboard/diabetic", :locals => {
-                                                        diabetic: @diabetic,
-                                                        account: current_account
-                                                      }
-  end
-
   def edit
     render :partial => "diabetics/edit", :locals => {
                                                         diabetic: @diabetic,
