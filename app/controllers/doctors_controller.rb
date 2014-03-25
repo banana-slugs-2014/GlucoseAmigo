@@ -21,10 +21,10 @@ class DoctorsController < ApplicationController
 	end
 
 	def create
-		@doctor = Doctor.find_or_create_by_name_and_fax(params[:doctor])
-		if @doctor.valid?
+		@doctor = Doctor.find_or_initialize_by_name_and_fax(params[:doctor])
+		@doctor.diabetic = @diabetic
+		if @doctor.save
 			ok = true
-			@doctor.diabetics << @diabetic
 			path = new_diabetic_preference_path(diabetic_id: @diabetic.id)
 		end
 		render :json => {
@@ -44,7 +44,7 @@ class DoctorsController < ApplicationController
 
 	def update
 		@doctor.update_attributes(params[:doctor])
-		path = diabetic_doctor_path(diabetic_id: @diabetic.id, id: @doctor.id) # to change to user path
+		path = diabetic_doctor_path(@diabetic,@doctor) # to change to user path
 		render :json => {
 											ok: true, # Saving kstrks
 											target: path,
