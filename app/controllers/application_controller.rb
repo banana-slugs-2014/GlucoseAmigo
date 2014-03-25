@@ -10,6 +10,6 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_if_logged_in
-    redirect_to root_path if logged_in?
+    redirect_to account_path(current_account) if logged_in?
   end
 end
