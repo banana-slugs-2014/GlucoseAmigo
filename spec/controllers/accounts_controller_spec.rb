@@ -31,7 +31,7 @@ describe AccountsController do
 
     it 'redirects if logged_in' do
       request.env["HTTP_REFERER"] = new_session_path
-      session[:user_id] = account.id
+      session[:account_id] = account.id
       get :new
       expect(response).to be_redirect
     end
@@ -56,7 +56,7 @@ describe AccountsController do
 
     it 'sets @account to Account to be edited' do
       request.env["HTTP_REFERER"] = new_session_path
-      session[:user_id] = account.id
+      session[:account_id] = account.id
       get :edit, id: account.id
       expect(assigns(:account)).to eq(Account.find(account.id))
     end
@@ -66,7 +66,7 @@ describe AccountsController do
   context 'update' do
     it 'updates username if password is correct' do
       request.env["HTTP_REFERER"] = new_session_path
-      session[:user_id] = account.id
+      session[:account_id] = account.id
       put :update, id: account.id, 'account' => {'username' => 'test1',
                                                  'email' => 'test@test1.com',
                                                  'password' => 'testing',
@@ -76,7 +76,7 @@ describe AccountsController do
     end
     it 'updates email if password is correct' do
       request.env["HTTP_REFERER"] = new_session_path
-      session[:user_id] = account.id
+      session[:account_id] = account.id
       put :update, id: account.id, 'account' => {'username' => 'test1',
                                                  'email' => 'test@test1.com',
                                                  'password' => 'testing',
@@ -105,13 +105,13 @@ describe AccountsController do
   context 'change password' do
     it 'update new password if password is authorized and confirmed' do
       request.env["HTTP_REFERER"] = edit_account_path(account.id)
-      session[:user_id] = account.id
+      session[:account_id] = account.id
       expect{
-        put :change_password,  'account' => {
-          'id' => account.id,
-          'new_password' => 'newpassword',
-          'password_confirmation' => 'newpassword',
-        'password' => 'testing'}
+        put :change_password,
+          :new_password => 'newpassword',
+          :password_confirmation => 'newpassword',
+          :password => 'testing'
+
       }.to change{ Account.find(account.id).authenticate('testing') }.to false
     end
 

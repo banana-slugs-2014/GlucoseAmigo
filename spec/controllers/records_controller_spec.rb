@@ -7,7 +7,7 @@ describe RecordsController do
       @chris = Diabetic.create({name:'chris', email:'chris@dbc.com', birthday: Date.today-20000 }, :without_protection => true)
       @record1 = Record.create(glucose: '100', weight: '175', taken_at: (Time.now-500))
       @chris.records << @record1
-      request.session[:user_id] = account.id
+      request.session[:account_id] = account.id
   end
 
 
@@ -19,7 +19,7 @@ describe RecordsController do
 
     it 'redirects if logged_out' do
       request.env["HTTP_REFERER"] = new_session_path
-      request.session.delete(:user_id)
+      request.session.delete(:account_id)
       get :index, diabetic_id: @chris.id
       expect(response).to be_redirect
     end
@@ -33,7 +33,7 @@ describe RecordsController do
 
     it 'redirects if logged_out' do
       request.env["HTTP_REFERER"] = new_session_path
-      request.session.delete(:user_id)
+      request.session.delete(:account_id)
       get :show, diabetic_id: @chris.id, id: @record1.id
       expect(response).to be_redirect
     end
@@ -47,7 +47,7 @@ describe RecordsController do
 
     it 'redirects if logged_out' do
       request.env["HTTP_REFERER"] = new_session_path
-      request.session.delete(:user_id)
+      request.session.delete(:account_id)
       get :edit, diabetic_id: @chris.id, id: @record1.id
       expect(response).to be_redirect
     end
@@ -61,7 +61,7 @@ describe RecordsController do
 
     it 'redirects if logged_out' do
       request.env["HTTP_REFERER"] = new_session_path
-      request.session.delete(:user_id)
+      request.session.delete(:account_id)
       get :new, diabetic_id: @chris.id
       expect(response).to be_redirect
     end
@@ -70,7 +70,7 @@ describe RecordsController do
   context '#update' do
     it 'updates a single record' do
       put :update, diabetic_id: @chris.id, id: @record1.id, record: {glucose: '120', weight: '176', taken_at: Time.now-500, comment: "I just got updated!"}
-      expect(response).to be_redirect
+      expect(response).to be_ok
     end
   end
 

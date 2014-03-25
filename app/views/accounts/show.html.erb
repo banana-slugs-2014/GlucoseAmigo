@@ -1,18 +1,22 @@
-Welcome, <%= @account.username %>
-<br><br>
+<form action = "menu", method ="get", data-remote='true' >
+  <%= select_tag "menu_choice", options_for_select(menu_options) %>
+   <input type="hidden" name="account_id" value='<%= account.id  %>' >
+</form>
+<div id='submenu'></div>
+<script>
+var title = "<%= account.username.capitalize %>'s Dashboard"
+var leftButton = {
+  type: 'logout',
+  text: 'Logout'
+}
+var rightButton = {
+  type: 'help',
+  text: 'Help'
+}
 
-  <form action = "menu", method ="get" >
-    <%= select_tag "menu_choice", options_for_select(@menu_options) %>
-     <input type="hidden" name="account_id" value=<%= @account.id  %>>
+var userid = <%= account.id %>
 
-<% if @diabetics %>
-  <% @diabetics.each do |diabetic| %>
-    <%= link_to "#{diabetic.name}", diabetic_records_path(diabetic)  %>
-  <% end %>
-<% end %>
-
-<%= link_to 'edit', edit_account_path(@account.id) %>
-     <%= submit_tag("Render Partial") %>
-  </form>
-
-</div>
+window.onload = function(){
+$('body').trigger('login', userid)
+}
+</script>

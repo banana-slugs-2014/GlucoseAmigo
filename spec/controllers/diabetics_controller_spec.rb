@@ -3,7 +3,7 @@ require 'spec_helper'
 describe DiabeticsController do
   before(:each) do
     @account = Account.create(username: 'tester', email: 'test@test.com', password: 'password', password_confirmation: 'password')
-    request.session[:user_id] = @account.id
+    request.session[:account_id] = @account.id
   end
   let!(:diabetic) { create :diabetic }
   let(:valid_params) do
@@ -52,7 +52,7 @@ describe DiabeticsController do
 
     it 'redirects if logged_out' do
       request.env["HTTP_REFERER"] = new_session_path
-      request.session.delete(:user_id)
+      request.session.delete(:account_id)
       get :edit, id: diabetic.id, account_id: @account.id
       expect(response).to be_redirect
     end

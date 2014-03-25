@@ -13,7 +13,7 @@ var Ajax = (function(){
     },
     getSubmenu: function(submenu, reaction){
       var data = {
-        url: '/accounts/submenu',
+        url: '/dashboard/get',
         data: { 'menu_choice': submenu }
       }
       _request(data, reaction)

@@ -9,7 +9,7 @@ describe PreferencesController do
 
   before(:each) do
     @account = create :account
-    request.session[:user_id] = @account.id
+    request.session[:account_id] = @account.id
   end
 
 

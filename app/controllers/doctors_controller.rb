@@ -1,8 +1,7 @@
 class DoctorsController < ApplicationController
 
-	before_filter :load_diabetic
+	before_filter :load_diabetic, :redirect_if_logged_out
 	before_filter :load_doctor, :except => [:index, :new, :create,]
-  before_filter :redirect_if_logged_out
 
 	def index
 	end
@@ -13,7 +12,7 @@ class DoctorsController < ApplicationController
 	def new
 		@doctor = Doctor.new
 		@title = "Create a doctor"
-		render :partial => 'shared/doctor', locals: {
+		render :partial => 'doctors/new', locals: {
 																									diabetic: @diabetic,
 																									doctor: @doctor,
 																									title: 'Doctor Creation'
@@ -21,10 +20,10 @@ class DoctorsController < ApplicationController
 	end
 
 	def create
-		@doctor = Doctor.find_or_create_by_name_and_fax(params[:doctor])
-		if @doctor.valid?
+		@doctor = Doctor.find_or_initialize_by_name_and_fax(params[:doctor])
+		@diabetic.doctor = @doctor
+		if @doctor.save
 			ok = true
-			@doctor.diabetics << @diabetic
 			path = new_diabetic_preference_path(diabetic_id: @diabetic.id)
 		end
 		render :json => {
@@ -35,7 +34,7 @@ class DoctorsController < ApplicationController
 	end
 
 	def edit
-		render :partial => 'shared/doctor', locals: {
+		render :partial => 'doctors/edit', locals: {
 																									diabetic: @diabetic,
 																									doctor: @doctor,
 																									title: 'Edit a doctor'
@@ -44,7 +43,7 @@ class DoctorsController < ApplicationController
 
 	def update
 		@doctor.update_attributes(params[:doctor])
-		path = diabetic_doctor_path(diabetic_id: @diabetic.id, id: @doctor.id) # to change to user path
+		path = diabetic_doctor_path(@diabetic,@doctor) # to change to user path
 		render :json => {
 											ok: true, # Saving kstrks
 											target: path,

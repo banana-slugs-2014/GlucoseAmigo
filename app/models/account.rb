@@ -17,10 +17,6 @@ class Account < ActiveRecord::Base
                           "#{attributes[:value]} can't be blank."
                         }
 
-  def authorized?(params)
-    !!self.authenticate(params[:account][:password])
-  end
-
   def confirmed?(params)
     params[:account][:password_confirmation] == params[:account][:new_password]
   end

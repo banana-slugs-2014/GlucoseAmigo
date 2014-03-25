@@ -1,21 +1,15 @@
 class RecordsController < ApplicationController
 
-  before_filter :redirect_if_logged_out
-
-
-  before_filter do
-    @diabetic = Diabetic.find(params[:diabetic_id])
-  end
-
+  before_filter :redirect_if_logged_out, :load_diabetic
+  before_filter :load_record, :except => [:index, :new, :create]
 
   def index
-    @records = @diabetic.records
-    @data = @diabetic.get_data_for_graph
     respond_to do |format|
       format.html do
-        render :partial => 'shared/records', locals: { records: @records, diabetic: @diabetic }
+        render :partial => 'records/index', locals: { records: @diabetic.records, diabetic: @diabetic }
       end
       format.pdf do
+        @data = @diabetic.get_data_for_graph
         pdf = RecordDataPdf.new(@data, @diabetic)
         send_data pdf.render, filename: "#{@diabetic.name}_#{Time.now.strftime("%Y-%m-%d")}", type: "application/pdf"
       end
@@ -23,47 +17,53 @@ class RecordsController < ApplicationController
   end
 
   def show
-    @record = Record.find(params[:id])
-    render partial: "shared/record", locals: {record: @record, diabetic: @diabetic}
+    render partial: "records/show", locals: {record: @record, diabetic: @diabetic}
   end
 
   def new
     @record = Record.new
-    #@diabetic = current_user #helper, to be written later
-    render partial: 'shared/new_record', locals: {record: @record, diabetic: @diabetic}
+    render partial: 'records/new', locals: {record: @record, diabetic: @diabetic}
   end
 
   def create
-    @record = Record.create(params[:record])
-    if @record.save
-      @diabetic.records << @record
-    else
+    @record = @diabetic.records.build(params[:record])
+    unless @record.save
       flash[:notice] = "Please try again"
     end
     redirect_to :back
   end
 
   def edit
-    @record = Record.find(params[:id])
-    render partial: 'shared/edit_record', locals: {record: @record, diabetic: @diabetic}
+    render partial: 'records/edit', locals: {record: @record, diabetic: @diabetic}
   end
 
-  def update
-    @record = Record.find(params[:id])
+  def update # Unused
     if @record.update_attributes(params[:record])
-      @record.save
-      redirect_to diabetic_records_path(@diabetic)
-
+      path = diabetic_records_path(@diabetic)
+      ok = true
     else
-      redirect_to edit_diabetic_record_path(@diabetic, @record)
-    end #sad path
-
+      path = edit_diabetic_record_path(@diabetic, @record)
+    end
+    render :json => {
+                      ok: !!ok, # Saving kstrks
+                      target: path,
+                      alert: @record.errors.full_messages
+                    }
   end
 
   def destroy
-    record = Record.find(params[:id])
-    record.destroy
-    redirect_to diabetic_record_path(params[:diabetic_id])
+    @record.destroy
+    redirect_to root_path
+  end
+
+  private
+
+  def load_diabetic
+    @diabetic = Diabetic.find(params[:diabetic_id])
+  end
+
+  def load_record
+    @record = Record.find(params[:id])
   end
 
 end
