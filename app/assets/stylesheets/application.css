@@ -13,31 +13,568 @@
  */
 
 
-.container {
-  width: 320px;
-  margin: 0 auto;
-  border: 2px solid black;
-  background-color: #f3efc3;
+  /* CREATE ACCOUNT */
+
+  body {
+    background-size: 100%;
+    /*background: #99D6FF url("blurry-colors.jpg");*/
+    background: #99D6FF url("blurry-blue-glass.jpg");
+  }
+
+  #content {
+    width: 75%;
+    max-width: 1000px;
+  }
+
+  #title {
+    text-align: center;
+    color: #5959FF;
+  }
+
+  .account-title {
+    text-align: center;
+  }
+
+  #none-button {
+    visibility: hidden;
+  }
+
+  #logo {
+    width: 25%;
+    height: 26.4%;
+    margin: auto;
+    margin-top: 10%;
+  }
+
+  #logo img {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .submit {
+    border: none;
+    border-radius: 5px;
+    background-color: #5959FF;
+    display: block;
+    width: 25%;
+    height: 7%;
+    margin: auto;
+    margin-top: 8%;
+    padding-top: 7px;
+    padding-bottom: 10px;
+    font-size: 170%;
+    color: white;
+  }
+
+  .signup {
+    display: block;
+    border: none;
+    border-radius: 5px;
+    background-color: #F56060;
+    color: white;
+    font-size: 170%;
+    width: 25%;
+    height: 7%;
+    font-family: inherit;
+    margin: auto;
+    margin-top: 1%;
+    text-align: center;
+    padding-top: 7px;
+    padding-bottom: 10px;
+  }
+
+  #username, #password {
+    display: block;
+    text-align: center;
+    height: 40px;
+    width: 30%;
+    font-size: 170%;
+    margin-top: 1%;
+    border-radius: 5px;
+    margin: 8px auto;
+  }
+
+  /* SIGN UP && CREATE ACCOUNT */
+
+  label {
+    margin-left: 30%;
+    color: #5959FF;
+    font-weight: bolder;
+  }
+
+  #account_username,
+  #account_email,
+  #account_password,
+  #account_password_confirmation {
+    max-width: 40%;
+    width: 40%;
+    margin: 2% 30%;
+    height: 40px;
+    font-size: 170%;
+    margin-top: 0%;
+    margin-bottom: 4%;
+    border-radius: 5px;
+  }
+
+
+
+  /* NAV BAR */
+
+  #navbar {
+    position: fixed;
+    bottom: 0;
+    height: 12%;
+    width: 100%;
+  }
+
+  #navbar button {
+    border: none;
+    height: 90%;
+    width: 45%;
+    color: white;
+    border-radius: 5px;
+    font-size: 145%;
+    margin: 0 2.5%;
+    margin-bottom: 10%;
+  }
+
+  #logout-button, #cancel-button {
+    background-color: #F56060;
+  }
+
+
+  #help-button, #submit-button {
+    background: #4DB84D;
+  }
+
+
+/************************************************
+                        TABLET
+*************************************************/
+
+@media only screen and (max-width: 1024px) {
+
+/* CREATE ACCOUNT */
+
+  body {
+    background-size: auto;
+    /*background: #99D6FF url("blurry-colors-medium.jpg");*/
+    background: #99D6FF url("blurry-blue-glass-medium.jpg");
+  }
+
+  #content {
+    width: 99%;
+    height: 100%;
+  }
+
+  #logo {
+    width: 25%;
+    height: 26.4%;
+    margin: auto;
+    margin-top: 10%;
+  }
+
+  #logo img {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .submit {
+    border: none;
+    border-radius: 5px;
+    background-color: #5959FF;
+    display: block;
+    width: 25%;
+    height: 7%;
+    margin: 0 auto;
+    margin-top: 8%;
+    padding-top: 7px;
+    padding-bottom: 10px;
+    font-size: 170%;
+    color: white;
+  }
+
+  .signup {
+    display: block;
+    border: none;
+    border-radius: 5px;
+    background-color: #F56060;
+    color: white;
+    font-size: 170%;
+    width: 25%;
+    height: 7%;
+    font-family: inherit;
+    margin: auto;
+    margin-top: 1%;
+    text-align: center;
+    padding-top: 7px;
+    padding-bottom: 10px;
+  }
+
+  #username, #password {
+    display: block;
+    text-align: center;
+    height: 40px;
+    width: 30%;
+    font-size: 170%;
+    margin-top: 2%;
+    border-radius: 5px;
+    margin: 8px auto;
+  }
+
+  .account-title {
+    text-align: center;
+  }
+
+  /* SIGN UP && CREATE ACCOUNT */
+
+  label {
+    margin-left: 25%;
+  }
+
+  #account_username,
+  #account_email,
+  #account_password,
+  #account_password_confirmation {
+    max-width: 50%;
+    width: 50%;
+    margin: 2% 25%;
+    margin-top: 0%;
+    margin-bottom: 4%;
+  }
+
+  /* NAV BAR */
+
+  #navbar {
+    position: fixed;
+    bottom: 0;
+    height: 12%;
+    width: 100%;
+  }
+
+  #navbar button {
+    border: none;
+    height: 90%;
+    width: 45%;
+    color: white;
+    border-radius: 5px;
+    font-size: 145%;
+    margin: 0 2.5%;
+    margin-bottom: 10%;
+  }
+
+  #logout-button, #cancel-button {
+    background-color: #F56060;
+  }
+
+  #help-button, #submit-button {
+    background: #4DB84D;
+  }
+
+
 }
 
-.topmenu {
-  width: 95%;
+
+/************************************************
+                        PHABLET
+*************************************************/
+
+
+@media only screen and (max-width: 675px) {
+
+/* CREATE ACCOUNT */
+
+  body {
+    background-size: auto;
+    /*background: #99D6FF url("blurry-colors-medium.jpg");*/
+    background: #99D6FF url("blurry-blue-glass-medium.jpg");
+  }
+
+  #title {
+    text-align: center;
+    color: #5959FF;
+  }
+
+  #content {
+    width: 99%;
+    height: 100%;
+  }
+
+  #logo {
+    width: 30%;
+    height: 26.4%;
+    margin: auto;
+    margin-top: 10%;
+  }
+
+  #logo img {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .submit {
+    border: none;
+    border-radius: 5px;
+    background-color: #5959FF;
+    display: block;
+    width: 35%;
+    height: 7%;
+    margin: 0 auto;
+    margin-top: 8%;
+    padding-top: 7px;
+    padding-bottom: 10px;
+    font-size: 170%;
+    color: white;
+  }
+
+  .signup {
+    display: block;
+    border: none;
+    border-radius: 5px;
+    background-color: #F56060;
+    color: white;
+    font-size: 170%;
+    width: 35%;
+    height: 7%;
+    font-family: inherit;
+    margin: auto;
+    margin-top: 1%;
+    text-align: center;
+    padding-top: 7px;
+    padding-bottom: 10px;
+  }
+
+  #username, #password {
+    display: block;
+    text-align: center;
+    height: 40px;
+    width: 40%;
+    font-size: 170%;
+    margin-top: 2%;
+    border-radius: 5px;
+    margin: 8px auto;
+  }
+
+
+  /* SIGN UP && CREATE ACCOUNT */
+
+  label {
+    margin-left: 10%;
+  }
+
+  #account_username,
+  #account_email,
+  #account_password,
+  #account_password_confirmation {
+    max-width: 80%;
+    width: 80%;
+    margin: 2% 10%;
+    margin-top: 0%;
+    margin-bottom: 4%;
+  }
+
+  .account-title {
+    text-align: center;
+  }
+
+  /* NAVBAR */
+
+  #navbar {
+    position: fixed;
+    bottom: 0;
+    height: 12%;
+    width: 100%;
+  }
+
+  #navbar button {
+    border: none;
+    height: 90%;
+    width: 45%;
+    color: white;
+    border-radius: 5px;
+    font-size: 145%;
+    margin: 0 2.5%;
+    margin-bottom: 10%;
+  }
+
+  #logout-button, #cancel-button {
+    background-color: #F56060;
+  }
+
+
+  #help-button, #submit-button {
+    background: #4DB84D;
+  }
+
 }
 
-.bottommenu {
-  width: 90%
-}
 
-.content {
-  width: 90%;
-}
+/************************************************
+                        MOBILE
+*************************************************/
+
+@media only screen and (max-width: 480px) {
+
+  /* CREATE ACCOUNT */
+
+  body {
+    background-size: auto;
+    /*background: #99D6FF url("blurry-colors-small.jpg");*/
+    background: #99D6FF url("blurry-blue-glass-small.jpg");
+  }
+
+  #content {
+    width: 98%;
+    height: 100%;
+  }
+
+  #logo {
+    width: 75%;
+    height: 26.4%;
+    margin: auto;
+    margin-top: 2%;
+  }
+
+  #logo img {
+    width: 100%;
+    margin: 0 auto;
+  }
 
 
-.footer {
-  width: 95%;
-  clear: both;
-}
+  .submit {
+    border: none;
+    border-radius: 5px;
+    background-color: #5959FF;
+    display: block;
+    width: 80%;
+    height: 10%;
+    margin: auto;
+    margin-top: 10%;
+    padding-top: 7px;
+    padding-bottom: 10px;
+    font-size: 170%;
+    color: white;
+  }
 
-#none-button{
-  visibility: hidden;
+
+  .signup {
+    display: block;
+    border: none;
+    border-radius: 5px;
+    background-color: #F56060;
+    color: white;
+    font-size: 170%;
+    width: 80%;
+    height: 7%;
+    font-family: inherit;
+    margin: 0 auto;
+    margin-top: 2%;
+    text-align: center;
+    padding-top: 7px;
+    padding-bottom: 10px;
+  }
+
+
+  #username, #password {
+    height: 40px;
+    width: 93.75%;
+    font-size: 170%;
+    margin-top: 10px;
+    margin-left: 8px;
+    border-radius: 5px;
+  }
+
+  /* SIGN UP && CREATE ACCOUNT */
+
+  label {
+    margin-left: 3.5%;
+    color: #5959FF;
+    font-weight: bolder;
+  }
+
+  #account_username,
+  #account_email,
+  #account_password,
+  #account_password_confirmation {
+    max-width: 92%;
+    width: 92%;
+    margin: 2% 3.5%;
+    height: 40px;
+    font-size: 170%;
+    margin-top: 0%;
+    margin-bottom: 4%;
+    border-radius: 5px;
+
+  }
+
+  .account-title {
+    text-align: center;
+  }
+
+
+  /* ACCOUNT DASHBOARD */
+
+  #title {
+    text-align: center;
+    color: #5959FF;
+  }
+
+  #menu_choice {
+    position: relative;
+    margin-bottom: 25%;
+  }
+
+  #submenu {
+    width: 90%;
+    display: block;
+    margin: 0 auto;
+  }
+
+  button {
+    display: block;
+    border: none;
+    border-radius: 5px;
+    background-color: #F56060;
+    color: white;
+    font-size: 170%;
+    width: 100%;
+    height: 10%;
+    margin: 0 auto;
+    margin-top: 2%;
+    text-align: center;
+    padding-top: 7px;
+    padding-bottom: 10px;
+  }
+
+
+  /* NAVBAR */
+
+  #navbar {
+    position: fixed;
+    bottom: 0;
+    height: 12%;
+    width: 100%;
+  }
+
+  #navbar button {
+    border: none;
+    height: 90%;
+    width: 45%;
+    color: white;
+    border-radius: 5px;
+    font-size: 145%;
+    margin: 0 2.5%;
+    margin-bottom: 10%;
+  }
+
+  #logout-button, #cancel-button {
+    background-color: #F56060;
+  }
+
+
+  #help-button, #submit-button {
+    background: #4DB84D;
+  }
+
+
 }

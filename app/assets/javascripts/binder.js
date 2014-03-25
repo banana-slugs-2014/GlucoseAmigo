@@ -22,6 +22,9 @@ var Binder = (function(Ajax){
       case 'edit-diabetic-button':
         controller.loadNextPageFromData( $(this).data() );
         break;
+      case 'signup':
+        controller.loadNextPageFromData( $(this).data() );
+        break;
       }
     })
   }
@@ -29,15 +32,6 @@ var Binder = (function(Ajax){
     return $(element).data('type')
   }
 
-  var _bindLinks = function(controller){
-    $('body')
-    .off('click', 'a')
-    .on('click', 'a', function(e){
-      if(_isSignUp(this)) {
-        controller.loadSignUp(e);
-      }
-    })
-  }
 
   var _bindDashboardMenu = function(controller){
     $('body').on('change', '#menu_choice', function(event){
@@ -71,7 +65,6 @@ var Binder = (function(Ajax){
     bind: function(controller){
       _bindButtons(controller);
       _bindAjaxForms(controller);
-      _bindLinks(controller);
       _bindDashboardMenu(controller);
     }
   }
