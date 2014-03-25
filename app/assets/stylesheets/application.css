@@ -369,4 +369,31 @@
   #menu_choice {
     position: relative;
   }
+
+  #navbar {
+    position: fixed;
+    bottom: 0;
+    height: 12%;
+    width: 100%;
+  }
+
+  #navbar button {
+    border: none;
+    height: 90%;
+    width: 45%;
+    color: white;
+    border-radius: 5px;
+    font-size: 145%;
+    margin: 0 2.5%;
+    margin-bottom: 10%;
+  }
+
+  #logout-button {
+    background-color: #F56060;
+  }
+
+
+  #help-button {
+    background: #4DB84D;
+  }
 }
