@@ -26,8 +26,8 @@ class Diabetic < ActiveRecord::Base
     glucose_graph_data = {}
     weight_graph_data = {}
     self.records.where(taken_at: (Time.now.midnight - number_of_days.days)..Time.now.midnight).each do |record|
-      glucose_graph_data[record.taken_at.localtime.strftime('%a %m/%d')] = record.glucose.to_i if record.glucose.to_i
-      weight_graph_data[record.taken_at.localtime.strftime('%a %m/%d')] = record.weight.to_i if record.weight.to_i
+      glucose_graph_data[record.taken_at.localtime.strftime('%a %m/%d').to_s] = record.glucose.to_i if record.glucose.to_i
+      weight_graph_data[record.taken_at.localtime.strftime('%a %m/%d').to_s] = record.weight.to_i if record.weight.to_i
     end
     [glucose_graph_data, weight_graph_data]
   end
