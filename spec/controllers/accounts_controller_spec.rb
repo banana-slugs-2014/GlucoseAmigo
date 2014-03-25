@@ -107,11 +107,11 @@ describe AccountsController do
       request.env["HTTP_REFERER"] = edit_account_path(account.id)
       session[:account_id] = account.id
       expect{
-        put :change_password,  'account' => {
-          'id' => account.id,
-          'new_password' => 'newpassword',
-          'password_confirmation' => 'newpassword',
-        'password' => 'testing'}
+        put :change_password,
+          :new_password => 'newpassword',
+          :password_confirmation => 'newpassword',
+          :password => 'testing'
+
       }.to change{ Account.find(account.id).authenticate('testing') }.to false
     end
 

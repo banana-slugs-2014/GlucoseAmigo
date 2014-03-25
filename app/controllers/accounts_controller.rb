@@ -18,9 +18,9 @@ class AccountsController < ApplicationController
 
   def new
     render  :partial => 'shared/sign_up',
-    :locals => {
-      account: Account.new
-    }
+            :locals => {
+              account: Account.new
+            }
   end
 
   def create
@@ -47,19 +47,15 @@ class AccountsController < ApplicationController
   end
 
   def change_password
-    if current_account.authenticate(params[:account][:password])#.authorized?(params) && current_account.confirmed?(params)
-      current_account.password = params['account']['new_password']
+    if current_account.authenticate(params[:password])
+      current_account.password = params[:new_password]
+      current_account.password_confirmation = params[:password_confirmation]
       if current_account.save
         ok = true
         path = account_path(current_account)
-      else
-        path = edit_account_path(current_account)
       end
-    else
-      account.confirmed?(params) ? (flash[:error] = ['Invalid Password']) :
-                                   (flash[:error] = ["Password must doesn't match confirm"]) # To check
-      path = edit_account_path(current_account)
     end
+
     render :json => {
                       ok: !!ok,
                       path: path,
@@ -68,7 +64,7 @@ class AccountsController < ApplicationController
   end
 
   def update
-    if  current_account.authorized?(params)
+    if current_account.authenticate(params[:account][:password])
       ok = true
       current_account.update_attributes(params[:account])
       redirect_to accounts_path
@@ -79,6 +75,9 @@ class AccountsController < ApplicationController
   end
 
   private
+  def redirect_unless_authenticated
+
+  end
 
   def redirect_unless_authorized
     redirect_to root_path unless current_account.id == params[:id].to_i
