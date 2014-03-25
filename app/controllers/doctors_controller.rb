@@ -34,7 +34,7 @@ class DoctorsController < ApplicationController
 	end
 
 	def edit
-		render :partial => 'shared/doctor', locals: {
+		render :partial => 'doctors/edit', locals: {
 																									diabetic: @diabetic,
 																									doctor: @doctor,
 																									title: 'Edit a doctor'
