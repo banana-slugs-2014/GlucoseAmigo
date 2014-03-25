@@ -3,6 +3,7 @@ require 'spec_helper'
 describe "dashboard", js: true  do
 	let(:doctor) { create :doctor }
 	let(:diabetic) { create :diabetic }
+	let(:diabetic_attr) {  attributes_for :diabetic }
 
 	before(:each) do
 		@account = create :account
@@ -25,7 +26,6 @@ describe "dashboard", js: true  do
       expect(page).to have_css("form")
       expect(page).to have_css("select")
       expect(page.body).to have_content("Dashboard")
-			page.should have_selector(:link_or_button, 'Log out')
     end
   end
 
@@ -43,6 +43,7 @@ describe "dashboard", js: true  do
 			click_on "Edit the account"
 			fill_in "account[username]", with: "tester_username_that_should_be_new"
 			fill_in "account[email]", with: "tester_email@should_be_new.com"
+			fill_in "account[password]", with: "testing"
 			click_on "Save"
 			expect(@account.reload.username).to eq("tester_username_that_should_be_new")
 			expect(@account.reload.email).to eq("tester_email@should_be_new.com")
@@ -52,11 +53,20 @@ describe "dashboard", js: true  do
 			find("option[value='Account: #{@account.username}']").click
 			click_on "Edit the account"
 			click_on "Cancel"
+			expect(page.body).to have_content("Dashboard")
 		end
 
 		it "user can add a diabetic" do
 			find("option[value='Account: #{@account.username}']").click
-		
+			click_on "Add a Diabetic"
+			fill_in "diabetic[name]", with: diabetic_attr[:name]
+			fill_in "diabetic[email]", with: diabetic_attr[:email]
+			within '#diabetic_birthday_1i' do
+				find("option[value='2009']").click
+			end
+			expect{click_on "Create"}.to change{Diabetic.count}.by(1)
+			#expect{click_on "Create"}.to change{@account.diabetics.count}.by(1)
+			expect(@account.diabetics.last.name).to eq(diabetic_attr[:name])
 		end
 	end
 
