@@ -40,7 +40,7 @@ class AccountsController < ApplicationController
   end
 
   def edit
-    render  :partial => 'accounts/new',
+    render  :partial => 'accounts/edit',
             :locals => {
               account: current_account
             }
