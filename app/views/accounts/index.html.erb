@@ -3,13 +3,13 @@
 </div>
 <br><br>
 
-<%= form_tag sessions_path, id: 'account-login', remote: true do %>
+<%= form_tag sessions_path, id: 'account-login' do %>
     <%= text_field_tag :username, '', :placeholder => "Username" %>
     <%= password_field_tag :password,'', :placeholder => "Password" %>
-    <%= submit_tag "Log In" , :class => "submit", data: {type: 'submit'} %>
+    <%= button_tag "Log In" , :class => "submit", data: {type: 'submit'} %>
 <% end %>
 <div class="signup">
-<%= link_to "Sign Up", new_account_path, :data => { type: 'signup' }, :remote => true %>
+<%= button_tag "Sign Up", :data => { type: 'signup', url: new_account_path}, :remote => true %>
 </div>
 <br><br>
 
