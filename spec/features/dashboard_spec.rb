@@ -1,26 +1,17 @@
 require 'spec_helper'
 
-def wait_for_ajax
-  Timeout.timeout(Capybara.default_wait_time) do
-    loop until finished_all_ajax_requests?
-  end
-end
-
-def finished_all_ajax_requests?
-  page.evaluate_script('jQuery.active').zero?
-end
-
-
-
 describe "dashboard", js: true  do
 	let(:doctor) { create :doctor }
 	let(:diabetic) { create :diabetic }
 	let(:diabetic_attr) {  attributes_for :diabetic }
+	let(:record) { create :record }
 
 	before(:each) do
 		@account = create :account
 		doctor.diabetics << diabetic
 		@account.diabetics << diabetic
+		@diabetic = @account.diabetics.last
+		@diabetic.records << record
     visit new_session_path
     fill_in "Username", with: 'test'
     fill_in "Password", with: 'testing'
@@ -122,16 +113,41 @@ describe "dashboard", js: true  do
 			expect(@account.diabetics.first.records.last.comment).to eq("test_comment")
 		end
 
-		it "can view a record for diabetic" do
+		xit "can view a record for diabetic" do
 			diabetic_name = @account.diabetics.first.name
 			diabetic_id = @account.diabetics.first.id
 			find("option[value='Diabetic: #{diabetic_name} -- #{diabetic_id} ']").click
+			wait_for_ajax
+			click_on "View records for #{diabetic_name}"
+			wait_for_ajax
+
 		end
 
-		it "can edit the diabetic's info" do
-			diabetic_name = @account.diabetics.first.name
-			diabetic_id = @account.diabetics.first.id
-			find("option[value='Diabetic: #{diabetic_name} -- #{diabetic_id} ']").click
+		context "edit the diabetic's info" do
+			before(:each) do
+				diabetic_name = @diabetic.name
+				diabetic_id = @diabetic.id
+				find("option[value='Diabetic: #{diabetic_name} -- #{diabetic_id} ']").click
+				wait_for_ajax
+				click_on "Edit #{diabetic_name}'s info"
+				wait_for_ajax
+			end
+
+			it "can edit preferences" do
+				click_on "Add Preferences"
+				wait_for_ajax
+				#@diabetic
+			end
+
+			it "can edit user info" do
+				click_on "Edit User Info"
+				wait_for_ajax
+			end
+
+			it "can edit doctor info" do
+				click_on "Edit Doctor Info"
+				wait_for_ajax
+			end
 
 		end
 

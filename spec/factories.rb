@@ -3,6 +3,7 @@ FactoryGirl.define do
     created_at { Time.now }
     glucose "123"
     weight "100"
+    taken_at { Time.now }
   end
 
   factory :diabetic do
