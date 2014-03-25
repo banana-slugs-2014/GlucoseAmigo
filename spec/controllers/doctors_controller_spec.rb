@@ -29,16 +29,16 @@ describe DoctorsController do
   end
 
   context "#show" do
-    it "should successfully render a page" do
+    xit "should successfully render a page" do
     	get :show, id: doctor.id, diabetic_id: diabetic.id
       expect(response).to be_success
     end
-    it "should display this specific doctor" do
+    xit "should display this specific doctor" do
       get :show, id: doctor.id, diabetic_id: diabetic.id
       expect(assigns(:doctor)).to eq(doctor)
     end
 
-    it 'redirects if logged_out' do
+    xit 'redirects if logged_out' do
       request.env["HTTP_REFERER"] = new_session_path
       request.session.delete(:account_id)
       get :show, id: doctor.id, diabetic_id: diabetic.id
