@@ -70,7 +70,7 @@ describe RecordsController do
   context '#update' do
     it 'updates a single record' do
       put :update, diabetic_id: @chris.id, id: @record1.id, record: {glucose: '120', weight: '176', taken_at: Time.now-500, comment: "I just got updated!"}
-      expect(response).to be_redirect
+      expect(response).to be_ok
     end
   end
 
