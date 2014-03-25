@@ -3,6 +3,15 @@
   <p>Glucose: <%= f.text_field :glucose %> </p>
   <p>Comments: <%= f.text_area :comment %> </p>
   <p> Date Taken: <%= f.datetime_select :taken_at, ampm: true, minute_step: 5 %> </p>
-  <%= f.submit %>
 <% end %>
-
+<script>
+var title = 'Add a record'
+var leftButton = {
+  type: 'cancel',
+  text: 'Cancel'
+}
+var rightButton = {
+  type: 'submit',
+  text: 'Add'
+}
+</script>

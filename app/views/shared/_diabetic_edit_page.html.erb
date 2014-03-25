@@ -1,0 +1,14 @@
+<%= button_tag 'Edit Preferences', data: { type:'edit-diabetic-button', url: edit_diabetic_preference_path(diabetic, diabetic.preference) }, remote: true %>
+<%= button_tag 'Edit User Info', data: { type:'edit-diabetic-button', url: edit_account_diabetic_path(account, diabetic) }, remote: true %>
+<%= button_tag 'Edit Doctor Info', data: { type:'edit-diabetic-button', url: edit_diabetic_doctor_path(diabetic, diabetic.doctor) }, remote: true %>
+<script>
+var title = "Edit <%= diabetic.name %>'s info"
+var leftButton = {
+  type: 'cancel',
+  text: 'Back'
+}
+var rightButton = {
+  type: 'none',
+  text: 'Save'
+}
+</script>

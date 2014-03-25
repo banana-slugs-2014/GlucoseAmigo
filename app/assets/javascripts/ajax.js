@@ -8,14 +8,19 @@ var Ajax = (function(){
 
 
   return {
-    testGet: function(reaction){
-      var data = {
-        url: '/test',
-      }
-      _request(data,reaction);
-    },
     get: function(url, reaction){
       _request({ url: url }, reaction)
+    },
+    getSubmenu: function(submenu, reaction){
+      var data = {
+        url: '/accounts/submenu',
+        data: { 'menu_choice': submenu }
+      }
+      _request(data, reaction)
+    },
+    getEdit: function(type,id,reaction){
+      var url = '/'+type+'/'+id+'/edit'
+      this.get(url, reaction)
     },
     logout: function(userId, reaction){
       _request({

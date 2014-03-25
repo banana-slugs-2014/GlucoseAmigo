@@ -1,16 +1,16 @@
-<%= form_for ([account,diabetic]), remote: true do |f| %>
+<%= form_for ([account,diabetic]) do |f| %>
   <%= f.text_field :name, :placeholder => "e.g. John Smith" %>
-  <%= date_select :diabetic, :birthday %>
+  <%= date_select :diabetic, :birthday, :default => diabetic.birthday %>
   <%= f.text_field :email, :placeholder => "e.g. john@smith.com" %>
 <% end %>
 <script>
-var title = 'Add a diabetic'
+var title = "Edit <%= diabetic.name %>'s infos"
 var leftButton = {
   type: 'cancel',
   text: 'Cancel'
 }
 var rightButton = {
   type: 'submit',
-  text: 'Create'
+  text: 'Save'
 }
 </script>

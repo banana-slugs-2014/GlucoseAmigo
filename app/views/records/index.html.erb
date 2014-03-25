@@ -1,4 +1,3 @@
-<p>Welcome, <%=  @diabetic.name %></p>
 <h3> Here are your most recent records </h3>
 <% @records.each_with_index do |record, index| %>
   <%= link_to "#{index+1}", edit_diabetic_record_path(@diabetic, record) %> --
@@ -11,3 +10,14 @@
 <div class = 'add-new-record'>
   <%= render partial: 'shared/new_record', locals: {diabetic: @diabetic, record: Record.new} %>
 </div>
+<script>
+var title = "<%= @diabetic.name %>'s records"
+var leftButton = {
+  type: 'cancel',
+  text: 'Back'
+}
+var rightButton = {
+  type: 'none',
+  text: 'Save'
+}
+</script>

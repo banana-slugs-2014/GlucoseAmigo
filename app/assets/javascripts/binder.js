@@ -3,12 +3,30 @@ var Binder = (function(Ajax){
     $('body')
     .off('click','button')
     .on('click', 'button', function(e){
-      if (_isSubmit(this)) {
+      switch(_dataTypeOf(this)){
+      case 'submit':
         $('form').submit();
-      } else if (_isLogout(this)) {
+        break;
+      case 'logout':
         controller.logout();
+        break;
+      case 'cancel':
+        controller.goBack(e);
+        break;
+      case 'dashboard-button':
+        controller.loadNextPageFromData( $(this).data() );
+        break;
+      case 'add-record':
+        controller.loadAddRecord();
+        break;
+      case 'edit-diabetic-button':
+        controller.loadNextPageFromData( $(this).data() );
+        break;
       }
     })
+  }
+  var _dataTypeOf = function(element){
+    return $(element).data('type')
   }
 
   var _bindLinks = function(controller){
@@ -21,11 +39,14 @@ var Binder = (function(Ajax){
     })
   }
 
-  var _isSubmit = function(el){
-    return($(el).data('type') === 'submit')
+  var _bindDashboardMenu = function(controller){
+    $('body').on('change', '#menu_choice', function(event){
+       controller.getSubmenu($(this).find(':selected').val() )
+     });
   }
-  var _isLogout = function(el){
-    return($(el).data('type') === 'logout')
+
+  var _isGetSubmenu = function(el){
+    return($(el).data('type') === 'get-submenu')
   }
 
   var _isSignUp = function(el){
@@ -53,6 +74,7 @@ var Binder = (function(Ajax){
       _bindButtons(controller);
       _bindAjaxForms(controller);
       _bindLinks(controller);
+      _bindDashboardMenu(controller);
     }
   }
 

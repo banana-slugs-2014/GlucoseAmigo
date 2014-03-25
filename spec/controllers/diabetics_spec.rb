@@ -82,6 +82,7 @@ describe DiabeticsController do
 
     context 'with valid parameters' do
       it 'should edit a Diabetic' do
+        request.env["HTTP_REFERER"] = new_session_path
         expect {
           put :update, valid_edit_params
         }.to change { Diabetic.find(diabetic.id).name }
@@ -91,6 +92,7 @@ describe DiabeticsController do
 
     context 'with invalid parameters' do
       it 'should not edit a Diabetic' do
+        request.env["HTTP_REFERER"] = new_session_path
         expect {
           put :update, invalid_edit_params
         }.to_not change { Diabetic.find(diabetic.id).name }

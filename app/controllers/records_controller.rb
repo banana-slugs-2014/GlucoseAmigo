@@ -13,7 +13,7 @@ class RecordsController < ApplicationController
     @data = @diabetic.get_data_for_graph
     respond_to do |format|
       format.html do
-        return @data
+        render :partial => 'shared/records', locals: { records: @records, diabetic: @diabetic }
       end
       format.pdf do
         pdf = RecordDataPdf.new(@data, @diabetic)
@@ -37,11 +37,10 @@ class RecordsController < ApplicationController
     @record = Record.create(params[:record])
     if @record.save
       @diabetic.records << @record
-      redirect_to diabetic_records_path(@diabetic)
     else
       flash[:notice] = "Please try again"
-      render partial: 'shared/new_record', locals: {record: @record, diabetic: @diabetic}
     end
+    redirect_to :back
   end
 
   def edit
