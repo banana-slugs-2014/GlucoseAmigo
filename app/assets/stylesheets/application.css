@@ -104,7 +104,9 @@
   #account_username,
   #account_email,
   #account_password,
-  #account_password_confirmation {
+  #account_password_confirmation,
+  #diabetic_email, #diabetic_name,
+  #record_weight, #record_glucose  {
     max-width: 40%;
     width: 40%;
     margin: 2% 30%;
@@ -115,6 +117,15 @@
     border-radius: 5px;
   }
 
+  #record_comment {
+    height: 45px;
+    width: 40%;
+    display: block;
+    margin: 0 30%;
+    border-radius: 5px;
+    border: none;
+  }
+
   /* ACCOUNT DASHBOARD */
 
   select {
@@ -123,7 +134,8 @@
     height: 10%;
   }
 
-  [data-type="dashboard-button"], [data-type="graph-button"]{
+  [data-type="dashboard-button"], [data-type="graph-button"],
+  [data-type="edit-diabetic-button"] {
     display: block;
     border: none;
     border-radius: 5px;
@@ -153,7 +165,7 @@
   }
 
   [data-style="edit-diabetic"]{
-    background-color: #9E9E9E;
+    background-color: #FF944C;
   }
 
   [data-style="add-diabetic"]{
@@ -161,26 +173,36 @@
   }
 
   [data-style="edit-account"]{
-    background-color: #9E9E9E;
+    background-color: #FF944C;
   }
+
+  /* EDIT STUFF FOR A DIABETIC */
+
+  [data-style="edit-preferences"],
+  [data-style="edit-user-info"],
+  [data-style="edit-doctor-info"] {
+    background-color: #FF944C;
+  }
+
+
 
   /* NAV BAR */
 
   #navbar {
     position: fixed;
-    bottom: 0;
+    bottom: 1%;
     height: 12%;
     width: 100%;
   }
 
   #navbar button {
     border: none;
-    height: 90%;
-    width: 45%;
+    height: 60%;
+    width: 20%;
     color: white;
     border-radius: 5px;
     font-size: 145%;
-    margin: 0 2.5%;
+    margin: 0 15%;
     margin-bottom: 10%;
   }
 
@@ -280,12 +302,23 @@
   #account_username,
   #account_email,
   #account_password,
-  #account_password_confirmation {
+  #account_password_confirmation,
+  #diabetic_email, #diabetic_name,
+  #record_weight, #record_glucose  {
     max-width: 50%;
     width: 50%;
     margin: 2% 25%;
     margin-top: 0%;
     margin-bottom: 4%;
+  }
+
+  #record_comment {
+    height: 45px;
+    width: 50%;
+    display: block;
+    margin: 0 25%;
+    border-radius: 5px;
+    border: none;
   }
 
   /* ACCOUNT DASHBOARD */
@@ -296,7 +329,8 @@
     height: 10%;
   }
 
-  [data-type="dashboard-button"], [data-type="graph-button"]{
+  [data-type="dashboard-button"], [data-type="graph-button"],
+  [data-type="edit-diabetic-button"] {
     display: block;
     border: none;
     border-radius: 5px;
@@ -326,7 +360,7 @@
   }
 
   [data-style="edit-diabetic"]{
-    background-color: #9E9E9E;
+    background-color: #FF944C;
   }
 
   [data-style="add-diabetic"]{
@@ -334,14 +368,22 @@
   }
 
   [data-style="edit-account"]{
-    background-color: #9E9E9E;
+    background-color: #FF944C;
+  }
+
+  /* EDIT STUFF FOR A DIABETIC */
+
+  [data-style="edit-preferences"],
+  [data-style="edit-user-info"],
+  [data-style="edit-doctor-info"] {
+    background-color: #FF944C;
   }
 
   /* NAV BAR */
 
   #navbar {
     position: fixed;
-    bottom: 0;
+    bottom: 2%;
     height: 12%;
     width: 100%;
   }
@@ -458,12 +500,23 @@
   #account_username,
   #account_email,
   #account_password,
-  #account_password_confirmation {
+  #account_password_confirmation,
+  #diabetic_email, #diabetic_name,
+  #record_weight, #record_glucose  {
     max-width: 80%;
     width: 80%;
     margin: 2% 10%;
     margin-top: 0%;
     margin-bottom: 4%;
+  }
+
+  #record_comment {
+    height: 45px;
+    width: 80%;
+    display: block;
+    margin: 0 10%;
+    border-radius: 5px;
+    border: none;
   }
 
   .account-title {
@@ -478,7 +531,8 @@
     height: 10%;
   }
 
-  [data-type="dashboard-button"], [data-type="graph-button"]{
+  [data-type="dashboard-button"], [data-type="graph-button"],
+  [data-type="edit-diabetic-button"] {
     display: block;
     border: none;
     border-radius: 5px;
@@ -508,7 +562,7 @@
   }
 
   [data-style="edit-diabetic"]{
-    background-color: #9E9E9E;
+    background-color: #FF944C;
   }
 
   [data-style="add-diabetic"]{
@@ -516,14 +570,22 @@
   }
 
   [data-style="edit-account"]{
-    background-color: #9E9E9E;
+    background-color: #FF944C;
+  }
+
+  /* EDIT STUFF FOR A DIABETIC */
+
+  [data-style="edit-preferences"],
+  [data-style="edit-user-info"],
+  [data-style="edit-doctor-info"] {
+    background-color: #FF944C;
   }
 
   /* NAVBAR */
 
   #navbar {
     position: fixed;
-    bottom: 0;
+    bottom: 2%;
     height: 12%;
     width: 100%;
   }
@@ -637,16 +699,26 @@
   #account_username,
   #account_email,
   #account_password,
-  #account_password_confirmation {
+  #account_password_confirmation,
+  #diabetic_email, #diabetic_name,
+  #record_weight, #record_glucose {
     max-width: 92%;
     width: 92%;
-    margin: 2% 3.5%;
+    margin: 1.5% 3.5%;
     height: 40px;
     font-size: 170%;
     margin-top: 0%;
     margin-bottom: 4%;
     border-radius: 5px;
+  }
 
+  #record_comment {
+    height: 45px;
+    width: 92%;
+    display: block;
+    margin: 0 3.5%;
+    border-radius: 5px;
+    border: none;
   }
 
   .account-title {
@@ -686,7 +758,8 @@
     height: 10%;
   }
 
-  [data-type="dashboard-button"], [data-type="graph-button"]{
+  [data-type="dashboard-button"], [data-type="graph-button"],
+  [data-type="edit-diabetic-button"] {
     display: block;
     border: none;
     border-radius: 5px;
@@ -716,7 +789,7 @@
   }
 
   [data-style="edit-diabetic"]{
-    background-color: #9E9E9E;
+    background-color: #FF944C;
   }
 
   [data-style="add-diabetic"]{
@@ -724,11 +797,19 @@
   }
 
   [data-style="edit-account"]{
-    background-color: #9E9E9E;
+    background-color: #FF944C;
   }
 
+  /* EDIT STUFF FOR A DIABETIC */
 
-  /* VIEW RECORDS */
+
+  [data-style="edit-preferences"],
+  [data-style="edit-user-info"],
+  [data-style="edit-doctor-info"] {
+    background-color: #FF944C;
+    width: 90%;
+  }
+
 
   #records-summary {
     /*visibility:hidden;*/
