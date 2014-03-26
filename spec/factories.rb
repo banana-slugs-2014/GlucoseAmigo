@@ -3,12 +3,14 @@ FactoryGirl.define do
     created_at { Time.now }
     glucose "123"
     weight "100"
+    taken_at { Time.now }
   end
 
   factory :diabetic do
-    name CoolFaker::Character.name
-    email Faker::Internet.email
+    sequence(:name) { |n| Faker::Name.name + n.to_s }
+    sequence(:email) { |n| n.to_s + Faker::Internet.email }
     birthday { Date.today - rand(2000) }
+    account
   end
 
   factory :account do
@@ -21,7 +23,7 @@ FactoryGirl.define do
   factory :doctor do
     sequence(:name) { |n| Faker::Name.name + n.to_s }
     sequence(:fax) { |n| Faker::PhoneNumber.phone_number + n.to_s }
-    email Faker::Internet.email
+    sequence(:email) { |n| n.to_s + Faker::Internet.email }
     comments Faker::Lorem.sentence
   end
 
