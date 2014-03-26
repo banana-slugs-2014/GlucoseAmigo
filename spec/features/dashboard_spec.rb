@@ -105,7 +105,7 @@ describe "dashboard", js: true  do
 		it "can add a record for diabetic" do
 			diabetic_name = account.diabetics.first.name
 			diabetic_id = account.diabetics.first.id
-			find("option[value='Diabetic: #{diabetic_name} -- #{diabetic_id} ']").click
+			find("option[value='Diabetic: #{diabetic_name.gsub("'","\'")} -- #{diabetic_id} ']").click
 			click_on "Add record for: #{account.diabetics.first.name}"
 			wait_for_ajax
 			weight = rand(175..230)
@@ -126,9 +126,9 @@ describe "dashboard", js: true  do
 		xit "can view a record for diabetic" do
 			diabetic_name = account.diabetics.first.name
 			diabetic_id = account.diabetics.first.id
-			find("option[value='Diabetic: #{diabetic_name} -- #{diabetic_id} ']").click
+			find("option[value='Diabetic: #{diabetic_name.gsub("'","\'")} -- #{diabetic_id} ']").click
 			wait_for_ajax
-			click_on "View records for #{diabetic_name}"
+			click_on "View records for #{diabetic_name.gsub("'","\'")}"
 			wait_for_ajax
 
 		end
@@ -137,9 +137,9 @@ describe "dashboard", js: true  do
 			before(:each) do
 				diabetic_name = diabetic.name
 				diabetic_id = diabetic.id
-				find("option[value='Diabetic: #{diabetic_name} -- #{diabetic_id} ']").click
+				find("option[value='Diabetic: #{diabetic_name.gsub("'","\'")} -- #{diabetic_id} ']").click
 				wait_for_ajax
-				click_on "Edit #{diabetic_name}'s info"
+				click_on "Edit #{diabetic_name.gsub("'","\'")}'s info"
 				wait_for_ajax
 			end
 
