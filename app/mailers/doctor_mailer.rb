@@ -9,10 +9,11 @@ class DoctorMailer < ActionMailer::Base
          template_name: 'welcome')
   end
 
+
   def attachment_email(diabetic, pdf)
     @diabetic = diabetic
     @doctor = @diabetic.doctor
-    attachments['report'] = {mime_type: 'application/pdf', content: pdf.render()}
+    attachments["#{@diabetic.name}_#{Time.now.strftime("%Y-%m-%d")}"] = { mime_type: 'application/pdf', content: pdf.render() }
     mail(to: @doctor.email, 
          subject: "#{diabetic.name}'s Report from GlucoseAmigo",
          template_path: 'doctor_mailer',
@@ -20,3 +21,8 @@ class DoctorMailer < ActionMailer::Base
   end
 
 end
+
+
+        # @data = @diabetic.get_data_for_pdf
+        # pdf = RecordDataPdf.new(@data, @diabetic)
+        # send_data pdf.render, filename: "#{@diabetic.name}_#{Time.now.strftime("%Y-%m-%d")}", type: "application/pdf"
