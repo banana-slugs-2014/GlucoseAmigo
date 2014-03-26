@@ -11,12 +11,18 @@ class SessionsController < ApplicationController
   def create
     account = Account.find_by_username(params[:username]).try(:authenticate, params[:password])
     if account
+      ok = true
       login account
-      redirect_to account_path(account)
+      path = account_path(account)
     else
-      flash[:notice] = 'invalid login information'
-      redirect_to root_path
+      alert = 'invalid login information'
+      path = root_path
     end
+    render :json => {
+                      ok: !!ok,
+                      path: path,
+                      alert: alert
+                    }
   end
 
   def destroy

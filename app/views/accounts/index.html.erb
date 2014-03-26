@@ -3,7 +3,7 @@
 </div>
 <br><br>
 
-<%= form_tag sessions_path, id: 'account-login' do %>
+<%= form_tag sessions_path, id: 'account-login', remote: true do %>
     <%= text_field_tag :username, '', :placeholder => "Username" %>
     <%= password_field_tag :password,'', :placeholder => "Password" %>
     <%= button_tag "Log In" , :class => "submit", data: {type: 'submit'} %>
@@ -26,4 +26,3 @@ var rightButton = {
   type: 'none'
 }
 </script>
-
