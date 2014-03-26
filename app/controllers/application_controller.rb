@@ -20,4 +20,5 @@ class ApplicationController < ActionController::Base
                       alert: alert
                     }
   end
+
 end
