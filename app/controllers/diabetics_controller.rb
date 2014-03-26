@@ -14,7 +14,7 @@ class DiabeticsController < ApplicationController
     diabetic = current_account.diabetics.build(params[:diabetic])
     if diabetic.save
       ok = true
-      #DiabeticMailer.welcome_email(diabetic).deliver
+      DiabeticMailer.welcome_email(diabetic).deliver
       path = new_diabetic_doctor_path(diabetic_id: diabetic.id)
     else
       path = new_account_diabetic_path(account_id: current_account.id)
@@ -35,13 +35,24 @@ class DiabeticsController < ApplicationController
 
   def update
     @diabetic.update_attributes(params[:diabetic])
-    @diabetic.save
-    redirect_to :back
+    if @diabetic.save
+      ok = true
+      path = dashboard_path
+    end
+    render :json => {
+                      ok: !!ok,
+                      path: path,
+                      alert: @diabetic.errors.full_messages
+                    }
   end
 
   def destroy
     @diabetic.destroy
-    redirect_to new_account_diabetic_path(current_account)
+    render :json => {
+                      ok: true,
+                      path: dashboard_path,
+                      alert: 'User has been deleted'
+                    }
   end
 
 
