@@ -3,6 +3,6 @@
   <%= button_tag "View #{diabetic.name}'s records", data: { type: 'dashboard-button', url: diabetic_records_path(diabetic), style: 'view-record' }, remote: true %><br>
   <%= button_tag "Edit #{diabetic.name}'s info", data: { type: 'dashboard-button', url: diabetic_dashboard_path(diabetic.id), style: 'edit-diabetic' }, remote: true %><br>
 <% else %>
+  <%= button_tag 'Add a Diabetic', data: { type: 'dashboard-button', url: new_account_diabetic_path(account), style: 'add-diabetic' }, remote: true %><br>
   <%= button_tag 'Edit the account', data: { type: 'dashboard-button', url: edit_account_path(account), style: 'edit-account' }, remote: true %><br>
 <% end %>
-<%= button_tag 'Add a Diabetic', data: { type: 'dashboard-button', url: new_account_diabetic_path(account) }, remote: true %><br>

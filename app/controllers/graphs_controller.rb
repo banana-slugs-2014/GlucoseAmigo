@@ -8,19 +8,25 @@ class GraphsController < ApplicationController
   def show
     # diabetic = Diabetic.find(params[:id])
     diabetic = Diabetic.find(1)
-    glucose_data = diabetic.get_data_for_graph.first.sort_by{|a,b| a }
-    weight_data = diabetic.get_data_for_graph.last.sort_by{|a,b| a }
-    glucose_data = Hash[*glucose_data.flatten]
-    weight_data = Hash[*weight_data.flatten]
-    glucose = glucose_data.values
-    days = glucose_data.keys
-    weight = weight_data.values
+    data = diabetic.sort_graph_data
+    glucose = data.first.values
+    days = data.first.keys
+    weight = data.last.values
+    last_date = days.last
+    last_date = (Date.parse(last_date) - 5).to_s
+    last_date_array = last_date.split.first.split("-")
+    year = last_date_array[0].to_i
+    month = last_date_array[1].to_i
+    day = last_date_array[2].to_i
     render :json => {
-                      diabetic: diabetic,
-                      days: days,
-                      glucose: glucose,
-                      weight: weight
-                    }
+      year: year,
+      month: month,
+      day: day,
+      diabetic: diabetic,
+      days: days,
+      glucose: glucose,
+      weight: weight
+    }
   end
 
 end
