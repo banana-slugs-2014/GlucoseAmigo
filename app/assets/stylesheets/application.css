@@ -135,7 +135,7 @@
 
   /* ACCOUNT DASHBOARD */
 
-  #menu_choice {
+  #menu_choice, #preference_frequency {
     color: white;
     width: 40%;
     padding: 2%;
@@ -218,6 +218,11 @@
     display: none;
   }
 
+  p select, #diabetic_birthday_1i, #diabetic_birthday_2i,
+  #diabetic_birthday_3i {
+    display: inline;
+  }
+
   /* NAV BAR */
 
   #navbar {
@@ -253,6 +258,8 @@
 *************************************************/
 
 @media only screen and (max-width: 1024px) {
+
+
 
 /* CREATE ACCOUNT */
 
@@ -374,6 +381,21 @@
     background: url() no-repeat right #8A8A8A;
     margin: 8% 25% 10% 25%;
   }
+
+  #preference_frequency {
+      color: white;
+      width: 10%;
+      padding: 2%;
+      font-size: 140%;
+      line-height: 1;
+      border: 0;
+      border-radius: 0;
+      height: 42px;
+      display: block;
+      overflow: hidden;
+      background: url(new_arrow.png) no-repeat right #8A8A8A;
+      margin: 8% 50% 10% 50%;
+    }
 
   option {
     background: transparent;
@@ -584,7 +606,7 @@
 
   /* ACCOUNT DASHBOARD */
 
-  #menu_choice {
+  #menu_choice, #preference_frequency {
     margin-bottom: 5%;
     color: white;
     width: 65%;
@@ -820,7 +842,7 @@
     color: #5959FF;
   }
 
-  #menu_choice {
+  #menu_choice, #preference_frequency {
     margin-bottom: 5%;
     color: white;
     width: 90%;
