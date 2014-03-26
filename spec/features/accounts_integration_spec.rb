@@ -49,6 +49,16 @@ describe "Accounts", :js => true do
       expect(new_account.reload.diabetics.last.doctor.fax).to eq(doctor_attr[:fax])
       expect(new_account.reload.diabetics.last.doctor.email).to eq(doctor_attr[:email])
       expect(new_account.reload.diabetics.last.doctor.comments).to eq(doctor_attr[:comments])
+      expect(page).to have_content 'preferences'
+
+      expect{
+        find("option[value='2']").click
+        click_on "Save"
+        wait_for_ajax
+      }.to change{Preference.count}.by(1)
+      expect(new_account.reload.diabetics.last.preference.reminders).to eq(true)
+      expect(new_account.reload.diabetics.last.preference.frequency).to eq(2)
+      expect(page).to have_content 'Dashboard'
 
 
     end
