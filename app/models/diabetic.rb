@@ -19,11 +19,9 @@ class Diabetic < ActiveRecord::Base
     age -= 1 if Date.today < self.birthday.year + age.years
   end
 
-
-
-  def get_data_for_graph(number_of_days=7)
+  def get_data_for_graph(number_of_days=7, format = '%a %m/%d')
     collection = load_records(number_of_days)
-    get_data(collection, '%a %m/%d')
+    get_data(collection, format)
   end
 
   def get_data_for_pdf(number_of_days=14)
