@@ -134,6 +134,28 @@
 
   /* ACCOUNT DASHBOARD */
 
+  #menu_choice {
+    color: white;
+    width: 40%;
+    padding: 2%;
+    font-size: 140%;
+    line-height: 1;
+    border: 0;
+    border-radius: 0;
+    height: 42px;
+    display: block;
+    overflow: hidden;
+    background: url(new_arrow.png) no-repeat right #8A8A8A;
+    margin: 5% 30% 10% 30%;
+  }
+
+  option {
+    background: transparent;
+    display: block;
+    height: 10%;
+    border: 0;
+  }
+
   select {
     background-color: gray;
     display: block;
@@ -332,6 +354,28 @@
   }
 
   /* ACCOUNT DASHBOARD */
+
+  #menu_choice {
+    color: white;
+    width: 50%;
+    padding: 2%;
+    font-size: 140%;
+    line-height: 1;
+    border: 0;
+    border-radius: 0;
+    height: 42px;
+    display: block;
+    overflow: hidden;
+    background: url(new_arrow.png) no-repeat right #8A8A8A;
+    margin: 8% 25% 10% 25%;
+  }
+
+  option {
+    background: transparent;
+    display: block;
+    height: 10%;
+    border: 0;
+  }
 
   select {
     background-color: gray;
@@ -535,6 +579,29 @@
   }
 
   /* ACCOUNT DASHBOARD */
+
+  #menu_choice {
+    margin-bottom: 5%;
+    color: white;
+    width: 65%;
+    padding: 2%;
+    font-size: 140%;
+    line-height: 1;
+    border: 0;
+    border-radius: 0;
+    height: 42px;
+    display: block;
+    overflow: hidden;
+    background: url(new_arrow.png) no-repeat right #8A8A8A;
+    margin: 10% 17.5% 15% 17.5%;
+  }
+
+  option {
+    background: transparent;
+    display: block;
+    height: 10%;
+    border: 0;
+  }
 
   select {
     background-color: gray;
@@ -761,18 +828,19 @@
     margin: 10% 5%;
   }
 
-  #submenu {
-    width: 90%;
-    display: block;
-    margin: 0 auto;
-  }
-
   option {
     background: transparent;
     display: block;
     height: 10%;
     border: 0;
   }
+
+  #submenu {
+    width: 90%;
+    display: block;
+    margin: 0 auto;
+  }
+
 
   [data-type="dashboard-button"], [data-type="graph-button"],
   [data-type="edit-diabetic-button"] {
