@@ -66,7 +66,7 @@ class AccountsController < ApplicationController
     if current_account.authenticate(params[:account][:password])
       ok = true
       current_account.update_attributes(params[:account])
-      path = accounts_path
+      path = dashboard_path
     else
       notice = ['Invalid Password']
       path = edit_account_path(current_account)
