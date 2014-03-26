@@ -1,4 +1,4 @@
-<%= form_for ([diabetic,record]) do |f| %>
+<%= form_for ([diabetic,record]), remote: true do |f| %>
   <%= f.label :weight %><br>
   <%= f.text_field :weight %><br>
   <%= f.label :glucose %><br>
@@ -9,6 +9,7 @@
   <div class="enter-record-date">
     <%= f.datetime_select :taken_at, ampm: true, minute_step: 5 %>
   </div>
+
 <% end %>
 <script>
 var title = 'Add a record'
