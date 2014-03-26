@@ -12,6 +12,11 @@ describe DiabeticsController do
       account_id: @account.id
     }
   end
+  let(:new_diabetic_params) do # the params to test user creation. Email is doubled if we don't change it like that, fuck factorygirl
+    params = valid_params
+    params[:diabetic][:email] = "new_mail@mail.com"
+    params
+  end
 
   let(:invalid_params) do
     {
@@ -28,7 +33,7 @@ describe DiabeticsController do
     context 'with valid params' do
       it 'should add a diabetic when adding on the correct path' do
         expect{
-          post :create, valid_params
+          post :create, new_diabetic_params
         }.to change {Diabetic.count}.by 1
       end
     end

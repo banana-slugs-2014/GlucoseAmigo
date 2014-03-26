@@ -3,6 +3,7 @@ class Diabetic < ActiveRecord::Base
 
   # Validations
   validates_presence_of :name, :email, :birthday
+  validates_uniqueness_of :email
   validates_format_of :email, :with => /^\w+[\.\w\-]*@\w+\.\w{2,5}$/
   validate :birthday_cant_be_in_the_future
 
