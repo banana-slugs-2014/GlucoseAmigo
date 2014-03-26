@@ -1,5 +1,4 @@
 function graph(response) {
-    //console.log(response.days)
 
     $('#graph').highcharts({
         chart: {
@@ -24,15 +23,6 @@ function graph(response) {
                 step: 1
             },
             tickInterval: 24 * 3600 * 1000
-            // categories: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "sunday"],
-            // categories: response.days,
-            // type: 'datetime',
-            // labels: {
-            //     formatter: function() {
-            //         return Highcharts.dateFormat('%a %e %b', this.value);
-            //     }
-            // }
-
         }],
         yAxis: [{ // Primary yAxis
             labels: {
@@ -59,6 +49,7 @@ function graph(response) {
                     text: 'Normal Glucose Levels',
                     style: {
                         color: '#606060'
+                        // fontSize: '20px';
                     }
                 }
 
@@ -84,11 +75,12 @@ function graph(response) {
 
         legend: {
             layout: 'vertical',
-            align: 'left',
-            x: 120,
+            align: 'right',
             verticalAlign: 'top',
+            x: -150,
             y: 100,
             floating: true,
+            borderWidth: 1,
             backgroundColor: '#FFFFFF'
         },
         series: [{
@@ -96,8 +88,6 @@ function graph(response) {
             color: '#4572A7',
             type: 'spline',
             yAxis: 1,
-            // pointInterval: 24 * 3600 * 1000,
-            // pointStart: Date.UTC(2014, 0, 01),
             data: response.weight,
             pointStart: Date.UTC(response.year, response.month - 1, response.day),
             pointInterval: 8 * 3600 * 1000, // one day
@@ -109,8 +99,6 @@ function graph(response) {
             name: 'Glucose',
             color: 'red',
             type: 'spline',
-            // pointInterval: 24 * 3600 * 1000,
-            // pointStart: Date.UTC(2014, 0, 01),
             data: response.glucose,
             pointStart: Date.UTC(response.year, response.month - 1, response.day),
             pointInterval: 8 * 3600 * 1000, // one day
