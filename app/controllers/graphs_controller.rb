@@ -10,6 +10,7 @@ class GraphsController < ApplicationController
     data = diabetic.sort_graph_data
     glucose = data.first.values
     days = data.first.keys
+    comments = data[1].values
     weight = data.last.values
     last_date = days.last
     last_date = (Date.parse(last_date) - 5).to_s
