@@ -25,10 +25,26 @@ class Diabetic < ActiveRecord::Base
     get_data(collection, format)
   end
 
+<<<<<<< HEAD
   def get_data_for_pdf(number_of_days=14)
     collection = load_records(number_of_days)
     get_data(collection, '%m/%d/%y -- %I:%M %p')
   end
+=======
+  def sort_graph_data
+    glucose_data = self.get_data_for_graph.first.sort_by{|a,b| a }
+    weight_data = self.get_data_for_graph.last.sort_by{|a,b| a }
+    glucose_data = Hash[*glucose_data.flatten]
+    weight_data = Hash[*weight_data.flatten]
+    data = [glucose_data, weight_data]
+  end
+
+  def format_days
+    data = self.sort_graph_data
+    puts data
+  end
+
+>>>>>>> working x axis for graph
 
   private
 

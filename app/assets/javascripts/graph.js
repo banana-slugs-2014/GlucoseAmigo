@@ -1,4 +1,5 @@
 function graph(response) {
+    console.log(response.days)
 
     $('#graph').highcharts({
         chart: {
@@ -11,7 +12,27 @@ function graph(response) {
             text: response.diabetic.name
         },
         xAxis: [{
-            categories: response.days
+            type: 'datetime',
+            dateTimeLabelFormats: {
+                day: '%b %e'
+            },
+            minPadding: 0,
+            maxPadding: 0,
+            startOnTick: true,
+            startOfWeek: 1,
+            labels: {
+                step: 1
+            },
+            tickInterval: 24 * 3600 * 1000
+            // categories: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "sunday"],
+            // categories: response.days,
+            // type: 'datetime',
+            // labels: {
+            //     formatter: function() {
+            //         return Highcharts.dateFormat('%a %e %b', this.value);
+            //     }
+            // }
+
         }],
         yAxis: [{ // Primary yAxis
             labels: {
@@ -75,7 +96,11 @@ function graph(response) {
             color: '#4572A7',
             type: 'spline',
             yAxis: 1,
+            // pointInterval: 24 * 3600 * 1000,
+            // pointStart: Date.UTC(2014, 0, 01),
             data: response.weight,
+            pointStart: Date.UTC(2014, 2, 19),
+            pointInterval: 8 * 3600 * 1000, // one day
             tooltip: {
                 valueSuffix: ' lbs'
             }
@@ -84,7 +109,11 @@ function graph(response) {
             name: 'Glucose',
             color: 'red',
             type: 'spline',
+            // pointInterval: 24 * 3600 * 1000,
+            // pointStart: Date.UTC(2014, 0, 01),
             data: response.glucose,
+            pointStart: Date.UTC(2014, 2, 19),
+            pointInterval: 8 * 3600 * 1000, // one day
             tooltip: {
                 valueSuffix: 'mg/dL'
             }
