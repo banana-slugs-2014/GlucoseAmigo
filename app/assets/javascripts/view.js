@@ -6,7 +6,8 @@ var View = function(){
     submenuSelector: '#submenu',
     recordsSummarySelector: '#records-summary',
     recordsGraphSelector: '#records-graph',
-    recordsToggleButtonSelector: '#records-toggle-button'
+    recordsToggleButtonSelector: '#records-toggle-button',
+    alertBoxSelector: '#notice'
   };
   this.templates = HandlebarsTemplates;
   this.toggleButtonText = ['Graph','Records']
@@ -39,12 +40,38 @@ View.prototype = {
     this.addNavBar(leftButton, rightButton);
     this.changeTitle(title);
   },
+  // Alerts
   addAlert: function(alert){
     console.log(alert);
+    this.showAlertBox();
+    $(this.selectors.alertBoxSelector).html(this.formatAlert(alert));
+    setTimeout(this.hideAlertBox.bind(this),5000);
   },
+  showAlertBox: function(){
+    $(this.selectors.alertBoxSelector).show();
+  },
+  hideAlertBox: function(){
+    $(this.selectors.alertBoxSelector).html('').hide()
+  },
+  formatAlert: function(alert){
+    var result = "<ul>"
+    if(typeof alert === "object"){
+      for(var i = 0; i < alert.length; i++){
+        result = result + '<li>' + alert[i] + '</li>';
+      }
+    } else {
+      result = result + alert
+    }
+
+    return(result + '</ul>')
+  },
+
+  // Submenu
   addSubmenu: function(menu){
     $(this.selectors.submenuSelector).html(menu);
   },
+
+  // Record page
   toggleRecordsPage: function(){
     $(this.selectors.recordsSummarySelector).toggle();
     $(this.selectors.recordsGraphSelector).toggle();
