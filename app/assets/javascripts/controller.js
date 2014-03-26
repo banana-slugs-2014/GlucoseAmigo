@@ -38,12 +38,9 @@ Controller.prototype = {
         this.view.toggleRecordsPage();
     },
     graphAlert: function(response) {
-        console.log('here i am');
         if (response.check == "graph") {
-            console.log('yes')
             graph(response);
         } else {
-            console.log('no')
             this.view.addAlert(response.alert);
         }
 
