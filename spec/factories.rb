@@ -8,7 +8,7 @@ FactoryGirl.define do
 
   factory :diabetic do
     name CoolFaker::Character.name
-    email Faker::Internet.email
+    sequence(:email) { |n| n.to_s + Faker::Internet.email }
     birthday { Date.today - rand(2000) }
     account
   end

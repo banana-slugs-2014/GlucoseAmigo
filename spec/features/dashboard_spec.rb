@@ -106,7 +106,7 @@ describe "dashboard", js: true  do
 			diabetic_name = account.diabetics.first.name
 			diabetic_id = account.diabetics.first.id
 			find("option[value='Diabetic: #{diabetic_name} -- #{diabetic_id} ']").click
-			click_on "Add a record for: #{account.diabetics.first.name}"
+			click_on "Add record for: #{account.diabetics.first.name}"
 			wait_for_ajax
 			weight = rand(175..230)
 			glucose = rand(200..600)
@@ -167,8 +167,8 @@ describe "dashboard", js: true  do
 					click_on "Save"
 					wait_for_ajax
 				}.to change{Diabetic.count}.by(0)
-				expect(account.diabetics.last.name).to eq(diabetic_attr[:name])
-				expect(account.diabetics.last.email).to eq(diabetic_attr[:email])
+				expect(account.diabetics.reload.last.name).to eq(diabetic_attr[:name])
+				expect(account.diabetics.reload.last.email).to eq(diabetic_attr[:email])
 				expect(page.body).to have_content("Dashboard")
 			end
 
