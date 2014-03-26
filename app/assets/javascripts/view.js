@@ -42,7 +42,6 @@ View.prototype = {
   },
   // Alerts
   addAlert: function(alert){
-    console.log(alert);
     this.showAlertBox();
     $(this.selectors.alertBoxSelector).html(this.formatAlert(alert));
     setTimeout(this.hideAlertBox.bind(this),5000);

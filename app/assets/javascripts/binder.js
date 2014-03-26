@@ -26,7 +26,6 @@ var Binder = (function(Ajax) {
                         controller.toggleRecordsPage();
                         break;
                     case 'signup':
-                        debugger
                         controller.loadSignUp($(this).data());
                         break;
                 }
