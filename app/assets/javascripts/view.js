@@ -41,6 +41,9 @@ View.prototype = {
   },
   addAlert: function(alert){
     console.log(alert);
+    $('#notice').show();
+    $('#notice').html('<h4>'+alert.toString().replace(/,/g,' </h4><h4> ')+'</h4>');
+    setTimeout(function(){$('#notice').html('').hide()},5000);
   },
   addSubmenu: function(menu){
     $(this.selectors.submenuSelector).html(menu);
