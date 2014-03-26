@@ -42,7 +42,6 @@ View.prototype = {
   },
   // Alerts
   addAlert: function(alert){
-    console.log(alert);
     this.showAlertBox();
     $(this.selectors.alertBoxSelector).html(this.formatAlert(alert));
     setTimeout(this.hideAlertBox.bind(this),5000);
@@ -60,7 +59,7 @@ View.prototype = {
         result = result + '<li>' + alert[i] + '</li>';
       }
     } else {
-      result = result + alert
+      result = result + '<li>' + alert + '</li>'
     }
 
     return(result + '</ul>')

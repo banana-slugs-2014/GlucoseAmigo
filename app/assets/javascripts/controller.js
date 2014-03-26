@@ -13,7 +13,10 @@ Controller.prototype = {
     logout: function() {
         Ajax.logout(this.user.uId, this.redirectTo.bind(this));
     },
-    redirectTo: function(data) {
+    login: function(response) {
+        window.location.replace(response);
+    },
+    redirectTo: function(data){
         window.location.replace(data.path);
     },
     addGraph: function(data) {
@@ -25,8 +28,8 @@ Controller.prototype = {
     loadNextPageFromData: function(data) {
         Ajax.get(data.url, this.nextPageEvent.bind(this));
     },
-    loadSignUp: function(event) {
-        Ajax.get(event.target.href, this.nextPageEvent.bind(this));
+    loadSignUp: function(data) {
+        Ajax.get(data.url, this.nextPageEvent.bind(this));
     },
     goBack: function(event) {
         window.location.replace(event.target.baseURI);
