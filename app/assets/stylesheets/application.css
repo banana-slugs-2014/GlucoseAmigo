@@ -101,7 +101,7 @@
 
   /* SIGN UP && CREATE ACCOUNT */
 
-  label {
+  label, .enter-record-info {
     margin-left: 30%;
     color: #5959FF;
     font-weight: bolder;
@@ -342,7 +342,7 @@
 
   /* SIGN UP && CREATE ACCOUNT */
 
-  label {
+  label, .enter-record-info {
     margin-left: 25%;
   }
 
@@ -581,7 +581,7 @@
 
   /* SIGN UP && CREATE ACCOUNT */
 
-  label {
+  label, .enter-record-info {
     margin-left: 10%;
   }
 
@@ -810,7 +810,7 @@
 
   /* SIGN UP && CREATE ACCOUNT */
 
-  label {
+  label, .enter-record-info {
     margin-left: 3.5%;
     color: #5959FF;
     font-weight: bolder;
