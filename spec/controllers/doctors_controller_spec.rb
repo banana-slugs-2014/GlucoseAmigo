@@ -1,15 +1,15 @@
 require 'spec_helper'
 
 describe DoctorsController do
-  let(:diabetic) { create :diabetic }
   let(:doctor) { create :doctor }
-  let(:account) { create :account }
+  let!(:account) { create :account }
   let(:doc_attr) { attributes_for :doctor }
-
 	let!(:pre_created_doctor) { create :doctor }
   let!(:pre_created_doc_attr) { attributes_for :doctor }
-	# let(:diabetic) { create :diabetic }
+  let(:diabetic) { create :diabetic, account: account }
   
+#seems like it's the create account that's fucking it up.
+#whenever account is called, it breaks diabetics
 	before(:each) do
 		stub_current_account(account)
 	end

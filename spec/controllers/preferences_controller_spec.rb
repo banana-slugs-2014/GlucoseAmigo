@@ -1,13 +1,15 @@
 require 'spec_helper'
 
 describe PreferencesController do
-  let(:diabetic) { create :diabetic }
   let(:preference) { create :preference }
   let(:pref_attr) { attributes_for :preference }
-  let(:account) { create :account }
+  let!(:account) { create :account }
   let!(:pre_created_pref) { create :preference }
+  let(:diabetic) { create :diabetic, account: account }
 
 
+#seems like it's the create account that's fucking it up.
+#whenever account is called, it breaks diabetics
   before(:each) do
     stub_current_account(account)
   end
