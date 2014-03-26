@@ -60,7 +60,7 @@ View.prototype = {
         result = result + '<li>' + alert[i] + '</li>';
       }
     } else {
-      result = result + alert
+      result = result + '<li>' + alert + '</li>'
     }
 
     return(result + '</ul>')

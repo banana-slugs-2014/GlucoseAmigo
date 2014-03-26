@@ -68,12 +68,19 @@ var Binder = (function(Ajax) {
         $('body')
             .off('ajax:success', 'form')
             .on('ajax:success', 'form', function(event, response) {
+                if (response.ok && _isLogin(this)){
+                    Ajax.get(response.path, controller.login.bind(controller))
+                }
                 if (response.ok) {
                     Ajax.get(response.path, controller.nextPageEvent.bind(controller))
                 } else {
                     controller.addAlert(response.alert)
                 };
             })
+    }
+
+    var _isLogin = function(el){
+      return($(el).attr('id') === 'account-login')
     }
 
     return {
