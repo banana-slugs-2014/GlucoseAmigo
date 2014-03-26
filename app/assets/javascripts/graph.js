@@ -1,5 +1,5 @@
 function graph(response) {
-    console.log(response.days)
+    //console.log(response.days)
 
     $('#graph').highcharts({
         chart: {
