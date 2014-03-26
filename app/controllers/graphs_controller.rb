@@ -6,12 +6,18 @@ class GraphsController < ApplicationController
   end
 
   def show
-    diabetic = Diabetic.find(params[:id])
-    # diabetic = Diabetic.find(1)
+    # diabetic = Diabetic.find(params[:id])
+    diabetic = Diabetic.find(1)
     if diabetic.records.length > 1
       data = diabetic.sort_graph_data
       glucose = data.first.values
       days = data.first.keys
+      time = []
+      days.each do |dt|
+        time_1 = dt.split[1].split(":")
+        time_1.pop
+        time << time_1.join(":")
+      end
       comments = data[1].values
       weight = data.last.values
       last_date = days.last
@@ -20,11 +26,8 @@ class GraphsController < ApplicationController
       year = last_date_array[0].to_i
       month = last_date_array[1].to_i
       day = last_date_array[2].to_i
-      w_c_array = []
-      zip_arr = weight.zip(comments)
-      zip_arr.each do |lbs, comments|
-        w_c_array << {y: lbs, comments: comments}
-      end
+      zip_arr = comments.zip(weight)
+      zip_arr_glu = time.zip(glucose)
       render :json => {
         check: 'graph',
         year: year,
@@ -32,8 +35,8 @@ class GraphsController < ApplicationController
         day: day,
         diabetic: diabetic,
         days: days,
-        glucose: glucose,
-        weight: w_c_array,
+        glucose: zip_arr_glu,
+        weight: zip_arr,
         comments: comments
       }
     else
