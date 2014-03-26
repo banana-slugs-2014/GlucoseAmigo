@@ -1,6 +1,6 @@
-<%= button_tag 'Add Preferences', data: { type:'edit-diabetic-button', url: prefPath }, remote: true %>
-<%= button_tag 'Edit User Info', data: { type:'edit-diabetic-button', url: edit_account_diabetic_path(account, diabetic) }, remote: true %>
-<%= button_tag 'Edit Doctor Info', data: { type:'edit-diabetic-button', url: doctorPath }, remote: true %>
+<%= button_tag 'Add Preferences', data: { type:'edit-diabetic-button', url: prefPath, style: 'edit-preferences' }, remote: true %>
+<%= button_tag 'Edit User Info', data: { type:'edit-diabetic-button', url: edit_account_diabetic_path(account, diabetic), style: 'edit-user-info' }, remote: true %>
+<%= button_tag 'Edit Doctor Info', data: { type:'edit-diabetic-button', url: doctorPath, style: 'edit-doctor-info' }, remote: true %>
 <script>
 var title = "Edit <%= diabetic.name %>'s info"
 var leftButton = {
