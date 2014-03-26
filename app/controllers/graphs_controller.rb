@@ -36,11 +36,12 @@ class GraphsController < ApplicationController
       days_formatted = []
       days.each do |x|
         a = Date.parse(x)
-        days_formatted << a.strftime('%m/%d')
+        days_formatted << a.strftime('%b/%d')
       end
-
+      num_of_days = days_formatted.uniq.count
       render :json => {
         check: 'graph',
+        num_of_days: num_of_days,
         year: year,
         month: month,
         day: day,
