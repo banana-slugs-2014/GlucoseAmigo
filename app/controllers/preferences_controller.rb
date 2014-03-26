@@ -17,7 +17,7 @@ class PreferencesController < ApplicationController
       ok = true
       path = dashboard_path
     end
-    render_json_with_target(!!ok, path, alert)
+    render_json(!!ok, path, alert)
   end
 
   def show

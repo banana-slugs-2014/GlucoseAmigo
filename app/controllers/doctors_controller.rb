@@ -43,7 +43,7 @@ class DoctorsController < ApplicationController
 	end
 
 	def destroy
-		render_json_with_target(!!ok, dashboard_path, @doctor.errors.full_messages)
+		render_json(!!ok, dashboard_path, @doctor.errors.full_messages)
 	end
 
 	private
