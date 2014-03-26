@@ -29,11 +29,7 @@ Controller.prototype = {
         Ajax.get(data.url, this.nextPageEvent.bind(this));
     },
     loadSignUp: function(data) {
-        var test = function(response){
-          debugger;
-          this.nextPageEvent(response);
-        }
-        Ajax.get(data.url, test.bind(this));
+        Ajax.get(data.url, this.nextPageEvent.bind(this));
     },
     goBack: function(event) {
         window.location.replace(event.target.baseURI);
