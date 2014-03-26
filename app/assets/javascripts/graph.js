@@ -1,8 +1,6 @@
 function graph(response) {
     someVar = response.weight
-    data = $.map(someVar, function(i) {
-        return [[i.weight, i.comments]];
-    })
+
 
     $('#graph').highcharts({
         chart: {
@@ -75,9 +73,7 @@ function graph(response) {
         }],
         tooltip: {
             shared: true,
-            formatter: function() {
-                console.log(this)
-            }
+
         },
 
         legend: {
@@ -95,7 +91,7 @@ function graph(response) {
             color: '#4572A7',
             type: 'spline',
             yAxis: 1,
-            data: response.weight,
+            data: someVar,
             pointStart: Date.UTC(response.year, response.month - 1, response.day),
             pointInterval: 8 * 3600 * 1000, // one day
             tooltip: {
@@ -114,20 +110,4 @@ function graph(response) {
             }
         }]
     });
-}
-
-function getWeight(response) {
-    glucose = []
-    for (var i = 0; i < response.glucose.length; i++) {
-        glucose.push(response.glucose[i])
-    }
-    console.log(glucose)
-}
-
-function getComments(response) {
-    comments = []
-    for (var i = 0; i < response.comments.length; i++) {
-        comments.push(response.comments[i])
-    }
-    console.log(comments)
 }
