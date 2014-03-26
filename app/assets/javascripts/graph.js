@@ -1,4 +1,8 @@
 function graph(response) {
+    someVar = response.weight
+    data = $.map(someVar, function(i) {
+        return [[i.weight, i.comments]];
+    })
 
     $('#graph').highcharts({
         chart: {
@@ -70,7 +74,10 @@ function graph(response) {
             opposite: true
         }],
         tooltip: {
-            shared: true
+            shared: true,
+            formatter: function() {
+                console.log(this)
+            }
         },
 
         legend: {
@@ -107,4 +114,20 @@ function graph(response) {
             }
         }]
     });
+}
+
+function getWeight(response) {
+    glucose = []
+    for (var i = 0; i < response.glucose.length; i++) {
+        glucose.push(response.glucose[i])
+    }
+    console.log(glucose)
+}
+
+function getComments(response) {
+    comments = []
+    for (var i = 0; i < response.comments.length; i++) {
+        comments.push(response.comments[i])
+    }
+    console.log(comments)
 }
