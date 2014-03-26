@@ -54,7 +54,16 @@ View.prototype = {
     $(this.selectors.alertBoxSelector).html('').hide()
   },
   formatAlert: function(alert){
-    return('<h4>' + alert.toString().replace(/,/g,' </h4><h4> ') + '</h4>')
+    var result = "<ul>"
+    if(typeof alert === "object"){
+      for(var i = 0; i < alert.length; i++){
+        result = result + '<li>' + alert[i] + '</li>';
+      }
+    } else {
+      result = result + alert
+    }
+
+    return(result + '</ul>')
   },
 
   // Submenu
