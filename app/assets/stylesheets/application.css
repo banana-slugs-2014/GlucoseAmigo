@@ -757,7 +757,7 @@
     height: 42px;
     display: block;
     overflow: hidden;
-    background: url(new_arrow.png) no-repeat right #8A8A8A;
+    background: url() no-repeat right #8A8A8A;
     margin: 10% 5%;
   }
 
