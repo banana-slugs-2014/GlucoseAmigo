@@ -51,12 +51,6 @@ def get_data_2(collection)
 
   end
 
-  # def format_days
-  #   data = self.sort_graph_data
-  # end
-
-
-
   private
 
   def load_records(number_of_days=7)
