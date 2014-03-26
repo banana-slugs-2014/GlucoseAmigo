@@ -9,12 +9,7 @@ describe "dashboard", js: true  do
 	let(:record) { create :record, diabetic: diabetic  }
 
 	before(:each) do
-		# stub_current_account(account)
-    visit new_session_path
-    fill_in "Username", with: account.username
-    fill_in "Password", with: account.password
-    click_on "Log in"
-    wait_for_ajax
+		stub_current_account(account)
     visit account_path(account)
 	end
 
@@ -26,17 +21,6 @@ describe "dashboard", js: true  do
       expect(page.body).to have_content("Dashboard")
     end
   end
-
-  describe "User can log out from the dashboard" do
-    it "by clicking on 'Logout'" do
-    	click_on "Logout"
-    	wait_for_ajax
-    	expect(page).to have_content("Login")
-    	expect(page).to_not have_content("Dashboard")
-    	expect(page.current_path).to eq root_path
-    end
-  end
-
 
 	context "with account" do
 		it "user can edit the account information" do
