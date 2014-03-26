@@ -31,7 +31,7 @@ class RecordsController < ApplicationController
       ok = true
       path = dashboard_path
     end
-    render_json_with_target(!!ok, path, @record.errors.full_messages)
+    render_json(!!ok, path, @record.errors.full_messages)
   end
 
   def edit
@@ -43,13 +43,13 @@ class RecordsController < ApplicationController
       path = dashboard_path
       ok = true
     end
-    render_json_with_target(!!ok, path, @record.errors.full_messages)
+    render_json(!!ok, path, @record.errors.full_messages)
   end
 
   def destroy
     @record.destroy
     ok = true
-    render_json_with_target(!!ok, dashboard_path, @record.errors.full_messages)
+    render_json(!!ok, dashboard_path, @record.errors.full_messages)
   end
 
   private

@@ -21,13 +21,4 @@ class ApplicationController < ActionController::Base
                     }
   end
 
-  def render_json_with_target(ok, target, alert)
-    render :json => {
-                      ok: ok,
-                      target: target,
-                      alert: alert
-                    }
-  end
-
-
 end

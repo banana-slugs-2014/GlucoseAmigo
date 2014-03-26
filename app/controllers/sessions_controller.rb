@@ -18,12 +18,12 @@ class SessionsController < ApplicationController
       alert = 'invalid login information'
       path = root_path
     end
-    render_json_with_target(!!ok, path, alert)
+    render_json(!!ok, path, alert)
   end
 
   def destroy
     ok = true
     reset_session
-    render_json_with_target(!!ok, root_path, 'You have been logged out')
+    render_json(!!ok, root_path, 'You have been logged out')
   end
 end
