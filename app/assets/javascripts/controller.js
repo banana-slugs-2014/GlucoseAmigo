@@ -28,8 +28,12 @@ Controller.prototype = {
     loadNextPageFromData: function(data) {
         Ajax.get(data.url, this.nextPageEvent.bind(this));
     },
-    loadSignUp: function(event) {
-        Ajax.get(event.target.href, this.nextPageEvent.bind(this));
+    loadSignUp: function(data) {
+        var test = function(response){
+          debugger;
+          this.nextPageEvent(response);
+        }
+        Ajax.get(data.url, test.bind(this));
     },
     goBack: function(event) {
         window.location.replace(event.target.baseURI);

@@ -25,21 +25,15 @@ var Binder = (function(Ajax) {
                     case 'records-toggle':
                         controller.toggleRecordsPage();
                         break;
+                    case 'signup':
+                        debugger
+                        controller.loadSignUp($(this).data());
+                        break;
                 }
             })
     }
     var _dataTypeOf = function(element) {
         return $(element).data('type')
-    }
-
-    var _bindLinks = function(controller) {
-        $('body')
-            .off('click', 'a')
-            .on('click', 'a', function(e) {
-                if (_isSignUp(this)) {
-                    controller.loadSignUp(e);
-                }
-            })
     }
 
 
@@ -53,14 +47,6 @@ var Binder = (function(Ajax) {
       $('body').on('getGraph', '#records-graph', function(event){
         controller.addGraph($(this).data());
       })
-    }
-
-    var _isGetSubmenu = function(el) {
-        return ($(el).data('type') === 'get-submenu')
-    }
-
-    var _isSignUp = function(el) {
-        return ($(el).data('type') === 'signup')
     }
 
 
