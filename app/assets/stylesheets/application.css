@@ -146,7 +146,7 @@
     height: 42px;
     display: block;
     overflow: hidden;
-    background: url() no-repeat right #8A8A8A;
+    background: #8A8A8A;
     margin: 5% 30% 10% 30%;
   }
 
@@ -378,7 +378,7 @@
     height: 42px;
     display: block;
     overflow: hidden;
-    background: url() no-repeat right #8A8A8A;
+    background: #8A8A8A;
     margin: 8% 25% 10% 25%;
   }
 
@@ -393,7 +393,7 @@
       height: 42px;
       display: block;
       overflow: hidden;
-      background: url(new_arrow.png) no-repeat right #8A8A8A;
+      background: #8A8A8A;
       margin: 8% 50% 10% 50%;
     }
 
@@ -618,7 +618,7 @@
     height: 42px;
     display: block;
     overflow: hidden;
-    background: url() no-repeat right #8A8A8A;
+    background: #8A8A8A;
     margin: 10% 17.5% 15% 17.5%;
   }
 
@@ -854,7 +854,7 @@
     height: 42px;
     display: block;
     overflow: hidden;
-    background: url() no-repeat right #8A8A8A;
+    background: #8A8A8A;
     margin: 10% 5%;
   }
 
