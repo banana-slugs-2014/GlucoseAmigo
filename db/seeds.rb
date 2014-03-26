@@ -27,8 +27,8 @@ require 'faker'
       st_dif = st2 - st1
       Diabetic.last.records.create(weight: "#{rand(180...200)}",
                                    glucose: rand(75..100).to_s,
-                                   taken_at: DateTime.now - (j) - st_dif )
-                                  comment: "This works and it is awesome don't ou think#{j}"
+                                   taken_at: DateTime.now - (j) - st_dif,
+                                   comment: "This works and it is awesome don't you think#{j}")
     end
   end
 end

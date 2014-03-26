@@ -1,7 +1,5 @@
 function graph(response) {
-    someVar = response.weight
-    console.log(someVar)
-
+    console.log(response.glucose)
     $('#graph').highcharts({
         chart: {
             zoomType: 'xy'
@@ -91,7 +89,7 @@ function graph(response) {
             color: '#4572A7',
             type: 'spline',
             yAxis: 1,
-            data: someVar,
+            data: response.weight,
             pointStart: Date.UTC(response.year, response.month - 1, response.day),
             pointInterval: 8 * 3600 * 1000, // one day
             tooltip: {
