@@ -47,8 +47,7 @@ function graph(response) {
                 label: {
                     text: 'Normal Glucose Levels',
                     style: {
-                        color: '#606060'
-                        // fontSize: '20px';
+                        color: '#606060',
                     }
                 }
 
