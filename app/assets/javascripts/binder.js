@@ -19,9 +19,6 @@ var Binder = (function(Ajax) {
                     case 'add-record':
                         controller.loadAddRecord();
                         break;
-                    case 'graph-button':
-                        controller.addGraph($(this).data());
-                        break;
                     case 'edit-diabetic-button':
                         controller.loadNextPageFromData($(this).data());
                         break;
@@ -52,6 +49,12 @@ var Binder = (function(Ajax) {
         });
     }
 
+    var _bindGraphLoad = function(controller) {
+      $('body').on('getGraph', '#records-graph', function(event){
+        controller.addGraph($(this).data());
+      })
+    }
+
     var _isGetSubmenu = function(el) {
         return ($(el).data('type') === 'get-submenu')
     }
@@ -78,7 +81,7 @@ var Binder = (function(Ajax) {
             _bindButtons(controller);
             _bindAjaxForms(controller);
             _bindDashboardMenu(controller);
-
+            _bindGraphLoad(controller);
         }
 
     }
