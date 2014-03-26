@@ -23,6 +23,8 @@ class GraphsController < ApplicationController
     zip_arr.each do |lbs, comments|
         w_c_array << {y: lbs, comments: comments}
     end
+
+    if diabetic.records.length > 1
     render :json => {
       year: year,
       month: month,
@@ -33,6 +35,9 @@ class GraphsController < ApplicationController
       weight: w_c_array,
       comments: comments
     }
+  else render :json => {
+    alert: 'No Records'
+  }
   end
 
 end
