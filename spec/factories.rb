@@ -3,12 +3,14 @@ FactoryGirl.define do
     created_at { Time.now }
     glucose "123"
     weight "100"
+    taken_at { Time.now }
   end
 
   factory :diabetic do
     name CoolFaker::Character.name
     email Faker::Internet.email
     birthday { Date.today - rand(2000) }
+    account
   end
 
   factory :account do
