@@ -133,6 +133,10 @@
     border: none;
   }
 
+  .birthdate {
+    margin-left: 30%;
+  }
+
   /* ACCOUNT DASHBOARD */
 
   #menu_choice, #preference_frequency {
@@ -363,6 +367,10 @@
     margin: 0 25%;
     border-radius: 5px;
     border: none;
+  }
+
+  .birthdate {
+    margin-left: 25%;
   }
 
   /* ACCOUNT DASHBOARD */
@@ -604,6 +612,10 @@
     text-align: center;
   }
 
+  .birthdate {
+    margin-left: 10%;
+  }
+
   /* ACCOUNT DASHBOARD */
 
   #menu_choice, #preference_frequency {
@@ -832,6 +844,10 @@
 
   .account-title {
     text-align: center;
+  }
+
+  .birthdate {
+    margin-left: 3.5%;
   }
 
 

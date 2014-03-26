@@ -1,7 +1,9 @@
 <%= form_for ([account,diabetic]), remote: true do |f| %>
   <%= f.text_field :name, :placeholder => "e.g. John Smith" %>
-  <%= date_select :diabetic, :birthday, :start_year => Time.now.year - 120, :end_year => Time.now.year %>
   <%= f.text_field :email, :placeholder => "e.g. john@smith.com" %>
+  <div class="birthdate">
+    <%= date_select :diabetic, :birthday, :start_year => Time.now.year - 120, :end_year => Time.now.year %>
+  </div>
 <% end %>
 <script>
 var title = 'Add a diabetic'
