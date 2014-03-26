@@ -1,4 +1,4 @@
-<div id="records">
+<div id="records-summary">
   <h3> Here are your most recent records </h3>
   <% records.each_with_index do |record, index| %>
     <%= link_to "#{index+1}", edit_diabetic_record_path(diabetic, record) %> --
@@ -8,7 +8,7 @@
     <br>
   <% end  %>
 </div>
-<div id="graph">
+<div id="records-graph">
   <%= render :partial => 'graphs/show' %>
 </div>
 
@@ -19,7 +19,7 @@ var leftButton = {
   text: 'Back'
 }
 var rightButton = {
-  type: 'record-toggle',
+  type: 'records-toggle',
   text: 'Records'
 }
 </script>

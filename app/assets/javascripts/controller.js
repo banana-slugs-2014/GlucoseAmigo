@@ -34,5 +34,7 @@ Controller.prototype = {
     getSubmenu: function(element) {
         Ajax.getSubmenu(element, this.view.addSubmenu.bind(this.view))
     },
-
+    toggleRecordsPage: function() {
+        this.view.toggleRecordsPage();
+    }
 }

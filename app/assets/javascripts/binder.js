@@ -25,7 +25,9 @@ var Binder = (function(Ajax) {
                     case 'edit-diabetic-button':
                         controller.loadNextPageFromData($(this).data());
                         break;
-                        w
+                    case 'records-toggle':
+                        controller.toggleRecordsPage();
+                        break;
                 }
             })
     }

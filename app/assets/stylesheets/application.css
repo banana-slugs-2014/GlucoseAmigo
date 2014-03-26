@@ -12,8 +12,9 @@
  *= require_tree .
  */
   /* VIEW RECORDS */
-  #records {
-    visibility: hidden;
+  #records-summary {
+    /*visibility:hidden;*/
+    display: none;
   }
 
   /* CREATE ACCOUNT */
