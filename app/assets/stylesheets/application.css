@@ -11,7 +11,11 @@
  *= require_self
  *= require_tree .
  */
-
+  /* VIEW RECORDS */
+  #records-summary {
+    /*visibility:hidden;*/
+    display: none;
+  }
 
   /* CREATE ACCOUNT */
 

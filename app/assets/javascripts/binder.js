@@ -19,13 +19,12 @@ var Binder = (function(Ajax) {
                     case 'add-record':
                         controller.loadAddRecord();
                         break;
-                    case 'graph-button':
-                        controller.addGraph($(this).data());
-                        break;
                     case 'edit-diabetic-button':
                         controller.loadNextPageFromData($(this).data());
                         break;
-                        w
+                    case 'records-toggle':
+                        controller.toggleRecordsPage();
+                        break;
                 }
             })
     }
@@ -48,6 +47,12 @@ var Binder = (function(Ajax) {
         $('body').on('change', '#menu_choice', function(event) {
             controller.getSubmenu($(this).find(':selected').val())
         });
+    }
+
+    var _bindGraphLoad = function(controller) {
+      $('body').on('getGraph', '#records-graph', function(event){
+        controller.addGraph($(this).data());
+      })
     }
 
     var _isGetSubmenu = function(el) {
@@ -76,7 +81,7 @@ var Binder = (function(Ajax) {
             _bindButtons(controller);
             _bindAjaxForms(controller);
             _bindDashboardMenu(controller);
-
+            _bindGraphLoad(controller);
         }
 
     }

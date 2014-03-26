@@ -11,7 +11,10 @@ Controller.prototype = {
         this.view.addAlert(alert);
     },
     logout: function() {
-        Ajax.logout(this.user.uId, this.loadNextPage.bind(this));
+        Ajax.logout(this.user.uId, this.redirectTo.bind(this));
+    },
+    redirectTo: function(data){
+        window.location.replace(data.path);
     },
     addGraph: function(data) {
         Ajax.get(data.url, graph)
@@ -31,5 +34,7 @@ Controller.prototype = {
     getSubmenu: function(element) {
         Ajax.getSubmenu(element, this.view.addSubmenu.bind(this.view))
     },
-
+    toggleRecordsPage: function() {
+        this.view.toggleRecordsPage();
+    }
 }

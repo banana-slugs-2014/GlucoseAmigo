@@ -6,7 +6,7 @@ class RecordsController < ApplicationController
   def index
     respond_to do |format|
       format.html do
-        render :partial => 'records/index', locals: { records: @diabetic.records, diabetic: @diabetic }
+        render :partial => 'records/index', locals: { records: @diabetic.records, diabetic: @diabetic, account: current_account }
       end
       format.pdf do
         @data = @diabetic.get_data_for_pdf
