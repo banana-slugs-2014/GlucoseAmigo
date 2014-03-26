@@ -754,8 +754,11 @@
     line-height: 1;
     border: 0;
     border-radius: 0;
-    height: 30%;
+    height: 42px;
     display: block;
+    overflow: hidden;
+    background: url(new_arrow.png) no-repeat right #8A8A8A;
+    margin: 10% 5%;
   }
 
   #submenu {
@@ -764,10 +767,11 @@
     margin: 0 auto;
   }
 
-  select {
-    background-color: gray;
+  option {
+    background: transparent;
     display: block;
     height: 10%;
+    border: 0;
   }
 
   [data-type="dashboard-button"], [data-type="graph-button"],
