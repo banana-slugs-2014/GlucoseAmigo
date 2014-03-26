@@ -139,7 +139,10 @@
 
   /* ACCOUNT DASHBOARD */
 
-  #menu_choice, #preference_frequency {
+  #menu_choice, #preference_frequency,
+  #diabetic_birthday_1i,
+  #diabetic_birthday_2i,
+  #diabetic_birthday_3i {
     color: white;
     width: 40%;
     padding: 2%;
@@ -157,6 +160,27 @@
   #preference_frequency {
     margin-top: 1%;
     width: 10%;
+  }
+
+  #diabetic_birthday_1i,
+  #diabetic_birthday_2i,
+  #diabetic_birthday_3i {
+    display: inline;
+    margin-left: 1%;
+    margin-right: 0;
+  }
+
+  #diabetic_birthday_1i {
+    margin-left: 0;
+    width: 15%;
+  }
+
+  #diabetic_birthday_2i {
+    width: 26%;
+  }
+
+  #diabetic_birthday_3i {
+    width: 13%;
   }
 
   option {
@@ -385,7 +409,10 @@
 
   /* ACCOUNT DASHBOARD */
 
-  #menu_choice {
+  #menu_choice,
+  #diabetic_birthday_1i,
+  #diabetic_birthday_2i,
+  #diabetic_birthday_3i {
     color: white;
     width: 50%;
     padding: 2%;
@@ -414,6 +441,27 @@
       background: #8A8A8A;
       margin: 1% 25% 10% 25%;
     }
+
+  #diabetic_birthday_1i,
+  #diabetic_birthday_2i,
+  #diabetic_birthday_3i {
+    display: inline;
+    margin-left: 1%;
+    margin-right: 0;
+  }
+
+  #diabetic_birthday_1i {
+    margin-left: 0;
+    width: 18%;
+  }
+
+  #diabetic_birthday_2i {
+    width: 33%;
+  }
+
+  #diabetic_birthday_3i {
+    width: 13%;
+  }
 
   option {
     background: transparent;
@@ -633,7 +681,10 @@
 
   /* ACCOUNT DASHBOARD */
 
-  #menu_choice, #preference_frequency {
+  #menu_choice, #preference_frequency,
+  #diabetic_birthday_1i,
+  #diabetic_birthday_2i,
+  #diabetic_birthday_3i {
     margin-bottom: 5%;
     color: white;
     width: 65%;
@@ -652,6 +703,26 @@
   #preference_frequency {
     margin-top: 1%;
     margin-left: 10%;
+    width: 20%;
+  }
+
+  #diabetic_birthday_1i,
+  #diabetic_birthday_2i,
+  #diabetic_birthday_3i {
+    display: inline;
+    margin-left: 1%;
+    margin-right: 0;
+  }
+
+  #diabetic_birthday_1i {
+    width: 20%;
+  }
+
+  #diabetic_birthday_2i {
+    width: 45%;
+  }
+
+  #diabetic_birthday_3i {
     width: 20%;
   }
 
@@ -884,7 +955,10 @@
     color: #5959FF;
   }
 
-  #menu_choice, #preference_frequency {
+  #menu_choice, #preference_frequency,
+  #diabetic_birthday_1i,
+  #diabetic_birthday_2i,
+  #diabetic_birthday_3i {
     margin-bottom: 5%;
     color: white;
     width: 90%;
@@ -904,6 +978,26 @@
     margin-top: 1%;
     width: 20%;
     margin-left: 5%;
+  }
+
+  #diabetic_birthday_1i,
+  #diabetic_birthday_2i,
+  #diabetic_birthday_3i {
+    display: inline;
+    margin-left: 1%;
+    margin-right: 0;
+  }
+
+  #diabetic_birthday_1i {
+    width: 27%;
+  }
+
+  #diabetic_birthday_2i {
+    width: 45%;
+  }
+
+  #diabetic_birthday_3i {
+    width: 20%;
   }
 
   option {
