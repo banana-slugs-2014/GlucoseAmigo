@@ -40,13 +40,12 @@ class DoctorsController < ApplicationController
 	end
 
 	def update
-		@doctor.update_attributes(params[:doctor])
-		path = dashboard_path
-		render :json => {
-											ok: true, # Saving kstrks
-											target: dashboard_path,
-											alert: @doctor.errors.full_messages
-										}
+		@doctor.assign_attributes(params[:doctor])
+		if @doctor.save
+			ok = true
+			path = dashboard_path
+		end
+		render_json(!!ok, path, @doctor.errors.full_messages)
 	end
 
 	def destroy
