@@ -20,6 +20,11 @@
     background: #99D6FF url("blurry-blue-glass.jpg");
   }
 
+  #records-summary {
+    /*visibility:hidden;*/
+    display: none;
+  }
+
   #content {
     width: 75%;
     max-width: 1000px;
@@ -185,7 +190,10 @@
     background-color: #FF944C;
   }
 
-
+  #records-summary {
+    /*visibility:hidden;*/
+    display: none;
+  }
 
   /* NAV BAR */
 
