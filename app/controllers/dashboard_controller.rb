@@ -9,6 +9,16 @@ class DashboardController < ApplicationController
                                                   }
   end
 
+  def show
+    @diabetics = current_account.diabetics
+    render  :partial => 'accounts/show',
+            :locals => {
+              account: current_account,
+              diabetics: @diabetics,
+              menu_options: format_menu(@diabetics, current_account)
+            }
+  end
+
   def diabetic
     render :partial => "dashboard/diabetic", :locals => {
                                                         diabetic: @diabetic,

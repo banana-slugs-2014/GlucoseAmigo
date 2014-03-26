@@ -27,11 +27,8 @@ class DoctorsController < ApplicationController
 			ok = true
 			path = new_diabetic_preference_path(diabetic_id: @diabetic.id)
 		end
-		render :json => {
-											ok: !!ok, # Saving kstrks
-											path: path,
-											alert: @doctor.errors.full_messages
-										}
+		render_json(!!ok, path, @doctor.errors.full_messages)
+
 	end
 
 	def edit
@@ -44,10 +41,10 @@ class DoctorsController < ApplicationController
 
 	def update
 		@doctor.update_attributes(params[:doctor])
-		path = diabetic_doctor_path(@diabetic,@doctor) # to change to user path
+		path = dashboard_path
 		render :json => {
 											ok: true, # Saving kstrks
-											target: path,
+											target: dashboard_path,
 											alert: @doctor.errors.full_messages
 										}
 	end
@@ -55,7 +52,7 @@ class DoctorsController < ApplicationController
 	def destroy
 		render :json => {
 											ok: !!ok, # Saving kstrks
-											target: :back,
+											target: dashboard_path,
 											alert: @doctor.errors.full_messages
 										}
 	end
