@@ -31,11 +31,7 @@ class RecordsController < ApplicationController
       ok = true
       path = dashboard_path
     end
-    render :json => {
-                      ok: !!ok, # Saving kstrks
-                      path: dashboard_path,
-                      alert: @record.errors.full_messages
-                    }
+    render_json_with_target(!!ok, path, @record.errors.full_messages)
   end
 
   def edit
@@ -47,21 +43,13 @@ class RecordsController < ApplicationController
       path = dashboard_path
       ok = true
     end
-    render :json => {
-                      ok: !!ok, # Saving kstrks
-                      target: path,
-                      alert: @record.errors.full_messages
-                    }
+    render_json_with_target(!!ok, path, @record.errors.full_messages)
   end
 
   def destroy
     @record.destroy
     ok = true
-    render :json => {
-                      ok: !!ok, # Saving kstrks
-                      target: dashboard_path,
-                      alert: @record.errors.full_messages
-                    }
+    render_json_with_target(!!ok, dashboard_path, @record.errors.full_messages)
   end
 
   private
