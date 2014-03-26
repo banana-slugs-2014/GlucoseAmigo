@@ -16,7 +16,7 @@ describe "dashboard", js: true  do
     it "by clicking on 'Logout'" do
     	click_on "Logout"
     	wait_for_ajax
-    	expect(page).to have_content("Login")
+    	expect(page).to have_content("Log In")
     	expect(page).to_not have_content("Dashboard")
     	expect(page.current_path).to eq root_path
     end
