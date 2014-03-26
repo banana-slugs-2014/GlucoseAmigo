@@ -6,8 +6,7 @@ class GraphsController < ApplicationController
   end
 
   def show
-    # diabetic = Diabetic.find(params[:id])
-    diabetic = Diabetic.find(1)
+    diabetic = Diabetic.find(params[:id])
     if diabetic.records.length > 1
       data = diabetic.sort_graph_data
       glucose = data.first.values
