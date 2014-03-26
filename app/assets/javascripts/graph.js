@@ -1,6 +1,6 @@
 function graph(response) {
     someVar = response.weight
-
+    console.log(someVar)
 
     $('#graph').highcharts({
         chart: {
@@ -95,7 +95,10 @@ function graph(response) {
             pointStart: Date.UTC(response.year, response.month - 1, response.day),
             pointInterval: 8 * 3600 * 1000, // one day
             tooltip: {
-                valueSuffix: ' lbs'
+                valueSuffix: ' lbs',
+                formatter: function() {
+                    return this.x
+                }
             }
 
         }, {
