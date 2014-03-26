@@ -5,7 +5,10 @@ describe PreferencesController do
   let(:pref_attr) { attributes_for :preference }
   let!(:account) { create :account }
   let!(:pre_created_pref) { create :preference }
+  #added account accociation for diabetics fixed it
   let(:diabetic) { create :diabetic, account: account }
+
+
 
 
 #seems like it's the create account that's fucking it up.

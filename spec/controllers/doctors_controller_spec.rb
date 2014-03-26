@@ -6,6 +6,7 @@ describe DoctorsController do
   let(:doc_attr) { attributes_for :doctor }
 	let!(:pre_created_doctor) { create :doctor }
   let!(:pre_created_doc_attr) { attributes_for :doctor }
+  #added account accociation for diabetics fixed it
   let(:diabetic) { create :diabetic, account: account }
   
 #seems like it's the create account that's fucking it up.
