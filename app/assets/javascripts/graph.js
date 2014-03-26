@@ -11,18 +11,7 @@ function graph(response) {
             text: response.diabetic.name
         },
         xAxis: [{
-            type: 'datetime',
-            dateTimeLabelFormats: {
-                day: '%b %e'
-            },
-            minPadding: 0,
-            maxPadding: 0,
-            startOnTick: true,
-            startOfWeek: 1,
-            labels: {
-                step: 1
-            },
-            tickInterval: 24 * 3600 * 1000
+            categories: response.days
         }],
         yAxis: [{ // Primary yAxis
             labels: {
@@ -89,9 +78,13 @@ function graph(response) {
             color: '#4572A7',
             type: 'spline',
             yAxis: 1,
+<<<<<<< HEAD
             data: response.weight,
             pointStart: Date.UTC(response.year, response.month - 1, response.day),
             pointInterval: 8 * 3600 * 1000, // one day
+=======
+            data: someVar,
+>>>>>>> working graph with UTC code
             tooltip: {
                 valueSuffix: ' lbs',
                 formatter: function() {
@@ -104,8 +97,6 @@ function graph(response) {
             color: 'red',
             type: 'spline',
             data: response.glucose,
-            pointStart: Date.UTC(response.year, response.month - 1, response.day),
-            pointInterval: 8 * 3600 * 1000, // one day
             tooltip: {
                 valueSuffix: 'mg/dL'
             }
