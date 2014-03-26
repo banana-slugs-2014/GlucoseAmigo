@@ -106,7 +106,8 @@
   #account_password,
   #account_password_confirmation,
   #diabetic_email, #diabetic_name,
-  #record_weight, #record_glucose  {
+  #record_weight, #record_glucose,
+  #doctor_name, #doctor_fax, #doctor_email {
     max-width: 40%;
     width: 40%;
     margin: 2% 30%;
@@ -117,7 +118,7 @@
     border-radius: 5px;
   }
 
-  #record_comment {
+  #record_comment, #doctor_comments {
     height: 45px;
     width: 40%;
     display: block;
@@ -211,7 +212,7 @@
   }
 
 
-  #help-button, #submit-button {
+  #help-button, #submit-button, #records-toggle-button {
     background: #4DB84D;
   }
 
@@ -304,7 +305,8 @@
   #account_password,
   #account_password_confirmation,
   #diabetic_email, #diabetic_name,
-  #record_weight, #record_glucose  {
+  #record_weight, #record_glucose,
+  #doctor_name, #doctor_fax, #doctor_email {
     max-width: 50%;
     width: 50%;
     margin: 2% 25%;
@@ -312,7 +314,7 @@
     margin-bottom: 4%;
   }
 
-  #record_comment {
+  #record_comment, #doctor_comments {
     height: 45px;
     width: 50%;
     display: block;
@@ -403,7 +405,7 @@
     background-color: #F56060;
   }
 
-  #help-button, #submit-button {
+  #help-button, #submit-button, #records-toggle-button {
     background: #4DB84D;
   }
 
@@ -502,7 +504,8 @@
   #account_password,
   #account_password_confirmation,
   #diabetic_email, #diabetic_name,
-  #record_weight, #record_glucose  {
+  #record_weight, #record_glucose,
+  #doctor_name, #doctor_fax, #doctor_email {
     max-width: 80%;
     width: 80%;
     margin: 2% 10%;
@@ -510,7 +513,7 @@
     margin-bottom: 4%;
   }
 
-  #record_comment {
+  #record_comment, #doctor_comments {
     height: 45px;
     width: 80%;
     display: block;
@@ -606,7 +609,7 @@
   }
 
 
-  #help-button, #submit-button {
+  #help-button, #submit-button, #records-toggle-button {
     background: #4DB84D;
   }
 
@@ -701,7 +704,8 @@
   #account_password,
   #account_password_confirmation,
   #diabetic_email, #diabetic_name,
-  #record_weight, #record_glucose {
+  #record_weight, #record_glucose,
+  #doctor_name, #doctor_fax, #doctor_email{
     max-width: 92%;
     width: 92%;
     margin: 1.5% 3.5%;
@@ -712,7 +716,7 @@
     border-radius: 5px;
   }
 
-  #record_comment {
+  #record_comment, #doctor_comments {
     height: 45px;
     width: 92%;
     display: block;
@@ -770,7 +774,7 @@
     width: 100%;
     height: 10%;
     margin: 0 auto;
-    margin-top: 1%;
+    margin-top: 4%;
     text-align: center;
     padding-top: 7px;
     padding-bottom: 10px;
@@ -841,7 +845,7 @@
     background-color: #F56060;
   }
 
-  #help-button, #submit-button {
+  #help-button, #submit-button, #records-toggle-button {
     background: #4DB84D;
   }
 }
