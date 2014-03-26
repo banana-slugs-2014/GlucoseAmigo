@@ -66,11 +66,16 @@ class AccountsController < ApplicationController
     if current_account.authenticate(params[:account][:password])
       ok = true
       current_account.update_attributes(params[:account])
-      redirect_to accounts_path
+      path = accounts_path
     else
-      flash[:error] = ['Invalid Password']
-      redirect_to edit_account_path(current_account)
+      notice = ['Invalid Password']
+      path = edit_account_path(current_account)
     end
+    render :json => {
+                      ok: !!ok,
+                      path: path,
+                      alert: notice
+                    }
   end
 
   private
