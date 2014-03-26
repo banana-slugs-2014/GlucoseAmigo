@@ -3,12 +3,6 @@ class DoctorsController < ApplicationController
 	before_filter :load_diabetic, :redirect_if_logged_out
 	before_filter :load_doctor, :except => [:index, :new, :create,]
 
-	def index
-	end
-
-	def show
-	end
-
 	def new
 		@doctor = Doctor.new
 		@title = "Create a doctor"
