@@ -21,8 +21,3 @@ class DoctorMailer < ActionMailer::Base
   end
 
 end
-
-
-        # @data = @diabetic.get_data_for_pdf
-        # pdf = RecordDataPdf.new(@data, @diabetic)
-        # send_data pdf.render, filename: "#{@diabetic.name}_#{Time.now.strftime("%Y-%m-%d")}", type: "application/pdf"
