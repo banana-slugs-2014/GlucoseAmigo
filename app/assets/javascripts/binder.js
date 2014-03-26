@@ -38,31 +38,32 @@ var Binder = (function(Ajax) {
         return $(element).data('type')
     }
 
-
+    // Binds the selection of an item on the dashboard
     var _bindDashboardMenu = function(controller) {
         $('body').on('change', '#menu_choice', function(event) {
             controller.getSubmenu($(this).find(':selected').val())
         });
     }
 
+
+    // Binds the load of the graph page to load the graph
     var _bindGraphLoad = function(controller) {
       $('body').on('getGraph', '#records-graph', function(event){
         controller.addGraph($(this).data());
       })
     }
 
-
+    // Bind Ajax success on forms to trigger the next action
     var _bindAjaxForms = function(controller) {
         $('body')
             .off('ajax:success', 'form')
             .on('ajax:success', 'form', function(event, response) {
                 if (response.ok && _isLogin(this)){
                   controller.login(response.path)
-                }
-                if (response.ok) {
-                    Ajax.get(response.path, controller.nextPageEvent.bind(controller))
+                } else if (response.ok) {
+                  Ajax.get(response.path, controller.nextPageEvent.bind(controller))
                 } else {
-                    controller.addAlert(response.alert)
+                  controller.addAlert(response.alert)
                 };
             })
     }
