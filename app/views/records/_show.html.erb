@@ -1,21 +1,11 @@
-<h3> Here are your most recent records </h3>
-<% records.each_with_index do |record, index| %>
-  <%= link_to "#{index+1}", edit_diabetic_record_path(diabetic, record) %> --
-  <%= render partial: 'shared/record', locals: {record: record} %>
-  <br>
+
+  <span>
+    Date: <%= record.taken_at %>
+
+    Weight: <%=  record.weight if record.weight.present? %>
+
+    Glucose: <%=  record.glucose if record.glucose.present? %>
+
+    Comments: <%=  record.comment if record.comment.present? %>
+
   </span>
-  <br>
-<% end  %>
-
-
-<script>
-var title = "<%= diabetic.name %>'s records"
-var leftButton = {
-  type: 'cancel',
-  text: 'Back'
-}
-var rightButton = {
-  type: 'none',
-  text: 'Save'
-}
-</script>
