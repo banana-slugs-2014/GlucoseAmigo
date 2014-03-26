@@ -13,11 +13,11 @@ Controller.prototype = {
     logout: function() {
         Ajax.logout(this.user.uId, this.redirectTo.bind(this));
     },
-    redirectTo: function(data){
+    redirectTo: function(data) {
         window.location.replace(data.path);
     },
     addGraph: function(data) {
-        Ajax.get(data.url, graph)
+        Ajax.get(data.url, this.graphAlert.bind(this))
     },
     loadNextPage: function(response) {
         Ajax.get(response.target, this.view.newPage.bind(this.view));
@@ -36,5 +36,16 @@ Controller.prototype = {
     },
     toggleRecordsPage: function() {
         this.view.toggleRecordsPage();
+    },
+    graphAlert: function(response) {
+        console.log('here i am');
+        if (response.check == "graph") {
+            console.log('yes')
+            graph(response);
+        } else {
+            console.log('no')
+            this.view.addAlert(response.alert);
+        }
+
     }
 }
