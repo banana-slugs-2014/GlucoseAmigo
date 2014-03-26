@@ -7,8 +7,8 @@ FactoryGirl.define do
   end
 
   factory :diabetic do
-    name CoolFaker::Character.name
-    sequence(:email) { |n| n.to_s + Faker::Internet.email }
+    sequence(:name) { |n| Faker::Name.name + n.to_s }
+    sequence(:email) { |n| Faker::Internet.email }
     birthday { Date.today - rand(2000) }
     account
   end
@@ -23,7 +23,7 @@ FactoryGirl.define do
   factory :doctor do
     sequence(:name) { |n| Faker::Name.name + n.to_s }
     sequence(:fax) { |n| Faker::PhoneNumber.phone_number + n.to_s }
-    email Faker::Internet.email
+    sequence(:email) { |n| n.to_s + Faker::Internet.email }
     comments Faker::Lorem.sentence
   end
 

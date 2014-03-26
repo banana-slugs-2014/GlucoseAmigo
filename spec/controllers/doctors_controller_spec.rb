@@ -1,17 +1,17 @@
 require 'spec_helper'
 
 describe DoctorsController do
+  let(:diabetic) { create :diabetic }
   let(:doctor) { create :doctor }
-  let!(:account) { create :account }
+  let(:account) { create :account }
   let(:doc_attr) { attributes_for :doctor }
 
 	let!(:pre_created_doctor) { create :doctor }
   let!(:pre_created_doc_attr) { attributes_for :doctor }
-	let(:diabetic) { create :diabetic }
-
+	# let(:diabetic) { create :diabetic }
+  
 	before(:each) do
-		#account = create :account
-		request.session[:account_id] = account.id
+		stub_current_account(account)
 	end
 
   context "#index" do

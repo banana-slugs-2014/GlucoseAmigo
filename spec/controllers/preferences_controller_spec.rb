@@ -1,15 +1,15 @@
 require 'spec_helper'
 
 describe PreferencesController do
+  let(:diabetic) { create :diabetic }
   let(:preference) { create :preference }
   let(:pref_attr) { attributes_for :preference }
-  let!(:account) { create :account }
+  let(:account) { create :account }
   let!(:pre_created_pref) { create :preference }
-  let(:diabetic) { create :diabetic }
+
 
   before(:each) do
-    #account = create :account
-    request.session[:account_id] = account.id
+    stub_current_account(account)
   end
 
 
