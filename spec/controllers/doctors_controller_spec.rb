@@ -124,12 +124,12 @@ describe DoctorsController do
   end
 
   context "#update" do
-    xit "should update target doctor info and redirect to show that doctor" do
+    it "should update target doctor info and redirect to show that doctor" do
       new_email = doctor.email
       new_comments = doctor.comments
       post :update, doctor: {email: new_email, comments: new_comments}, id: pre_created_doctor.id, diabetic_id: diabetic.id
-      expect(pre_created_doctor.email).to eq(new_email)
-      expect(pre_created_doctor.comments).to eq(new_comments)
+      expect(pre_created_doctor.reload.email).to eq(new_email)
+      expect(pre_created_doctor.reload.comments).to eq(new_comments)
     end
 
     it "should not update target doctor info into an existing name-fax pair" do
@@ -138,10 +138,10 @@ describe DoctorsController do
       curr_name = doctor.name
       curr_fax = doctor.fax
       post :update, doctor: {name: existing_name, fax: existing_fax}, id: doctor.id, diabetic_id: diabetic.id
-      expect(doctor.name).to_not eq(existing_name)
-      expect(doctor.fax).to_not eq(existing_fax)
-      expect(doctor.name).to eq(curr_name)
-      expect(doctor.fax).to eq(curr_fax)
+      expect(doctor.reload.name).to_not eq(existing_name)
+      expect(doctor.reload.fax).to_not eq(existing_fax)
+      expect(doctor.reload.name).to eq(curr_name)
+      expect(doctor.reload.fax).to eq(curr_fax)
     end
   end
 end
