@@ -31,6 +31,7 @@
   }
 
   #title {
+    margin-top: 4%;
     text-align: center;
     color: #5959FF;
   }
@@ -265,6 +266,10 @@
     height: 100%;
   }
 
+  #title {
+    margin-top: 5%;
+  }
+
   #logo {
     width: 25%;
     height: 26.4%;
@@ -480,8 +485,7 @@
   }
 
   #title {
-    text-align: center;
-    color: #5959FF;
+    margin-top: 5%;
   }
 
   #content {
@@ -708,6 +712,10 @@
   #content {
     width: 98%;
     height: 100%;
+  }
+
+  #title {
+    margin-top: 8%;
   }
 
   #logo {
