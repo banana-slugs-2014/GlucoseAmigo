@@ -17,11 +17,7 @@ class PreferencesController < ApplicationController
       ok = true
       path = dashboard_path
     end
-    render :json => {
-                      ok: !!ok, # Saving kstrks
-                      path: path,
-                      alert: @preference.errors.full_messages
-                    }
+    render_json_with_target(!!ok, path, alert)
   end
 
   def show
