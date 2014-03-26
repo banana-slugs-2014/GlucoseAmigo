@@ -1,8 +1,14 @@
 <%= form_for ([diabetic,record]) do |f| %>
-  <p> Weight: <%= f.text_field :weight %> </p>
-  <p>Glucose: <%= f.text_field :glucose %> </p>
-  <p>Comments: <%= f.text_area :comment %> </p>
-  <p> Date Taken: <%= f.datetime_select :taken_at, ampm: true, minute_step: 5 %> </p>
+  <%= f.label :weight %><br>
+  <%= f.text_field :weight %><br>
+  <%= f.label :glucose %><br>
+  <%= f.text_field :glucose %><br>
+  <%= f.label :comment %><br>
+  <%= f.text_area :comment %><br>
+  <%= f.label :weight %><br>
+  <div class="enter-record-date">
+    <%= f.datetime_select :taken_at, ampm: true, minute_step: 5 %>
+  </div>
 <% end %>
 <script>
 var title = 'Add a record'

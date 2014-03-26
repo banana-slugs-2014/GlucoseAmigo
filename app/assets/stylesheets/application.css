@@ -31,6 +31,7 @@
   }
 
   #title {
+    margin-top: 4%;
     text-align: center;
     color: #5959FF;
   }
@@ -100,7 +101,7 @@
 
   /* SIGN UP && CREATE ACCOUNT */
 
-  label {
+  label, .enter-record-info {
     margin-left: 30%;
     color: #5959FF;
     font-weight: bolder;
@@ -132,9 +133,13 @@
     border: none;
   }
 
+  .birthdate {
+    margin-left: 30%;
+  }
+
   /* ACCOUNT DASHBOARD */
 
-  #menu_choice {
+  #menu_choice, #preference_frequency {
     color: white;
     width: 40%;
     padding: 2%;
@@ -145,7 +150,7 @@
     height: 42px;
     display: block;
     overflow: hidden;
-    background: url() no-repeat right #8A8A8A;
+    background: #8A8A8A;
     margin: 5% 30% 10% 30%;
   }
 
@@ -217,6 +222,11 @@
     display: none;
   }
 
+  p select, #diabetic_birthday_1i, #diabetic_birthday_2i,
+  #diabetic_birthday_3i {
+    display: inline;
+  }
+
   /* NAV BAR */
 
   #navbar {
@@ -253,6 +263,8 @@
 
 @media only screen and (max-width: 1024px) {
 
+
+
 /* CREATE ACCOUNT */
 
   body {
@@ -263,6 +275,10 @@
   #content {
     width: 99%;
     height: 100%;
+  }
+
+  #title {
+    margin-top: 5%;
   }
 
   #logo {
@@ -326,7 +342,7 @@
 
   /* SIGN UP && CREATE ACCOUNT */
 
-  label {
+  label, .enter-record-info {
     margin-left: 25%;
   }
 
@@ -353,6 +369,10 @@
     border: none;
   }
 
+  .birthdate {
+    margin-left: 25%;
+  }
+
   /* ACCOUNT DASHBOARD */
 
   #menu_choice {
@@ -366,9 +386,24 @@
     height: 42px;
     display: block;
     overflow: hidden;
-    background: url() no-repeat right #8A8A8A;
+    background: #8A8A8A;
     margin: 8% 25% 10% 25%;
   }
+
+  #preference_frequency {
+      color: white;
+      width: 10%;
+      padding: 2%;
+      font-size: 140%;
+      line-height: 1;
+      border: 0;
+      border-radius: 0;
+      height: 42px;
+      display: block;
+      overflow: hidden;
+      background: #8A8A8A;
+      margin: 8% 50% 10% 50%;
+    }
 
   option {
     background: transparent;
@@ -480,8 +515,7 @@
   }
 
   #title {
-    text-align: center;
-    color: #5959FF;
+    margin-top: 5%;
   }
 
   #content {
@@ -547,7 +581,7 @@
 
   /* SIGN UP && CREATE ACCOUNT */
 
-  label {
+  label, .enter-record-info {
     margin-left: 10%;
   }
 
@@ -578,9 +612,13 @@
     text-align: center;
   }
 
+  .birthdate {
+    margin-left: 10%;
+  }
+
   /* ACCOUNT DASHBOARD */
 
-  #menu_choice {
+  #menu_choice, #preference_frequency {
     margin-bottom: 5%;
     color: white;
     width: 65%;
@@ -592,7 +630,7 @@
     height: 42px;
     display: block;
     overflow: hidden;
-    background: url() no-repeat right #8A8A8A;
+    background: #8A8A8A;
     margin: 10% 17.5% 15% 17.5%;
   }
 
@@ -710,6 +748,10 @@
     height: 100%;
   }
 
+  #title {
+    margin-top: 8%;
+  }
+
   #logo {
     width: 75%;
     height: 26.4%;
@@ -768,7 +810,7 @@
 
   /* SIGN UP && CREATE ACCOUNT */
 
-  label {
+  label, .enter-record-info {
     margin-left: 3.5%;
     color: #5959FF;
     font-weight: bolder;
@@ -804,6 +846,10 @@
     text-align: center;
   }
 
+  .birthdate {
+    margin-left: 3.5%;
+  }
+
 
   /* ACCOUNT DASHBOARD */
 
@@ -812,7 +858,7 @@
     color: #5959FF;
   }
 
-  #menu_choice {
+  #menu_choice, #preference_frequency {
     margin-bottom: 5%;
     color: white;
     width: 90%;
@@ -824,7 +870,7 @@
     height: 42px;
     display: block;
     overflow: hidden;
-    background: url() no-repeat right #8A8A8A;
+    background: #8A8A8A;
     margin: 10% 5%;
   }
 
