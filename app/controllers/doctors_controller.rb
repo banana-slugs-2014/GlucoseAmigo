@@ -27,11 +27,8 @@ class DoctorsController < ApplicationController
 			ok = true
 			path = new_diabetic_preference_path(diabetic_id: @diabetic.id)
 		end
-		render :json => {
-											ok: !!ok, # Saving kstrks
-											path: path,
-											alert: @doctor.errors.full_messages
-										}
+		render_json(!!ok, path, @doctor.errors.full_messages)
+
 	end
 
 	def edit

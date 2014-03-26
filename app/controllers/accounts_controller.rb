@@ -32,11 +32,7 @@ class AccountsController < ApplicationController
     else
       path = new_account_path
     end
-    render :json => {
-                      ok: !!ok,
-                      path: path,
-                      alert: account.errors.full_messages
-                    }
+    render_json(!!ok, path, account.errors.full_messages)
   end
 
   def edit
@@ -55,11 +51,7 @@ class AccountsController < ApplicationController
         path = account_path(current_account)
       end
     end
-    render :json => {
-                      ok: !!ok,
-                      path: path,
-                      alert: current_account.errors.full_messages
-                    }
+    render_json(!!ok, path, current_account.errors.full_messages)
   end
 
   def update
@@ -71,11 +63,7 @@ class AccountsController < ApplicationController
       notice = ['Invalid Password']
       path = edit_account_path(current_account)
     end
-    render :json => {
-                      ok: !!ok,
-                      path: path,
-                      alert: notice
-                    }
+    render_json(!!ok, path, notice)
   end
 
   private

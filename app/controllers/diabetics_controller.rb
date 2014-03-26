@@ -19,11 +19,7 @@ class DiabeticsController < ApplicationController
     else
       path = new_account_diabetic_path(account_id: current_account.id)
     end
-    render :json => {
-      ok: !!ok, # Saving kstrks
-      path: path,
-      alert: diabetic.errors.full_messages
-    }
+    render_json(!!ok, path, diabetic.errors.full_messages)
   end
 
   def edit
@@ -39,27 +35,16 @@ class DiabeticsController < ApplicationController
       ok = true
       path = dashboard_path
     end
-    render :json => {
-                      ok: !!ok,
-                      path: path,
-                      alert: @diabetic.errors.full_messages
-                    }
+    render_json(!!ok, path, @diabetic.errors.full_messages)
   end
 
   def destroy
     @diabetic.destroy
-    render :json => {
-                      ok: true,
-                      path: dashboard_path,
-                      alert: 'User has been deleted'
-                    }
+    render_json(true, dashboard_path, 'User has been deleted')
   end
 
-
-
-
-
   private
+
   def load_diabetic
     @diabetic = Diabetic.find(params[:id])
   end

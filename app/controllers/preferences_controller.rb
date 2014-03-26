@@ -44,11 +44,8 @@ class PreferencesController < ApplicationController
       ok = true
       path = dashboard_path
     end
-    render :json => {
-        ok: !!ok,
-        path: path,
-        alert: @preference.errors.full_messages
-      }
+    render_json(!!ok, path, @preference.errors.full_messages)
+
   end
 
   private
