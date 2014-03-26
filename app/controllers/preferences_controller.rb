@@ -1,6 +1,7 @@
 class PreferencesController < ApplicationController
   before_filter :load_diabetic
-  before_filter :load_preference, :except => [ :new ]
+  before_filter :load_preference, :except => [ :new, :create ]
+  before_filter :find_or_create_preference, :only => [ :create ]
 
   def new
     @preference = Preference.new
@@ -11,15 +12,15 @@ class PreferencesController < ApplicationController
   end
 
   def create
-    if @preference
-      @preference.update_attributes(params[:preference])
-    else
-      @diabetic.preference = Preference.create(params[:preference])
+    if @preference.save
+      @diabetic.save
+      ok = true
+      path = dashboard_path
     end
     render :json => {
                       ok: !!ok, # Saving kstrks
-                      path: dashboard_path,
-                      alert: @doctor.errors.full_messages
+                      path: path,
+                      alert: @preference.errors.full_messages
                     }
   end
 
@@ -60,4 +61,12 @@ class PreferencesController < ApplicationController
     @preference = @diabetic.preference
   end
 
+  def find_or_create_preference
+    if @diabetic.preference
+      @preference = @diabetic.preference
+    else
+      @preference = Preference.new(params[:preference])
+    end
+    @diabetic.preference = @preference
+  end
 end

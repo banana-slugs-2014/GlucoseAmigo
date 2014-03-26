@@ -79,13 +79,13 @@ describe RecordsController do
     it "creates a new record given valid params" do
       request.env["HTTP_REFERER"] = new_session_path
       post :create, diabetic_id: @chris.id, record: {glucose: '115', weight: '174', taken_at: (Time.now-500), comment: "I just got created!"}
-      expect(response).to be_redirect
+      expect(response).to be_ok
     end
 
     it "renders the new record partial if a user inputs invalid params" do
       request.env["HTTP_REFERER"] = new_session_path
       post :create, diabetic_id: @chris.id, record: {glucose:nil, weight: nil, taken_at: (Time.now() + (60*60*24))}
-      #expect(response).to_not be_redirect #this is a bad test
+      expect(response).to be_ok
     end
 
   end

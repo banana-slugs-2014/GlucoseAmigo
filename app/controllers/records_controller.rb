@@ -56,6 +56,7 @@ class RecordsController < ApplicationController
 
   def destroy
     @record.destroy
+    ok = true
     render :json => {
                       ok: !!ok, # Saving kstrks
                       target: dashboard_path,
