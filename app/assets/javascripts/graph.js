@@ -99,7 +99,7 @@ function graph(response) {
             // pointInterval: 24 * 3600 * 1000,
             // pointStart: Date.UTC(2014, 0, 01),
             data: response.weight,
-            pointStart: Date.UTC(2014, 2, 19),
+            pointStart: Date.UTC(response.year, response.month - 1, response.day),
             pointInterval: 8 * 3600 * 1000, // one day
             tooltip: {
                 valueSuffix: ' lbs'
@@ -112,7 +112,7 @@ function graph(response) {
             // pointInterval: 24 * 3600 * 1000,
             // pointStart: Date.UTC(2014, 0, 01),
             data: response.glucose,
-            pointStart: Date.UTC(2014, 2, 19),
+            pointStart: Date.UTC(response.year, response.month - 1, response.day),
             pointInterval: 8 * 3600 * 1000, // one day
             tooltip: {
                 valueSuffix: 'mg/dL'
