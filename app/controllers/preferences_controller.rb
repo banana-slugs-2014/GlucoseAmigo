@@ -5,7 +5,6 @@ class PreferencesController < ApplicationController
   def new
     @preference = Preference.new
     render :partial => 'preferences/new', locals: {
-                                                          title: "Create a doctor",
                                                           diabetic: @diabetic,
                                                           preference: @preference
                                                         }
@@ -15,9 +14,13 @@ class PreferencesController < ApplicationController
     if @preference
       @preference.update_attributes(params[:preference])
     else
-      @diabetic.preference = Preference.create(params[:preference]) # Default values and select boxes prevent from being bad.
+      @diabetic.preference = Preference.create(params[:preference])
     end
-    redirect_to account_path(current_account)
+    render :json => {
+                      ok: !!ok, # Saving kstrks
+                      path: dashboard_path,
+                      alert: @doctor.errors.full_messages
+                    }
   end
 
   def show
@@ -36,11 +39,14 @@ class PreferencesController < ApplicationController
   end
 
   def update
-    @preference.update_attributes(params[:preference])
+    if @preference.update_attributes(params[:preference])
+      ok = true
+      path = dashboard_path
+    end
     render :json => {
-        ok: true,
-        path: diabetic_preference_path(@diabetic, @diabetic.preference),
-        alert: @diabetic.preference.errors.full_messages
+        ok: !!ok,
+        path: path,
+        alert: @preference.errors.full_messages
       }
   end
 
