@@ -204,6 +204,7 @@ DEPENDENCIES
   prawn
   pry
   rails (= 3.2.13)
+  rake (= 10.2.1)
   rspec-rails
   rufus-scheduler
   selenium-webdriver
