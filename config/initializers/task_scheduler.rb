@@ -1,5 +1,7 @@
 scheduler = Rufus::Scheduler.new
 
+###################################################
+#Chron schedile syntax
 
 #MIN HOUR DOM MON DOW CMD
 
@@ -10,6 +12,7 @@ scheduler = Rufus::Scheduler.new
 # MON 	Month field	  1-12
 # DOW	  Day Of Week	  0-6
 # CMD	  Command	Any   command to be executed.
+###################################################
 
 #send one out every day at noon
 scheduler.cron("0 12 * * *") do
