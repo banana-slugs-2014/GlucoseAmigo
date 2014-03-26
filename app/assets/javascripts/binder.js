@@ -28,6 +28,9 @@ var Binder = (function(Ajax) {
                     case 'signup':
                         controller.loadSignUp($(this).data());
                         break;
+                    case 'edit-record-button':
+                        controller.loadNextPageFromData($(this).data());
+                        break;
                 }
             })
     }

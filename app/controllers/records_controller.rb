@@ -39,7 +39,8 @@ class RecordsController < ApplicationController
   end
 
   def update # Unused
-    if @record.update_attributes(params[:record])
+    @record.assign_attributes(params[:record])
+    if @record.save
       path = dashboard_path
       ok = true
     end
