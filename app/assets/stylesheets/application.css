@@ -154,6 +154,11 @@
     margin: 5% 30% 10% 30%;
   }
 
+  #preference_frequency {
+    margin-top: 1%;
+    width: 10%;
+  }
+
   option {
     background: transparent;
     display: block;
@@ -215,6 +220,11 @@
   [data-style="edit-user-info"],
   [data-style="edit-doctor-info"] {
     background-color: #FF944C;
+    margin-top: 3%;
+  }
+
+  [data-style="edit-preferences"] {
+    margin-top: 10%;
   }
 
   #records-summary {
@@ -402,7 +412,7 @@
       display: block;
       overflow: hidden;
       background: #8A8A8A;
-      margin: 8% 50% 10% 50%;
+      margin: 1% 25% 10% 25%;
     }
 
   option {
@@ -466,6 +476,11 @@
   [data-style="edit-user-info"],
   [data-style="edit-doctor-info"] {
     background-color: #FF944C;
+    margin-top: 3%;
+  }
+
+  [data-style="edit-preferences"] {
+    margin-top: 10%;
   }
 
   /* NAV BAR */
@@ -634,6 +649,12 @@
     margin: 10% 17.5% 15% 17.5%;
   }
 
+  #preference_frequency {
+    margin-top: 1%;
+    width: 20%;
+    margin-left: 17.5%;
+  }
+
   option {
     background: transparent;
     display: block;
@@ -695,6 +716,11 @@
   [data-style="edit-user-info"],
   [data-style="edit-doctor-info"] {
     background-color: #FF944C;
+    margin-top: 3%;
+  }
+
+  [data-style="edit-preferences"] {
+    margin-top: 10%;
   }
 
   /* NAVBAR */
@@ -874,6 +900,12 @@
     margin: 10% 5%;
   }
 
+  #preference_frequency {
+    margin-top: 1%;
+    width: 20%;
+    margin-left: 5%;
+  }
+
   option {
     background: transparent;
     display: block;
@@ -938,6 +970,11 @@
   [data-style="edit-doctor-info"] {
     background-color: #FF944C;
     width: 90%;
+    margin-top: 8%;
+  }
+
+  [data-style="edit-preferences"] {
+    margin-top: 16%;
   }
 
 
