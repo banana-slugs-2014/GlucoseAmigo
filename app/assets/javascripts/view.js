@@ -6,7 +6,8 @@ var View = function(){
     submenuSelector: '#submenu',
     recordsSummarySelector: '#records-summary',
     recordsGraphSelector: '#records-graph',
-    recordsToggleButtonSelector: '#records-toggle-button'
+    recordsToggleButtonSelector: '#records-toggle-button',
+    alertBoxSelector: '#notice'
   };
   this.templates = HandlebarsTemplates;
   this.toggleButtonText = ['Graph','Records']
@@ -39,15 +40,29 @@ View.prototype = {
     this.addNavBar(leftButton, rightButton);
     this.changeTitle(title);
   },
+  // Alerts
   addAlert: function(alert){
     console.log(alert);
-    $('#notice').show();
-    $('#notice').html('<h4>'+alert.toString().replace(/,/g,' </h4><h4> ')+'</h4>');
-    setTimeout(function(){$('#notice').html('').hide()},5000);
+    this.showAlertBox();
+    $(this.selectors.alertBoxSelector).html(this.formatAlert(alert));
+    setTimeout(this.hideAlertBox.bind(this),5000);
   },
+  showAlertBox: function(){
+    $(this.selectors.alertBoxSelector).show();
+  },
+  hideAlertBox: function(){
+    $(this.selectors.alertBoxSelector).html('').hide()
+  },
+  formatAlert: function(alert){
+    return('<h4>' + alert.toString().replace(/,/g,' </h4><h4> ') + '</h4>')
+  },
+
+  // Submenu
   addSubmenu: function(menu){
     $(this.selectors.submenuSelector).html(menu);
   },
+
+  // Record page
   toggleRecordsPage: function(){
     $(this.selectors.recordsSummarySelector).toggle();
     $(this.selectors.recordsGraphSelector).toggle();
