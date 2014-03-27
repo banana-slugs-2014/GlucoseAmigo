@@ -93,82 +93,201 @@ describe "Accounts", :js => true do
           wait_for_ajax
         }.to change{Account.count}.by(0)
       end
-
-
     end
 
-  end
+    context "with invalid inputs" do
+      it "with blank username" do
+        visit root_path
+        click_on "Sign Up"
+        wait_for_ajax
+        expect{
+          fill_in "Email", with: 'business@business.com'
+          fill_in "Password", with: 'business'
+          fill_in "Password Confirmation", with: 'business'
+          click_on "Sign up"
+          wait_for_ajax
+        }.to change{Account.count}.by(0)
+        expect(page).to have_content "Username can't be blank"
+      end
+      it "with blank email" do
+        visit root_path
+        click_on "Sign Up"
+        wait_for_ajax
+        expect{
+          fill_in "Username", with: 'business'
+          fill_in "Password", with: 'business'
+          fill_in "Password Confirmation", with: 'business'
+          click_on "Sign up"
+          wait_for_ajax
+        }.to change{Account.count}.by(0)
+        expect(page).to have_content "Email is invalid"
+      end
+      it "with invalid email" do
+        visit root_path
+        click_on "Sign Up"
+        wait_for_ajax
+        expect{
+          fill_in "Username", with: 'business'
+          fill_in "Email", with: 'fty6yuhe'
+          fill_in "Password", with: 'business'
+          fill_in "Password Confirmation", with: 'business'
+          click_on "Sign up"
+          wait_for_ajax
+        }.to change{Account.count}.by(0)
+        expect(page).to have_content "Email is invalid"
+      end
+      it "with password shorter than 5 characters" do
+        visit root_path
+        click_on "Sign Up"
+        wait_for_ajax
+        expect{
+          fill_in "Email", with: 'business@business.com'
+          fill_in "Password", with: 'busi'
+          fill_in "Password Confirmation", with: 'business'
+          click_on "Sign up"
+          wait_for_ajax
+        }.to change{Account.count}.by(0)
+        expect(page).to have_content "Password is too short (minimum is 5 characters)"
+      end
+    end
 
-
-  context "signup form" do
-    xit 'allows user to create an account with sign up' do
+    it "user can cancel account creation" do
       visit root_path
       click_on "Sign Up"
       wait_for_ajax
       expect{
-        fill_in "Username", with: 'business'
-        fill_in "Email", with: 'business@business.com'
-        fill_in "Password", with: 'business'
-        fill_in "Password Confirmation", with: 'business'
-        click_on "Sign up"
+        click_on "Cancel"
         wait_for_ajax
-      }.to change{Account.count}.by(1)
-      expect(page).to have_content 'Add a diabetic'
+      }.to change{Account.count}.by(0)
+      expect(current_path).to eq(root_path)
+    end
 
+    context "user can cancel and exit the account creation chain early with account still created" do
+      it "at add a diabetic" do
+        expect{
+          visit root_path
+          click_on "Sign Up"
+          wait_for_ajax
+          fill_in "Username", with: 'business'
+          fill_in "Email", with: 'business@business.com'
+          fill_in "Password", with: 'business'
+          fill_in "Password Confirmation", with: 'business'
+          click_on "Sign up"
+          wait_for_ajax
+          click_on "Cancel"
+        }.to change{Account.count}.by(1)
+        expect(page).to have_content 'Dashboard'
+      end
+      it "at add a doctor" do
+        expect{
+          visit root_path
+          click_on "Sign Up"
+          wait_for_ajax
+          fill_in "Username", with: 'business'
+          fill_in "Email", with: 'business@business.com'
+          fill_in "Password", with: 'business'
+          fill_in "Password Confirmation", with: 'business'
+          click_on "Sign up"
+          wait_for_ajax
+          fill_in "diabetic[name]", with: diabetic_attr[:name]
+          fill_in "diabetic[email]", with: diabetic_attr[:email]
+          find("option[value='2009']").click
+          click_on "Create"
+          wait_for_ajax
+          click_on "Cancel"
+        }.to change{Account.count}.by(1)
+        expect(page).to have_content 'Dashboard'
+      end
+      it "at add a preference" do
+        expect{
+          visit root_path
+          click_on "Sign Up"
+          wait_for_ajax
+          fill_in "Username", with: 'business'
+          fill_in "Email", with: 'business@business.com'
+          fill_in "Password", with: 'business'
+          fill_in "Password Confirmation", with: 'business'
+          click_on "Sign up"
+          wait_for_ajax
+          fill_in "diabetic[name]", with: diabetic_attr[:name]
+          fill_in "diabetic[email]", with: diabetic_attr[:email]
+          find("option[value='2009']").click
+          click_on "Create"
+          wait_for_ajax
+          fill_in "doctor[name]", with: doctor_attr[:name]
+          fill_in "doctor[fax]", with: doctor_attr[:fax]
+          fill_in "doctor[email]", with: doctor_attr[:email]
+          fill_in "doctor[comments]", with: doctor_attr[:comments]
+          click_on "Save Doctor"
+          wait_for_ajax
+          click_on "Cancel"
+        }.to change{Account.count}.by(1)
+        expect(page).to have_content 'Dashboard'
+      end
 
     end
 
-    xit "displays 'Username can't be blank' for blank Username field" do
-      visit new_account_path
-      fill_in "Username", with: ''
-      fill_in "Email", with: 'business@business.com'
-      fill_in "Password", with: 'business'
-      fill_in "Password Confirmation", with: 'business'
-      click_on "Signup"
-      expect(page).to have_content "Username can't be blank"
-    end
-
-    xit "displays 'Email can't be blank' for blank Email field" do
-      visit new_account_path
-      fill_in "Username", with: 'business'
-      fill_in "Email", with: ''
-      fill_in "Password", with: 'business'
-      fill_in "Password Confirmation", with: 'business'
-      click_on "Signup"
-      expect(page).to have_content "Email can't be blank"
-    end
-
-    xit "displays 'Password can't be blank' for blank Password field" do
-      visit new_account_path
-      fill_in "Username", with: 'business'
-      fill_in "Email", with: 'business@business.com'
-      fill_in "Password", with: ''
-      fill_in "Password Confirmation", with: 'business'
-      click_on "Signup"
-      expect(page).to have_content "Password can't be blank"
-    end
-
-    xit "displays 'Password too short' for Password field less than 5 char" do
-      visit new_account_path
-      fill_in "Username", with: 'business'
-      fill_in "Email", with: 'business@business.com'
-      fill_in "Password", with: 'test'
-      fill_in "Password Confirmation", with: 'test'
-      click_on "Signup"
-      expect(page).to have_content "Password is too short (minimum is 5 characters)"
-    end
-
-    xit "displays 'Password doesn't match confirmation' for non-matching pw fields" do
-      visit new_account_path
-      fill_in "Username", with: 'business'
-      fill_in "Email", with: 'business@business.com'
-      fill_in "Password", with: 'testing'
-      fill_in "Password Confirmation", with: 'test'
-      click_on "Signup"
-      expect(page).to have_content "Password doesn't match confirmation"
-    end
 
   end
-
 end
+
+
+
+
+#   context "signup form" do
+
+
+#     xit "displays 'Username can't be blank' for blank Username field" do
+#       visit new_account_path
+#       fill_in "Username", with: ''
+#       fill_in "Email", with: 'business@business.com'
+#       fill_in "Password", with: 'business'
+#       fill_in "Password Confirmation", with: 'business'
+#       click_on "Signup"
+#       expect(page).to have_content "Username can't be blank"
+#     end
+
+#     xit "displays 'Email can't be blank' for blank Email field" do
+#       visit new_account_path
+#       fill_in "Username", with: 'business'
+#       fill_in "Email", with: ''
+#       fill_in "Password", with: 'business'
+#       fill_in "Password Confirmation", with: 'business'
+#       click_on "Signup"
+#       expect(page).to have_content "Email can't be blank"
+#     end
+
+#     xit "displays 'Password can't be blank' for blank Password field" do
+#       visit new_account_path
+#       fill_in "Username", with: 'business'
+#       fill_in "Email", with: 'business@business.com'
+#       fill_in "Password", with: ''
+#       fill_in "Password Confirmation", with: 'business'
+#       click_on "Signup"
+#       expect(page).to have_content "Password can't be blank"
+#     end
+
+#     xit "displays 'Password too short' for Password field less than 5 char" do
+#       visit new_account_path
+#       fill_in "Username", with: 'business'
+#       fill_in "Email", with: 'business@business.com'
+#       fill_in "Password", with: 'test'
+#       fill_in "Password Confirmation", with: 'test'
+#       click_on "Signup"
+#       expect(page).to have_content "Password is too short (minimum is 5 characters)"
+#     end
+
+#     xit "displays 'Password doesn't match confirmation' for non-matching pw fields" do
+#       visit new_account_path
+#       fill_in "Username", with: 'business'
+#       fill_in "Email", with: 'business@business.com'
+#       fill_in "Password", with: 'testing'
+#       fill_in "Password Confirmation", with: 'test'
+#       click_on "Signup"
+#       expect(page).to have_content "Password doesn't match confirmation"
+#     end
+
+#   end
+
+# end
 
