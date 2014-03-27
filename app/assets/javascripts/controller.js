@@ -41,6 +41,9 @@ Controller.prototype = {
         } else {
             this.addAlert(response.alert);
         }
+    },
 
+    loadHelpContent: function(data) {
+        Ajax.get(data.url, this.view.changeContent(this.view));
     }
 }
