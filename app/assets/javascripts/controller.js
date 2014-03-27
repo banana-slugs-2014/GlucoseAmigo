@@ -48,7 +48,7 @@ Controller.prototype = {
         }
     },
 
-    loadHelpContent: function(data) {
-        Ajax.get(data.url, this.view.changeContent(this.view));
+    loadHelpContent: function() {
+        Ajax.getHelpPage(this.nextPageEvent.bind(this));
     }
 }

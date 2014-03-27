@@ -27,6 +27,13 @@ var Ajax = (function(){
         type: 'DELETE',
         url: '/sessions/'+userId
       }, reaction)
-    }
+    },
+    getHelpPage: function( reaction){
+      var data = {
+        url: '/help'
+      }
+      _request(data, reaction)
+    },
+
   }
 }());

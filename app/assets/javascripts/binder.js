@@ -31,7 +31,7 @@ var Binder = (function(Ajax) {
                     case 'edit-record-button':
                         controller.loadNextPageFromData($(this).data());
                         break;
-                    case 'help-button:':
+                    case 'help':
                         controller.loadHelpContent();
                         break;
                 }
