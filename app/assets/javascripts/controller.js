@@ -13,8 +13,8 @@ Controller.prototype = {
     logout: function() {
         Ajax.logout(this.user.uId, this.redirectTo.bind(this));
     },
-    login: function(response) {
-        window.location.replace(response);
+    login: function(url) {
+        this.redirectTo(url);
     },
     redirectTo: function(data){
         window.location.replace(data.path);
