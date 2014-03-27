@@ -123,15 +123,6 @@ describe "dashboard", js: true  do
 			expect(page.body).to have_content("Dashboard")
 		end
 
-		xit "can view a record for diabetic" do
-			diabetic_name = account.diabetics.first.name
-			diabetic_id = account.diabetics.first.id
-			find("option[value='Diabetic: #{diabetic_name.gsub("'","\'")} -- #{diabetic_id} ']").click
-			wait_for_ajax
-			click_on "View records for #{diabetic_name.gsub("'","\'")}"
-			wait_for_ajax
-
-		end
 
 		context "edit the diabetic's info" do
 			before(:each) do
