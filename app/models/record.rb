@@ -1,5 +1,5 @@
 class Record < ActiveRecord::Base
-
+  TIME_LENIENCY = 600
   attr_accessible :weight, :glucose, :taken_at, :comment
   belongs_to :diabetic
 
@@ -18,9 +18,8 @@ class Record < ActiveRecord::Base
   end
 
   def taken_date_cannot_be_in_the_future
-    if taken_at.present? && taken_at > (Time.now + 600)
-      errors.add(:taken_at, "Time data was taken must be before now")
+    if taken_at.present? && taken_at > (Time.now + TIME_LENIENCY)
+      errors.add(:taken_at, "Date taken cannot be in the future")
     end
   end
-
 end
