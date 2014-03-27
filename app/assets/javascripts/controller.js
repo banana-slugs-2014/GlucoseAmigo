@@ -22,10 +22,7 @@ Controller.prototype = {
     addGraph: function(data) {
         Ajax.get(data.url, this.graphAlert.bind(this))
     },
-    loadNextPage: function(response) {
-        Ajax.get(response.target, this.view.newPage.bind(this.view));
-    },
-    loadNextPageFromData: function(data) {
+    loadNextPage: function(data) {
         Ajax.get(data.url, this.nextPageEvent.bind(this));
     },
     loadSignUp: function(data) {
