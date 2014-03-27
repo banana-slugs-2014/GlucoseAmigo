@@ -7,6 +7,9 @@ class GraphsController < ApplicationController
       days = data.first.keys
       days_formatted = Graph.format_days(days)
       last_date_array = Graph.last_date(days)
+      comments = data[1].values
+      weight = data.last.values
+      zip_arr = comments.zip(weight)
       render :json => {
         check: 'graph',
         num_of_days: days_formatted.uniq.count,
@@ -16,7 +19,7 @@ class GraphsController < ApplicationController
         diabetic: diabetic,
         days: days_formatted,
         glucose: data.first.values,
-        weight: data.last.values
+        weight: zip_arr,
       }
     else
       render :json => {
