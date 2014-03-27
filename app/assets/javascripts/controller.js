@@ -41,6 +41,9 @@ Controller.prototype = {
         } else {
             this.addAlert(response.alert);
         }
+    },
 
+    loadHelpContent: function() {
+        Ajax.getHelpPage(this.nextPageEvent.bind(this));
     }
 }

@@ -227,6 +227,7 @@
     height: 10%;
   }
 
+
   [data-type="dashboard-button"], [data-type="graph-button"],
   [data-type="edit-diabetic-button"] {
     display: block;
@@ -277,6 +278,22 @@
     overflow: auto;
   }
 
+  .help-text {
+    margin: 0 10%;
+    max-height: 500px;
+    overflow: auto;
+  }
+
+  .help-text em {
+    font-weight: bolder;
+    margin-top: 30px;
+    color: #5959FF;
+  }
+
+  .help-text p {
+    margin-top: 40px;
+  }
+
   [data-type="edit-record-button"] {
     display: inline;
     border: none;
@@ -312,6 +329,18 @@
     /*visibility:hidden;*/
     display: none;
   }
+
+  .help-text em {
+    font-weight: bolder;
+    margin-top: 30px;
+    color: #5959FF;
+  }
+
+  .help-text p {
+    margin-top: 40px;
+  }
+
+
 
   p select, #diabetic_birthday_1i, #diabetic_birthday_2i,
   #diabetic_birthday_3i {
@@ -613,6 +642,22 @@
     margin: 0 10%;
     max-height: 500px;
     overflow: auto;
+  }
+
+  .help-text {
+    margin: 0 10%;
+    max-height: 500px;
+    overflow: auto;
+  }
+
+  .help-text em {
+    font-weight: bolder;
+    margin-top: 30px;
+    color: #5959FF;
+  }
+
+  .help-text p {
+    margin-top: 40px;
   }
 
   [data-type="edit-record-button"] {
@@ -931,6 +976,22 @@
     margin: 0 3%;
     max-height: 400px;
     overflow: auto;
+  }
+
+  .help-text {
+    margin: 0 5%;
+    max-height: 400px;
+    overflow: auto;
+  }
+
+  .help-text em {
+    font-weight: bolder;
+    margin-top: 30px;
+    color: #5959FF;
+  }
+
+  .help-text p {
+    margin-top: 40px;
   }
 
   [data-type="edit-record-button"] {
@@ -1274,6 +1335,12 @@
   #records-summary {
     /*visibility:hidden;*/
     display: none;
+    margin: 0 3%;
+    max-height: 400px;
+    overflow: auto;
+  }
+
+  .help-text {
     margin: 0 3%;
     max-height: 400px;
     overflow: auto;

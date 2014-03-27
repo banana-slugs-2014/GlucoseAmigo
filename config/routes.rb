@@ -5,6 +5,7 @@ GlucoseAmigo::Application.routes.draw do
 
   resources :sessions, only: [ :new, :create, :destroy ]
 
+  get 'help', :to => 'dashboard#help'
   get 'graphs/:account_id/diabetics/:id', :to => 'graphs#show', :as => 'show_graph'
   get 'dashboard/get', :to => 'dashboard#get', :as => 'get_submenu'
   get 'diabetics/:id/dashboard', :to => 'dashboard#diabetic', :as => 'diabetic_dashboard'

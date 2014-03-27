@@ -28,6 +28,13 @@ var Ajax = (function(){
         url: '/sessions/'+userId
       }
       _request(data, reaction)
-    }
+    },
+    getHelpPage: function( reaction){
+      var data = {
+        url: '/help'
+      }
+      _request(data, reaction)
+    },
+
   }
 }());
