@@ -28,6 +28,11 @@ class DashboardController < ApplicationController
                                                       }
   end
 
+
+  def help
+    render partial: 'shared/help'
+  end
+
   private
   def load_diabetic
     @diabetic = Diabetic.find(params[:id])
@@ -48,4 +53,6 @@ class DashboardController < ApplicationController
       new_diabetic_doctor_path(@diabetic)
     end
   end
+
+
 end
