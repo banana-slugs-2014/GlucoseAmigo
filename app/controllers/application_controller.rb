@@ -12,4 +12,13 @@ class ApplicationController < ActionController::Base
   def redirect_if_logged_in
     redirect_to account_path(current_account) if logged_in?
   end
+
+  def render_json(ok, path, alert)
+    render :json => {
+                      ok: ok,
+                      path: path,
+                      alert: alert
+                    }
+  end
+
 end

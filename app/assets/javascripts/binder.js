@@ -25,21 +25,17 @@ var Binder = (function(Ajax) {
                     case 'records-toggle':
                         controller.toggleRecordsPage();
                         break;
+                    case 'signup':
+                        controller.loadSignUp($(this).data());
+                        break;
+                    case 'edit-record-button':
+                        controller.loadNextPageFromData($(this).data());
+                        break;
                 }
             })
     }
     var _dataTypeOf = function(element) {
         return $(element).data('type')
-    }
-
-    var _bindLinks = function(controller) {
-        $('body')
-            .off('click', 'a')
-            .on('click', 'a', function(e) {
-                if (_isSignUp(this)) {
-                    controller.loadSignUp(e);
-                }
-            })
     }
 
 
@@ -55,25 +51,24 @@ var Binder = (function(Ajax) {
       })
     }
 
-    var _isGetSubmenu = function(el) {
-        return ($(el).data('type') === 'get-submenu')
-    }
-
-    var _isSignUp = function(el) {
-        return ($(el).data('type') === 'signup')
-    }
-
 
     var _bindAjaxForms = function(controller) {
         $('body')
             .off('ajax:success', 'form')
             .on('ajax:success', 'form', function(event, response) {
+                if (response.ok && _isLogin(this)){
+                  controller.login(response.path)
+                }
                 if (response.ok) {
                     Ajax.get(response.path, controller.nextPageEvent.bind(controller))
                 } else {
                     controller.addAlert(response.alert)
                 };
             })
+    }
+
+    var _isLogin = function(el){
+      return($(el).attr('id') === 'account-login')
     }
 
     return {

@@ -32,11 +32,7 @@ class AccountsController < ApplicationController
     else
       path = new_account_path
     end
-    render :json => {
-                      ok: !!ok,
-                      path: path,
-                      alert: account.errors.full_messages
-                    }
+    render_json(!!ok, path, account.errors.full_messages)
   end
 
   def edit
@@ -55,22 +51,19 @@ class AccountsController < ApplicationController
         path = account_path(current_account)
       end
     end
-    render :json => {
-                      ok: !!ok,
-                      path: path,
-                      alert: current_account.errors.full_messages
-                    }
+    render_json(!!ok, path, current_account.errors.full_messages)
   end
 
   def update
     if current_account.authenticate(params[:account][:password])
       ok = true
       current_account.update_attributes(params[:account])
-      redirect_to accounts_path
+      path = dashboard_path
     else
-      flash[:error] = ['Invalid Password']
-      redirect_to edit_account_path(current_account)
+      notice = ['Invalid Password']
+      path = edit_account_path(current_account)
     end
+    render_json(!!ok, path, notice)
   end
 
   private

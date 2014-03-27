@@ -3,12 +3,6 @@ class DoctorsController < ApplicationController
 	before_filter :load_diabetic, :redirect_if_logged_out
 	before_filter :load_doctor, :except => [:index, :new, :create,]
 
-	def index
-	end
-
-	def show
-	end
-
 	def new
 		@doctor = Doctor.new
 		@title = "Create a doctor"
@@ -27,11 +21,8 @@ class DoctorsController < ApplicationController
 			ok = true
 			path = new_diabetic_preference_path(diabetic_id: @diabetic.id)
 		end
-		render :json => {
-											ok: !!ok, # Saving kstrks
-											path: path,
-											alert: @doctor.errors.full_messages
-										}
+		render_json(!!ok, path, @doctor.errors.full_messages)
+
 	end
 
 	def edit
@@ -43,21 +34,16 @@ class DoctorsController < ApplicationController
 	end
 
 	def update
-		@doctor.update_attributes(params[:doctor])
-		path = diabetic_doctor_path(@diabetic,@doctor) # to change to user path
-		render :json => {
-											ok: true, # Saving kstrks
-											target: path,
-											alert: @doctor.errors.full_messages
-										}
+		@doctor.assign_attributes(params[:doctor])
+		if @doctor.save
+			ok = true
+			path = dashboard_path
+		end
+		render_json(!!ok, path, @doctor.errors.full_messages)
 	end
 
 	def destroy
-		render :json => {
-											ok: !!ok, # Saving kstrks
-											target: :back,
-											alert: @doctor.errors.full_messages
-										}
+		render_json(!!ok, dashboard_path, @doctor.errors.full_messages)
 	end
 
 	private

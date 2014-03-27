@@ -133,13 +133,21 @@
     border: none;
   }
 
-  .birthdate {
+  .birthdate, .enter-record-date {
     margin-left: 30%;
   }
 
   /* ACCOUNT DASHBOARD */
 
-  #menu_choice, #preference_frequency {
+  #menu_choice, #preference_frequency,
+  #diabetic_birthday_1i,
+  #diabetic_birthday_2i,
+  #diabetic_birthday_3i,
+  #record_taken_at_1i,
+  #record_taken_at_2i,
+  #record_taken_at_3i,
+  #record_taken_at_4i,
+  #record_taken_at_5i {
     color: white;
     width: 40%;
     padding: 2%;
@@ -152,6 +160,58 @@
     overflow: hidden;
     background: #8A8A8A;
     margin: 5% 30% 10% 30%;
+  }
+
+  #preference_frequency {
+    margin-top: 1%;
+    width: 10%;
+  }
+
+  #diabetic_birthday_1i,
+  #diabetic_birthday_2i,
+  #diabetic_birthday_3i,
+  #record_taken_at_1i,
+  #record_taken_at_2i,
+  #record_taken_at_3i,
+  #record_taken_at_4i,
+  #record_taken_at_5i {
+    display: inline;
+    margin-left: 1%;
+    margin-right: 0;
+  }
+
+  #diabetic_birthday_1i, #record_taken_at_1i {
+    margin-left: 0;
+    width: 15%;
+  }
+
+  #diabetic_birthday_2i, #record_taken_at_2i {
+    width: 26%;
+  }
+
+  #diabetic_birthday_3i, #record_taken_at_3i {
+    width: 13%;
+  }
+
+  #record_taken_at_3i {
+    margin-right: 40%;
+  }
+
+  #record_taken_at_4i {
+    width: 20%;
+  }
+
+  #record_taken_at_5i {
+    width: 14%;
+  }
+
+  #record_taken_at_1i,
+  #record_taken_at_2i,
+  #record_taken_at_3i,
+  #record_taken_at_4i,
+  #record_taken_at_5i {
+    margin-top: 1%;
+    margin-bottom: 4%;
   }
 
   option {
@@ -215,6 +275,11 @@
   [data-style="edit-user-info"],
   [data-style="edit-doctor-info"] {
     background-color: #FF944C;
+    margin-top: 3%;
+  }
+
+  [data-style="edit-preferences"] {
+    margin-top: 10%;
   }
 
   #records-summary {
@@ -369,13 +434,21 @@
     border: none;
   }
 
-  .birthdate {
+  .birthdate, .enter-record-date {
     margin-left: 25%;
   }
 
   /* ACCOUNT DASHBOARD */
 
-  #menu_choice {
+  #menu_choice,
+  #diabetic_birthday_1i,
+  #diabetic_birthday_2i,
+  #diabetic_birthday_3i,
+  #record_taken_at_1i,
+  #record_taken_at_2i,
+  #record_taken_at_3i,
+  #record_taken_at_4i,
+  #record_taken_at_5i {
     color: white;
     width: 50%;
     padding: 2%;
@@ -402,8 +475,55 @@
       display: block;
       overflow: hidden;
       background: #8A8A8A;
-      margin: 8% 50% 10% 50%;
+      margin: 1% 25% 10% 25%;
     }
+
+  #diabetic_birthday_1i,
+  #diabetic_birthday_2i,
+  #diabetic_birthday_3i,
+  #record_taken_at_1i,
+  #record_taken_at_2i,
+  #record_taken_at_3i,
+  #record_taken_at_4i,
+  #record_taken_at_5i {
+    display: inline;
+    margin-left: 1%;
+    margin-right: 0;
+  }
+
+  #diabetic_birthday_1i, #record_taken_at_1i {
+    margin-left: 0;
+    width: 18%;
+  }
+
+  #diabetic_birthday_2i, #record_taken_at_2i {
+    width: 33%;
+  }
+
+  #diabetic_birthday_3i, #record_taken_at_3i {
+    width: 13%;
+  }
+
+  #record_taken_at_3i {
+    margin-right: 30%;
+  }
+
+  #record_taken_at_4i {
+    width: 22%;
+  }
+
+  #record_taken_at_5i {
+    width: 15%;
+  }
+
+  #record_taken_at_1i,
+  #record_taken_at_2i,
+  #record_taken_at_3i,
+  #record_taken_at_4i,
+  #record_taken_at_5i {
+    margin-top: 1%;
+    margin-bottom: 4%;
+  }
 
   option {
     background: transparent;
@@ -466,6 +586,11 @@
   [data-style="edit-user-info"],
   [data-style="edit-doctor-info"] {
     background-color: #FF944C;
+    margin-top: 3%;
+  }
+
+  [data-style="edit-preferences"] {
+    margin-top: 10%;
   }
 
   /* NAV BAR */
@@ -495,10 +620,7 @@
   #help-button, #submit-button, #records-toggle-button {
     background: #4DB84D;
   }
-
-
 }
-
 
 /************************************************
                         PHABLET
@@ -507,7 +629,7 @@
 
 @media only screen and (max-width: 675px) {
 
-/* CREATE ACCOUNT */
+  /* CREATE ACCOUNT */
 
   body {
     background-size: auto;
@@ -612,13 +734,21 @@
     text-align: center;
   }
 
-  .birthdate {
+  .birthdate, .enter-record-date {
     margin-left: 10%;
   }
 
   /* ACCOUNT DASHBOARD */
 
-  #menu_choice, #preference_frequency {
+  #menu_choice, #preference_frequency,
+  #diabetic_birthday_1i,
+  #diabetic_birthday_2i,
+  #diabetic_birthday_3i,
+  #record_taken_at_1i,
+  #record_taken_at_2i,
+  #record_taken_at_3i,
+  #record_taken_at_4i,
+  #record_taken_at_5i {
     margin-bottom: 5%;
     color: white;
     width: 65%;
@@ -632,6 +762,58 @@
     overflow: hidden;
     background: #8A8A8A;
     margin: 10% 17.5% 15% 17.5%;
+  }
+
+  #preference_frequency {
+    margin-top: 1%;
+    margin-left: 10%;
+    width: 20%;
+  }
+
+  #diabetic_birthday_1i,
+  #diabetic_birthday_2i,
+  #diabetic_birthday_3i,
+  #record_taken_at_1i,
+  #record_taken_at_2i,
+  #record_taken_at_3i,
+  #record_taken_at_4i,
+  #record_taken_at_5i {
+    display: inline;
+    margin-left: 1%;
+    margin-right: 0;
+  }
+
+  #diabetic_birthday_1i, #record_taken_at_1i {
+    width: 20%;
+  }
+
+  #diabetic_birthday_2i, #record_taken_at_2i {
+    width: 45%;
+  }
+
+  #diabetic_birthday_3i, #record_taken_at_3i {
+    width: 20%;
+  }
+
+  #record_taken_at_3i {
+    margin-right: 8%;
+  }
+
+  #record_taken_at_4i {
+    width: 25%;
+  }
+
+  #record_taken_at_5i {
+    width: 15%;
+  }
+
+  #record_taken_at_1i,
+  #record_taken_at_2i,
+  #record_taken_at_3i,
+  #record_taken_at_4i,
+  #record_taken_at_5i {
+    margin-top: 1%;
+    margin-bottom: 4%;
   }
 
   option {
@@ -695,6 +877,11 @@
   [data-style="edit-user-info"],
   [data-style="edit-doctor-info"] {
     background-color: #FF944C;
+    margin-top: 3%;
+  }
+
+  [data-style="edit-preferences"] {
+    margin-top: 10%;
   }
 
   /* NAVBAR */
@@ -725,9 +912,7 @@
   #help-button, #submit-button, #records-toggle-button {
     background: #4DB84D;
   }
-
 }
-
 
 
 /************************************************
@@ -735,6 +920,7 @@
 *************************************************/
 
 @media only screen and (max-width: 480px) {
+
 
   /* CREATE ACCOUNT */
 
@@ -846,7 +1032,7 @@
     text-align: center;
   }
 
-  .birthdate {
+  .birthdate, .enter-record-date {
     margin-left: 3.5%;
   }
 
@@ -858,7 +1044,15 @@
     color: #5959FF;
   }
 
-  #menu_choice, #preference_frequency {
+  #menu_choice, #preference_frequency,
+  #diabetic_birthday_1i,
+  #diabetic_birthday_2i,
+  #diabetic_birthday_3i,
+  #record_taken_at_1i,
+  #record_taken_at_2i,
+  #record_taken_at_3i,
+  #record_taken_at_4i,
+  #record_taken_at_5i {
     margin-bottom: 5%;
     color: white;
     width: 90%;
@@ -874,6 +1068,58 @@
     margin: 10% 5%;
   }
 
+  #preference_frequency {
+    margin-top: 1%;
+    width: 20%;
+    margin-left: 5%;
+  }
+
+  #diabetic_birthday_1i,
+  #diabetic_birthday_2i,
+  #diabetic_birthday_3i,
+  #record_taken_at_1i,
+  #record_taken_at_2i,
+  #record_taken_at_3i,
+  #record_taken_at_4i,
+  #record_taken_at_5i {
+    display: inline;
+    margin-left: 1%;
+    margin-right: 0;
+  }
+
+  #diabetic_birthday_1i, #record_taken_at_1i {
+    width: 27%;
+  }
+
+  #diabetic_birthday_2i, #record_taken_at_2i {
+    width: 45%;
+  }
+
+  #diabetic_birthday_3i, #record_taken_at_3i {
+    width: 20%;
+  }
+
+  #record_taken_at_3i {
+    margin-right: 1%;
+  }
+
+  #record_taken_at_4i {
+    width: 35%;
+  }
+
+  #record_taken_at_5i {
+    width: 20%;
+  }
+
+  #record_taken_at_1i,
+  #record_taken_at_2i,
+  #record_taken_at_3i,
+  #record_taken_at_4i,
+  #record_taken_at_5i {
+    margin-top: 1%;
+    margin-bottom: 4%;
+  }
+
   option {
     background: transparent;
     display: block;
@@ -886,7 +1132,6 @@
     display: block;
     margin: 0 auto;
   }
-
 
   [data-type="dashboard-button"], [data-type="graph-button"],
   [data-type="edit-diabetic-button"] {
@@ -930,14 +1175,19 @@
     background-color: #FF944C;
   }
 
-  /* EDIT STUFF FOR A DIABETIC */
 
+  /* EDIT STUFF FOR A DIABETIC */
 
   [data-style="edit-preferences"],
   [data-style="edit-user-info"],
   [data-style="edit-doctor-info"] {
     background-color: #FF944C;
     width: 90%;
+    margin-top: 8%;
+  }
+
+  [data-style="edit-preferences"] {
+    margin-top: 16%;
   }
 
 

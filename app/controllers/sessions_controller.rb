@@ -11,20 +11,19 @@ class SessionsController < ApplicationController
   def create
     account = Account.find_by_username(params[:username]).try(:authenticate, params[:password])
     if account
+      ok = true
       login account
-      redirect_to account_path(account)
+      path = account_path(account)
     else
-      flash[:notice] = 'invalid login information'
-      redirect_to root_path
+      alert = 'invalid login information'
+      path = root_path
     end
+    render_json(!!ok, path, alert)
   end
 
   def destroy
+    ok = true
     reset_session
-    render :json => {
-                      ok: true,
-                      path: root_path,
-                      alert: 'You have been logged out'
-                     }
+    render_json(!!ok, root_path, 'You have been logged out')
   end
 end

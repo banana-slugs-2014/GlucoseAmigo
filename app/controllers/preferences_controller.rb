@@ -1,23 +1,23 @@
 class PreferencesController < ApplicationController
   before_filter :load_diabetic
-  before_filter :load_preference, :except => [ :new ]
+  before_filter :load_preference, :except => [ :new, :create ]
+  before_filter :find_or_create_preference, :only => [ :create ]
 
   def new
     @preference = Preference.new
     render :partial => 'preferences/new', locals: {
-                                                          title: "Create a doctor",
                                                           diabetic: @diabetic,
                                                           preference: @preference
                                                         }
   end
 
   def create
-    if @preference
-      @preference.update_attributes(params[:preference])
-    else
-      @diabetic.preference = Preference.create(params[:preference]) # Default values and select boxes prevent from being bad.
+    if @preference.save
+      @diabetic.save
+      ok = true
+      path = dashboard_path
     end
-    redirect_to account_path(current_account)
+    render_json(!!ok, path, alert)
   end
 
   def show
@@ -36,12 +36,12 @@ class PreferencesController < ApplicationController
   end
 
   def update
-    @preference.update_attributes(params[:preference])
-    render :json => {
-        ok: true,
-        path: diabetic_preference_path(@diabetic, @diabetic.preference),
-        alert: @diabetic.preference.errors.full_messages
-      }
+    if @preference.update_attributes(params[:preference])
+      ok = true
+      path = dashboard_path
+    end
+    render_json(!!ok, path, @preference.errors.full_messages)
+
   end
 
   private
@@ -54,4 +54,12 @@ class PreferencesController < ApplicationController
     @preference = @diabetic.preference
   end
 
+  def find_or_create_preference
+    if @diabetic.preference
+      @preference = @diabetic.preference
+    else
+      @preference = Preference.new(params[:preference])
+    end
+    @diabetic.preference = @preference
+  end
 end

@@ -27,10 +27,11 @@ class RecordsController < ApplicationController
 
   def create
     @record = @diabetic.records.build(params[:record])
-    unless @record.save
-      flash[:notice] = "Please try again"
+    if @record.save
+      ok = true
+      path = dashboard_path
     end
-    redirect_to :back
+    render_json(!!ok, path, @record.errors.full_messages)
   end
 
   def edit
@@ -38,22 +39,18 @@ class RecordsController < ApplicationController
   end
 
   def update # Unused
-    if @record.update_attributes(params[:record])
-      path = diabetic_records_path(@diabetic)
+    @record.assign_attributes(params[:record])
+    if @record.save
+      path = dashboard_path
       ok = true
-    else
-      path = edit_diabetic_record_path(@diabetic, @record)
     end
-    render :json => {
-                      ok: !!ok, # Saving kstrks
-                      target: path,
-                      alert: @record.errors.full_messages
-                    }
+    render_json(!!ok, path, @record.errors.full_messages)
   end
 
   def destroy
     @record.destroy
-    redirect_to root_path
+    ok = true
+    render_json(!!ok, dashboard_path, @record.errors.full_messages)
   end
 
   private
