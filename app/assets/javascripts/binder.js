@@ -13,18 +13,14 @@ var Binder = (function(Ajax) {
                     case 'cancel':
                         controller.goBack(e);
                         break;
-                    case 'dashboard-button':
-                        controller.loadNextPage($(this).data());
-                        break;
                     case 'add-record':
                         controller.loadAddRecord();
-                        break;
-                    case 'edit-diabetic-button':
-                        controller.loadNextPage($(this).data());
                         break;
                     case 'records-toggle':
                         controller.toggleRecordsPage();
                         break;
+                    case 'dashboard-button':
+                    case 'edit-diabetic-button':
                     case 'signup':
                         controller.loadNextPage($(this).data());
                         break;
