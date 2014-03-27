@@ -269,6 +269,32 @@
     background-color: #FF944C;
   }
 
+  #records-summary {
+    /*visibility:hidden;*/
+    display: none;
+    margin: 0 10%;
+    max-height: 500px;
+    overflow: auto;
+  }
+
+  [data-type="edit-record-button"] {
+    display: inline;
+    border: none;
+    border-radius: 5px;
+    background-color: #FF944C;
+    color: white;
+    font-size: 100%;
+    text-align: justify;
+    width: 15%;
+    height: 5%;
+    margin: 0 auto;
+    margin-top: 4%;
+    text-align: center;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    margin-bottom: 10px;
+  }
+
   /* EDIT STUFF FOR A DIABETIC */
 
   [data-style="edit-preferences"],
@@ -580,6 +606,33 @@
     background-color: #FF944C;
   }
 
+
+  #records-summary {
+    /*visibility:hidden;*/
+    display: none;
+    margin: 0 10%;
+    max-height: 500px;
+    overflow: auto;
+  }
+
+  [data-type="edit-record-button"] {
+    display: inline;
+    border: none;
+    border-radius: 5px;
+    background-color: #FF944C;
+    color: white;
+    font-size: 100%;
+    text-align: justify;
+    width: 15%;
+    height: 5%;
+    margin: 0 auto;
+    margin-top: 4%;
+    text-align: center;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    margin-bottom: 10px;
+  }
+
   /* EDIT STUFF FOR A DIABETIC */
 
   [data-style="edit-preferences"],
@@ -869,6 +922,33 @@
 
   [data-style="edit-account"]{
     background-color: #FF944C;
+  }
+
+
+  #records-summary {
+    /*visibility:hidden;*/
+    display: none;
+    margin: 0 3%;
+    max-height: 400px;
+    overflow: auto;
+  }
+
+  [data-type="edit-record-button"] {
+    display: inline;
+    border: none;
+    border-radius: 5px;
+    background-color: #FF944C;
+    color: white;
+    font-size: 100%;
+    text-align: justify;
+    width: 15%;
+    height: 5%;
+    margin: 0 auto;
+    margin-top: 4%;
+    text-align: center;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    margin-bottom: 10px;
   }
 
   /* EDIT STUFF FOR A DIABETIC */
@@ -1194,6 +1274,27 @@
   #records-summary {
     /*visibility:hidden;*/
     display: none;
+    margin: 0 3%;
+    max-height: 400px;
+    overflow: auto;
+  }
+
+  [data-type="edit-record-button"] {
+    display: inline;
+    border: none;
+    border-radius: 5px;
+    background-color: #FF944C;
+    color: white;
+    font-size: 100%;
+    text-align: justify;
+    width: 15%;
+    height: 5%;
+    margin: 0 auto;
+    margin-top: 4%;
+    text-align: center;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    margin-bottom: 10px;
   }
 
 
