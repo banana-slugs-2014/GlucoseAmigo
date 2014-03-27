@@ -1,3 +1,4 @@
+config/secret_token.rb
 *.rbc
 *.sassc
 .sass-cache
