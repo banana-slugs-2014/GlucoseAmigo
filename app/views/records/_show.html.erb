@@ -1,6 +1,6 @@
 
   <span>
-    Date: <%= record.taken_at.localtime.strftime("%m/%d %H:%M") %>
+    Date: <%= record.taken_at.localtime.strftime("%m/%d %I:%M %p") %>
 
     Weight: <%=  record.weight if record.weight.present? %>
 
