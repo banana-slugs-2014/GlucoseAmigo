@@ -1,5 +1,4 @@
 function graph(response) {
-    console.log(response.glucose)
     $('#graph').highcharts({
         chart: {
             zoomType: 'xy'
@@ -11,18 +10,10 @@ function graph(response) {
             text: response.diabetic.name
         },
         xAxis: [{
-            type: 'datetime',
-            dateTimeLabelFormats: {
-                day: '%b %e'
-            },
-            minPadding: 0,
-            maxPadding: 0,
-            startOnTick: true,
-            startOfWeek: 1,
+            categories: response.days,
             labels: {
-                step: 1
+                step: step_det(response)
             },
-            tickInterval: 24 * 3600 * 1000
         }],
         yAxis: [{ // Primary yAxis
             labels: {
@@ -48,8 +39,7 @@ function graph(response) {
                 label: {
                     text: 'Normal Glucose Levels',
                     style: {
-                        color: '#606060'
-                        // fontSize: '20px';
+                        color: '#606060',
                     }
                 }
 
@@ -71,7 +61,6 @@ function graph(response) {
         }],
         tooltip: {
             shared: true,
-
         },
 
         legend: {
@@ -90,13 +79,9 @@ function graph(response) {
             type: 'spline',
             yAxis: 1,
             data: response.weight,
-            pointStart: Date.UTC(response.year, response.month - 1, response.day),
-            pointInterval: 8 * 3600 * 1000, // one day
             tooltip: {
                 valueSuffix: ' lbs',
-                formatter: function() {
-                    return this.x
-                }
+
             }
 
         }, {
@@ -104,11 +89,20 @@ function graph(response) {
             color: 'red',
             type: 'spline',
             data: response.glucose,
-            pointStart: Date.UTC(response.year, response.month - 1, response.day),
-            pointInterval: 8 * 3600 * 1000, // one day
             tooltip: {
                 valueSuffix: 'mg/dL'
             }
         }]
     });
+}
+
+function step_det(response) {
+    if (response.num_of_days <= 2) {
+        console.log('yo')
+        return 1;
+    } else if (2 < response.num_of_days && response.num_of_days < 5) {
+        return 2;
+    } else {
+        return 3;
+    }
 }
