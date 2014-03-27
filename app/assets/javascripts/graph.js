@@ -98,7 +98,6 @@ function graph(response) {
 
 function step_det(response) {
     if (response.num_of_days <= 2) {
-        console.log('yo')
         return 1;
     } else if (2 < response.num_of_days && response.num_of_days < 5) {
         return 2;
