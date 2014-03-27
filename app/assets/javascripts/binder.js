@@ -55,7 +55,7 @@ var Binder = (function(Ajax) {
             .off('ajax:success', 'form')
             .on('ajax:success', 'form', function(event, response) {
                 if (response.ok && _isLogin(this)){
-                  controller.login(response.path)
+                  controller.login(response)
                 } else if (response.ok) {
                   Ajax.get(response.path, controller.nextPageEvent.bind(controller))
                 } else {
