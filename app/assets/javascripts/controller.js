@@ -3,6 +3,7 @@ var Controller = function(data) {
     this.user = data.user;
 }
 
+
 Controller.prototype = {
     nextPageEvent: function(response) {
         this.view.reloadPage(response);
@@ -13,8 +14,8 @@ Controller.prototype = {
     logout: function() {
         Ajax.logout(this.user.uId, this.redirectTo.bind(this));
     },
-    login: function(response) {
-        window.location.replace(response);
+    login: function(url) {
+        this.redirectTo(url);
     },
     redirectTo: function(data){
         window.location.replace(data.path);
@@ -22,17 +23,11 @@ Controller.prototype = {
     addGraph: function(data) {
         Ajax.get(data.url, this.graphAlert.bind(this))
     },
-    loadNextPage: function(response) {
-        Ajax.get(response.target, this.view.newPage.bind(this.view));
-    },
-    loadNextPageFromData: function(data) {
-        Ajax.get(data.url, this.nextPageEvent.bind(this));
-    },
-    loadSignUp: function(data) {
+    loadNextPage: function(data) {
         Ajax.get(data.url, this.nextPageEvent.bind(this));
     },
     goBack: function(event) {
-        window.location.replace(event.target.baseURI);
+        this.redirectTo({path: event.target.baseURI});
     },
     getSubmenu: function(element) {
         Ajax.getSubmenu(element, this.view.addSubmenu.bind(this.view))
@@ -44,7 +39,7 @@ Controller.prototype = {
         if (response.check == "graph") {
             graph(response);
         } else {
-            this.view.addAlert(response.alert);
+            this.addAlert(response.alert);
         }
 
     }

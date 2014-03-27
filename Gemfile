@@ -14,6 +14,7 @@ group :assets do
 end
 
 group :development, :test do
+  gem 'jasmine-rails'
   gem 'rspec-rails'
   gem 'cool_faker'
   gem 'faker'

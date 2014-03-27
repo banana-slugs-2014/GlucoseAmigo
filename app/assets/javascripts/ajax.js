@@ -23,10 +23,11 @@ var Ajax = (function(){
       this.get(url, reaction)
     },
     logout: function(userId, reaction){
-      _request({
+      var data = {
         type: 'DELETE',
         url: '/sessions/'+userId
-      }, reaction)
+      }
+      _request(data, reaction)
     }
   }
 }());
