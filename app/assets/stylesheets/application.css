@@ -101,10 +101,16 @@
 
   /* SIGN UP && CREATE ACCOUNT */
 
-  label, .enter-record-info {
+  label, .enter-record-info,
+  .birthday-label {
     margin-left: 30%;
     color: #5959FF;
     font-weight: bolder;
+  }
+
+  .birthday-label {
+    margin-top: 5%;
+    margin-left: 0;
   }
 
   #account_username,
@@ -462,8 +468,14 @@
 
   /* SIGN UP && CREATE ACCOUNT */
 
-  label, .enter-record-info {
+  label, .enter-record-info,
+  .birthday-label {
     margin-left: 25%;
+  }
+
+  .birthday-label {
+    margin-top: 5%;
+    margin-left: 0;
   }
 
   #account_username,
@@ -801,8 +813,14 @@
 
   /* SIGN UP && CREATE ACCOUNT */
 
-  label, .enter-record-info {
+  label, .enter-record-info,
+  .birthday-label {
     margin-left: 10%;
+  }
+
+  .birthday-label {
+    margin-top: 5%;
+    margin-left: 0;
   }
 
   #account_username,
@@ -1072,7 +1090,7 @@
 
   #content {
     width: 98%;
-    height: 100%;
+    max-height: 60%;
   }
 
   #title {
@@ -1137,10 +1155,16 @@
 
   /* SIGN UP && CREATE ACCOUNT */
 
-  label, .enter-record-info {
+  label, .enter-record-info,
+  .birthday-label {
     margin-left: 3.5%;
     color: #5959FF;
     font-weight: bolder;
+  }
+
+  .birthday-label {
+    margin-top: 5%;
+    margin-left: 0;
   }
 
   #account_username,
