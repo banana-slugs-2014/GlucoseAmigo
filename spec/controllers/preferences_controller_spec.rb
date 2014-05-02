@@ -11,8 +11,6 @@ describe PreferencesController do
 
 
 
-#seems like it's the create account that's fucking it up.
-#whenever account is called, it breaks diabetics
   before(:each) do
     stub_current_account(account)
   end
