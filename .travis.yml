@@ -15,8 +15,12 @@ script:
 - bundle exec rake spec
 deploy:
   provider: heroku
+  strategy: git
   api_key:
     secure: ZHwM02UaxXS5jy9kHOcr29LzZ5nrrlSm4kkDXhTxHy1Ewr8V00O+yqKybDwS15U7H9yCo0BA0HEVf6SHksuknTFyhfbCwqn7fKQJOl5RhNVMH2B8Woxz8hhoB66pyLe6B1lVRIwqEIo9t7CQm+5hlEOeE2Jy4QkupYRYN2wg0Jk=
   app: GlucoseAmigo
   on:
     repo: banana-slugs-2014/GlucoseAmigo  
+  run:
+    - "rake db:migrate"
+    - restart
